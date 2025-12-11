@@ -1,0 +1,3843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sindhi Kids Fun Learning Games</title>
+    <style>
+        :root {
+            --rainbow-bg: linear-gradient(45deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #c3cfe2 75%, #c3cfe2 100%);
+            --primary-bg: #f0f8ff;
+            --card-bg: #ffffff;
+            --primary-text: #2c3e50;
+            --accent-color: #ff6b6b;
+            --success-color: #4ecdc4;
+            --warning-color: #ffe66d;
+            --purple-color: #a8e6cf;
+            --blue-color: #88d8c0;
+            --pink-color: #ffc0cb;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+        }
+
+        [data-theme="dark"] {
+            --primary-bg: #1a1a2e;
+            --card-bg: #16213e;
+            --primary-text: #eee;
+            --accent-color: #ff6b6b;
+            --success-color: #4ecdc4;
+            --warning-color: #ffe66d;
+            --purple-color: #9b59b6;
+            --blue-color: #3498db;
+            --pink-color: #e91e63;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: var(--rainbow-bg);
+            color: var(--primary-text);
+            transition: all 0.3s ease;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--card-bg);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 4px 20px var(--shadow-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 5px solid var(--accent-color);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 4px var(--shadow-color);
+        }
+
+        .theme-toggle {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px var(--shadow-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px var(--shadow-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .game-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 35px var(--shadow-color);
+        }
+
+        .game-icon {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        .game-card h3 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .game-card p {
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            background: var(--success-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .game-area {
+            display: none;
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 25px var(--shadow-color);
+            border: 3px solid var(--accent-color);
+        }
+
+        .game-area.active {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .game-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--accent-color);
+        }
+
+        .back-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--shadow-color);
+        }
+
+        .score-display {
+            background: var(--success-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        /* Animal Parade Game */
+        .animal-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 500px;
+            margin: 2rem auto;
+        }
+
+        .animal-card {
+            background: var(--card-bg);
+            border: 3px solid var(--success-color);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 3rem;
+        }
+
+        .animal-card:hover {
+            transform: scale(1.1) rotate(5deg);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 20px var(--shadow-color);
+        }
+
+        .animal-card.correct {
+            background: var(--success-color);
+            transform: scale(1.2);
+            animation: celebration 0.6s ease;
+        }
+
+        @keyframes celebration {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3) rotate(10deg); }
+            100% { transform: scale(1.2); }
+        }
+
+        /* Bubble Pop Game */
+        .bubble-container {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(180deg, #87ceeb 0%, #98fb98 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--blue-color);
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.5),
+                        0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .bubble:hover {
+            transform: scale(1.2);
+        }
+
+        .bubble.popped {
+            animation: popBubble 0.5s ease forwards;
+        }
+
+        @keyframes popBubble {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.7; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+        
+        @keyframes floatBubble {
+            0% { transform: translate(0, 0); }
+            50% { transform: translate(8px, -15px); }
+            100% { transform: translate(-8px, -5px); }
+        }
+        
+        .splash-drop {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.7;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+            z-index: 5;
+        }
+
+        /* Rainbow Path Game */
+        .path-container {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 5px;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .path-tile {
+            aspect-ratio: 1;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            border: 2px solid transparent;
+        }
+
+        .path-tile:hover {
+            transform: scale(1.1);
+            border-color: var(--primary-text);
+        }
+
+        .path-tile.correct {
+            animation: rainbow 1s ease infinite;
+        }
+
+        @keyframes rainbow {
+            0% { background: #ff0000; }
+            16% { background: #ff8000; }
+            33% { background: #ffff00; }
+            50% { background: #00ff00; }
+            66% { background: #0080ff; }
+            83% { background: #8000ff; }
+            100% { background: #ff0000; }
+        }
+
+        /* Musical Notes Game */
+        /* Word Jumble Game Styles (replacing Musical Magic styles) */
+        #jumble-word-display {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 1rem auto;
+            min-height: 80px;
+        }
+
+        #jumble-letters-container {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin: 2rem auto;
+            flex-wrap: wrap;
+            max-width: 600px;
+        }
+
+        .jumble-letter {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            background: var(--card-bg);
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 4px 8px var(--shadow-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .jumble-letter:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px var(--shadow-color);
+        }
+
+        .jumble-letter.selected {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.1);
+            animation: pulse 1.5s infinite;
+        }
+
+        .jumble-slot {
+            width: 60px;
+            height: 60px;
+            border-radius: 10px;
+            border: 3px dashed var(--accent-color);
+            background: rgba(255, 107, 107, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .jumble-slot.filled {
+            border: 3px solid var(--success-color);
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .jumble-slot.correct {
+            border: 3px solid var(--success-color);
+            background: var(--success-color);
+            color: white;
+            animation: celebration 0.6s ease;
+        }
+
+        .jumble-translation {
+            text-align: center;
+            margin: 1.5rem auto;
+            font-size: 1.2rem;
+            padding: 10px;
+            border-radius: 10px;
+            background: rgba(78, 205, 196, 0.1);
+            max-width: 80%;
+            display: none;
+        }
+        
+        .jumble-target {
+            margin-bottom: 1rem;
+            padding: 10px;
+            background-color: rgba(255, 107, 107, 0.1);
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .target-label {
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-right: 5px;
+        }
+        
+        .target-word {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-text);
+            direction: rtl;
+            margin: 0 5px;
+        }
+        
+        .target-meaning {
+            color: var(--secondary-text);
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1.1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1.1); }
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+        }
+        
+        .shake {
+            animation: shake 0.5s ease;
+        }
+        
+        .jumble-success {
+            padding: 10px;
+            background-color: rgba(78, 205, 196, 0.2);
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .success-icon {
+            font-size: 1.5rem;
+            margin-right: 8px;
+            color: var(--success-color);
+        }
+        
+        .success-word {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-text);
+            direction: rtl;
+            margin: 0 5px;
+        }
+        
+        .success-meaning {
+            color: var(--secondary-text);
+            font-style: italic;
+        }
+        
+        .jumble-hint {
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: rgba(255, 190, 118, 0.2);
+            border-radius: 10px;
+            display: inline-block;
+        }
+        
+        .hint-icon {
+            color: var(--warning-color);
+            margin-right: 5px;
+        }
+        
+        .hint-text {
+            color: var(--secondary-text);
+            font-style: italic;
+        }
+        
+        /* Counting Game Styles */
+        .counting-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 1.5rem auto;
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            max-width: 600px;
+            min-height: 200px;
+        }
+        
+        .count-object {
+            font-size: 3rem;
+            margin: 5px;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .count-object:hover {
+            transform: scale(1.2);
+        }
+        
+        .counting-answer-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            margin: 1.5rem auto;
+        }
+        
+        .counting-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .counting-option {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px var(--shadow-color);
+        }
+        
+        .counting-option:hover {
+            transform: translateY(-5px);
+        }
+        
+        .counting-option.selected {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .sindhi-number-display {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px var(--shadow-color);
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .sindhi-label {
+            font-size: 1.1rem;
+            color: var(--secondary-text);
+            margin-bottom: 8px;
+        }
+        
+        .sindhi-number {
+            font-size: 2rem;
+            font-weight: bold;
+            direction: rtl;
+            min-height: 2.5rem;
+        }
+        
+        /* Jigsaw Puzzle Game Styles */
+        .puzzle-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin: 1.5rem auto;
+            max-width: 90%;
+        }
+        
+        @media (min-width: 768px) {
+            .puzzle-container {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+        
+        .puzzle-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 5px;
+            background: var(--card-bg);
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            width: 300px;
+            height: 300px;
+        }
+        
+        .puzzle-piece {
+            background-size: 300px 300px;
+            border: 2px solid var(--accent-color);
+            border-radius: 5px;
+            cursor: grab;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            position: relative;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .puzzle-piece:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 5px 2px var(--accent-color); }
+            50% { box-shadow: 0 0 20px 5px var(--accent-color); }
+            100% { box-shadow: 0 0 5px 2px var(--accent-color); }
+        }
+        
+        .puzzle-piece.dragging {
+            opacity: 0.8;
+            cursor: grabbing;
+        }
+        
+        .puzzle-piece.correct {
+            border-color: var(--success-color);
+            box-shadow: 0 0 10px var(--success-color);
+        }
+        
+        .puzzle-preview {
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .preview-label {
+            font-size: 1.2rem;
+            color: var(--secondary-text);
+            margin-bottom: 10px;
+        }
+        
+        .preview-image {
+            width: 200px;
+            height: 200px;
+            background-size: cover;
+            border-radius: 10px;
+            border: 2px solid var(--accent-color);
+        }
+
+        /* Star Collector Game */
+        .space-container {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(180deg, #000428 0%, #004e92 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--purple-color);
+        }
+
+        .star {
+            position: absolute;
+            color: var(--warning-color);
+            font-size: 2rem;
+            cursor: pointer;
+            animation: twinkle 1s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from { opacity: 0.7; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.2); }
+        }
+
+        .spaceship {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        /* Memory Cards Game */
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            max-width: 400px;
+            margin: 2rem auto;
+        }
+
+        .memory-card {
+            aspect-ratio: 1;
+            background: var(--blue-color);
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            border: 3px solid transparent;
+        }
+
+        .memory-card:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-color);
+        }
+
+        .memory-card.flipped {
+            background: var(--card-bg);
+            color: var(--primary-text);
+            transform: rotateY(180deg);
+        }
+
+        .memory-card.matched {
+            background: var(--success-color);
+            animation: matchFound 0.6s ease;
+        }
+
+        @keyframes matchFound {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Shape Sorter Game */
+        .shape-sorter {
+            display: flex;
+            justify-content: space-around;
+            margin: 2rem auto;
+            max-width: 600px;
+        }
+
+        .shape-bucket {
+            background: var(--card-bg);
+            border: 3px dashed var(--accent-color);
+            border-radius: 20px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .shape-bucket.dragover {
+            background: var(--success-color);
+            border-style: solid;
+            transform: scale(1.1);
+        }
+
+        .draggable-shape {
+            display: inline-block;
+            margin: 1rem;
+            cursor: grab;
+            transition: all 0.3s ease;
+            font-size: 2.5rem;
+            position: relative;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .draggable-shape:hover {
+            transform: scale(1.2);
+        }
+
+        .draggable-shape:active {
+            cursor: grabbing;
+        }
+        
+        .draggable-shape.dragging {
+            opacity: 0.7;
+            transform: scale(1.3);
+            z-index: 1000;
+        }
+        
+        .shape-tooltip {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-text);
+            color: var(--card-bg);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+            direction: rtl;
+        }
+        
+        .draggable-shape:hover .shape-tooltip {
+            opacity: 1;
+        }
+        
+        .sindhi-label {
+            font-size: 1rem;
+            margin-top: 10px;
+            direction: rtl;
+            font-weight: bold;
+            color: var(--primary-text);
+        }
+        
+        .sparkle {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            animation: sparkleFade 0.8s ease forwards;
+        }
+        
+        @keyframes sparkleFade {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        /* Common Game Elements */
+        .game-question {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 2rem 0;
+            padding: 1rem;
+            background: rgba(255, 107, 107, 0.1);
+            border-radius: 15px;
+            border: 2px solid var(--accent-color);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .game-btn {
+            background: var(--success-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-color);
+        }
+
+        .game-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px var(--shadow-color);
+        }
+
+        .game-btn.secondary {
+            background: var(--warning-color);
+        }
+
+        .game-btn.danger {
+            background: var(--accent-color);
+        }
+
+        .message {
+            margin: 1rem 0;
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            animation: messageSlide 0.5s ease;
+        }
+
+        @keyframes messageSlide {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.success {
+            background: var(--success-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .message.error {
+            background: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .message.celebration {
+            background: var(--warning-color);
+            color: var(--primary-text);
+            animation: celebrate 1s ease infinite;
+        }
+
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255, 107, 107, 0.2);
+            border-radius: 10px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--success-color);
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .animal-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .memory-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .path-container {
+                grid-template-columns: repeat(6, 1fr);
+            }
+
+            .music-keyboard {
+                flex-wrap: wrap;
+            }
+
+            .music-key {
+                width: 50px;
+                height: 120px;
+            }
+        }
+
+        /* Treasure Hunt Game Styles */
+        .treasure-map {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #87CEEB 0%, #98FB98 50%, #F4A460 100%);
+            border-radius: 15px;
+            position: relative;
+            margin: 1rem 0;
+            overflow: hidden;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .map-background {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(34, 139, 34, 0.3) 10px, transparent 10px),
+                radial-gradient(circle at 70% 60%, rgba(139, 69, 19, 0.3) 15px, transparent 15px),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.3) 8px, transparent 8px);
+        }
+
+        .treasure-spot {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: radial-gradient(circle, #8B4513 30%, #D2691E 60%, #F4A460 90%);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: treasurePulse 2s infinite;
+        }
+
+        .treasure-spot:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px gold;
+        }
+
+        .treasure-spot.found {
+            background: radial-gradient(circle, gold, yellow);
+            animation: treasureFound 0.5s ease;
+        }
+
+        @keyframes treasurePulse {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+
+        @keyframes treasureFound {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.5) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        /* Dancing Colors Game Styles */
+        .dance-stage {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 20px;
+        }
+
+        .color-pad {
+            width: 150px;
+            height: 150px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 5px solid transparent;
+            user-select: none;
+        }
+
+        .color-pad:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .color-pad.active {
+            border-color: gold;
+            animation: colorPulse 0.5s ease;
+            box-shadow: 0 0 30px currentColor;
+        }
+
+        .color-pad.correct {
+            animation: colorSuccess 0.6s ease;
+        }
+
+        @keyframes colorPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes colorSuccess {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2) rotate(-5deg); }
+            75% { transform: scale(1.2) rotate(5deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        /* Magic Garden Game Styles */
+        .garden-plot {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #8FBC8F, #98FB98);
+            border-radius: 15px;
+        }
+
+        .soil-patch {
+            width: 100px;
+            height: 100px;
+            background: #8B4513;
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+            border: 3px solid #654321;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+
+        .soil-patch:hover {
+            transform: scale(1.05);
+            border-color: #90EE90;
+        }
+
+        .soil-patch.planted {
+            background: #654321;
+        }
+
+        .soil-patch.growing {
+            animation: plantGrow 2s ease-in-out;
+        }
+
+        .soil-patch.bloomed {
+            background: linear-gradient(135deg, #654321, #90EE90);
+        }
+
+        .garden-tools {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 1rem 0;
+        }
+
+        .tool-btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 25px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tool-btn.active {
+            background: var(--success-color);
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        @keyframes plantGrow {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); background: #90EE90; }
+            100% { transform: scale(1); }
+        }
+
+        /* Flying Adventure Game Styles */
+        .sky-container {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #98FB98 100%);
+            border-radius: 15px;
+            position: relative;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .airplane {
+            position: absolute;
+            font-size: 2.5rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        }
+
+        .clouds-layer, .coins-layer, .storms-layer {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .cloud, .coin, .storm {
+            position: absolute;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .cloud {
+            font-size: 2rem;
+            opacity: 0.8;
+        }
+
+        .coin {
+            font-size: 1.5rem;
+            animation: spin 2s infinite linear;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .storm {
+            font-size: 2rem;
+            animation: shake 0.5s infinite;
+        }
+
+        .flight-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            margin: 1rem 0;
+        }
+
+        .control-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .control-btn {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 10px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🌟 Sindhi Kids Fun Zone 🌟</div>
+            <button class="theme-toggle" onclick="toggleTheme()">🌙 Night Mode</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div id="game-selection" class="games-grid">
+            <div class="game-card" onclick="startGame('animals')">
+                <div class="game-icon">🐘🦁🐸</div>
+                <div class="difficulty-badge">Easy</div>
+                <h3>Animal Parade</h3>
+                <p>Help the animals find their way home! Click on the animals when you hear their names.</p>
+            </div>
+
+            <div class="game-card" onclick="startGame('bubbles')">
+                <div class="game-icon">🫧✨💙</div>
+                <div class="difficulty-badge">Easy</div>
+                <h3>Magic Bubble Pop</h3>
+                <p>Pop the colorful bubbles with letters and numbers! Each pop teaches you something new.</p>
+            </div>
+
+            <div class="game-card" onclick="startGame('rainbow')">
+                <div class="game-icon">🌈🎨🦄</div>
+                <div class="difficulty-badge">Medium</div>
+                <h3>Rainbow Path Adventure</h3>
+                <p>Follow the rainbow colors in the right order to help the unicorn reach the treasure!</p>
+            </div>
+
+            <div class="game-card" onclick="startGame('music')">
+                <div class="game-icon">🔤🔡📝</div>
+                <div class="difficulty-badge">Medium</div>
+                <h3>Sindhi Word Jumble</h3>
+                <p>Unscramble letters to form Sindhi words! Learn vocabulary with this fun word puzzle game.</p>
+            </div>
+
+            <div class="game-card" onclick="startGame('space')">
+                <div class="game-icon">⭐🚀🌙</div>
+                <div class="difficulty-badge">Easy</div>
+                <h3>Star Collector</h3>
+                <p>Fly your spaceship through the galaxy and collect sparkling stars and planets!</p>
+            </div>
+
+            <div class="game-card" onclick="startGame('memory')">
+                <div class="game-icon">🧠💎🃏</div>
+                <div class="difficulty-badge">Medium</div>
+                <h3>Memory Palace</h3>
+                <p>Test your super memory! Find matching pairs of beautiful pictures and symbols.</p>
+            </div>
+
+            <div class="game-card" onclick="startGame('shapes')">
+                <div class="game-icon">🔴🔵🟡</div>
+                <div class="difficulty-badge">Easy</div>
+                <h3>Shape Sorting Fun</h3>
+                <p>Sort colorful shapes into the right buckets! Learn about circles, squares, and triangles.</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('counting')">
+                <div class="game-icon">🔢🧮🎯</div>
+                <div class="difficulty-badge">Easy</div>
+                <h3>Counting Adventure</h3>
+                <p>Count objects in Sindhi and English! Learn numbers while having fun with this interactive game.</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('puzzle')">
+                <div class="game-icon">🧩🎪🎭</div>
+                <div class="difficulty-badge">Medium</div>
+                <h3>Jigsaw Puzzle</h3>
+                <p>Put the pieces together to complete beautiful pictures! Drag and drop to solve the puzzle.</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('treasure')">
+                <div class="game-icon">🗺️💎🏴‍☠️</div>
+                <div class="difficulty-badge">Easy</div>
+                <h3>Treasure Hunt</h3>
+                <p>Follow the map to find hidden treasures! Explore the magical island and collect gems.</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('dance')">
+                <div class="game-icon">🎵💃🌈</div>
+                <div class="difficulty-badge">Medium</div>
+                <h3>Dancing Colors</h3>
+                <p>Match colors to the rhythm! Listen to the music and tap the right colors in time.</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('garden')">
+                <div class="game-icon">🌺🌱🦋</div>
+                <div class="difficulty-badge">Easy</div>
+                <h3>Magic Garden</h3>
+                <p>Plant seeds and watch them grow! Water your flowers and attract beautiful butterflies.</p>
+            </div>
+            
+            <div class="game-card" onclick="startGame('flying')">
+                <div class="game-icon">✈️☁️🌤️</div>
+                <div class="difficulty-badge">Medium</div>
+                <h3>Flying Adventure</h3>
+                <p>Pilot your plane through the clouds! Collect coins and avoid storms in this sky adventure.</p>
+            </div>
+        </div>
+
+        <!-- Animal Parade Game -->
+        <div id="animals-game" class="game-area">
+            <div class="game-header">
+                <h2>🐘 Animal Parade Adventure</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Stars: <span id="animal-stars">0</span> ⭐</div>
+            </div>
+            <div class="game-question" id="animal-question">Click on the elephant! 🐘</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="animal-progress" style="width: 0%"></div>
+            </div>
+            <div class="animal-grid" id="animal-grid"></div>
+            <div id="animal-message" class="message" style="display: none;"></div>
+        </div>
+
+        <!-- Magic Bubble Pop Game -->
+        <div id="bubbles-game" class="game-area">
+            <div class="game-header">
+                <h2>🫧 Magic Bubble Pop</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Bubbles: <span id="bubble-score">0</span> 💫</div>
+            </div>
+            <div class="game-question" id="bubble-question">Pop bubbles with the letter 'A'!</div>
+            <div class="controls">
+                <button class="game-btn" onclick="generateBubbles()">🫧 New Bubbles</button>
+                <button class="game-btn secondary" onclick="changeBubbleMode()">🔤 Change Mode</button>
+            </div>
+            <div class="bubble-container" id="bubble-container"></div>
+            <div id="bubble-message" class="message" style="display: none;"></div>
+        </div>
+
+        <!-- Rainbow Path Game -->
+        <div id="rainbow-game" class="game-area">
+            <div class="game-header">
+                <h2>🌈 Rainbow Path Adventure</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Level: <span id="rainbow-level">1</span> 🏆</div>
+            </div>
+            <div class="game-question" id="rainbow-question">Follow the rainbow! Click: Red → Orange → Yellow</div>
+            <div class="path-container" id="path-container"></div>
+            <div id="rainbow-message" class="message" style="display: none;"></div>
+        </div>
+
+        <!-- Word Jumble Game (replacing Musical Magic) -->
+        <div id="music-game" class="game-area">
+            <div class="game-header">
+                <h2>🔤 Sindhi Word Jumble</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Level: <span id="jumble-level">1</span> 🏆 | Score: <span id="jumble-score">0</span> ✨</div>
+            </div>
+            <div class="game-question" id="music-question">Arrange the letters to form the correct Sindhi word!</div>
+            <div id="jumble-word-display"></div>
+            <div id="jumble-letters-container"></div>
+            <div class="controls">
+                <button class="game-btn" onclick="checkJumbleWord()">✅ Check Answer</button>
+                <button class="game-btn secondary" onclick="getJumbleHint()">💡 Hint</button>
+                <button class="game-btn danger" onclick="newJumbleWord()">🔄 New Word</button>
+            </div>
+            <div id="jumble-translation" class="jumble-translation"></div>
+            <div id="music-message" class="message" style="display: none;"></div>
+        </div>
+
+        <!-- Star Collector Game -->
+        <div id="space-game" class="game-area">
+            <div class="game-header">
+                <h2>⭐ Star Collector</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Stars: <span id="space-stars">0</span> ✨</div>
+            </div>
+            <div class="game-question">Collect all the twinkling stars in space!</div>
+            <div class="controls">
+                <button class="game-btn" onclick="addStars()">⭐ Add Stars</button>
+                <button class="game-btn secondary" onclick="moveSpaceship()">🚀 Auto Pilot</button>
+            </div>
+            <div class="space-container" id="space-container">
+                <div class="spaceship">🚀</div>
+            </div>
+            <div id="space-message" class="message" style="display: none;"></div>
+        </div>
+
+        <!-- Memory Palace Game -->
+        <div id="memory-game" class="game-area">
+            <div class="game-header">
+                <h2>🧠 Memory Palace</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Pairs: <span id="memory-pairs">0</span> 💎</div>
+            </div>
+            <div class="game-question">Find matching pairs! Click two cards to flip them.</div>
+            <div class="controls">
+                <button class="game-btn" onclick="resetMemoryGame()">🔄 New Game</button>
+                <button class="game-btn secondary" onclick="showHint()">💡 Hint</button>
+            </div>
+            <div class="memory-grid" id="memory-grid"></div>
+            <div id="memory-message" class="message" style="display: none;"></div>
+        </div>
+
+        <!-- Shape Sorting Game -->
+        <div id="shapes-game" class="game-area">
+            <div class="game-header">
+                <h2>🔴 Shape Sorting Fun</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Sorted: <span id="shape-score">0</span> 🎯</div>
+            </div>
+            <div class="game-question">Drag each shape to its matching bucket!</div>
+            <div class="shape-sorter" id="shape-sorter">
+                <div class="shape-bucket" data-shape="circle">⭕</div>
+                <div class="shape-bucket" data-shape="square">⬛</div>
+                <div class="shape-bucket" data-shape="triangle">🔺</div>
+                <div class="shape-bucket" data-shape="diamond">🔶</div>
+            </div>
+            <div style="text-align: center; margin: 2rem 0;">
+                <div class="draggable-shape" draggable="true" data-shape="circle">🔴</div>
+                <div class="draggable-shape" draggable="true" data-shape="square">🟦</div>
+                <div class="draggable-shape" draggable="true" data-shape="triangle">🔺</div>
+                <div class="draggable-shape" draggable="true" data-shape="circle">🟡</div>
+                <div class="draggable-shape" draggable="true" data-shape="square">🟩</div>
+            </div>
+            <div class="controls">
+                <button class="game-btn" onclick="generateShapes()">🎲 New Shapes</button>
+            </div>
+            <div id="shape-message" class="message" style="display: none;"></div>
+        </div>
+        
+        <!-- Counting Adventure Game -->
+        <div id="counting-game" class="game-area">
+            <div class="game-header">
+                <h2>🔢 Counting Adventure</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Level: <span id="counting-level">1</span> 🏆 | Score: <span id="counting-score">0</span> ✨</div>
+            </div>
+            <div class="game-question" id="counting-question">How many objects do you see?</div>
+            <div class="counting-container" id="counting-container"></div>
+            <div class="counting-answer-area">
+                <div class="counting-options" id="counting-options"></div>
+                <div class="sindhi-number-display" id="sindhi-number-display">
+                    <div class="sindhi-label">Number:</div>
+                    <div class="sindhi-number" id="sindhi-number"></div>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="game-btn" onclick="newCountingGame()">🔄 New Objects</button>
+                <button class="game-btn secondary" onclick="showCountingHint()">💡 Hint</button>
+            </div>
+            <div id="counting-message" class="message" style="display: none;"></div>
+        </div>
+        
+        <!-- Jigsaw Puzzle Game -->
+        <div id="puzzle-game" class="game-area">
+            <div class="game-header">
+                <h2>🧩 Jigsaw Puzzle</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Level: <span id="puzzle-level">1</span> 🏆 | Moves: <span id="puzzle-moves">0</span> 🎯</div>
+            </div>
+            <div class="game-question" id="puzzle-question">Drag and drop the puzzle pieces to complete the picture!</div>
+            <div class="puzzle-container">
+                <div class="puzzle-board" id="puzzle-board"></div>
+                <div class="puzzle-preview">
+                    <div class="preview-label">Target Image:</div>
+                    <div class="preview-image" id="puzzle-preview-image"></div>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="game-btn" onclick="initPuzzleGame()">🧩 New Puzzle</button>
+                <button class="game-btn secondary" onclick="showPuzzleHint()">💡 Hint</button>
+                <button class="game-btn danger" onclick="resetPuzzle()">🔄 Reset</button>
+            </div>
+            <div id="puzzle-message" class="message" style="display: none;"></div>
+        </div>
+        
+        <!-- Treasure Hunt Game -->
+        <div id="treasure-game" class="game-area">
+            <div class="game-header">
+                <h2>🗺️ Treasure Hunt Adventure</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Treasures: <span id="treasure-count">0</span> 💎 | Level: <span id="treasure-level">1</span> 🏆</div>
+            </div>
+            <div class="game-question" id="treasure-question">Find the hidden treasure! Click on the suspicious spots.</div>
+            <div class="treasure-map" id="treasure-map">
+                <div class="map-background">
+                    <div class="treasure-spot" style="top: 20%; left: 15%;"></div>
+                    <div class="treasure-spot" style="top: 60%; left: 30%;"></div>
+                    <div class="treasure-spot" style="top: 40%; left: 70%;"></div>
+                    <div class="treasure-spot" style="top: 80%; left: 60%;"></div>
+                    <div class="treasure-spot" style="top: 25%; left: 85%;"></div>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="game-btn" onclick="generateNewMap()">🗺️ New Map</button>
+                <button class="game-btn secondary" onclick="showTreasureHint()">🔍 Use Compass</button>
+            </div>
+            <div id="treasure-message" class="message" style="display: none;"></div>
+        </div>
+        
+        <!-- Dancing Colors Game -->
+        <div id="dance-game" class="game-area">
+            <div class="game-header">
+                <h2>🎵 Dancing Colors</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Score: <span id="dance-score">0</span> 🎶 | Combo: <span id="dance-combo">0</span> 🔥</div>
+            </div>
+            <div class="game-question" id="dance-question">Listen to the rhythm and tap the glowing colors!</div>
+            <div class="dance-stage" id="dance-stage">
+                <div class="color-pad" data-color="red" style="background: #ff6b6b;">🔴</div>
+                <div class="color-pad" data-color="blue" style="background: #4ecdc4;">🔵</div>
+                <div class="color-pad" data-color="yellow" style="background: #ffeaa7;">🟡</div>
+                <div class="color-pad" data-color="green" style="background: #96ceb4;">🟢</div>
+            </div>
+            <div class="controls">
+                <button class="game-btn" onclick="startDanceMusic()">🎵 Start Music</button>
+                <button class="game-btn secondary" onclick="pauseDanceGame()">⏸️ Pause</button>
+                <button class="game-btn danger" onclick="stopDanceGame()">⏹️ Stop</button>
+            </div>
+            <div id="dance-message" class="message" style="display: none;"></div>
+        </div>
+        
+        <!-- Magic Garden Game -->
+        <div id="garden-game" class="game-area">
+            <div class="game-header">
+                <h2>🌺 Magic Garden</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Flowers: <span id="garden-flowers">0</span> 🌸 | Level: <span id="garden-level">1</span> 🌱</div>
+            </div>
+            <div class="game-question" id="garden-question">Plant seeds and water them to grow beautiful flowers!</div>
+            <div class="garden-plot" id="garden-plot">
+                <div class="soil-patch" data-planted="false"></div>
+                <div class="soil-patch" data-planted="false"></div>
+                <div class="soil-patch" data-planted="false"></div>
+                <div class="soil-patch" data-planted="false"></div>
+                <div class="soil-patch" data-planted="false"></div>
+                <div class="soil-patch" data-planted="false"></div>
+                <div class="soil-patch" data-planted="false"></div>
+                <div class="soil-patch" data-planted="false"></div>
+                <div class="soil-patch" data-planted="false"></div>
+            </div>
+            <div class="garden-tools">
+                <button class="tool-btn active" data-tool="seed" onclick="selectTool('seed')">🌱 Seeds</button>
+                <button class="tool-btn" data-tool="water" onclick="selectTool('water')">💧 Water</button>
+                <button class="tool-btn" data-tool="fertilizer" onclick="selectTool('fertilizer')">🌿 Fertilizer</button>
+            </div>
+            <div class="controls">
+                <button class="game-btn" onclick="plantAllSeeds()">🌱 Plant All</button>
+                <button class="game-btn secondary" onclick="waterAllPlants()">💧 Water All</button>
+                <button class="game-btn danger" onclick="clearGarden()">🔄 New Garden</button>
+            </div>
+            <div id="garden-message" class="message" style="display: none;"></div>
+        </div>
+        
+        <!-- Flying Adventure Game -->
+        <div id="flying-game" class="game-area">
+            <div class="game-header">
+                <h2>✈️ Flying Adventure</h2>
+                <button class="back-btn" onclick="backToSelection()">🏠 Home</button>
+                <div class="score-display">Coins: <span id="flying-coins">0</span> 🪙 | Distance: <span id="flying-distance">0</span>km ✈️</div>
+            </div>
+            <div class="game-question" id="flying-question">Use arrow keys or click to steer your plane through the clouds!</div>
+            <div class="sky-container" id="sky-container">
+                <div class="airplane" id="airplane">✈️</div>
+                <div class="clouds-layer" id="clouds-layer"></div>
+                <div class="coins-layer" id="coins-layer"></div>
+                <div class="storms-layer" id="storms-layer"></div>
+            </div>
+            <div class="flight-controls">
+                <button class="control-btn" onclick="moveAirplane('up')">⬆️</button>
+                <div class="control-row">
+                    <button class="control-btn" onclick="moveAirplane('left')">⬅️</button>
+                    <button class="control-btn" onclick="moveAirplane('down')">⬇️</button>
+                    <button class="control-btn" onclick="moveAirplane('right')">➡️</button>
+                </div>
+            </div>
+            <div class="controls">
+                <button class="game-btn" onclick="startFlight()">🛫 Take Off</button>
+                <button class="game-btn secondary" onclick="autopilotMode()">🤖 Autopilot</button>
+                <button class="game-btn danger" onclick="landAirplane()">🛬 Land</button>
+            </div>
+            <div id="flying-message" class="message" style="display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentTheme = 'light';
+        let gameStates = {
+            animals: { 
+                stars: 0, 
+                level: 1, 
+                animals: [
+                    { emoji: '🐘', name: 'elephant', sindhi: 'هاٿي' },
+                    { emoji: '🦁', name: 'lion', sindhi: 'شيھن' },
+                    { emoji: '🐸', name: 'frog', sindhi: 'ڏيڏر' },
+                    { emoji: '🐰', name: 'rabbit', sindhi: 'سهو' },
+                    { emoji: '🐻', name: 'bear', sindhi: 'رِڇ' },
+                    { emoji: '🐱', name: 'cat', sindhi: 'ٻلي' },
+                    { emoji: '🐶', name: 'dog', sindhi: 'ڪتو' },
+                    { emoji: '🐒', name: 'monkey', sindhi: 'ڀولڙو' }
+                ], 
+                currentAnimal: 0, 
+                progress: 0 
+            },
+            bubbles: { 
+                score: 0, 
+                level: 1,
+                mode: 'letters', 
+                target: 'A',
+                letters: [
+                    { latin: 'A', sindhi: 'ا' },
+                    { latin: 'B', sindhi: 'ب' },
+                    { latin: 'J', sindhi: 'ج' },
+                    { latin: 'D', sindhi: 'د' },
+                    { latin: 'R', sindhi: 'ر' },
+                    { latin: 'S', sindhi: 'س' }
+                ],
+                numbers: [
+                    { latin: '1', sindhi: '١' },
+                    { latin: '2', sindhi: '٢' },
+                    { latin: '3', sindhi: '٣' },
+                    { latin: '4', sindhi: '٤' },
+                    { latin: '5', sindhi: '٥' },
+                    { latin: '6', sindhi: '٦' }
+                ]
+            },
+            rainbow: { 
+                level: 1, 
+                sequence: ['red', 'orange', 'yellow', 'green', 'blue', 'purple'], 
+                currentStep: 0,
+                sindhiColors: {
+                    'red': 'ڳاڙهو',
+                    'orange': 'نارنگي',
+                    'yellow': 'پيلو',
+                    'green': 'سائو',
+                    'blue': 'نيرو',
+                    'purple': 'جامني'
+                }
+            },
+            music: { 
+                score: 0,
+                level: 1,
+                currentWord: null,
+                hintsUsed: 0,
+                words: [
+                    { sindhi: 'سلام', english: 'hello', difficulty: 1 },
+                    { sindhi: 'خوش', english: 'happy', difficulty: 1 },
+                    { sindhi: 'دوست', english: 'friend', difficulty: 1 },
+                    { sindhi: 'پاڻي', english: 'water', difficulty: 1 },
+                    { sindhi: 'وقت', english: 'time', difficulty: 1 },
+                    { sindhi: 'کاڌو', english: 'food', difficulty: 2 },
+                    { sindhi: 'مٺائي', english: 'sweet', difficulty: 2 },
+                    { sindhi: 'آسمان', english: 'sky', difficulty: 2 },
+                    { sindhi: 'استاد', english: 'teacher', difficulty: 2 },
+                    { sindhi: 'زندگي', english: 'life', difficulty: 3 },
+                    { sindhi: 'محبت', english: 'love', difficulty: 3 },
+                    { sindhi: 'ڪتاب', english: 'book', difficulty: 2 },
+                    { sindhi: 'گهر', english: 'home', difficulty: 1 },
+                    { sindhi: 'ڏينهن', english: 'day', difficulty: 2 },
+                    { sindhi: 'رات', english: 'night', difficulty: 1 }
+                ],
+                selectedLetters: []
+            },
+            space: { 
+                stars: 0, 
+                collected: 0,
+                level: 1,
+                planets: [
+                    { emoji: '🌎', name: 'Earth', sindhi: 'زمين' },
+                    { emoji: '🪐', name: 'Saturn', sindhi: 'زحل' },
+                    { emoji: '☀️', name: 'Sun', sindhi: 'سج' },
+                    { emoji: '🌙', name: 'Moon', sindhi: 'چنڊ' },
+                    { emoji: '♂️', name: 'Mars', sindhi: 'مريخ' },
+                    { emoji: '♃', name: 'Jupiter', sindhi: 'مشتري' }
+                ]
+            },
+            memory: { 
+                pairs: 0, 
+                flipped: [], 
+                matched: [], 
+                level: 1,
+                cards: [
+                    { emoji: '🦋', name: 'butterfly', sindhi: 'ڇڇر' },
+                    { emoji: '🌸', name: 'flower', sindhi: 'گل' },
+                    { emoji: '🍎', name: 'apple', sindhi: 'صيب' },
+                    { emoji: '⭐', name: 'star', sindhi: 'تارو' },
+                    { emoji: '🎈', name: 'balloon', sindhi: 'غبارو' },
+                    { emoji: '🌙', name: 'moon', sindhi: 'چنڊ' },
+                    { emoji: '🍓', name: 'strawberry', sindhi: 'سٽرابيري' },
+                    { emoji: '🦄', name: 'unicorn', sindhi: 'ايڪ سِنگهه' }
+                ]
+            },
+            shapes: { 
+                score: 0,
+                level: 1,
+                levelThreshold: 50
+            },
+            treasure: {
+                count: 0,
+                level: 1,
+                foundTreasures: [],
+                totalTreasures: 5,
+                compass: false,
+                treasureTypes: [
+                    { emoji: '💎', name: 'Diamond', points: 50 },
+                    { emoji: '👑', name: 'Crown', points: 100 },
+                    { emoji: '🏆', name: 'Trophy', points: 75 },
+                    { emoji: '💰', name: 'Gold Bag', points: 60 },
+                    { emoji: '🗝️', name: 'Magic Key', points: 40 }
+                ]
+            },
+            dance: {
+                score: 0,
+                combo: 0,
+                level: 1,
+                isPlaying: false,
+                currentSequence: [],
+                playerSequence: [],
+                tempo: 1000,
+                colors: ['red', 'blue', 'yellow', 'green']
+            },
+            garden: {
+                flowers: 0,
+                level: 1,
+                selectedTool: 'seed',
+                plants: [],
+                waterLevel: 100,
+                flowerTypes: [
+                    { emoji: '🌸', name: 'Cherry Blossom', growTime: 3000 },
+                    { emoji: '🌺', name: 'Hibiscus', growTime: 4000 },
+                    { emoji: '🌻', name: 'Sunflower', growTime: 5000 },
+                    { emoji: '🌷', name: 'Tulip', growTime: 3500 },
+                    { emoji: '🌹', name: 'Rose', growTime: 6000 }
+                ]
+            },
+            flying: {
+                coins: 0,
+                distance: 0,
+                level: 1,
+                isFlying: false,
+                airplanePosition: { x: 50, y: 50 },
+                speed: 2,
+                obstacles: [],
+                collectibles: []
+            }
+        };
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.querySelector('.theme-toggle');
+            
+            if (currentTheme === 'light') {
+                body.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️ Day Mode';
+                currentTheme = 'dark';
+            } else {
+                body.setAttribute('data-theme', 'light');
+                themeToggle.textContent = '🌙 Night Mode';
+                currentTheme = 'light';
+            }
+        }
+
+        function startGame(gameType) {
+            document.getElementById('game-selection').style.display = 'none';
+            document.getElementById(`${gameType}-game`).classList.add('active');
+            initializeGame(gameType);
+        }
+
+        function backToSelection() {
+            document.querySelectorAll('.game-area').forEach(area => {
+                area.classList.remove('active');
+            });
+            document.getElementById('game-selection').style.display = 'grid';
+        }
+
+        function initializeGame(gameType) {
+            switch(gameType) {
+                case 'animals': initAnimalGame(); break;
+                case 'bubbles': initBubbleGame(); break;
+                case 'rainbow': initRainbowGame(); break;
+                case 'music': initMusicGame(); break; // This is now the Word Jumble game
+                case 'space': initSpaceGame(); break;
+                case 'memory': initMemoryGame(); break;
+                case 'shapes': initShapeGame(); break;
+                case 'counting': initCountingGame(); break;
+                case 'puzzle': initPuzzleGame(); break;
+                case 'treasure': initTreasureGame(); break;
+                case 'dance': initDanceGame(); break;
+                case 'garden': initGardenGame(); break;
+                case 'flying': initFlyingGame(); break;
+            }
+        }
+
+        function initAnimalGame() {
+            const state = gameStates.animals;
+            const grid = document.getElementById('animal-grid');
+            const animals = [...state.animals].sort(() => Math.random() - 0.5);
+            
+            grid.innerHTML = '';
+            animals.forEach((animal, index) => {
+                const card = document.createElement('div');
+                card.className = 'animal-card';
+                card.textContent = animal;
+                card.addEventListener('click', () => checkAnimal(animal, card));
+                grid.appendChild(card);
+            });
+            
+            state.currentAnimal = state.animals[state.progress % state.animals.length];
+            document.getElementById('animal-question').textContent = `Click on the ${getAnimalName(state.currentAnimal)}! ${state.currentAnimal}`;
+        }
+
+        function getAnimalName(emoji) {
+            const names = {
+                '🐘': 'elephant', '🦁': 'lion', '🐸': 'frog',
+                '🐰': 'rabbit', '🐻': 'bear', '🐱': 'cat'
+            };
+            return names[emoji] || 'animal';
+        }
+
+        function checkAnimal(selectedAnimal, card) {
+            const state = gameStates.animals;
+            
+            if (selectedAnimal === state.currentAnimal) {
+                card.classList.add('correct');
+                state.stars += 10;
+                state.progress++;
+                
+                document.getElementById('animal-stars').textContent = state.stars;
+                const progressBar = document.getElementById('animal-progress');
+                progressBar.style.width = `${(state.progress % 6) * 16.67}%`;
+                
+                showMessage('animal', `Great job! You found the ${getAnimalName(selectedAnimal)}! 🎉`, 'success');
+                
+                setTimeout(() => {
+                    if (state.progress % 6 === 0) {
+                        state.level++;
+                        showMessage('animal', `Level ${state.level} unlocked! 🏆`, 'celebration');
+                    }
+                    initAnimalGame();
+                }, 1500);
+            } else {
+                showMessage('animal', 'Try again! Look for the right animal! 😊', 'error');
+            }
+        }
+
+        function initBubbleGame() {
+            generateBubbles();
+            
+            // Update score display to include level
+            document.querySelector('#bubbles-game .score-display').innerHTML = 
+                `Level: <span id="bubble-level">1</span> 🎮 | Bubbles: <span id="bubble-score">0</span> 💫`;
+        }
+
+        function generateBubbles() {
+            const container = document.getElementById('bubble-container');
+            const state = gameStates.bubbles;
+            
+            container.innerHTML = '';
+            
+            // Get items based on mode
+            const items = state.mode === 'letters' ? state.letters : state.numbers;
+            
+            // Choose random target
+            const targetIndex = Math.floor(Math.random() * items.length);
+            state.target = items[targetIndex];
+            
+            // Update question with both Latin and Sindhi
+            document.getElementById('bubble-question').innerHTML = 
+                `${state.mode === 'letters' ? 'اکر' : 'انگ'} <span dir="rtl">'${state.target.sindhi}'</span> ${state.mode === 'letters' ? '(' : ''}'${state.target.latin}'${state.mode === 'letters' ? ')' : ''} وارن بلبلن کي ڦاڙيو!<br>
+                Pop bubbles with ${state.mode === 'letters' ? 'the letter' : 'the number'} '${state.target.latin}' (${state.target.sindhi})!`;
+            
+            // Create bubbles with both Latin and Sindhi characters
+            const bubbleCount = 8 + (state.level * 2); // More bubbles on higher levels
+            
+            for (let i = 0; i < bubbleCount; i++) {
+                const bubble = document.createElement('div');
+                bubble.className = 'bubble';
+                
+                // Varying bubble sizes based on level
+                const size = 60 - (state.level * 5);
+                bubble.style.width = `${Math.max(size, 40)}px`;
+                bubble.style.height = `${Math.max(size, 40)}px`;
+                
+                // Random position
+                bubble.style.left = `${Math.random() * (container.offsetWidth - 60)}px`;
+                bubble.style.top = `${Math.random() * (container.offsetHeight - 60)}px`;
+                bubble.style.background = getRandomColor();
+                
+                // Content - choosing random item
+                const content = items[Math.floor(Math.random() * items.length)];
+                
+                // Create bubble content with both Latin and Sindhi
+                const latinSpan = document.createElement('div');
+                latinSpan.textContent = content.latin;
+                latinSpan.style.fontSize = '1.2rem';
+                
+                const sindhiSpan = document.createElement('div');
+                sindhiSpan.textContent = content.sindhi;
+                sindhiSpan.style.fontSize = '1rem';
+                sindhiSpan.style.marginTop = '2px';
+                
+                bubble.appendChild(latinSpan);
+                bubble.appendChild(sindhiSpan);
+                
+                // Store content data
+                bubble.dataset.latin = content.latin;
+                bubble.dataset.sindhi = content.sindhi;
+                
+                // Add click event
+                bubble.addEventListener('click', () => popBubble(bubble, content));
+                
+                // Add floating animation with random duration
+                const floatDuration = 3 + (Math.random() * 4);
+                bubble.style.animation = `floatBubble ${floatDuration}s ease-in-out infinite alternate`;
+                
+                container.appendChild(bubble);
+            }
+        }
+
+        function popBubble(bubble, content) {
+            const state = gameStates.bubbles;
+            
+            bubble.classList.add('popped');
+            
+            if (content.latin === state.target.latin) {
+                // Success - correct bubble popped
+                state.score += 10;
+                document.getElementById('bubble-score').textContent = state.score;
+                
+                // Play success sound
+                playSound(600, 0.2);
+                
+                // Show message in both languages
+                showMessage('bubble', `Perfect! You popped '${content.latin}' (${content.sindhi})! ✨`, 'success');
+                
+                // Check for level up - every 50 points
+                if (state.score % 50 === 0) {
+                    state.level++;
+                    document.getElementById('bubble-level').textContent = state.level;
+                    showMessage('bubble', `Level ${state.level} unlocked! 🎮🏆`, 'celebration');
+                    
+                    // Play level up sound
+                    setTimeout(() => {
+                        playSound(800, 0.2);
+                        setTimeout(() => playSound(1000, 0.3), 200);
+                    }, 500);
+                }
+                
+                // Create water splash effect
+                createSplash(bubble);
+            } else {
+                // Wrong bubble
+                showMessage('bubble', `Oops! That was '${content.latin}' (${content.sindhi}), look for '${state.target.latin}' (${state.target.sindhi})! 🫧`, 'error');
+                
+                // Play error sound
+                playSound(200, 0.3);
+            }
+            
+            setTimeout(() => bubble.remove(), 500);
+            
+            // Check if all bubbles are popped - regenerate if container is nearly empty
+            setTimeout(() => {
+                if (document.querySelectorAll('.bubble').length < 3) {
+                    generateBubbles();
+                }
+            }, 1000);
+        }
+        
+        // Create water splash effect
+        function createSplash(bubble) {
+            const rect = bubble.getBoundingClientRect();
+            const containerRect = document.getElementById('bubble-container').getBoundingClientRect();
+            
+            const centerX = rect.left + rect.width/2 - containerRect.left;
+            const centerY = rect.top + rect.height/2 - containerRect.top;
+            
+            for (let i = 0; i < 8; i++) {
+                const splash = document.createElement('div');
+                splash.className = 'splash-drop';
+                
+                const angle = (Math.PI * 2 / 8) * i;
+                const distance = Math.random() * 40 + 20;
+                
+                splash.style.left = `${centerX + Math.cos(angle) * 5}px`;
+                splash.style.top = `${centerY + Math.sin(angle) * 5}px`;
+                
+                const color = bubble.style.background;
+                splash.style.background = color;
+                
+                document.getElementById('bubble-container').appendChild(splash);
+                
+                // Animate splash drop
+                setTimeout(() => {
+                    splash.style.transform = `translate(${Math.cos(angle) * distance}px, ${Math.sin(angle) * distance}px) scale(0)`;
+                }, 10);
+                
+                // Remove splash after animation
+                setTimeout(() => {
+                    splash.remove();
+                }, 500);
+            }
+        }
+
+        function changeBubbleMode() {
+            const state = gameStates.bubbles;
+            state.mode = state.mode === 'letters' ? 'numbers' : 'letters';
+            showMessage('bubble', `Now playing with ${state.mode}! 🎮`, 'success');
+            generateBubbles();
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#dda0dd'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function initRainbowGame() {
+            const container = document.getElementById('path-container');
+            const state = gameStates.rainbow;
+            
+            container.innerHTML = '';
+            state.currentStep = 0;
+            
+            const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+            const shuffled = [...colors, ...colors].sort(() => Math.random() - 0.5);
+            
+            shuffled.forEach((color, index) => {
+                const tile = document.createElement('div');
+                tile.className = 'path-tile';
+                tile.style.background = color;
+                tile.addEventListener('click', () => checkRainbowStep(color, tile));
+                container.appendChild(tile);
+            });
+            
+            updateRainbowQuestion();
+        }
+
+        function updateRainbowQuestion() {
+            const state = gameStates.rainbow;
+            const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+            const remaining = colors.slice(state.currentStep, state.currentStep + 3);
+            
+            document.getElementById('rainbow-question').textContent = 
+                `Follow the rainbow! Click: ${remaining.join(' → ')}`;
+        }
+
+        function checkRainbowStep(color, tile) {
+            const state = gameStates.rainbow;
+            const sequence = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
+            
+            if (color === sequence[state.currentStep]) {
+                tile.classList.add('correct');
+                state.currentStep++;
+                
+                if (state.currentStep >= sequence.length) {
+                    state.level++;
+                    document.getElementById('rainbow-level').textContent = state.level;
+                    showMessage('rainbow', 'Amazing! You completed the rainbow! 🌈✨', 'celebration');
+                    setTimeout(() => initRainbowGame(), 2000);
+                } else {
+                    showMessage('rainbow', `Great! Next color: ${sequence[state.currentStep]}`, 'success');
+                    updateRainbowQuestion();
+                }
+            } else {
+                showMessage('rainbow', `Oops! Look for ${sequence[state.currentStep]} next! 🌈`, 'error');
+            }
+        }
+
+        function initMusicGame() {
+            // Rename this function but keep it for compatibility - it's now Word Jumble
+            document.getElementById('music-question').textContent = 'Arrange the letters to form the correct Sindhi word!';
+            newJumbleWord();
+        }
+        
+        function newJumbleWord() {
+            const state = gameStates.music;
+            
+            // Select words appropriate for the current level
+            const availableWords = state.words.filter(word => 
+                word.difficulty <= state.level && 
+                word.difficulty >= Math.max(1, state.level - 1)
+            );
+            
+            // Choose a random word
+            const randomIndex = Math.floor(Math.random() * availableWords.length);
+            state.currentWord = availableWords[randomIndex];
+            state.selectedLetters = [];
+            state.hintsUsed = 0;
+            
+            // Show the target word (broken) at the beginning so kids understand the goal
+            const translation = document.getElementById('jumble-translation');
+            translation.style.display = 'block';
+            translation.innerHTML = `<div class="jumble-target">
+                <span class="target-label">Target Word:</span> 
+                <span class="target-word">${state.currentWord.sindhi}</span> 
+                <span class="target-meaning">(${state.currentWord.english})</span>
+            </div>`;
+            
+            // Create letter slots for the word
+            const wordDisplay = document.getElementById('jumble-word-display');
+            wordDisplay.innerHTML = '';
+            
+            for (let i = 0; i < state.currentWord.sindhi.length; i++) {
+                const slot = document.createElement('div');
+                slot.className = 'jumble-slot';
+                slot.dataset.index = i;
+                wordDisplay.appendChild(slot);
+            }
+            
+            // Create scrambled letters
+            const lettersContainer = document.getElementById('jumble-letters-container');
+            lettersContainer.innerHTML = '';
+            
+            // Convert word to array and shuffle
+            const letters = state.currentWord.sindhi.split('');
+            const shuffled = [...letters].sort(() => Math.random() - 0.5);
+            
+            shuffled.forEach((letter, index) => {
+                const letterElement = document.createElement('div');
+                letterElement.className = 'jumble-letter';
+                letterElement.textContent = letter;
+                letterElement.dataset.letter = letter;
+                letterElement.dataset.index = index;
+                
+                letterElement.addEventListener('click', () => selectJumbleLetter(letterElement));
+                
+                lettersContainer.appendChild(letterElement);
+            });
+            
+            // Update game question based on level
+            const question = document.getElementById('music-question');
+            if (state.level === 1) {
+                question.innerHTML = 'Arrange the letters to form a Sindhi word! <span class="emoji-hint">🔤</span>';
+            } else if (state.level === 2) {
+                question.innerHTML = 'Arrange the letters to form the Sindhi word for: <b>' + state.currentWord.english + '</b>';
+            } else {
+                question.innerHTML = 'Arrange these letters to form a Sindhi word! <span class="emoji-hint">🔡</span>';
+            }
+            
+            // Reset the message
+            document.getElementById('music-message').style.display = 'none';
+        }
+        
+        function selectJumbleLetter(letterElement) {
+            const state = gameStates.music;
+            
+            // If letter is already selected (has 'selected' class), deselect it
+            if (letterElement.classList.contains('selected')) {
+                letterElement.classList.remove('selected');
+                
+                // Find and remove from selected letters
+                const index = state.selectedLetters.findIndex(l => 
+                    l.dataset.index === letterElement.dataset.index
+                );
+                
+                if (index !== -1) {
+                    state.selectedLetters.splice(index, 1);
+                }
+                
+                // Update slots display
+                updateJumbleSlots();
+                return;
+            }
+            
+            // If we haven't filled all slots yet
+            if (state.selectedLetters.length < state.currentWord.sindhi.length) {
+                letterElement.classList.add('selected');
+                state.selectedLetters.push(letterElement);
+                
+                // Play sound
+                playSound(400 + (state.selectedLetters.length * 50));
+                
+                // Update slots
+                updateJumbleSlots();
+            } else {
+                // Shake animation if trying to select more letters than needed
+                letterElement.classList.add('shake');
+                setTimeout(() => letterElement.classList.remove('shake'), 500);
+                
+                // Play error sound
+                playSound(200);
+            }
+        }
+        
+        function updateJumbleSlots() {
+            const state = gameStates.music;
+            const slots = document.querySelectorAll('.jumble-slot');
+            
+            // Reset all slots
+            slots.forEach(slot => {
+                slot.textContent = '';
+                slot.classList.remove('filled');
+            });
+            
+            // Fill slots with selected letters
+            state.selectedLetters.forEach((letter, index) => {
+                if (index < slots.length) {
+                    slots[index].textContent = letter.textContent;
+                    slots[index].classList.add('filled');
+                }
+            });
+        }
+        
+        function checkJumbleWord() {
+            const state = gameStates.music;
+            
+            // Check if all slots are filled
+            if (state.selectedLetters.length !== state.currentWord.sindhi.length) {
+                showMessage('music', `Fill all ${state.currentWord.sindhi.length} letter slots first!`, 'error');
+                return;
+            }
+            
+            // Get the word user has formed
+            const userWord = state.selectedLetters.map(letter => letter.textContent).join('');
+            
+            if (userWord === state.currentWord.sindhi) {
+                // Correct!
+                const baseScore = 10 + (state.level * 5);
+                const bonusScore = Math.max(0, 10 - state.hintsUsed * 3);
+                const totalScore = baseScore + bonusScore;
+                
+                state.score += totalScore;
+                
+                // Update score display
+                document.getElementById('jumble-score').textContent = state.score;
+                
+                // Show success message
+                showMessage('music', `Correct! Perfect Sindhi word! +${totalScore} points! ✨`, 'success');
+                
+                // Add sparkle effects to each slot
+                document.querySelectorAll('.jumble-slot').forEach(slot => {
+                    slot.classList.add('correct');
+                    createSparkles(slot);
+                });
+                
+                // Show success message in translation box
+                const translation = document.getElementById('jumble-translation');
+                translation.innerHTML = `
+                    <div class="jumble-success">
+                        <span class="success-icon">✅</span> 
+                        <span class="success-word">${state.currentWord.sindhi}</span> 
+                        <span class="success-meaning">means "${state.currentWord.english}" in English</span>
+                    </div>
+                `;
+                translation.style.display = 'block';
+                
+                // Play success sound sequence
+                playSound(600);
+                setTimeout(() => playSound(800), 200);
+                setTimeout(() => playSound(1000), 400);
+                
+                // Check for level up - every 50 points
+                if (state.score >= state.level * 50) {
+                    state.level++;
+                    document.getElementById('jumble-level').textContent = state.level;
+                    
+                    setTimeout(() => {
+                        showMessage('music', `Level ${state.level} unlocked! Words are getting more challenging! �`, 'celebration');
+                    }, 1500);
+                }
+                
+                // New word after delay
+                setTimeout(newJumbleWord, 3000);
+                
+            } else {
+                // Wrong
+                showMessage('music', 'Not quite right. Try rearranging the letters! 🔁', 'error');
+                
+                // Shake the slots
+                document.querySelectorAll('.jumble-slot').forEach(slot => {
+                    slot.classList.add('shake');
+                    setTimeout(() => slot.classList.remove('shake'), 500);
+                });
+                
+                // Play error sound
+                playSound(200);
+            }
+        }
+        
+        function getJumbleHint() {
+            const state = gameStates.music;
+            
+            if (state.hintsUsed >= 2) {
+                showMessage('music', 'No more hints available for this word!', 'error');
+                return;
+            }
+            
+            // Clear current selection
+            state.selectedLetters.forEach(letter => {
+                letter.classList.remove('selected');
+            });
+            state.selectedLetters = [];
+            
+            // Provide a hint (the first few letters)
+            const hintLength = Math.min(state.hintsUsed + 1, state.currentWord.sindhi.length - 1);
+            
+            // Find the letter elements for the first few letters
+            const allLetters = document.querySelectorAll('.jumble-letter');
+            const correctLetters = [];
+            
+            // Find the first hintLength correct letters
+            for (let i = 0; i < hintLength; i++) {
+                const correctLetter = state.currentWord.sindhi[i];
+                
+                // Find an unused letter element with this value
+                for (let j = 0; j < allLetters.length; j++) {
+                    const letter = allLetters[j];
+                    if (letter.textContent === correctLetter && !correctLetters.includes(letter)) {
+                        correctLetters.push(letter);
+                        break;
+                    }
+                }
+            }
+            
+            // Select these letters
+            correctLetters.forEach(letter => {
+                letter.classList.add('selected');
+                state.selectedLetters.push(letter);
+            });
+            
+            // Update slots
+            updateJumbleSlots();
+            
+            // Increment hints used
+            state.hintsUsed++;
+            
+            // Show hint message
+            showMessage('music', `Hint: The word starts with "${state.currentWord.sindhi.substring(0, hintLength)}" �`, 'success');
+            
+            // If it's the first hint, update the translation display
+            if (state.hintsUsed === 1) {
+                const translation = document.getElementById('jumble-translation');
+                translation.innerHTML = `
+                    <div class="jumble-target">
+                        <span class="target-label">Target Word:</span> 
+                        <span class="target-word">${state.currentWord.sindhi}</span> 
+                        <span class="target-meaning">(${state.currentWord.english})</span>
+                    </div>
+                    <div class="jumble-hint">
+                        <span class="hint-icon">💡</span> 
+                        <span class="hint-text">Hint: The word means "${state.currentWord.english}" in English</span>
+                    </div>
+                `;
+                translation.style.display = 'block';
+            }
+        }
+
+        function initSpaceGame() {
+            addStars();
+        }
+
+        function addStars() {
+            const container = document.getElementById('space-container');
+            const existingStars = container.querySelectorAll('.star');
+            
+            for (let i = 0; i < 8; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.textContent = '⭐';
+                star.style.left = `${Math.random() * (container.offsetWidth - 30)}px`;
+                star.style.top = `${Math.random() * (container.offsetHeight - 100)}px`;
+                star.addEventListener('click', () => collectStar(star));
+                container.appendChild(star);
+            }
+        }
+
+        function collectStar(star) {
+            const state = gameStates.space;
+            
+            star.style.animation = 'none';
+            star.style.transform = 'scale(2)';
+            star.style.opacity = '0';
+            
+            state.stars += 5;
+            document.getElementById('space-stars').textContent = state.stars;
+            showMessage('space', 'Star collected! ✨🚀', 'success');
+            
+            setTimeout(() => star.remove(), 300);
+        }
+
+        function moveSpaceship() {
+            const spaceship = document.querySelector('.spaceship');
+            spaceship.style.transition = 'all 2s ease';
+            spaceship.style.left = `${Math.random() * 70 + 15}%`;
+            showMessage('space', 'Spaceship moving through space! 🚀💫', 'success');
+        }
+
+        function initMemoryGame() {
+            resetMemoryGame();
+        }
+
+        function resetMemoryGame() {
+            const grid = document.getElementById('memory-grid');
+            const state = gameStates.memory;
+            
+            grid.innerHTML = '';
+            state.flipped = [];
+            state.matched = [];
+            state.pairs = 0;
+            
+            const cards = [...state.cards, ...state.cards].sort(() => Math.random() - 0.5);
+            
+            cards.forEach((card, index) => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'memory-card';
+                cardElement.textContent = '?';
+                cardElement.dataset.value = card;
+                cardElement.dataset.index = index;
+                cardElement.addEventListener('click', () => flipCard(cardElement));
+                grid.appendChild(cardElement);
+            });
+        }
+
+        function flipCard(cardElement) {
+            const state = gameStates.memory;
+            
+            if (state.flipped.length >= 2 || cardElement.classList.contains('flipped')) return;
+            
+            cardElement.classList.add('flipped');
+            cardElement.textContent = cardElement.dataset.value;
+            state.flipped.push(cardElement);
+            
+            if (state.flipped.length === 2) {
+                setTimeout(checkMemoryMatch, 1000);
+            }
+        }
+
+        function checkMemoryMatch() {
+            const state = gameStates.memory;
+            const [card1, card2] = state.flipped;
+            
+            if (card1.dataset.value === card2.dataset.value) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                state.pairs++;
+                document.getElementById('memory-pairs').textContent = state.pairs;
+                showMessage('memory', 'Perfect match! 💎✨', 'success');
+                
+                if (state.pairs === state.cards.length) {
+                    showMessage('memory', 'You found all pairs! Memory master! 🧠👑', 'celebration');
+                }
+            } else {
+                card1.classList.remove('flipped');
+                card2.classList.remove('flipped');
+                card1.textContent = '?';
+                card2.textContent = '?';
+                showMessage('memory', 'Try again! You can do it! 💪', 'error');
+            }
+            
+            state.flipped = [];
+        }
+
+        function showHint() {
+            showMessage('memory', 'Look carefully and remember where you saw each picture! 🧠💡', 'success');
+        }
+
+        function initShapeGame() {
+            setupShapeDragDrop();
+            generateShapes();
+        }
+
+        function setupShapeDragDrop() {
+            const shapes = document.querySelectorAll('.draggable-shape');
+            const buckets = document.querySelectorAll('.shape-bucket');
+            
+            // Update buckets with Sindhi labels - first remove any existing labels
+            buckets.forEach(bucket => {
+                // Remove any existing sindhi labels
+                const existingLabel = bucket.querySelector('.sindhi-label');
+                if (existingLabel) {
+                    existingLabel.remove();
+                }
+                
+                const sindhiLabel = document.createElement('div');
+                sindhiLabel.className = 'sindhi-label';
+                
+                switch(bucket.dataset.shape) {
+                    case 'circle':
+                        sindhiLabel.textContent = 'دائرو';
+                        break;
+                    case 'square':
+                        sindhiLabel.textContent = 'چورس';
+                        break;
+                    case 'triangle':
+                        sindhiLabel.textContent = 'ٽڪنڊي';
+                        break;
+                    case 'diamond':
+                        sindhiLabel.textContent = 'هيرو';
+                        if (!bucket.innerHTML.includes('🔶')) {
+                            bucket.innerHTML = '🔶';
+                        }
+                        break;
+                    case 'pentagon':
+                        sindhiLabel.textContent = 'پنج ڪنڊي';
+                        break;
+                }
+                bucket.appendChild(sindhiLabel);
+            });
+            
+            shapes.forEach(shape => {
+                shape.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', shape.dataset.shape);
+                    shape.classList.add('dragging');
+                    
+                    // Play sound
+                    const audio = new Audio(`https://audio-samples.github.io/samples/mp3/audio-alphabet/shape_${shape.dataset.shape}.mp3`);
+                    audio.volume = 0.5;
+                    audio.play().catch(e => console.log('Audio play failed:', e));
+                });
+                
+                shape.addEventListener('dragend', () => {
+                    shape.classList.remove('dragging');
+                });
+            });
+            
+            buckets.forEach(bucket => {
+                bucket.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    bucket.classList.add('dragover');
+                });
+                
+                bucket.addEventListener('dragleave', () => {
+                    bucket.classList.remove('dragover');
+                });
+                
+                bucket.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    bucket.classList.remove('dragover');
+                    
+                    const shapeType = e.dataTransfer.getData('text/plain');
+                    
+                    if (shapeType === bucket.dataset.shape) {
+                        const state = gameStates.shapes;
+                        state.score += 10;
+                        document.getElementById('shape-score').textContent = state.score;
+                        
+                        // Show both English and Sindhi success message
+                        const sindhiName = bucket.querySelector('.sindhi-label').textContent;
+                        showMessage('shape', `Perfect match! ${sindhiName} is correct! 🎯`, 'success');
+                        
+                        // Play success sound
+                        const audio = new Audio('https://audio-samples.github.io/samples/mp3/audio-alphabet/success.mp3');
+                        audio.volume = 0.5;
+                        audio.play().catch(e => console.log('Audio play failed:', e));
+                        
+                        // Visual reward - sparkle effect
+                        createSparkles(bucket);
+                        
+                        // Check for level completion
+                        if (state.score >= state.levelThreshold) {
+                            showMessage('shape', 'Amazing! You completed this level! �', 'celebration');
+                            state.level++;
+                            state.levelThreshold += 50;
+                            document.querySelector('#shapes-game .score-display').innerHTML = 
+                                `Level: <span id="shape-level">${state.level}</span> 🎮 | Score: <span id="shape-score">${state.score}</span> 🎯`;
+                        }
+                    } else {
+                        showMessage('shape', 'Try a different bucket! 🔄', 'error');
+                        
+                        // Play error sound
+                        const audio = new Audio('https://audio-samples.github.io/samples/mp3/audio-alphabet/error.mp3');
+                        audio.volume = 0.3;
+                        audio.play().catch(e => console.log('Audio play failed:', e));
+                    }
+                });
+            });
+        }
+
+        function generateShapes() {
+            const container = document.querySelector('#shapes-game [style*="text-align: center"]');
+            const shapes = [
+                { emoji: '🔴', type: 'circle', sindhi: 'دائرو' },
+                { emoji: '🟦', type: 'square', sindhi: 'چورس' },
+                { emoji: '🔺', type: 'triangle', sindhi: 'ٽڪنڊي' },
+                { emoji: '🟡', type: 'circle', sindhi: 'دائرو' },
+                { emoji: '🟩', type: 'square', sindhi: 'چورس' },
+                { emoji: '🔶', type: 'diamond', sindhi: 'هيرو' },
+                { emoji: '⬟', type: 'pentagon', sindhi: 'پنج ڪنڊي' },
+                { emoji: '🔷', type: 'diamond', sindhi: 'هيرو' }
+            ];
+            
+            container.innerHTML = '';
+            shapes.sort(() => Math.random() - 0.5).slice(0, 6).forEach(shape => {
+                const shapeElement = document.createElement('div');
+                shapeElement.className = 'draggable-shape';
+                shapeElement.draggable = true;
+                shapeElement.textContent = shape.emoji;
+                shapeElement.dataset.shape = shape.type;
+                
+                // Add Sindhi name as a tooltip
+                const tooltip = document.createElement('span');
+                tooltip.className = 'shape-tooltip';
+                tooltip.textContent = shape.sindhi;
+                shapeElement.appendChild(tooltip);
+                
+                container.appendChild(shapeElement);
+            });
+            
+            setupShapeDragDrop();
+            
+            // Update the question to be more educational
+            document.querySelector('#shapes-game .game-question').textContent = 
+                'سنڌي ۾ شڪلن جا ناال سکو ۽ انهن کي صحيح بالٽيءَ ۾ رکو! (Learn shape names in Sindhi and sort them correctly!)';
+        }
+
+        function showMessage(gameType, text, type) {
+            const messageEl = document.getElementById(`${gameType}-message`);
+            messageEl.textContent = text;
+            messageEl.className = `message ${type}`;
+            messageEl.style.display = 'block';
+            
+            setTimeout(() => {
+                messageEl.style.display = 'none';
+            }, 3000);
+        }
+        
+        // Helper function to create sparkle effects
+        function createSparkles(element) {
+            for (let i = 0; i < 15; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                
+                // Random position
+                const x = Math.random() * element.offsetWidth;
+                const y = Math.random() * element.offsetHeight;
+                sparkle.style.left = `${x}px`;
+                sparkle.style.top = `${y}px`;
+                
+                // Random size
+                const size = Math.random() * 8 + 4;
+                sparkle.style.width = `${size}px`;
+                sparkle.style.height = `${size}px`;
+                
+                // Random color
+                const colors = ['#ffd700', '#ff6b6b', '#4ecdc4', '#a29bfe', '#ffbe76'];
+                sparkle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                
+                element.appendChild(sparkle);
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 800);
+            }
+        }
+        
+        // Create and play sounds
+        function playSound(frequency, duration = 0.3) {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.type = 'sine';
+                oscillator.frequency.value = frequency;
+                
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.5, audioContext.currentTime + 0.05);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + duration);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + duration);
+            } catch (error) {
+                console.log('Sound playback error:', error);
+            }
+        }
+        
+        // Initialize additional game features
+        function initAnimalGame() {
+            const state = gameStates.animals;
+            const grid = document.getElementById('animal-grid');
+            
+            // Shuffle all animals
+            const animals = [...state.animals].sort(() => Math.random() - 0.5);
+            
+            grid.innerHTML = '';
+            animals.slice(0, 8).forEach((animal) => {
+                const card = document.createElement('div');
+                card.className = 'animal-card';
+                card.textContent = animal.emoji;
+                card.dataset.animal = animal.name;
+                card.addEventListener('click', () => checkAnimal(animal, card));
+                
+                // Add tooltip with Sindhi name
+                const tooltip = document.createElement('div');
+                tooltip.className = 'animal-tooltip';
+                tooltip.textContent = animal.sindhi;
+                tooltip.style.display = 'none';
+                card.appendChild(tooltip);
+                
+                // Show tooltip on hover
+                card.addEventListener('mouseenter', () => {
+                    tooltip.style.display = 'block';
+                });
+                card.addEventListener('mouseleave', () => {
+                    tooltip.style.display = 'none';
+                });
+                
+                grid.appendChild(card);
+            });
+            
+            // Update current animal and question - using conditional formatting based on level
+            const randomIndex = Math.floor(Math.random() * state.animals.length);
+            state.currentAnimal = state.animals[randomIndex];
+            
+            // Change question format based on level
+            const question = document.getElementById('animal-question');
+            if (state.level < 2) {
+                // Level 1: Show both languages
+                question.innerHTML = `<span dir="rtl">${state.currentAnimal.sindhi}</span> کي ڳوليو! <span class="emoji-hint">${state.currentAnimal.emoji}</span>`;
+            } else if (state.level < 3) {
+                // Level 2: Show only Sindhi
+                question.innerHTML = `<span dir="rtl">${state.currentAnimal.sindhi}</span> کي ڳوليو!`;
+            } else {
+                // Level 3+: Random hint - sometimes English, sometimes Sindhi
+                const useEnglish = Math.random() > 0.5;
+                if (useEnglish) {
+                    question.innerHTML = `Find the <b>${state.currentAnimal.name}</b>!`;
+                } else {
+                    question.innerHTML = `<span dir="rtl">${state.currentAnimal.sindhi}</span> کي ڳوليو!`;
+                }
+            }
+        }
+        
+        function checkAnimal(selectedAnimal, card) {
+            const state = gameStates.animals;
+            
+            if (selectedAnimal.name === state.currentAnimal.name) {
+                card.classList.add('correct');
+                state.stars += 10;
+                state.progress++;
+                
+                document.getElementById('animal-stars').textContent = state.stars;
+                const progressBar = document.getElementById('animal-progress');
+                progressBar.style.width = `${(state.progress % 8) * 12.5}%`;
+                
+                // Play success sound
+                playSound(800);
+                
+                // Add sparkles
+                createSparkles(card);
+                
+                showMessage('animal', `Great job! You found the ${selectedAnimal.name} (${selectedAnimal.sindhi})! 🎉`, 'success');
+                
+                setTimeout(() => {
+                    if (state.progress % 8 === 0) {
+                        state.level++;
+                        showMessage('animal', `Level ${state.level} unlocked! 🏆`, 'celebration');
+                    }
+                    initAnimalGame();
+                }, 1500);
+            } else {
+                showMessage('animal', `Try again! Look for the ${state.currentAnimal.name} (${state.currentAnimal.sindhi})! 😊`, 'error');
+                
+                // Play error sound
+                playSound(200);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🌟 Sindhi Kids Fun Zone Ready! 🌟');
+            
+            // Update shape game score display to include level
+            document.querySelector('#shapes-game .score-display').innerHTML = 
+                `Level: <span id="shape-level">1</span> 🎮 | Score: <span id="shape-score">0</span> 🎯`;
+                
+            // Add animal tooltips style
+            const style = document.createElement('style');
+            style.textContent = `
+                .animal-tooltip {
+                    position: absolute;
+                    bottom: -25px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: var(--primary-text);
+                    color: var(--card-bg);
+                    padding: 5px 10px;
+                    border-radius: 5px;
+                    font-size: 0.9rem;
+                    direction: rtl;
+                    z-index: 100;
+                }
+                
+                .animal-card {
+                    position: relative;
+                }
+            `;
+            document.head.appendChild(style);
+        });
+
+        // Counting Game Functionality
+        function initCountingGame() {
+            const countingContainer = document.querySelector('.counting-container');
+            const optionsContainer = document.querySelector('.counting-options');
+            const sindhiNumber = document.querySelector('.sindhi-number');
+            
+            // Clear any previous content
+            countingContainer.innerHTML = '';
+            optionsContainer.innerHTML = '';
+            sindhiNumber.textContent = '';
+            
+            // Sindhi number words mapping
+            const sindhiNumbers = {
+                1: 'هڪ',
+                2: 'ٻه',
+                3: 'ٽي',
+                4: 'چار',
+                5: 'پنج',
+                6: 'ڇهه',
+                7: 'ست',
+                8: 'اٺ',
+                9: 'نو',
+                10: 'ڏهه'
+            };
+            
+            // Generate a random count between 1 and 10
+            const correctCount = Math.floor(Math.random() * 10) + 1;
+            
+            // Emojis array for variety
+            const emojis = ['🍎', '🐦', '🐶', '🐱', '🦁', '🐯', '🐻', '🦊', '🦄', '🦋', '🌟', '🍓'];
+            const selectedEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Display the objects to count
+            for (let i = 0; i < correctCount; i++) {
+                const countObject = document.createElement('div');
+                countObject.className = 'count-object';
+                countObject.textContent = selectedEmoji;
+                countObject.style.animationDelay = `${i * 0.2}s`;
+                countingContainer.appendChild(countObject);
+            }
+            
+            // Create answer options
+            const options = [correctCount];
+            while (options.length < 3) {
+                const option = Math.floor(Math.random() * 10) + 1;
+                if (!options.includes(option)) {
+                    options.push(option);
+                }
+            }
+            
+            // Shuffle options
+            options.sort(() => Math.random() - 0.5);
+            
+            // Create option elements
+            options.forEach(num => {
+                const optionBtn = document.createElement('div');
+                optionBtn.className = 'counting-option';
+                optionBtn.textContent = num;
+                optionBtn.addEventListener('click', () => {
+                    // Remove selected class from all options
+                    document.querySelectorAll('.counting-option').forEach(opt => {
+                        opt.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked option
+                    optionBtn.classList.add('selected');
+                    
+                    // Show Sindhi number
+                    sindhiNumber.textContent = sindhiNumbers[num];
+                    
+                    // Check answer
+                    if (num === correctCount) {
+                        // Play success sound
+                        playSound(800, 0.2);
+                        setTimeout(() => playSound(1000, 0.2), 200);
+                        
+                        // Visual feedback
+                        countingContainer.style.boxShadow = '0 0 15px var(--success-color)';
+                        
+                        // Reset after 2 seconds and show new counting game
+                        setTimeout(() => {
+                            countingContainer.style.boxShadow = '';
+                            initCountingGame();
+                        }, 2000);
+                    } else {
+                        // Play error sound
+                        playSound(300, 0.2);
+                        
+                        // Visual feedback - briefly shake the container
+                        countingContainer.classList.add('shake');
+                        setTimeout(() => {
+                            countingContainer.classList.remove('shake');
+                        }, 500);
+                    }
+                });
+                optionsContainer.appendChild(optionBtn);
+            });
+        }
+
+        // Jigsaw Puzzle Functionality
+        function initPuzzleGame() {
+            const puzzleBoard = document.getElementById('puzzle-board');
+            const previewImage = document.querySelector('.preview-image');
+            
+            // Clear any previous puzzle
+            puzzleBoard.innerHTML = '';
+            
+            // Reset moves counter
+            document.getElementById('puzzle-moves').textContent = '0';
+            
+            // Define puzzle images (educational images relevant to Sindhi culture or Pakistan)
+            const puzzleImages = [
+                'https://upload.wikimedia.org/wikipedia/commons/3/36/Flag_of_Pakistan.svg', // Pakistan flag
+                'https://upload.wikimedia.org/wikipedia/commons/d/d0/Mazar-e-Quaid.JPG', // Mazar-e-Quaid
+                'https://upload.wikimedia.org/wikipedia/commons/d/d1/Shah_Abdul_Latif_Bhittai_Shrine.JPG', // Shah Abdul Latif Bhittai Shrine
+                'https://upload.wikimedia.org/wikipedia/commons/5/5d/Lake_Manchar_Sindh_Pakistan.jpg' // Lake Manchar, Sindh
+            ];
+            
+            // Select a random image
+            const selectedImage = puzzleImages[Math.floor(Math.random() * puzzleImages.length)];
+            
+            // Set the preview image
+            previewImage.style.backgroundImage = `url(${selectedImage})`;
+            
+            // Create puzzle pieces
+            const pieceSize = 100; // Each piece is 100x100px
+            const pieces = [];
+            
+            for (let row = 0; row < 3; row++) {
+                for (let col = 0; col < 3; col++) {
+                    const piece = document.createElement('div');
+                    piece.className = 'puzzle-piece';
+                    piece.style.backgroundImage = `url(${selectedImage})`;
+                    piece.style.backgroundPosition = `-${col * pieceSize}px -${row * pieceSize}px`;
+                    
+                    // Store the correct position
+                    piece.dataset.row = row;
+                    piece.dataset.col = col;
+                    piece.dataset.correctPosition = `${row}-${col}`;
+                    
+                    // Add to pieces array
+                    pieces.push(piece);
+                    
+                    // Set up drag and drop
+                    piece.setAttribute('draggable', 'true');
+                    piece.addEventListener('dragstart', dragStart);
+                    piece.addEventListener('dragend', dragEnd);
+                }
+            }
+            
+            // Shuffle pieces and add to board
+            pieces.sort(() => Math.random() - 0.5).forEach((piece, index) => {
+                // Current shuffled position
+                const currentRow = Math.floor(index / 3);
+                const currentCol = index % 3;
+                
+                // Set current position
+                piece.dataset.currentPosition = `${currentRow}-${currentCol}`;
+                
+                // Add to board
+                puzzleBoard.appendChild(piece);
+            });
+            
+            // Set up board for drop
+            puzzleBoard.addEventListener('dragover', dragOver);
+            puzzleBoard.addEventListener('drop', drop);
+            
+            // Check if all pieces are in correct positions
+            function checkPuzzleCompletion() {
+                let allCorrect = true;
+                const pieces = document.querySelectorAll('.puzzle-piece');
+                
+                pieces.forEach(piece => {
+                    const currentPosition = piece.dataset.currentPosition;
+                    const correctPosition = piece.dataset.correctPosition;
+                    
+                    if (currentPosition === correctPosition) {
+                        piece.classList.add('correct');
+                    } else {
+                        piece.classList.remove('correct');
+                        allCorrect = false;
+                    }
+                });
+                
+                if (allCorrect) {
+                    // Play success sounds
+                    playSound(600, 0.2);
+                    setTimeout(() => playSound(800, 0.2), 200);
+                    setTimeout(() => playSound(1000, 0.2), 400);
+                    
+                    // Show success message
+                    showMessage('puzzle', 'Amazing! You completed the puzzle! 🎉', 'celebration');
+                    
+                    // Increase level
+                    const levelSpan = document.getElementById('puzzle-level');
+                    const currentLevel = parseInt(levelSpan.textContent);
+                    levelSpan.textContent = currentLevel + 1;
+                    
+                    // Add sparkle effect to all pieces
+                    pieces.forEach(piece => {
+                        const sparkle = document.createElement('div');
+                        sparkle.className = 'sparkle';
+                        sparkle.style.position = 'absolute';
+                        sparkle.style.top = '50%';
+                        sparkle.style.left = '50%';
+                        sparkle.style.transform = 'translate(-50%, -50%)';
+                        sparkle.style.fontSize = '2rem';
+                        sparkle.textContent = '✨';
+                        piece.appendChild(sparkle);
+                    });
+                    
+                    // Start new puzzle after 3 seconds
+                    setTimeout(() => {
+                        initPuzzleGame();
+                    }, 3000);
+                }
+            }
+            
+            // Drag and Drop functionality
+            let draggedPiece = null;
+            
+            function dragStart(e) {
+                draggedPiece = this;
+                this.classList.add('dragging');
+            }
+            
+            function dragEnd() {
+                this.classList.remove('dragging');
+            }
+            
+            function dragOver(e) {
+                e.preventDefault();
+            }
+            
+            function drop(e) {
+                e.preventDefault();
+                if (!draggedPiece) return;
+                
+                // Get position of drop
+                const boardRect = puzzleBoard.getBoundingClientRect();
+                const x = e.clientX - boardRect.left;
+                const y = e.clientY - boardRect.top;
+                
+                // Calculate grid position
+                const pieceSize = boardRect.width / 3;
+                const dropRow = Math.floor(y / pieceSize);
+                const dropCol = Math.floor(x / pieceSize);
+                
+                // Find piece at drop position
+                const targetPiece = document.querySelector(`.puzzle-piece[data-current-position="${dropRow}-${dropCol}"]`);
+                if (!targetPiece || targetPiece === draggedPiece) return;
+                
+                // Increment moves counter
+                const movesSpan = document.getElementById('puzzle-moves');
+                movesSpan.textContent = (parseInt(movesSpan.textContent) || 0) + 1;
+                
+                // Swap pieces
+                const draggedPos = draggedPiece.dataset.currentPosition;
+                draggedPiece.dataset.currentPosition = targetPiece.dataset.currentPosition;
+                targetPiece.dataset.currentPosition = draggedPos;
+                
+                // Update visual positions (reapend to maintain grid order)
+                puzzleBoard.removeChild(draggedPiece);
+                puzzleBoard.removeChild(targetPiece);
+                
+                // Calculate grid indices
+                const draggedIndex = dropRow * 3 + dropCol;
+                const targetIndex = parseInt(draggedPos.split('-')[0]) * 3 + parseInt(draggedPos.split('-')[1]);
+                
+                // Insert at correct positions
+                const pieces = Array.from(puzzleBoard.querySelectorAll('.puzzle-piece'));
+                
+                if (draggedIndex < pieces.length) {
+                    puzzleBoard.insertBefore(draggedPiece, pieces[draggedIndex]);
+                } else {
+                    puzzleBoard.appendChild(draggedPiece);
+                }
+                
+                if (targetIndex < pieces.length) {
+                    puzzleBoard.insertBefore(targetPiece, pieces[targetIndex]);
+                } else {
+                    puzzleBoard.appendChild(targetPiece);
+                }
+                
+                // Play sound for piece movement
+                playSound(500, 0.1);
+                
+                // Check if puzzle is complete
+                setTimeout(checkPuzzleCompletion, 200);
+            }
+        }
+        
+        // Handle puzzle hint
+        function showPuzzleHint() {
+            const puzzlePieces = document.querySelectorAll('.puzzle-piece');
+            
+            if (puzzlePieces.length === 0) {
+                showMessage('puzzle', 'Start a new puzzle first!', 'error');
+                return;
+            }
+            
+            // Find a piece that's not in the correct position
+            let incorrectPiece = null;
+            let correctPosition = null;
+            
+            puzzlePieces.forEach(piece => {
+                const currentPos = piece.dataset.currentPosition;
+                const correctPos = piece.dataset.correctPosition;
+                
+                if (currentPos !== correctPos && !incorrectPiece) {
+                    incorrectPiece = piece;
+                    correctPosition = correctPos;
+                }
+            });
+            
+            if (incorrectPiece) {
+                // Highlight the piece with a pulsating effect
+                incorrectPiece.style.boxShadow = '0 0 15px 5px var(--accent-color)';
+                incorrectPiece.style.zIndex = '10';
+                incorrectPiece.style.animation = 'pulse 1s infinite';
+                
+                // Show hint message
+                const [row, col] = correctPosition.split('-');
+                showMessage('puzzle', `Hint: This piece belongs in position Row ${parseInt(row)+1}, Column ${parseInt(col)+1}`, 'success');
+                
+                // Reset after 3 seconds
+                setTimeout(() => {
+                    incorrectPiece.style.boxShadow = '';
+                    incorrectPiece.style.zIndex = '';
+                    incorrectPiece.style.animation = '';
+                }, 3000);
+            } else {
+                showMessage('puzzle', 'All pieces are in correct positions or no puzzle is active!', 'success');
+            }
+        }
+        
+        // Reset the puzzle to start over with the same image
+        function resetPuzzle() {
+            const puzzleBoard = document.getElementById('puzzle-board');
+            
+            if (puzzleBoard.children.length === 0) {
+                showMessage('puzzle', 'No active puzzle to reset!', 'error');
+                return;
+            }
+            
+            // Get the current image from the preview
+            const previewImage = document.querySelector('.preview-image');
+            const currentImageUrl = previewImage.style.backgroundImage.slice(5, -2); // Extract URL from url('...')
+            
+            // Store moves count
+            const movesSpan = document.getElementById('puzzle-moves');
+            movesSpan.textContent = '0';
+            
+            // Start a new puzzle with same image
+            initPuzzleGame();
+            
+            showMessage('puzzle', 'Puzzle reset! Try again!', 'success');
+        }
+
+        // ===== TREASURE HUNT GAME FUNCTIONS =====
+        function initTreasureGame() {
+            const state = gameStates.treasure;
+            state.foundTreasures = [];
+            state.count = 0;
+            
+            document.getElementById('treasure-count').textContent = state.count;
+            document.getElementById('treasure-level').textContent = state.level;
+            
+            generateNewMap();
+            showMessage('treasure', 'Welcome to Treasure Island! Find the hidden treasures!', 'success');
+        }
+
+        function generateNewMap() {
+            const state = gameStates.treasure;
+            const map = document.getElementById('treasure-map');
+            const spots = map.querySelectorAll('.treasure-spot');
+            
+            // Reset all spots
+            spots.forEach(spot => {
+                spot.classList.remove('found');
+                spot.style.display = 'block';
+                spot.innerHTML = '';
+                
+                // Randomize position
+                spot.style.top = `${Math.random() * 70 + 10}%`;
+                spot.style.left = `${Math.random() * 80 + 10}%`;
+                
+                // Add click event
+                spot.onclick = () => findTreasure(spot);
+            });
+            
+            state.foundTreasures = [];
+            showMessage('treasure', 'New treasure map generated! Start searching!', 'success');
+        }
+
+        function findTreasure(spot) {
+            const state = gameStates.treasure;
+            
+            if (spot.classList.contains('found')) return;
+            
+            spot.classList.add('found');
+            const treasure = state.treasureTypes[Math.floor(Math.random() * state.treasureTypes.length)];
+            spot.innerHTML = treasure.emoji;
+            
+            state.count++;
+            state.foundTreasures.push(treasure);
+            
+            document.getElementById('treasure-count').textContent = state.count;
+            
+            // Play success sound
+            playSound(600 + (state.count * 100), 0.3);
+            
+            showMessage('treasure', `Found a ${treasure.name}! +${treasure.points} points! 💎`, 'success');
+            
+            // Check if all treasures found
+            if (state.count >= state.totalTreasures) {
+                state.level++;
+                document.getElementById('treasure-level').textContent = state.level;
+                showMessage('treasure', 'All treasures found! You are a master treasure hunter! 🏆', 'celebration');
+                
+                setTimeout(() => {
+                    generateNewMap();
+                    state.count = 0;
+                    document.getElementById('treasure-count').textContent = state.count;
+                }, 3000);
+            }
+        }
+
+        function showTreasureHint() {
+            const state = gameStates.treasure;
+            const spots = document.querySelectorAll('.treasure-spot:not(.found)');
+            
+            if (spots.length > 0) {
+                const randomSpot = spots[Math.floor(Math.random() * spots.length)];
+                randomSpot.style.boxShadow = '0 0 20px gold';
+                randomSpot.style.animation = 'treasurePulse 0.5s infinite';
+                
+                setTimeout(() => {
+                    randomSpot.style.boxShadow = '';
+                    randomSpot.style.animation = 'treasurePulse 2s infinite';
+                }, 2000);
+                
+                showMessage('treasure', 'Your compass is pointing to a treasure! 🧭', 'success');
+            }
+        }
+
+        // ===== DANCING COLORS GAME FUNCTIONS =====
+        function initDanceGame() {
+            const state = gameStates.dance;
+            state.score = 0;
+            state.combo = 0;
+            state.isPlaying = false;
+            state.currentSequence = [];
+            state.playerSequence = [];
+            
+            document.getElementById('dance-score').textContent = state.score;
+            document.getElementById('dance-combo').textContent = state.combo;
+            
+            // Add click events to color pads
+            document.querySelectorAll('.color-pad').forEach(pad => {
+                pad.onclick = () => tapColor(pad.dataset.color);
+            });
+            
+            showMessage('dance', 'Get ready to dance! Press "Start Music" to begin!', 'success');
+        }
+
+        function startDanceMusic() {
+            const state = gameStates.dance;
+            
+            if (state.isPlaying) return;
+            
+            state.isPlaying = true;
+            state.currentSequence = [];
+            state.playerSequence = [];
+            
+            // Generate a sequence of colors
+            for (let i = 0; i < 4 + Math.floor(state.level / 2); i++) {
+                state.currentSequence.push(state.colors[Math.floor(Math.random() * state.colors.length)]);
+            }
+            
+            showMessage('dance', 'Watch the sequence and repeat it!', 'success');
+            playSequence();
+        }
+
+        function playSequence() {
+            const state = gameStates.dance;
+            
+            state.currentSequence.forEach((color, index) => {
+                setTimeout(() => {
+                    const pad = document.querySelector(`[data-color="${color}"]`);
+                    pad.classList.add('active');
+                    
+                    // Play sound for each color
+                    const frequencies = { red: 400, blue: 500, yellow: 600, green: 700 };
+                    playSound(frequencies[color], 0.3);
+                    
+                    setTimeout(() => {
+                        pad.classList.remove('active');
+                    }, 400);
+                }, index * 600);
+            });
+            
+            // Enable player input after sequence
+            setTimeout(() => {
+                showMessage('dance', 'Now repeat the sequence!', 'success');
+            }, state.currentSequence.length * 600 + 500);
+        }
+
+        function tapColor(color) {
+            const state = gameStates.dance;
+            
+            if (!state.isPlaying) return;
+            
+            const pad = document.querySelector(`[data-color="${color}"]`);
+            pad.classList.add('correct');
+            
+            setTimeout(() => pad.classList.remove('correct'), 200);
+            
+            state.playerSequence.push(color);
+            
+            // Play sound
+            const frequencies = { red: 400, blue: 500, yellow: 600, green: 700 };
+            playSound(frequencies[color], 0.2);
+            
+            // Check if sequence matches
+            const currentIndex = state.playerSequence.length - 1;
+            
+            if (state.playerSequence[currentIndex] === state.currentSequence[currentIndex]) {
+                // Correct so far
+                if (state.playerSequence.length === state.currentSequence.length) {
+                    // Complete sequence correct!
+                    state.score += state.currentSequence.length * 10;
+                    state.combo++;
+                    
+                    document.getElementById('dance-score').textContent = state.score;
+                    document.getElementById('dance-combo').textContent = state.combo;
+                    
+                    showMessage('dance', `Perfect! Combo x${state.combo}! 🔥`, 'success');
+                    
+                    // Start next round
+                    setTimeout(() => {
+                        if (state.combo % 3 === 0) {
+                            state.level++;
+                            showMessage('dance', `Level ${state.level}! Sequences getting longer! 🎵`, 'celebration');
+                        }
+                        startDanceMusic();
+                    }, 1500);
+                }
+            } else {
+                // Wrong color
+                state.combo = 0;
+                state.isPlaying = false;
+                document.getElementById('dance-combo').textContent = state.combo;
+                
+                showMessage('dance', 'Oops! Try again! 🎵', 'error');
+                playSound(200, 0.5);
+            }
+        }
+
+        function pauseDanceGame() {
+            const state = gameStates.dance;
+            state.isPlaying = !state.isPlaying;
+            
+            const btn = event.target;
+            btn.textContent = state.isPlaying ? '⏸️ Pause' : '▶️ Resume';
+            
+            showMessage('dance', state.isPlaying ? 'Game resumed!' : 'Game paused!', 'success');
+        }
+
+        function stopDanceGame() {
+            const state = gameStates.dance;
+            state.isPlaying = false;
+            state.currentSequence = [];
+            state.playerSequence = [];
+            
+            // Reset all pads
+            document.querySelectorAll('.color-pad').forEach(pad => {
+                pad.classList.remove('active', 'correct');
+            });
+            
+            showMessage('dance', 'Dance stopped! Press "Start Music" to play again!', 'success');
+        }
+
+        // ===== MAGIC GARDEN GAME FUNCTIONS =====
+        function initGardenGame() {
+            const state = gameStates.garden;
+            state.flowers = 0;
+            state.selectedTool = 'seed';
+            state.plants = [];
+            
+            document.getElementById('garden-flowers').textContent = state.flowers;
+            document.getElementById('garden-level').textContent = state.level;
+            
+            // Reset all soil patches
+            document.querySelectorAll('.soil-patch').forEach((patch, index) => {
+                patch.innerHTML = '';
+                patch.dataset.planted = 'false';
+                patch.className = 'soil-patch';
+                patch.onclick = () => useTool(patch, index);
+                state.plants[index] = { stage: 'empty', type: null, watered: false };
+            });
+            
+            // Set default tool
+            selectTool('seed');
+            
+            showMessage('garden', 'Welcome to your magic garden! Plant seeds and watch them grow!', 'success');
+        }
+
+        function selectTool(tool) {
+            const state = gameStates.garden;
+            state.selectedTool = tool;
+            
+            // Update button states
+            document.querySelectorAll('.tool-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-tool="${tool}"]`).classList.add('active');
+            
+            const toolNames = { seed: 'planting seeds', water: 'watering plants', fertilizer: 'fertilizing soil' };
+            showMessage('garden', `Selected ${toolNames[tool]}! Click on soil patches to use.`, 'success');
+        }
+
+        function useTool(patch, index) {
+            const state = gameStates.garden;
+            const plant = state.plants[index];
+            
+            switch(state.selectedTool) {
+                case 'seed':
+                    if (plant.stage === 'empty') {
+                        const flowerType = state.flowerTypes[Math.floor(Math.random() * state.flowerTypes.length)];
+                        plant.type = flowerType;
+                        plant.stage = 'planted';
+                        patch.innerHTML = '🌱';
+                        patch.classList.add('planted');
+                        showMessage('garden', `Planted a ${flowerType.name} seed! 🌱`, 'success');
+                        playSound(400, 0.2);
+                    }
+                    break;
+                    
+                case 'water':
+                    if (plant.stage === 'planted' && !plant.watered) {
+                        plant.watered = true;
+                        patch.classList.add('growing');
+                        showMessage('garden', 'Watered the plant! Watch it grow! 💧', 'success');
+                        playSound(500, 0.3);
+                        
+                        // Grow after delay
+                        setTimeout(() => {
+                            if (plant.watered) {
+                                plant.stage = 'grown';
+                                patch.innerHTML = plant.type.emoji;
+                                patch.classList.remove('growing');
+                                patch.classList.add('bloomed');
+                                
+                                state.flowers++;
+                                document.getElementById('garden-flowers').textContent = state.flowers;
+                                
+                                showMessage('garden', `Beautiful ${plant.type.name} bloomed! 🌸`, 'success');
+                                playSound(700, 0.4);
+                                
+                                // Check for level up
+                                if (state.flowers % 9 === 0) {
+                                    state.level++;
+                                    document.getElementById('garden-level').textContent = state.level;
+                                    showMessage('garden', `Garden Level ${state.level}! Your garden is flourishing! 🌺`, 'celebration');
+                                }
+                            }
+                        }, plant.type.growTime);
+                    }
+                    break;
+                    
+                case 'fertilizer':
+                    if (plant.stage === 'planted') {
+                        // Speed up growth
+                        patch.style.animation = 'plantGrow 0.5s infinite';
+                        showMessage('garden', 'Fertilizer applied! Plant will grow faster! 🌿', 'success');
+                        playSound(300, 0.2);
+                        
+                        setTimeout(() => {
+                            patch.style.animation = '';
+                        }, 2000);
+                    }
+                    break;
+            }
+        }
+
+        function plantAllSeeds() {
+            const state = gameStates.garden;
+            const patches = document.querySelectorAll('.soil-patch');
+            
+            patches.forEach((patch, index) => {
+                if (state.plants[index].stage === 'empty') {
+                    const flowerType = state.flowerTypes[Math.floor(Math.random() * state.flowerTypes.length)];
+                    state.plants[index].type = flowerType;
+                    state.plants[index].stage = 'planted';
+                    patch.innerHTML = '🌱';
+                    patch.classList.add('planted');
+                }
+            });
+            
+            showMessage('garden', 'All empty patches planted! Now water them! 🌱', 'success');
+            selectTool('water');
+        }
+
+        function waterAllPlants() {
+            const state = gameStates.garden;
+            const patches = document.querySelectorAll('.soil-patch');
+            
+            patches.forEach((patch, index) => {
+                const plant = state.plants[index];
+                if (plant.stage === 'planted' && !plant.watered) {
+                    useTool(patch, index);
+                }
+            });
+            
+            showMessage('garden', 'All plants watered! Watch them bloom! 💧', 'success');
+        }
+
+        function clearGarden() {
+            showMessage('garden', 'Starting a fresh garden!', 'success');
+            initGardenGame();
+        }
+
+        // ===== FLYING ADVENTURE GAME FUNCTIONS =====
+        function initFlyingGame() {
+            const state = gameStates.flying;
+            state.coins = 0;
+            state.distance = 0;
+            state.isFlying = false;
+            state.airplanePosition = { x: 50, y: 50 };
+            state.obstacles = [];
+            state.collectibles = [];
+            
+            document.getElementById('flying-coins').textContent = state.coins;
+            document.getElementById('flying-distance').textContent = state.distance;
+            
+            const airplane = document.getElementById('airplane');
+            airplane.style.left = '50px';
+            airplane.style.top = '200px';
+            
+            // Clear sky
+            document.getElementById('clouds-layer').innerHTML = '';
+            document.getElementById('coins-layer').innerHTML = '';
+            document.getElementById('storms-layer').innerHTML = '';
+            
+            // Add keyboard controls
+            document.addEventListener('keydown', handleKeyControls);
+            
+            showMessage('flying', 'Ready for takeoff! Use controls or arrow keys to fly!', 'success');
+        }
+
+        function startFlight() {
+            const state = gameStates.flying;
+            
+            if (state.isFlying) return;
+            
+            state.isFlying = true;
+            showMessage('flying', 'Taking off! Collect coins and avoid storms! ✈️', 'success');
+            
+            // Start flight animation
+            generateClouds();
+            generateCoinsAndObstacles();
+            startFlightLoop();
+        }
+
+        function startFlightLoop() {
+            const state = gameStates.flying;
+            
+            if (!state.isFlying) return;
+            
+            // Update distance
+            state.distance += 1;
+            document.getElementById('flying-distance').textContent = state.distance;
+            
+            // Move airplane slightly for flight effect
+            const airplane = document.getElementById('airplane');
+            airplane.style.transform = `rotate(${Math.sin(Date.now() * 0.01) * 5}deg)`;
+            
+            // Continue flight
+            setTimeout(startFlightLoop, 100);
+            
+            // Add new obstacles/coins periodically
+            if (state.distance % 10 === 0) {
+                generateCoinsAndObstacles();
+            }
+        }
+
+        function generateClouds() {
+            const cloudsLayer = document.getElementById('clouds-layer');
+            const cloudEmojis = ['☁️', '⛅', '🌤️'];
+            
+            for (let i = 0; i < 5; i++) {
+                const cloud = document.createElement('div');
+                cloud.className = 'cloud';
+                cloud.textContent = cloudEmojis[Math.floor(Math.random() * cloudEmojis.length)];
+                cloud.style.left = `${Math.random() * 80}%`;
+                cloud.style.top = `${Math.random() * 80}%`;
+                cloud.style.animationDelay = `${Math.random() * 3}s`;
+                cloudsLayer.appendChild(cloud);
+            }
+        }
+
+        function generateCoinsAndObstacles() {
+            const coinsLayer = document.getElementById('coins-layer');
+            const stormsLayer = document.getElementById('storms-layer');
+            
+            // Add coins
+            if (Math.random() < 0.7) {
+                const coin = document.createElement('div');
+                coin.className = 'coin';
+                coin.textContent = '🪙';
+                coin.style.left = `${Math.random() * 80}%`;
+                coin.style.top = `${Math.random() * 80}%`;
+                coin.onclick = () => collectCoin(coin);
+                coinsLayer.appendChild(coin);
+                
+                // Remove coin after some time
+                setTimeout(() => {
+                    if (coin.parentNode) coin.remove();
+                }, 5000);
+            }
+            
+            // Add storms occasionally
+            if (Math.random() < 0.3) {
+                const storm = document.createElement('div');
+                storm.className = 'storm';
+                storm.textContent = '⛈️';
+                storm.style.left = `${Math.random() * 80}%`;
+                storm.style.top = `${Math.random() * 80}%`;
+                stormsLayer.appendChild(storm);
+                
+                setTimeout(() => {
+                    if (storm.parentNode) storm.remove();
+                }, 3000);
+            }
+        }
+
+        function collectCoin(coin) {
+            const state = gameStates.flying;
+            
+            coin.style.animation = 'spin 0.3s ease';
+            coin.style.transform = 'scale(1.5)';
+            coin.style.opacity = '0';
+            
+            state.coins += 10;
+            document.getElementById('flying-coins').textContent = state.coins;
+            
+            playSound(800, 0.2);
+            showMessage('flying', '+10 coins! Keep flying! 🪙', 'success');
+            
+            setTimeout(() => coin.remove(), 300);
+        }
+
+        function moveAirplane(direction) {
+            const airplane = document.getElementById('airplane');
+            const container = document.getElementById('sky-container');
+            const rect = container.getBoundingClientRect();
+            
+            let currentLeft = parseInt(airplane.style.left) || 50;
+            let currentTop = parseInt(airplane.style.top) || 200;
+            
+            const step = 20;
+            
+            switch(direction) {
+                case 'up':
+                    currentTop = Math.max(10, currentTop - step);
+                    break;
+                case 'down':
+                    currentTop = Math.min(360, currentTop + step);
+                    break;
+                case 'left':
+                    currentLeft = Math.max(10, currentLeft - step);
+                    airplane.style.transform = 'scaleX(-1)';
+                    break;
+                case 'right':
+                    currentLeft = Math.min(rect.width - 60, currentLeft + step);
+                    airplane.style.transform = 'scaleX(1)';
+                    break;
+            }
+            
+            airplane.style.left = `${currentLeft}px`;
+            airplane.style.top = `${currentTop}px`;
+            
+            playSound(300, 0.1);
+        }
+
+        function handleKeyControls(event) {
+            const state = gameStates.flying;
+            
+            if (!state.isFlying) return;
+            
+            switch(event.key) {
+                case 'ArrowUp':
+                    event.preventDefault();
+                    moveAirplane('up');
+                    break;
+                case 'ArrowDown':
+                    event.preventDefault();
+                    moveAirplane('down');
+                    break;
+                case 'ArrowLeft':
+                    event.preventDefault();
+                    moveAirplane('left');
+                    break;
+                case 'ArrowRight':
+                    event.preventDefault();
+                    moveAirplane('right');
+                    break;
+            }
+        }
+
+        function autopilotMode() {
+            const state = gameStates.flying;
+            
+            if (!state.isFlying) return;
+            
+            showMessage('flying', 'Autopilot engaged! Sit back and enjoy the flight! 🤖', 'success');
+            
+            // Auto-collect coins for a short time
+            const coins = document.querySelectorAll('.coin');
+            coins.forEach((coin, index) => {
+                setTimeout(() => {
+                    if (coin.parentNode) {
+                        collectCoin(coin);
+                    }
+                }, index * 500);
+            });
+        }
+
+        function landAirplane() {
+            const state = gameStates.flying;
+            state.isFlying = false;
+            
+            const airplane = document.getElementById('airplane');
+            airplane.style.transform = 'rotate(0deg) scaleX(1)';
+            
+            showMessage('flying', `Flight completed! Distance: ${state.distance}km, Coins: ${state.coins}! 🛬`, 'celebration');
+            
+            // Check for achievements
+            if (state.distance >= 100) {
+                showMessage('flying', 'Long Distance Pilot Achievement! 🏆', 'celebration');
+            }
+            
+            if (state.coins >= 100) {
+                showMessage('flying', 'Coin Collector Achievement! 💰', 'celebration');
+            }
+        }
+    </script>
+</body>
+</html>

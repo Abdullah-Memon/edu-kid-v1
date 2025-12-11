@@ -1,0 +1,184 @@
+{
+  "grammarPractice": [
+    {
+      "question": "هن جملي ۾ ڪهڙو لفظ کُٽل آهي؟",
+      "sentence": "ٻلي ___ پيئي ٿي",
+      "correctAnswer": "پاڻي",
+      "options": ["پاڻي", "کير", "کاڌو", "دوا"],
+      "type": "noun",
+      "difficulty": "easy"
+    },
+    {
+      "question": "صحيح فعل چونڊيو",
+      "sentence": "ڇوڪرو اسڪول ___ ٿو",
+      "correctAnswer": "وڃي",
+      "options": ["وڃي", "اچي", "ويهي", "سمهي"],
+      "type": "verb",
+      "difficulty": "easy"
+    },
+    {
+      "question": "مناسب صفت لڳايو",
+      "sentence": "هي ___ گھر آهي",
+      "correctAnswer": "سڀ صحيح",
+      "options": ["وڏو", "ننڍو", "سهڻو", "سڀ صحيح"],
+      "type": "adjective",
+      "difficulty": "easy"
+    },
+    {
+      "question": "جملي جو صحيح ترتيب ڇا آهي؟",
+      "sentence": "گھر / ۾ / آهي / ٻلي",
+      "correctAnswer": "ٻلي گھر ۾ آهي",
+      "options": [
+        "ٻلي گھر ۾ آهي",
+        "گھر ٻلي ۾ آهي",
+        "آهي ٻلي گھر ۾",
+        "۾ گھر ٻلي آهي"
+      ],
+      "type": "syntax",
+      "difficulty": "medium"
+    },
+    {
+      "question": "مناسب ضمير چونڊيو",
+      "sentence": "___ اسڪول وڃي ٿو",
+      "correctAnswer": "هو",
+      "options": ["هو", "هيءَ", "اهي", "تو"],
+      "type": "pronoun",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي ۾ ڪهڙو اسم غائب آهي؟",
+      "sentence": "ڇوڪري ___ پڙھي ٿي",
+      "correctAnswer": "ڪتاب",
+      "options": ["ڪتاب", "قلم", "کيل", "ماني"],
+      "type": "noun",
+      "difficulty": "easy"
+    },
+    {
+      "question": "صحيح فعل چونڊيو",
+      "sentence": "پکي آسمان ۾ ___ ٿو",
+      "correctAnswer": "اڏي",
+      "options": ["اڏي", "ويٺو", "سمهي", "کائي"],
+      "type": "verb",
+      "difficulty": "easy"
+    },
+    {
+      "question": "مناسب صفت لڳايو",
+      "sentence": "انب ___ آهي",
+      "correctAnswer": "ميٺو",
+      "options": ["ميٺو", "کٽو", "ٿڌو", "گرم"],
+      "type": "adjective",
+      "difficulty": "easy"
+    },
+    {
+      "question": "جملي جو صحيح ترتيب ڇا آهي؟",
+      "sentence": "پکي / وڻ / تي / ويٺو",
+      "correctAnswer": "پکي وڻ تي ويٺو آهي",
+      "options": [
+        "پکي وڻ تي ويٺو آهي",
+        "وڻ پکي تي ويٺو آهي",
+        "ويٺو پکي وڻ تي آهي",
+        "تي وڻ پکي ويٺو آهي"
+      ],
+      "type": "syntax",
+      "difficulty": "medium"
+    },
+    {
+      "question": "مناسب ضمير چونڊيو",
+      "sentence": "___ کاڌو ٺاهي ٿي",
+      "correctAnswer": "هيءَ",
+      "options": ["هيءَ", "هو", "اهي", "تو"],
+      "type": "pronoun",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي ۾ ڪهڙو اسم غائب آهي؟",
+      "sentence": "ماڻھو ___ ۾ وڃي ٿو",
+      "correctAnswer": "بازار",
+      "options": ["بازار", "اسڪول", "گھر", "باغ"],
+      "type": "noun",
+      "difficulty": "medium"
+    },
+    {
+      "question": "صحيح فعل چونڊيو",
+      "sentence": "تارا رات جو ___ ٿا",
+      "correctAnswer": "چمڪن",
+      "options": ["چمڪن", "اڏن", "سمن", "وڃن"],
+      "type": "verb",
+      "difficulty": "medium"
+    },
+    {
+      "question": "مناسب صفت لڳايو",
+      "sentence": "گل ___ آهي",
+      "correctAnswer": "سهڻو",
+      "options": ["سهڻو", "وڏو", "ننڍو", "ٿڌو"],
+      "type": "adjective",
+      "difficulty": "easy"
+    },
+    {
+      "question": "جملي جو صحيح ترتيب ڇا آهي؟",
+      "sentence": "استاد / شاگردن / کي / سيکاري",
+      "correctAnswer": "استاد شاگردن کي سيکاري ٿو",
+      "options": [
+        "استاد شاگردن کي سيکاري ٿو",
+        "شاگردن استاد کي سيکاري ٿو",
+        "سيکاري استاد شاگردن کي ٿو",
+        "کي شاگردن استاد سيکاري ٿو"
+      ],
+      "type": "syntax",
+      "difficulty": "medium"
+    },
+    {
+      "question": "مناسب ضمير چونڊيو",
+      "sentence": "___ راند کيڏن ٿا",
+      "correctAnswer": "اهي",
+      "options": ["اهي", "هو", "هيءَ", "تو"],
+      "type": "pronoun",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي ۾ ڪهڙو اسم غائب آهي؟",
+      "sentence": "ٽوڪري ۾ ___ آهن",
+      "correctAnswer": "ميوا",
+      "options": ["ميوا", "ڪپڙا", "ڪتاب", "پاڻي"],
+      "type": "noun",
+      "difficulty": "medium"
+    },
+    {
+      "question": "صحيح فعل چونڊيو",
+      "sentence": "ڳئون ___ ڏئي ٿي",
+      "correctAnswer": "کير",
+      "options": ["کير", "پاڻي", "کاڌو", "روٽي"],
+      "type": "verb",
+      "difficulty": "medium"
+    },
+    {
+      "question": "مناسب صفت لڳايو",
+      "sentence": "وڻ ___ آهي",
+      "correctAnswer": "سائو",
+      "options": ["سائو", "ڳاڙھو", "نيرو", "پيلو"],
+      "type": "adjective",
+      "difficulty": "easy"
+    },
+    {
+      "question": "جملي جو صحيح ترتيب ڇا آهي؟",
+      "sentence": "چانڊ / رات / جو / چمڪي",
+      "correctAnswer": "چانڊ رات جو چمڪي ٿو",
+      "options": [
+        "چانڊ رات جو چمڪي ٿو",
+        "رات چانڊ جو چمڪي ٿو",
+        "چمڪي چانڊ رات جو ٿو",
+        "جو رات چانڊ چمڪي ٿو"
+      ],
+      "type": "syntax",
+      "difficulty": "medium"
+    },
+    {
+      "question": "مناسب ضمير چونڊيو",
+      "sentence": "___ خوش آهي",
+      "correctAnswer": "هو",
+      "options": ["هو", "هيءَ", "اهي", "تو"],
+      "type": "pronoun",
+      "difficulty": "easy"
+    }
+  ]
+}

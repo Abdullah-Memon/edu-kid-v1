@@ -1,0 +1,420 @@
+{
+  "letterRecognition": [
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ا",
+      "correctAnswer": "ا",
+      "options": ["ا", "ب", "پ", "ت"],
+      "exampleWord": "انب",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ب",
+      "correctAnswer": "ب",
+      "options": ["ب", "ٻ", "ڀ", "پ"],
+      "exampleWord": "بدڪ",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ٻ",
+      "correctAnswer": "ٻ",
+      "options": ["ٻ", "ب", "ڀ", "ج"],
+      "exampleWord": "ٻڪري",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڀ",
+      "correctAnswer": "ڀ",
+      "options": ["ڀ", "ب", "ٻ", "پ"],
+      "exampleWord": "ڀت",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ت",
+      "correctAnswer": "ت",
+      "options": ["ت", "ٿ", "ٽ", "ث"],
+      "exampleWord": "تارو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ٿ",
+      "correctAnswer": "ٿ",
+      "options": ["ٿ", "ت", "ٽ", "پ"],
+      "exampleWord": "ٿيلهو",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ٽ",
+      "correctAnswer": "ٽ",
+      "options": ["ٽ", "ت", "ٿ", "ث"],
+      "exampleWord": "ٽوپي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ٺ",
+      "correctAnswer": "ٺ",
+      "options": ["ٺ", "ٿ", "ٽ", "ت"],
+      "exampleWord": "ٺونٺ",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ث",
+      "correctAnswer": "ث",
+      "options": ["ث", "ت", "س", "ص"],
+      "exampleWord": "ثواب",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "پ",
+      "correctAnswer": "پ",
+      "options": ["پ", "ب", "ٻ", "ڀ"],
+      "exampleWord": "پکو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ج",
+      "correctAnswer": "ج",
+      "options": ["ج", "ڄ", "جھ", "چ"],
+      "exampleWord": "جتي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڄ",
+      "correctAnswer": "ڄ",
+      "options": ["ڄ", "ج", "جھ", "چ"],
+      "exampleWord": "ڄڀ",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "جھ",
+      "correctAnswer": "جھ",
+      "options": ["جھ", "ج", "ڄ", "چ"],
+      "exampleWord": "جھرڪي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڃ",
+      "correctAnswer": "ڃ",
+      "options": ["ڃ", "ج", "ڄ", "ن"],
+      "exampleWord": "مڃ",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "چ",
+      "correctAnswer": "چ",
+      "options": ["چ", "ج", "ڄ", "جھ"],
+      "exampleWord": "چنڊ",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڇ",
+      "correctAnswer": "ڇ",
+      "options": ["ڇ", "چ", "ج", "ڄ"],
+      "exampleWord": "ڇٽي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ح",
+      "correctAnswer": "ح",
+      "options": ["ح", "ه", "ع", "خ"],
+      "exampleWord": "حجم",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "خ",
+      "correctAnswer": "خ",
+      "options": ["خ", "ح", "ع", "غ"],
+      "exampleWord": "خچر",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "د",
+      "correctAnswer": "د",
+      "options": ["د", "ڌ", "ڏ", "ڊ"],
+      "exampleWord": "در",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڌ",
+      "correctAnswer": "ڌ",
+      "options": ["ڌ", "د", "ڏ", "ڊ"],
+      "exampleWord": "ڌوٻي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڏ",
+      "correctAnswer": "ڏ",
+      "options": ["ڏ", "د", "ڌ", "ڊ"],
+      "exampleWord": "ڏيڏر",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڊ",
+      "correctAnswer": "ڊ",
+      "options": ["ڊ", "د", "ڌ", "ڏ"],
+      "exampleWord": "ڊاک",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڍ",
+      "correctAnswer": "ڍ",
+      "options": ["ڍ", "ڌ", "ڏ", "د"],
+      "exampleWord": "ڍڳو",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ذ",
+      "correctAnswer": "ذ",
+      "options": ["ذ", "ز", "ض", "ظ"],
+      "exampleWord": "ذرو",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ر",
+      "correctAnswer": "ر",
+      "options": ["ر", "ڙ", "ل", "ن"],
+      "exampleWord": "ريل",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڙ",
+      "correctAnswer": "ڙ",
+      "options": ["ڙ", "ر", "ل", "م"],
+      "exampleWord": "ماڙي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ز",
+      "correctAnswer": "ز",
+      "options": ["ز", "ذ", "ض", "ظ"],
+      "exampleWord": "زنجير",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "س",
+      "correctAnswer": "س",
+      "options": ["س", "ش", "ص", "ث"],
+      "exampleWord": "سيٽي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ش",
+      "correctAnswer": "ش",
+      "options": ["ش", "س", "ص", "ض"],
+      "exampleWord": "شينهن",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ص",
+      "correctAnswer": "ص",
+      "options": ["ص", "س", "ش", "ض"],
+      "exampleWord": "صوف",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ض",
+      "correctAnswer": "ض",
+      "options": ["ض", "ز", "ذ", "ص"],
+      "exampleWord": "ضعيف",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ط",
+      "correctAnswer": "ط",
+      "options": ["ط", "ت", "ث", "ظ"],
+      "exampleWord": "طوطو",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ظ",
+      "correctAnswer": "ظ",
+      "options": ["ظ", "ز", "ذ", "ض"],
+      "exampleWord": "ظالم",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ع",
+      "correctAnswer": "ع",
+      "options": ["ع", "ح", "خ", "غ"],
+      "exampleWord": "عينڪ",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "غ",
+      "correctAnswer": "غ",
+      "options": ["غ", "ع", "ح", "خ"],
+      "exampleWord": "غاليچو",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ف",
+      "correctAnswer": "ف",
+      "options": ["ف", "ڦ", "ق", "ک"],
+      "exampleWord": "فانوس",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڦ",
+      "correctAnswer": "ڦ",
+      "options": ["ڦ", "ف", "ق", "ک"],
+      "exampleWord": "ڦيٿو",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ق",
+      "correctAnswer": "ق",
+      "options": ["ق", "ف", "ڦ", "ک"],
+      "exampleWord": "قلم",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڪ",
+      "correctAnswer": "ڪ",
+      "options": ["ڪ", "ک", "ق", "گ"],
+      "exampleWord": "ڪتو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ک",
+      "correctAnswer": "ک",
+      "options": ["ک", "ڪ", "ق", "گ"],
+      "exampleWord": "کٽ",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "گ",
+      "correctAnswer": "گ",
+      "options": ["گ", "ڳ", "گھ", "ڱ"],
+      "exampleWord": "گڏھ",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڳ",
+      "correctAnswer": "ڳ",
+      "options": ["ڳ", "گ", "گھ", "ڱ"],
+      "exampleWord": "ڳئون",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "گھ",
+      "correctAnswer": "گھ",
+      "options": ["گھ", "گ", "ڳ", "ڱ"],
+      "exampleWord": "گهوڙو",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڱ",
+      "correctAnswer": "ڱ",
+      "options": ["ڱ", "گ", "ڳ", "گھ"],
+      "exampleWord": "سڱ",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ل",
+      "correctAnswer": "ل",
+      "options": ["ل", "ر", "ڙ", "م"],
+      "exampleWord": "لڪڻ",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪه�ڙو حرف آهي؟",
+      "displayLetter": "م",
+      "correctAnswer": "م",
+      "options": ["م", "ن", "ڻ", "ل"],
+      "exampleWord": "مس",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ن",
+      "correctAnswer": "ن",
+      "options": ["ن", "م", "ڻ", "و"],
+      "exampleWord": "نٿ",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ڻ",
+      "correctAnswer": "ڻ",
+      "options": ["ڻ", "ن", "م", "و"],
+      "exampleWord": "وڻ",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "و",
+      "correctAnswer": "و",
+      "options": ["و", "ي", "ن", "ڻ"],
+      "exampleWord": "واڍو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ھ",
+      "correctAnswer": "ھ",
+      "options": ["ھ", "ح", "ع", "خ"],
+      "exampleWord": "ھٿ",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ء",
+      "correctAnswer": "ء",
+      "options": ["ء", "ع", "ح", "ھ"],
+      "exampleWord": "ائٽ",
+      "difficulty": "hard"
+    },
+    {
+      "question": "هي ڪهڙو حرف آهي؟",
+      "displayLetter": "ي",
+      "correctAnswer": "ي",
+      "options": ["ي", "و", "ن", "ڻ"],
+      "exampleWord": "يڪو",
+      "difficulty": "easy"
+    }
+  ]
+}

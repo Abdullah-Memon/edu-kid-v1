@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="sd" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ڪلاس ٽِيون - سنڌي سکيا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/global-styles.css">
+    <style>
+        body {
+            font-family: 'AMBILE', 'Noto Nastaliq Urdu', serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #f8fafc 75%, #ffffff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            transition: all 0.4s ease;
+        }
+        
+        h1,h2,h3,title { font-family: 'AMBILE2'; }
+        
+        /* Glass Morphism */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 35px 60px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            transform: translateY(0);
+        }
+        
+        .glass-nav.hidden-header {
+            transform: translateY(-100%);
+        }
+        
+        .glass-button {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Dark Mode */
+        body.dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
+            color: #e2e8f0;
+        }
+        
+        body.dark .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            color: #e2e8f0;
+        }
+        
+        body.dark .glass-nav {
+            background: rgba(30, 41, 59, 0.95);
+            border-bottom: 1px solid rgba(71, 85, 105, 0.3);
+        }
+        
+        body.dark .glass-button {
+            background: rgba(71, 85, 105, 0.4);
+            border: 1px solid rgba(100, 116, 139, 0.4);
+            color: #e2e8f0;
+        }
+        
+        /* Animations */
+        @keyframes bounce-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes confetti-fall {
+            to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .bounce-float { animation: bounce-float 3s ease-in-out infinite; }
+        
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            .container { padding-left: 1rem !important; padding-right: 1rem !important; }
+            .glass-nav .container { flex-direction: column; gap: 0.75rem; padding: 0.75rem !important; }
+            h1 { font-size: 2rem !important; line-height: 1.2; }
+            .text-2xl { font-size: 1.25rem !important; }
+            .text-9xl { font-size: 4rem !important; }
+            .glass-card { padding: 1rem !important; margin-bottom: 1.5rem !important; }
+            .verse-line { padding: 0.5rem !important; font-size: 1rem !important; }
+            .glass-button { padding: 0.5rem 1rem !important; font-size: 0.875rem !important; }
+            .grid { gap: 1rem !important; }
+            .grid-cols-1 { grid-template-columns: 1fr !important; }
+        }
+        
+        @media (min-width: 641px) and (max-width: 1024px) {
+            .container { padding-left: 1.5rem; padding-right: 1.5rem; }
+            h1 { font-size: 3rem !important; }
+            .text-9xl { font-size: 6rem !important; }
+            .glass-card { padding: 1.5rem !important; }
+            .verse-line { padding: 0.75rem !important; font-size: 1.1rem !important; }
+            .grid-cols-1.lg\\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+            p, div, span { font-size: 1.15rem !important; }
+            h2 { font-size: 2.5rem !important; }
+            h3 { font-size: 2rem !important; }
+        }
+        
+        /* Verse Lines */
+        .verse-line {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.25rem 0;
+            padding: 0.75rem;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .verse-line:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+        
+        body.dark .verse-line {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            color: #e2e8f0;
+        }
+        
+        body.dark .verse-line:hover {
+            background: rgba(71, 85, 105, 0.5);
+            color: #f1f5f9;
+        }
+        
+        /* Progress System */
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .progress-dot.active {
+            background: #6366f1;
+            transform: scale(1.3);
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="glass-nav sticky top-0 z-50">
+        <div class="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
+                <a href="sindhi.html" class="glass-button text-indigo-700 flex items-center gap-2 text-sm sm:text-base">
+                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span class="hidden sm:inline">واپس گهر ھلو</span>
+                    <span class="sm:hidden">گهر</span>
+                </a>
+                <div class="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text">
+                    ڪلاس ٽِيون
+                </div>
+                <div class="flex gap-2 sm:gap-3">
+                    <button id="soundToggle" class="glass-button text-xl sm:text-2xl p-2">🔊</button>
+                    <button id="darkModeToggle" class="glass-button text-xl sm:text-2xl p-2" onclick="toggleDarkMode()">🌙</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 sm:px-6 py-6 sm:py-12 text-center">
+        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-indigo-800 mb-4 sm:mb-6 leading-tight">سنڌي گيت ۽ نظمون</h1>
+        <p class="text-lg sm:text-xl md:text-2xl text-purple-600 mb-6 sm:mb-12">ڪلاس ٽِيون - تعليمي نظم ۽ گيت</p>
+
+        <div class="glass-card max-w-md mx-auto p-4 sm:p-6 mb-6 sm:mb-12">
+            <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                <span class="text-indigo-700 font-medium text-sm sm:text-base">اڳڀرائي:</span>
+                <div id="progressDots" class="flex gap-1 sm:gap-2"></div>
+                <span id="progressText" class="font-bold text-indigo-800 text-sm sm:text-base">0%</span>
+            </div>
+            <div class="glass-card h-2 sm:h-3 rounded-full overflow-hidden">
+                <div id="progressBar" class="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500" style="width:0%"></div>
+            </div>
+        </div>
+
+        <div class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-4 sm:mb-6 bounce-float">📚</div>
+        <p class="text-indigo-700 text-lg sm:text-xl md:text-2xl font-medium">سنڌي سيکاريندڙ روبوٽ!</p>
+    </section>
+
+    <!-- Audio Elements -->
+    <audio id="audio-hamd"></audio>
+    <audio id="audio-naat"></audio>
+    <audio id="audio-prayer"></audio>
+    <audio id="audio-rose"></audio>
+    <audio id="audio-seasons"></audio>
+    <audio id="audio-mother"></audio>
+    <audio id="audio-pakistan"></audio>
+    <audio id="audio-top"></audio>
+    <audio id="audio-doll"></audio>
+
+    <!-- Poems Section -->
+    <section class="container mx-auto px-4 sm:px-6 py-6 sm:py-12">
+        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-blue-700 mb-6 sm:mb-12">گيت ۽ نظمون</h2>
+        <div id="poems-container">
+            <div class="text-center text-lg sm:text-xl md:text-2xl text-gray-500">لوڊ ٿي رهيو آهي... ⏳</div>
+        </div>
+    </section>
+
+    <!-- Achievement Modal -->
+    <div id="achievementModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur flex items-center justify-center z-50 p-4">
+        <div class="glass-card p-6 sm:p-8 md:p-10 text-center max-w-md w-full mx-4">
+            <div class="text-5xl sm:text-6xl md:text-7xl mb-3 sm:mb-4">🏆</div>
+            <h3 id="achievementTitle" class="text-2xl sm:text-3xl font-bold text-indigo-800 mb-3 sm:mb-4">واڌايُون!</h3>
+            <p id="achievementText" class="text-lg sm:text-xl mb-6 sm:mb-8">توهان نئون ڏاڪو پورو ڪيو!</p>
+            <button onclick="closeAchievement()" class="glass-button text-indigo-700 px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl font-bold">تاڙِيُون! 🎉</button>
+        </div>
+    </div>
+
+    <script>
+        // Old embedded JSON data removed - now fetching from external /assets/Data/classes/class3.json
+        let class3Data = [];
+        let soundEnabled = true;
+        let completedItems = new Set();
+        let totalItems = 0;
+
+        // Fetch JSON data from external file
+        async function loadClass3Data() {
+            try {
+                const response = await fetch('/assets/Data/classes/class3.json');
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch class3.json: ${response.statusText}`);
+                }
+                class3Data = await response.json();
+                totalItems = class3Data.length;
+                console.log(`✅ Loaded ${totalItems} poems from class3.json`);
+                
+                loadProgress();
+                renderContent();
+                updateProgress();
+                initializeSoundToggle();
+                initializeScrollBehavior();
+                loadDarkMode();
+            } catch (error) {
+                console.error('❌ Error loading class3.json:', error);
+                document.getElementById('poems-container').innerHTML = `
+                    <div class="text-center text-red-500 text-lg">
+                        خرابي: ڊيٹا لوڈ نہ ٿو سگيو 😞<br>
+                        براھِ ڪَري صفحو ٻيهار لوڈ ڪريو
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadClass3Data();
+        });
+
+        // Render Content
+        function renderContent() {
+            const container = document.getElementById('poems-container');
+            container.innerHTML = class3Data.map((poem, index) => `
+                <div class="glass-card p-6 sm:p-8 mb-6 sm:mb-8" data-item="${index}">
+                    <div class="flex justify-between items-start mb-4 sm:mb-6">
+                        <div class="flex-1">
+                            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-indigo-800 mb-2 sm:mb-3">${poem.baitTitle}</h3>
+                            ${poem.author ? `<p class="text-base sm:text-lg md:text-xl text-purple-600 mb-3 sm:mb-4">مصنف: ${poem.author}</p>` : ''}
+                        </div>
+                        <div class="text-3xl sm:text-4xl md:text-5xl mr-3 sm:mr-4">${poem.icon || '📖'}</div>
+                    </div>
+                    
+                    <div class="mb-4 sm:mb-6">
+                        <button id="bait-${index}-audio-btn" onclick="playVerse('bait-${index}')" class="glass-button text-indigo-700 px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-bold w-full sm:w-auto touch-ripple">
+                            🔊 آواز ٻڌو
+                        </button>
+                    </div>
+                    
+                    <div class="space-y-1 sm:space-y-2 text-lg sm:text-xl md:text-2xl leading-relaxed">
+                        ${poem.baitContent.map((line, lineIndex) => `
+                            <div class="verse-line" data-text="${line.replace(/"/g, '&quot;')}" data-poem="${index}" data-line="${lineIndex}">
+                                ${line}
+                            </div>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="mt-4 sm:mt-6 text-center">
+                        <button class="complete-btn glass-button px-4 sm:px-6 py-2 sm:py-3 text-base sm:text-lg font-bold ${completedItems.has(index) ? 'bg-green-200' : ''}" data-index="${index}">
+                            ${completedItems.has(index) ? '✅ مڪمل ٿيو' : '✓ مڪمل نشان لڳايو'}
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            initializeEventListeners();
+        }
+
+        // Initialize Event Listeners
+        function initializeEventListeners() {
+            // Verse line listeners
+            document.querySelectorAll('.verse-line').forEach(line => {
+                line.addEventListener('click', function() {
+                    const text = this.getAttribute('data-text');
+                    const poemIndex = parseInt(this.getAttribute('data-poem'));
+                    const lineIndex = parseInt(this.getAttribute('data-line'));
+                    speakLine(text, poemIndex, lineIndex);
+                });
+            });
+            
+            // Complete button listeners
+            document.querySelectorAll('.complete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    markComplete(index);
+                });
+            });
+        }
+
+        // Audio ID Mapping
+        const audioIdMapping = {
+            'bait-0': 'audio-hamd',
+            'bait-1': 'audio-naat',
+            'bait-2': 'audio-prayer',
+            'bait-3': 'audio-rose',
+            'bait-4': 'audio-seasons',
+            'bait-5': 'audio-mother',
+            'bait-6': 'audio-pakistan',
+            'bait-7': 'audio-top',
+            'bait-8': 'audio-doll'
+        };
+
+        // Manager Object for tracking state
+        const class3Manager = {
+            currentAudio: null,
+            soundEnabled: true,
+            stopCurrentAudio: function() {
+                if (this.currentAudio) {
+                    const audioElement = document.getElementById(this.currentAudio.audioId);
+                    if (audioElement) {
+                        audioElement.pause();
+                        audioElement.currentTime = 0;
+                    }
+                    const button = this.currentAudio.button;
+                    if (button) {
+                        button.innerHTML = this.currentAudio.originalText;
+                        const card = button.closest('.glass-card');
+                        if (card) card.classList.remove('glass-glow');
+                    }
+                    this.currentAudio = null;
+                }
+            }
+        };
+
+        // Enhanced Audio System with actual playback
+        function playVerse(poemId) {
+            console.log(`🎵 playVerse called with poemId: ${poemId}`);
+            
+            if (!class3Manager.soundEnabled) {
+                console.log('⚠️ Sound is disabled');
+                return;
+            }
+            
+            // Get the index from poemId
+            const index = parseInt(poemId.split('-')[1]);
+            const poem = class3Data[index];
+            
+            // Map poemId to actual audio element ID
+            const actualAudioId = audioIdMapping[poemId] || `audio-${poemId}`;
+            const audioElement = document.getElementById(actualAudioId);
+            const button = document.getElementById(`${poemId}-audio-btn`);
+            
+            if (!audioElement) {
+                console.error(`❌ Audio element not found for: ${actualAudioId}`);
+                return;
+            }
+            
+            if (!button) {
+                console.error(`❌ Button element not found for: ${poemId}-audio-btn`);
+                return;
+            }
+            
+            // Check if this audio is currently playing
+            if (class3Manager.currentAudio && class3Manager.currentAudio.poemId === poemId && !audioElement.paused) {
+                console.log(`⏹️ Stopping audio for: ${poemId}`);
+                audioElement.pause();
+                audioElement.currentTime = 0;
+                button.innerHTML = class3Manager.currentAudio.originalText;
+                const card = class3Manager.currentAudio.card;
+                if (card) {
+                    card.classList.remove('glass-glow');
+                }
+                class3Manager.currentAudio = null;
+                return;
+            }
+            
+            // Stop any currently playing audio
+            class3Manager.stopCurrentAudio();
+            
+            console.log(`✅ Found audio element: ${actualAudioId}`);
+            console.log(`✅ Found button element: ${poemId}-audio-btn`);
+            
+            const originalText = button.innerHTML;
+            const card = button.closest('.glass-card');
+            
+            button.innerHTML = `
+                <span>پڙهي رهيو آهي ⏸</span>
+                <div class="audio-player ml-2">
+                    <div class="audio-wave"></div>
+                    <div class="audio-wave"></div>
+                    <div class="audio-wave"></div>
+                    <div class="audio-wave"></div>
+                    <div class="audio-wave"></div>
+                </div>
+            `;
+            
+            // Add glow effect to the card
+            if (card) {
+                card.classList.add('glass-glow');
+                console.log('✨ Added glass-glow effect to card');
+            }
+            
+            // Set audio source from poem's audioPath
+            if (poem && poem.audioPath) {
+                audioElement.src = poem.audioPath;
+                console.log(`📁 Loading audio from: ${poem.audioPath}`);
+            }
+            
+            // Store current audio info
+            class3Manager.currentAudio = {
+                poemId: poemId,
+                audioId: actualAudioId,
+                button: button,
+                originalText: originalText,
+                card: card
+            };
+            
+            console.log(`▶️ Starting playback for: ${poemId}`);
+            
+            audioElement.play().then(() => {
+                console.log(`✅ Audio playing: ${actualAudioId}`);
+            }).catch(err => {
+                console.error(`❌ Audio play error: ${err}`);
+                showNotification('آواز هلائڻ ۾ مسئلو آيو');
+                // Reset on error
+                button.innerHTML = originalText;
+                if (card) card.classList.remove('glass-glow');
+                class3Manager.currentAudio = null;
+            });
+            
+            // When audio ends
+            audioElement.onended = function() {
+                console.log(`⏹️ Audio ended: ${poemId}`);
+                button.innerHTML = originalText;
+                if (card) card.classList.remove('glass-glow');
+                class3Manager.currentAudio = null;
+            };
+            
+            // Mark as complete
+            markComplete(index);
+        }
+
+        function speakLine(text, poemIndex, lineIndex) {
+            if (!soundEnabled) return;
+            
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'sd-PK';
+                utterance.rate = 0.8;
+                window.speechSynthesis.speak(utterance);
+                
+                // Highlight effect
+                const lines = document.querySelectorAll(`[data-item="${poemIndex}"] .verse-line`);
+                if (lines[lineIndex]) {
+                    lines[lineIndex].style.background = 'rgba(99, 102, 241, 0.3)';
+                    setTimeout(() => {
+                        lines[lineIndex].style.background = '';
+                    }, 2000);
+                }
+            }
+        }
+
+        // Progress System
+        function markComplete(index) {
+            completedItems.add(index);
+            saveProgress();
+            updateProgress();
+            renderContent();
+            
+            if (completedItems.size === totalItems) {
+                showAchievement('شاباش! سڀ نظمون مڪمل ٿيون! 🎉', 'توهان ڪلاس ٽِيون جو ماهر ٿي ويا آهيو!');
+                createConfetti();
+            }
+        }
+
+        function updateProgress() {
+            const percentage = Math.round((completedItems.size / totalItems) * 100);
+            document.getElementById('progressBar').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = percentage + '%';
+            
+            // Update progress dots
+            const dotsContainer = document.getElementById('progressDots');
+            dotsContainer.innerHTML = Array.from({length: totalItems}, (_, i) => 
+                `<div class="progress-dot ${completedItems.has(i) ? 'active' : ''}"></div>`
+            ).join('');
+        }
+
+        function saveProgress() {
+            localStorage.setItem('class3Progress', JSON.stringify([...completedItems]));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem('class3Progress');
+            if (saved) {
+                completedItems = new Set(JSON.parse(saved));
+            }
+        }
+
+        // Achievement Modal
+        function showAchievement(title, text) {
+            document.getElementById('achievementTitle').textContent = title;
+            document.getElementById('achievementText').textContent = text;
+            document.getElementById('achievementModal').classList.remove('hidden');
+        }
+
+        function closeAchievement() {
+            document.getElementById('achievementModal').classList.add('hidden');
+        }
+
+        // Confetti Effect
+        function createConfetti() {
+            const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.style.cssText = `
+                        position: fixed;
+                        top: -10px;
+                        left: ${Math.random() * 100}%;
+                        width: 10px;
+                        height: 10px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        animation: confetti-fall ${2 + Math.random() * 2}s linear forwards;
+                        z-index: 9999;
+                    `;
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 4000);
+                }, i * 30);
+            }
+        }
+
+        // Sound Toggle
+        function initializeSoundToggle() {
+            const btn = document.getElementById('soundToggle');
+            btn.addEventListener('click', () => {
+                soundEnabled = !soundEnabled;
+                btn.textContent = soundEnabled ? '🔊' : '🔇';
+                showNotification(soundEnabled ? 'آواز چالو ٿي وئي' : 'آواز بند ٿي وئي');
+            });
+        }
+
+        // Dark Mode
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark');
+            const isDark = document.body.classList.contains('dark');
+            localStorage.setItem('darkMode', isDark);
+            document.getElementById('darkModeToggle').textContent = isDark ? '☀️' : '🌙';
+        }
+
+        function loadDarkMode() {
+            const isDark = localStorage.getItem('darkMode') === 'true';
+            if (isDark) {
+                document.body.classList.add('dark');
+                document.getElementById('darkModeToggle').textContent = '☀️';
+            }
+        }
+
+        // Scroll Behavior
+        function initializeScrollBehavior() {
+            let lastScroll = 0;
+            const nav = document.querySelector('.glass-nav');
+            
+            window.addEventListener('scroll', () => {
+                const currentScroll = window.pageYOffset;
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    nav.classList.add('hidden-header');
+                } else {
+                    nav.classList.remove('hidden-header');
+                }
+                lastScroll = currentScroll;
+            });
+        }
+
+        // Notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: rgba(99, 102, 241, 0.9);
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                z-index: 9999;
+                animation: slideIn 0.3s ease;
+            `;
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 2000);
+        }
+    </script>
+</body>
+</html>

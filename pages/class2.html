@@ -1,0 +1,3302 @@
+<!DOCTYPE html>
+<html lang="sd" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ڪلاس ٻيو - سنڌي سکيا</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/global-styles.css">
+    <style>
+        /* Extended content visibility */
+        .poem-content.collapsed .extended-content {
+            display: none !important;
+        }
+        
+        .poem-content.expanded .extended-content {
+            display: block !important;
+        }
+        
+        .extended-content {
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .extended-content.show {
+            display: block;
+            opacity: 1;
+            max-height: 5000px;
+        }
+        
+        body {
+            font-family: 'AMBILE', 'Noto Nastaliq Urdu', serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #f8fafc 75%, #ffffff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+        
+        h1,h2,h3,title{
+            font-family: 'AMBILE2'
+        }
+
+        /* Advanced Glass Morphism System */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 35px 60px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 0 50px rgba(99, 102, 241, 0.2);
+        }
+        
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            transform: translateY(0);
+        }
+        
+        .glass-nav.hidden-header {
+            transform: translateY(-100%);
+        }
+
+        .glass-button {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Enhanced Animation Framework */
+        @keyframes magical-entrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(60px) scale(0.8) rotate(-5deg);
+                filter: blur(5px);
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: translateY(-10px) scale(1.05) rotate(2deg);
+                filter: blur(1px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1) rotate(0deg);
+                filter: blur(0px);
+            }
+        }
+
+        @keyframes content-expand {
+            0% { 
+                max-height: 0; 
+                opacity: 0; 
+                transform: translateY(-20px) scale(0.95); 
+            }
+            50% { 
+                opacity: 0.7; 
+                transform: translateY(-5px) scale(0.98); 
+            }
+            100% { 
+                max-height: 2000px; 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
+        }
+        
+        @keyframes verse-shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes seasonal-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            25% { transform: translateY(-15px) rotate(2deg); }
+            50% { transform: translateY(-25px) rotate(0deg); }
+            75% { transform: translateY(-10px) rotate(-2deg); }
+        }
+        
+        @keyframes glass-glow {
+            0% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+        }
+
+        /* Dark Mode Styles */
+        body {
+            transition: all 0.4s ease;
+        }
+
+        body.dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
+            color: #e2e8f0;
+        }
+
+        /* Dark Mode Glass Cards */
+        body.dark .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            color: #e2e8f0;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(148, 163, 184, 0.3),
+                0 0 0 1px rgba(71, 85, 105, 0.2);
+        }
+
+        body.dark .glass-card:hover {
+            box-shadow: 
+                0 35px 60px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(148, 163, 184, 0.4),
+                0 0 50px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Dark Mode Navigation */
+        body.dark .glass-nav {
+            background: rgba(30, 41, 59, 0.95);
+            border-bottom: 1px solid rgba(71, 85, 105, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Dark Mode Buttons */
+        body.dark .glass-button {
+            background: rgba(71, 85, 105, 0.4);
+            border: 1px solid rgba(100, 116, 139, 0.4);
+            color: #e2e8f0;
+        }
+
+        body.dark .glass-button:hover {
+            background: rgba(71, 85, 105, 0.6);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Dark Mode Text Colors */
+        body.dark .text-gray-800 {
+            color: #e2e8f0 !important;
+        }
+
+        body.dark .text-gray-600 {
+            color: #cbd5e1 !important;
+        }
+
+        body.dark .text-gray-700 {
+            color: #d1d5db !important;
+        }
+
+        body.dark .text-blue-600 {
+            color: #93c5fd !important;
+        }
+
+        body.dark .text-purple-600 {
+            color: #c4b5fd !important;
+        }
+
+        body.dark .text-green-600 {
+            color: #86efac !important;
+        }
+
+        body.dark .text-red-600 {
+            color: #fca5a5 !important;
+        }
+
+        body.dark .text-yellow-600 {
+            color: #fde047 !important;
+        }
+
+        body.dark .text-indigo-600 {
+            color: #a5b4fc !important;
+        }
+
+        /* Dark Mode Background Colors */
+        body.dark .bg-white {
+            background: rgba(30, 41, 59, 0.6) !important;
+        }
+
+        body.dark .bg-gray-50 {
+            background: rgba(15, 23, 42, 0.8) !important;
+        }
+
+        body.dark .bg-blue-50 {
+            background: rgba(30, 58, 138, 0.2) !important;
+        }
+
+        body.dark .bg-purple-50 {
+            background: rgba(91, 33, 182, 0.2) !important;
+        }
+
+        body.dark .bg-green-50 {
+            background: rgba(21, 128, 61, 0.2) !important;
+        }
+
+        /* Dark Mode Header Button Enhancement */
+        .dark-mode-header-btn {
+            font-size: 20px;
+            min-width: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-header-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        body.dark .dark-mode-header-btn {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+            color: #fbbf24;
+        }
+
+        body.dark .dark-mode-header-btn:hover {
+            background: rgba(30, 41, 59, 0.8);
+            color: #fcd34d;
+        }
+
+        /* Dark Mode Modal and Footer Styles */
+        body.dark #achievementModal {
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        body.dark #achievementModal .glass-card {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(71, 85, 105, 0.5);
+        }
+
+        body.dark footer.glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+        }
+
+        /* Dark Mode Content Containers */
+        body.dark .bg-gradient-to-r {
+            color: #e2e8f0 !important;
+        }
+
+        body.dark #progressBar {
+            background: linear-gradient(90deg, #7c3aed, #ec4899) !important;
+        }
+
+        /* Dark Mode Interactive Elements */
+        body.dark .touch-ripple {
+            color: #e2e8f0;
+        }
+
+        body.dark .dancing-letter {
+            color: #e2e8f0 !important;
+        }
+
+        /* Dark Mode Poem Card System */
+        body.dark .poem-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            color: #e2e8f0;
+        }
+
+        body.dark .verse-line {
+            color: #e2e8f0;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Dark Mode Theme-Specific Styles */
+        body.dark .hamd-theme {
+            background: rgba(67, 56, 202, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        body.dark .hamd-theme h3, body.dark .hamd-theme p {
+            color: #93c5fd !important;
+        }
+
+        body.dark .prayer-theme {
+            background: rgba(91, 33, 182, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        body.dark .prayer-theme h3, body.dark .prayer-theme p {
+            color: #a7f3d0 !important;
+        }
+
+        body.dark .nature-theme {
+            background: rgba(21, 128, 61, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        body.dark .nature-theme h3, body.dark .nature-theme p {
+            color: #7dd3fc !important;
+        }
+
+        body.dark .family-theme {
+            background: rgba(147, 51, 234, 0.2);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+
+        body.dark .family-theme h3, body.dark .family-theme p {
+            color: #f9a8d4 !important;
+        }
+
+        body.dark .play-theme {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(96, 165, 250, 0.3);
+        }
+
+        body.dark .play-theme h3, body.dark .play-theme p {
+            color: #c4b5fd !important;
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(1080deg) scale(0.3); opacity: 0; }
+        }
+
+        @keyframes success-celebration {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1) rotate(3deg); }
+            50% { transform: scale(1.05) rotate(-3deg); }
+            75% { transform: scale(1.08) rotate(2deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes letter-dance {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(0deg); }
+            75% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        /* Enhanced Poem Card System */
+        .poem-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: magical-entrance 0.8s ease-out;
+        }
+        
+        .poem-card.expanded {
+            transform: translateY(-8px) scale(1.02);
+        }
+        
+        .poem-content {
+            overflow: visible;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: none;
+        }
+        
+        .poem-content.collapsed {
+            overflow: visible;
+            position: relative;
+        }
+        
+        .poem-content.expanded {
+            overflow: visible;
+            animation: content-expand 0.6s ease-out forwards;
+        }
+        
+        .verse-line {
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            margin: 0.25rem 0;
+            color: #1f2937;
+            font-weight: 500;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .verse-line.reading {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 165, 0, 0.4));
+            transform: translateX(20px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+            animation: verse-shimmer 2s linear infinite;
+            background-size: 200% 100%;
+            color: #92400e;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+        }
+
+        /* Enhanced Riddle System */
+        .riddle-container {
+            perspective: 1000px;
+            height: 300px;
+        }
+        
+        .riddle-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .riddle-card.revealed {
+            transform: rotateY(180deg);
+        }
+        
+        .riddle-front, .riddle-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1.5rem;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .riddle-back {
+            transform: rotateY(180deg);
+            background: rgba(16, 185, 129, 0.3);
+        }
+
+        /* Audio Visual System */
+        .audio-player {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .audio-wave {
+            width: 3px;
+            height: 20px;
+            background: linear-gradient(to top, #8b5cf6, #f59e0b);
+            border-radius: 2px;
+            animation: wave-motion 1.2s ease-in-out infinite;
+        }
+        
+        .audio-wave:nth-child(1) { animation-delay: 0s; }
+        .audio-wave:nth-child(2) { animation-delay: 0.2s; }
+        .audio-wave:nth-child(3) { animation-delay: 0.4s; }
+        .audio-wave:nth-child(4) { animation-delay: 0.6s; }
+        .audio-wave:nth-child(5) { animation-delay: 0.8s; }
+        
+        @keyframes wave-motion {
+            0%, 100% { height: 20px; opacity: 0.7; }
+            50% { height: 35px; opacity: 1; }
+        }
+
+        /* Progress System Enhancement */
+        .progress-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(229, 231, 235, 0.5);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .progress-dot.active {
+            background: linear-gradient(135deg, #8b5cf6, #f59e0b);
+            transform: scale(1.5);
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);
+        }
+
+        /* Touch Feedback System */
+        .touch-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .touch-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.8s, height 0.8s;
+        }
+        
+        .touch-ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        /* Category-Specific Glass Themes */
+        .hamd-theme { 
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.3), rgba(16, 185, 129, 0.3));
+            backdrop-filter: blur(20px);
+            color: #064e3b;
+        }
+        
+        .hamd-theme h3, .hamd-theme p {
+            color: #065f46 !important;
+        }
+        
+        .nature-theme { 
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.3), rgba(59, 130, 246, 0.3));
+            backdrop-filter: blur(20px);
+            color: #1e3a8a;
+        }
+        
+        .nature-theme h3, .nature-theme p {
+            color: #1e40af !important;
+        }
+        
+        .family-theme { 
+            background: linear-gradient(135deg, rgba(190, 24, 93, 0.3), rgba(236, 72, 153, 0.3));
+            backdrop-filter: blur(20px);
+            color: #be185d;
+        }
+        
+        .family-theme h3, .family-theme p {
+            color: #be185d !important;
+        }
+        
+        .play-theme { 
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.3), rgba(168, 85, 247, 0.3));
+            backdrop-filter: blur(20px);
+            color: #7c3aed;
+        }
+        
+        .play-theme h3, .play-theme p {
+            color: #7c3aed !important;
+        }
+        
+        .prayer-theme { 
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.3), rgba(52, 211, 153, 0.3));
+            backdrop-filter: blur(20px);
+            color: #059669;
+        }
+        
+        .prayer-theme h3, .prayer-theme p {
+            color: #059669 !important;
+        }
+
+        /* Riddle Color Variants */
+        .riddle-container:nth-child(1) .riddle-front {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+            backdrop-filter: blur(20px);
+        }
+        
+        .riddle-container:nth-child(2) .riddle-front {
+            background: linear-gradient(135deg, rgba(240, 147, 251, 0.3), rgba(245, 87, 108, 0.3));
+            backdrop-filter: blur(20px);
+        }
+        
+        .riddle-container:nth-child(3) .riddle-front {
+            background: linear-gradient(135deg, rgba(79, 172, 254, 0.3), rgba(0, 242, 254, 0.3));
+            backdrop-filter: blur(20px);
+        }
+        
+        .riddle-container:nth-child(4) .riddle-front {
+            background: linear-gradient(135deg, rgba(67, 233, 123, 0.3), rgba(56, 249, 215, 0.3));
+            backdrop-filter: blur(20px);
+        }
+        
+        .riddle-container:nth-child(5) .riddle-front {
+            background: linear-gradient(135deg, rgba(250, 112, 154, 0.3), rgba(254, 225, 64, 0.3));
+            backdrop-filter: blur(20px);
+        }
+        
+        .riddle-container:nth-child(6) .riddle-front {
+            background: linear-gradient(135deg, rgba(168, 237, 234, 0.3), rgba(254, 214, 227, 0.3));
+            backdrop-filter: blur(20px);
+        }
+
+        /* Enhanced Button System */
+        .glass-button {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.2rem;
+            padding: 0.8rem 1.5rem;
+            min-width: 150px;
+            cursor: pointer;
+        }
+        
+        .glass-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .glass-button.expanded {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.3), rgba(248, 113, 113, 0.3));
+            backdrop-filter: blur(10px);
+        }
+        
+        .extended-content {
+            transition: all 0.3s ease;
+            opacity: 1;
+            max-height: 2000px;
+            overflow: hidden;
+        }
+        
+        .extended-content[style*="display: none"] {
+            opacity: 0;
+            max-height: 0;
+        }
+
+        /* Animation Classes */
+        .dancing-letter { animation: letter-dance 2s ease-in-out infinite; }
+        .seasonal-float { animation: seasonal-float 4s ease-in-out infinite; }
+        .glass-glow { animation: glass-glow 2s ease-in-out infinite; }
+        .magical-entrance { animation: magical-entrance 1s ease-out; }
+        .success-celebration { animation: success-celebration 0.6s ease-out; }
+
+        /* Performance Optimizations */
+        .gpu-accelerated {
+            will-change: transform, opacity;
+            transform: translateZ(0);
+        }
+
+        /* Ensure proper display */
+        .poem-card {
+            min-height: auto !important;
+            height: auto !important;
+        }
+        
+        .verse-line {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        
+        /* Fluid Typography - Responsive across all dimensions */
+        html {
+            font-size: clamp(16px, 2.5vw, 20px);
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            line-height: 1.3;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3.5vw, 2rem);
+            line-height: 1.3;
+        }
+        
+        h4 {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            line-height: 1.4;
+        }
+        
+        p, .verse-line {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+            line-height: 1.6;
+        }
+        
+        .glass-button {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+        }
+        
+        .riddle-front, .riddle-back {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+        }
+
+        /* Comprehensive Responsive Design */
+        
+        /* Mobile Devices (≤480px) */
+        @media (max-width: 480px) {
+            /* Body and container overflow fixes */
+            body {
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw;
+            }
+            
+            * {
+                box-sizing: border-box;
+            }
+            
+            /* Navigation responsive */
+            .glass-nav {
+                padding: 0.75rem 0.75rem;
+                width: 100%;
+                max-width: 100vw;
+                box-sizing: border-box;
+            }
+            
+            .glass-nav .container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.5rem;
+                max-width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .glass-nav .text-xl {
+                font-size: 1.1rem;
+            }
+            
+            .glass-nav .lg\\:text-2xl {
+                font-size: 1.2rem;
+            }
+            
+            /* Header buttons mobile sizing - smaller and contained */
+            .glass-button {
+                padding: 0.375rem 0.5rem;
+                font-size: 0.75rem;
+                min-width: 2rem;
+                min-height: 2rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: calc(30vw - 1rem);
+            }
+            
+            .dark-mode-header-btn {
+                font-size: 0.875rem;
+                min-width: 2rem;
+                padding: 0.375rem;
+                max-width: 2.5rem;
+            }
+            
+            /* Hero section mobile - consistent sizing */
+            .text-4xl {
+                font-size: 2rem !important;
+                line-height: 1.3;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+            
+            .lg\\:text-6xl {
+                font-size: 2.5rem !important;
+                line-height: 1.3;
+                word-wrap: break-word;
+            }
+            
+            .text-xl {
+                font-size: 1.5rem !important;
+                line-height: 1.4;
+            }
+            
+            .lg\\:text-2xl {
+                font-size: 1.75rem !important;
+                line-height: 1.4;
+            }
+            
+            .text-2xl {
+                font-size: 1.75rem !important;
+                line-height: 1.4;
+            }
+            
+            .lg\\:text-3xl {
+                font-size: 2rem !important;
+                line-height: 1.3;
+            }
+            
+            .text-3xl {
+                font-size: 2rem !important;
+                line-height: 1.3;
+            }
+            
+            .lg\\:text-4xl {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+            
+            .text-base {
+                font-size: 1.25rem !important;
+                line-height: 1.5;
+            }
+            
+            .text-lg {
+                font-size: 1.375rem !important;
+                line-height: 1.5;
+            }
+            
+            .text-sm {
+                font-size: 1.125rem !important;
+                line-height: 1.4;
+            }
+            
+            /* Container and spacing - prevent overflow */
+            .container {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+                max-width: 100vw;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .px-4 {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            .px-6 {
+                padding-left: 0.75rem;
+                padding-right: 0.75rem;
+            }
+            
+            .px-8 {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            .py-8 {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            
+            .py-6 {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+            
+            .py-3 {
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+            }
+            
+            /* Cards mobile layout - prevent overflow */
+            .glass-card {
+                margin: 0.5rem 0;
+                padding: 0.75rem;
+                border-radius: 12px;
+                max-width: 100%;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .poem-card {
+                margin: 0.5rem 0;
+                padding: 1rem;
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .max-w-5xl {
+                max-width: 100% !important;
+            }
+            
+            .max-w-md {
+                max-width: 100% !important;
+            }
+            
+            /* Grid system mobile */
+            .grid-cols-1 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            
+            .lg\\:grid-cols-2 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            
+            .lg\\:grid-cols-3 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            
+            .md\\:grid-cols-2 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            
+            .gap-8 {
+                gap: 0.75rem;
+            }
+            
+            .gap-6 {
+                gap: 0.5rem;
+            }
+            
+            .gap-4 {
+                gap: 0.5rem;
+            }
+            
+            .gap-3 {
+                gap: 0.375rem;
+            }
+            
+            .gap-2 {
+                gap: 0.25rem;
+            }
+            
+            /* Text and content mobile - consistent sizing */
+            .verse-line {
+                padding: 0.375rem 0;
+                font-size: 1.25rem;
+                line-height: 1.7;
+                margin: 0.25rem 0;
+                word-wrap: break-word;
+                hyphens: auto;
+                max-width: 100%;
+                overflow-wrap: break-word;
+            }
+            
+            .riddle-container {
+                height: 220px;
+                max-width: 100%;
+            }
+            
+            .riddle-front,
+            .riddle-back {
+                padding: 1.25rem;
+                font-size: 1.25rem;
+                line-height: 1.6;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+            
+            /* Button mobile sizing - prevent overflow */
+            .glass-button {
+                padding: 1rem 1.5rem;
+                font-size: 1.375rem;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: calc(50vw - 0.5rem);
+                min-width: 150px;
+            }
+            
+            /* Poem card headings */
+            .poem-card h3 {
+                font-size: 1.75rem !important;
+            }
+            
+            .poem-card h4 {
+                font-size: 1.375rem !important;
+            }
+            
+            .poem-card p {
+                font-size: 1.25rem !important;
+            }
+            
+            /* Flex button containers */
+            .flex.justify-center {
+                flex-wrap: wrap;
+                gap: 0.25rem;
+            }
+            
+            .flex.justify-center .glass-button {
+                flex: 1 1 auto;
+                min-width: calc(50% - 0.125rem);
+                max-width: calc(50% - 0.125rem);
+                text-align: center;
+            }
+            
+            /* Progress system mobile */
+            .progress-dot {
+                width: 6px;
+                height: 6px;
+            }
+            
+            /* Achievement modal mobile */
+            #achievementModal .glass-card {
+                margin: 0.75rem;
+                padding: 1rem;
+                max-width: calc(100vw - 1.5rem);
+            }
+            
+            .text-6xl {
+                font-size: 2rem;
+            }
+            
+            /* Emoji sizing */
+            .text-8xl {
+                font-size: 3rem !important;
+            }
+            
+            .text-5xl {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Seasonal float icons */
+            .seasonal-float {
+                font-size: 1rem !important;
+            }
+        }
+        
+        /* Tablet Devices (481px - 1023px) */
+        @media (min-width: 481px) and (max-width: 1023px) {
+            /* Navigation tablet */
+            .glass-nav {
+                padding: 1rem 1.5rem;
+            }
+            
+            .glass-nav .text-xl {
+                font-size: 1.6rem;
+            }
+            
+            .glass-nav .lg\\:text-2xl {
+                font-size: 2rem;
+            }
+            
+            /* Hero section tablet - consistent sizing */
+            .text-4xl {
+                font-size: 2.5rem !important;
+            }
+            
+            .lg\\:text-6xl {
+                font-size: 3rem !important;
+            }
+            
+            .text-xl {
+                font-size: 1.75rem !important;
+            }
+            
+            .lg\\:text-2xl {
+                font-size: 2rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 2rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 2rem !important;
+            }
+            
+            .lg\\:text-3xl {
+                font-size: 2.25rem !important;
+            }
+            
+            .lg\\:text-4xl {
+                font-size: 2.5rem !important;
+            }
+            
+            .text-base {
+                font-size: 1.375rem !important;
+            }
+            
+            .text-lg {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-sm {
+                font-size: 1.25rem !important;
+            }
+            
+            /* Cards tablet layout */
+            .glass-card {
+                margin: 0.75rem 0;
+                padding: 1.5rem;
+            }
+            
+            .poem-card {
+                padding: 2rem;
+            }
+            
+            .poem-card h3 {
+                font-size: 2rem !important;
+            }
+            
+            .poem-card h4 {
+                font-size: 1.5rem !important;
+            }
+            
+            .poem-card p {
+                font-size: 1.375rem !important;
+            }
+            
+            /* Grid system tablet */
+            .lg\\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            
+            .lg\\:grid-cols-3 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            
+            .md\\:grid-cols-2 {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+            
+            /* Text content tablet - consistent sizing */
+            .verse-line {
+                padding: 0.5rem 0;
+                font-size: 1.375rem;
+                line-height: 1.7;
+            }
+            
+            .poem-content.collapsed {
+                max-height: 220px;
+                overflow: hidden;
+            }
+            
+            .poem-content.collapsed::after {
+                height: 70px;
+            }
+            
+            .poem-content.expanded {
+                max-height: none;
+                overflow: visible;
+            }
+            
+            .riddle-container {
+                height: 280px;
+            }
+            
+            .riddle-front,
+            .riddle-back {
+                padding: 2rem;
+                font-size: 1.375rem;
+                line-height: 1.6;
+            }
+            
+            /* Buttons tablet */
+            .glass-button {
+                padding: 1.125rem 1.75rem;
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Ultra-small screens (≤360px) */
+        @media (max-width: 360px) {
+            /* Extreme overflow prevention */
+            body {
+                overflow-x: hidden;
+                width: 100%;
+                max-width: 100vw;
+            }
+            
+            .glass-nav {
+                padding: 0.5rem;
+                width: 100%;
+                max-width: 100vw;
+            }
+            
+            .glass-nav .container {
+                gap: 0.25rem;
+                max-width: 100%;
+                padding: 0;
+            }
+            
+            .glass-button {
+                padding: 0.25rem 0.375rem;
+                font-size: 0.65rem;
+                min-width: 1.75rem;
+                min-height: 1.75rem;
+                max-width: calc(25vw - 0.5rem);
+            }
+            
+            .dark-mode-header-btn {
+                font-size: 0.75rem;
+                min-width: 1.75rem;
+                padding: 0.25rem;
+                max-width: 2rem;
+            }
+            
+            .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+                max-width: 100vw;
+                width: 100%;
+            }
+            
+            .glass-card {
+                margin: 0.25rem 0;
+                padding: 0.5rem;
+                border-radius: 10px;
+                max-width: 100%;
+                width: 100%;
+            }
+            
+            .poem-card {
+                padding: 0.75rem;
+                max-width: 100%;
+            }
+            
+            .verse-line {
+                padding: 0.25rem 0.375rem;
+                font-size: 0.7rem;
+                line-height: 1.3;
+                word-wrap: break-word;
+                hyphens: auto;
+            }
+            
+            .riddle-container {
+                height: 160px;
+                max-width: 100%;
+                overflow: hidden;
+                margin-bottom: 1rem;
+            }
+            
+            .riddle-card {
+                overflow: hidden;
+                max-width: 100%;
+                max-height: 100%;
+            }
+            
+            .riddle-front,
+            .riddle-back {
+                padding: 0.75rem;
+                font-size: 0.75rem;
+                line-height: 1.3;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                max-width: 100%;
+                max-height: 100%;
+                overflow: hidden;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .riddle-front .text-center,
+            .riddle-back .text-center {
+                max-width: 100%;
+                overflow: hidden;
+            }
+            
+            .riddle-front p {
+                font-size: 0.75rem;
+                line-height: 1.3;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                max-width: 100%;
+                text-align: center;
+                margin: 0;
+            }
+            
+            .riddle-back h3 {
+                font-size: 0.875rem;
+                line-height: 1.2;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                margin-bottom: 0.5rem;
+                max-width: 100%;
+            }
+            
+            .riddle-back p {
+                font-size: 0.65rem;
+                line-height: 1.2;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
+                margin: 0;
+            }
+            
+            /* Riddles grid mobile layout */
+            .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .text-4xl {
+                font-size: 1.25rem !important;
+                line-height: 1.1;
+            }
+            
+            .lg\\:text-6xl {
+                font-size: 1.5rem !important;
+                line-height: 1.1;
+            }
+            
+            .text-xl {
+                font-size: 0.875rem !important;
+                line-height: 1.2;
+            }
+            
+            .lg\\:text-2xl {
+                font-size: 1rem !important;
+                line-height: 1.2;
+            }
+            
+            .text-2xl {
+                font-size: 1rem !important;
+            }
+            
+            .lg\\:text-3xl {
+                font-size: 1.125rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 1.125rem !important;
+            }
+            
+            .lg\\:text-4xl {
+                font-size: 1.25rem !important;
+            }
+            
+            /* Button containers */
+            .flex.justify-center .glass-button {
+                flex: 1 1 auto;
+                min-width: calc(50% - 0.125rem);
+                max-width: calc(50% - 0.125rem);
+                font-size: 0.65rem;
+                padding: 0.25rem;
+            }
+            
+            /* Text overflow prevention */
+            .seasonal-float {
+                font-size: 0.875rem !important;
+            }
+            
+            .text-8xl {
+                font-size: 2.5rem !important;
+            }
+            
+            .text-6xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-5xl {
+                font-size: 1.25rem !important;
+            }
+        }
+        
+        /* Mobile Navigation Enhancements */
+        @media (max-width: 480px) {
+            .glass-nav {
+                padding: 0.5rem 0.75rem;
+            }
+            
+            .glass-nav .container {
+                gap: 0.375rem;
+            }
+            
+            .glass-nav .flex {
+                flex-wrap: nowrap;
+                align-items: center;
+                gap: 0.375rem;
+            }
+            
+            .glass-nav .gap-3 {
+                gap: 0.375rem;
+            }
+            
+            .glass-nav .justify-between {
+                justify-content: space-between;
+            }
+            
+            /* Make all header buttons smaller and consistent */
+            .glass-nav a.glass-button,
+            .glass-nav button.glass-button {
+                padding: 0.375rem 0.5rem;
+                font-size: 0.75rem;
+                min-width: 40px;
+                max-width: 70px;
+                height: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                border-radius: 10px;
+            }
+            
+            /* Home button specific */
+            .glass-nav a.glass-button {
+                font-size: 0.7rem;
+                max-width: 75px;
+            }
+            
+            /* Dark mode and sound buttons specific */
+            .glass-nav button.glass-button {
+                width: 36px;
+                min-width: 36px;
+                max-width: 36px;
+                padding: 0.25rem;
+            }
+            
+            /* Button text sizing */
+            .glass-nav button.glass-button span {
+                font-size: 1.1rem;
+            }
+            
+            .glass-nav .dancing-letter {
+                flex-shrink: 1;
+                min-width: 0;
+                text-align: center;
+                font-size: 1rem;
+            }
+            
+            .glass-nav .seasonal-float {
+                display: inline-block;
+                font-size: 0.9rem;
+            }
+            
+            /* Center title text sizing */
+            .glass-nav .text-xl {
+                font-size: 1rem;
+            }
+            
+            .glass-nav .lg\\:text-2xl {
+                font-size: 1rem;
+            }
+        }
+        
+        /* Ultra-small mobile screens (≤380px) */
+        @media (max-width: 380px) {
+            .glass-nav {
+                padding: 0.25rem 0.5rem;
+            }
+            
+            .glass-nav .container {
+                gap: 0.25rem;
+            }
+            
+            .glass-nav .flex {
+                gap: 0.25rem;
+            }
+            
+            .glass-nav .gap-3 {
+                gap: 0.25rem;
+            }
+            
+            /* Even smaller buttons for ultra-small screens */
+            .glass-nav a.glass-button,
+            .glass-nav button.glass-button {
+                padding: 0.25rem 0.375rem;
+                font-size: 0.65rem;
+                min-width: 32px;
+                max-width: 60px;
+                height: 28px;
+                border-radius: 8px;
+            }
+            
+            /* Home button ultra-small */
+            .glass-nav a.glass-button {
+                font-size: 0.6rem;
+                max-width: 65px;
+            }
+            
+            /* Dark mode and sound buttons ultra-small */
+            .glass-nav button.glass-button {
+                width: 30px;
+                min-width: 30px;
+                max-width: 30px;
+                padding: 0.125rem;
+            }
+            
+            /* Button icons smaller */
+            .glass-nav button.glass-button span {
+                font-size: 1rem;
+            }
+            
+            /* Center title even smaller */
+            .glass-nav .dancing-letter {
+                font-size: 0.875rem;
+            }
+            
+            .glass-nav .seasonal-float {
+                font-size: 0.8rem;
+            }
+            
+            .glass-nav .text-xl,
+            .glass-nav .lg\\:text-2xl {
+                font-size: 0.875rem;
+            }
+            
+            /* Ultra-small riddles optimization */
+            .riddle-container {
+                height: 140px;
+                margin-bottom: 0.75rem;
+            }
+            
+            .riddle-front,
+            .riddle-back {
+                padding: 0.5rem;
+                font-size: 0.65rem;
+                line-height: 1.25;
+            }
+            
+            .riddle-front p {
+                font-size: 0.65rem;
+                line-height: 1.25;
+            }
+            
+            .riddle-back h3 {
+                font-size: 0.75rem;
+                line-height: 1.2;
+                margin-bottom: 0.25rem;
+            }
+            
+            .riddle-back p {
+                font-size: 0.6rem;
+                line-height: 1.2;
+            }
+            
+            /* Ultra-small emoji sizing */
+            .riddle-front .text-4xl,
+            .riddle-back .text-6xl {
+                font-size: 1.5rem;
+                margin-bottom: 0.375rem;
+            }
+        }
+        
+        /* Mobile Text and Button Overflow Prevention */
+        @media (max-width: 480px) {
+            /* Prevent text overflow */
+            h1, h2, h3, h4, h5, h6 {
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+                max-width: 100%;
+            }
+            
+            p, span, div {
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+            }
+            
+            /* Force all cards to respect container boundaries */
+            .glass-card {
+                max-width: 100%;
+                overflow: hidden;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                box-sizing: border-box;
+            }
+            
+            /* Card content optimization */
+            .glass-card p,
+            .glass-card h1,
+            .glass-card h2,
+            .glass-card h3,
+            .glass-card h4 {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                max-width: 100%;
+            }
+            
+            /* Ensure proper text flow in all content */
+            .text-center {
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
+            }
+            
+            /* Button text truncation */
+            .glass-button span {
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display: inline-block;
+            }
+            
+            /* Navigation title truncation */
+            .dancing-letter {
+                max-width: calc(100vw - 8rem);
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+            
+            .dancing-letter .bg-gradient-to-r {
+                max-width: 100%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display: inline-block;
+            }
+            
+            /* Flex container improvements */
+            .flex.items-center {
+                min-width: 0;
+                flex-wrap: nowrap;
+            }
+            
+            .flex.items-center > * {
+                flex-shrink: 1;
+                min-width: 0;
+            }
+            
+            /* Section spacing */
+            section {
+                max-width: 100vw;
+                overflow-x: hidden;
+            }
+            
+            /* Card content overflow prevention */
+            .poem-content {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+            
+            .poem-content.collapsed {
+                max-height: 200px;
+                overflow: hidden;
+            }
+            
+            .poem-content.collapsed::after {
+                height: 60px;
+            }
+            
+            .poem-content.expanded {
+                max-height: none;
+                overflow: visible;
+            }
+            
+            .poem-content div {
+                max-width: 100%;
+                overflow-x: hidden;
+            }
+        }
+        
+        /* Additional Mobile Layout Fixes */
+        @media (max-width: 480px) {
+            /* Ensure proper text sizing for all content */
+            .text-sm {
+                font-size: 0.75rem !important;
+            }
+            
+            .text-base {
+                font-size: 0.8rem !important;
+            }
+            
+            .text-lg {
+                font-size: 0.9rem !important;
+            }
+            
+            .lg\\:text-xl {
+                font-size: 1rem !important;
+            }
+            
+            /* Poem card specific improvements */
+            .nature-theme h3,
+            .family-theme h3,
+            .play-theme h3,
+            .hamd-theme h3,
+            .prayer-theme h3 {
+                font-size: 1rem !important;
+                line-height: 1.2;
+                margin-bottom: 0.5rem;
+            }
+            
+            .nature-theme p,
+            .family-theme p,
+            .play-theme p,
+            .hamd-theme p,
+            .prayer-theme p {
+                font-size: 0.75rem !important;
+                line-height: 1.3;
+            }
+            
+            /* Button container improvements */
+            .poem-card .flex.justify-center,
+            .glass-card .flex.justify-center {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 0.25rem;
+            }
+            
+            .poem-card .flex.justify-center .glass-button,
+            .glass-card .flex.justify-center .glass-button {
+                flex: 1 1 calc(50% - 0.125rem);
+                min-width: calc(50% - 0.125rem);
+                max-width: calc(50% - 0.125rem);
+                margin: 0;
+                text-align: center;
+                padding: 0.375rem 0.25rem;
+                font-size: 0.7rem;
+                line-height: 1.2;
+            }
+            
+            /* Riddle content mobile */
+            .riddle-front h4,
+            .riddle-back h4 {
+                font-size: 0.75rem !important;
+                margin-bottom: 0.25rem;
+            }
+            
+            .riddle-front p,
+            .riddle-back p {
+                font-size: 0.65rem !important;
+                line-height: 1.3;
+            }
+            
+            /* Section headings mobile */
+            .container h2 {
+                font-size: 1.25rem !important;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+                word-wrap: break-word;
+            }
+            
+            /* Glass card theme specific sizing */
+            .glass-card h4 {
+                font-size: 0.8rem !important;
+                line-height: 1.2;
+            }
+        }
+
+        /* Touch Target and Text Readability Improvements */
+        @media (max-width: 768px) {
+            /* Ensure all interactive elements are touch-friendly */
+            button, a, .touch-ripple, .riddle-container, .verse-line {
+                min-height: 44px;
+                min-width: 44px;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+            }
+            
+            /* Improve text contrast and spacing */
+            .poem-content {
+                line-height: 1.7;
+                letter-spacing: 0.025em;
+            }
+            
+            .riddle-front, .riddle-back {
+                line-height: 1.6;
+                letter-spacing: 0.02em;
+            }
+            
+            /* Better button spacing */
+            .flex.gap-4 {
+                gap: 0.75rem;
+            }
+            
+            .flex.gap-2 {
+                gap: 0.5rem;
+            }
+            
+            /* Improved modal sizing */
+            #achievementModal .max-w-md {
+                max-width: calc(100vw - 2rem);
+            }
+        }
+        
+        /* Responsive Footer Improvements */
+        @media (max-width: 768px) {
+            .site-footer {
+                padding: 1.5rem 1rem;
+                text-align: center;
+            }
+            
+            .footer-title {
+                font-size: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .site-footer p {
+                font-size: 0.875rem;
+                margin-bottom: 0.5rem;
+                line-height: 1.4;
+            }
+            
+            .footer-icons {
+                margin-top: 1rem;
+                gap: 0.75rem;
+            }
+            
+            .footer-icon {
+                font-size: 1.125rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site-footer {
+                padding: 1rem 0.75rem;
+            }
+            
+            .footer-title {
+                font-size: 1.125rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .site-footer p {
+                font-size: 0.8rem;
+                margin-bottom: 0.375rem;
+            }
+            
+            .footer-icons {
+                gap: 0.5rem;
+            }
+            
+            .footer-icon {
+                font-size: 1rem;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .glass-card {
+                border: 2px solid rgba(0, 0, 0, 0.8);
+                background: rgba(255, 255, 255, 0.9);
+            }
+        }
+    </style>
+    <script>
+        // Advanced State Management System
+        class Class2Manager {
+            constructor() {
+                this.soundEnabled = true;
+                this.currentAudio = null;
+                this.completedItems = new Set();
+                this.expandedPoems = new Set();
+                this.totalItems = 12;
+            }
+
+            initializeProgressIndicator() {
+                const container = document.getElementById('progressIndicator');
+                if (!container) return;
+                for (let i = 0; i < this.totalItems; i++) {
+                    const dot = document.createElement('div');
+                    dot.className = 'progress-dot';
+                    dot.id = `progress-dot-${i}`;
+                    container.appendChild(dot);
+                }
+            }
+
+            init() {
+                this.initializeProgressIndicator();
+                this.setupEventListeners();
+                this.animateEntrance();
+                this.initializeIntersectionObserver();
+            }
+
+            initializeIntersectionObserver() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('magical-entrance');
+                        }
+                    });
+                });
+
+                document.querySelectorAll('.poem-card, .riddle-container').forEach(card => {
+                    observer.observe(card);
+                });
+            }
+
+            setupEventListeners() {
+                const soundToggle = document.getElementById('soundToggle');
+                if (soundToggle) {
+                    soundToggle.addEventListener('click', () => {
+                        this.toggleSound();
+                    });
+                }
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeAllModals();
+                    }
+                });
+            }
+
+            toggleSound() {
+                this.soundEnabled = !this.soundEnabled;
+                const soundIcon = document.getElementById('soundIcon');
+                if (soundIcon) {
+                    soundIcon.textContent = this.soundEnabled ? '🔊' : '🔇';
+                }
+                if (!this.soundEnabled && this.currentAudio) {
+                    this.stopCurrentAudio();
+                }
+            }
+
+            updateProgress(itemId) {
+                if (!this.completedItems.has(itemId)) {
+                    this.completedItems.add(itemId);
+                    const progressIndex = this.completedItems.size - 1;
+                    const dot = document.getElementById(`progress-dot-${progressIndex}`);
+                    
+                    if (dot) {
+                        dot.classList.add('active');
+                    }
+                    
+                    const progressText = document.getElementById('progressText');
+                    const progressBar = document.getElementById('progressBar');
+                    const percentage = Math.round((this.completedItems.size / this.totalItems) * 100);
+                    
+                    if (progressText) {
+                        progressText.textContent = `${percentage}%`;
+                    }
+                    if (progressBar) {
+                        progressBar.style.width = `${percentage}%`;
+                    }
+                    
+                    this.checkAchievements();
+                }
+            }
+
+            checkAchievements() {
+                const completion = this.completedItems.size / this.totalItems;
+                
+                if (completion >= 0.25 && !this.completedItems.has('achievement-quarter')) {
+                    this.showAchievement('پھرين وِکَ!', 'توهان 25% مڪمل ڪيو! 🎯');
+                    this.completedItems.add('achievement-quarter');
+                } else if (completion >= 0.5 && !this.completedItems.has('achievement-half')) {
+                    this.showAchievement('اڌ سفر!', 'توهان 50% مڪمل ڪيو! 🚀');
+                    this.completedItems.add('achievement-half');
+                } else if (completion >= 0.75 && !this.completedItems.has('achievement-three-quarter')) {
+                    this.showAchievement('لڳ ڀڳ پورو ٿيو!', 'توهان 75% مڪمل ڪيو! 💪');
+                    this.completedItems.add('achievement-three-quarter');
+                } else if (completion >= 1.0 && !this.completedItems.has('achievement-complete')) {
+                    this.showAchievement('مڪمل ڪاميابي!', 'مبارڪ! ڪلاس ٻيو مڪمل! 🏆');
+                    this.completedItems.add('achievement-complete');
+                    this.createMegaCelebration();
+                }
+            }
+
+            showAchievement(title, text) {
+                const achievementTitle = document.getElementById('achievementTitle');
+                const achievementText = document.getElementById('achievementText');
+                const achievementModal = document.getElementById('achievementModal');
+                
+                if (achievementTitle) achievementTitle.textContent = title;
+                if (achievementText) achievementText.textContent = text;
+                if (achievementModal) achievementModal.classList.remove('hidden');
+                
+                this.createConfetti();
+            }
+
+            createMegaCelebration() {
+                for (let i = 0; i < 50; i++) {
+                    setTimeout(() => this.createConfetti(), i * 80);
+                }
+            }
+
+            createConfetti() {
+                const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
+                
+                for (let i = 0; i < 15; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.style.cssText = `
+                        position: fixed;
+                        top: -20px;
+                        left: ${Math.random() * 100}%;
+                        width: 12px;
+                        height: 12px;
+                        background: ${colors[Math.floor(Math.random() * colors.length)]};
+                        z-index: 1000;
+                        border-radius: 50%;
+                        animation: confetti-fall 4s linear forwards;
+                        transform: rotate(${Math.random() * 360}deg);
+                    `;
+                    
+                    document.body.appendChild(confetti);
+                    setTimeout(() => confetti.remove(), 4000);
+                }
+            }
+
+            animateEntrance() {
+                const cards = document.querySelectorAll('.poem-card, .riddle-container');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.15}s`;
+                });
+            }
+
+            stopCurrentAudio() {
+                if (this.currentAudio) {
+                    clearTimeout(this.currentAudio.timeout);
+                    this.currentAudio.button.innerHTML = this.currentAudio.originalText;
+                    if (this.currentAudio.card) {
+                        this.currentAudio.card.classList.remove('glass-glow');
+                    }
+                    this.currentAudio = null;
+                }
+            }
+
+            closeAllModals() {
+                const achievementModal = document.getElementById('achievementModal');
+                if (achievementModal) {
+                    achievementModal.classList.add('hidden');
+                }
+            }
+        }
+
+        // Initialize the system
+        const class2Manager = new Class2Manager();
+
+        // Data loader from JSON
+        let class2Data = [];
+        let totalBaits = 0;
+
+        // Fetch and populate data from JSON
+        async function loadClass2Data() {
+            try {
+                const response = await fetch('/assets/Data/classes/class2.json');
+                class2Data = await response.json();
+                totalBaits = class2Data.length;
+                
+                // Update totalItems for progress tracking
+                class2Manager.totalItems = totalBaits;
+                
+                // Populate the content
+                populateReligiousContent();
+                
+                // Re-initialize after content is loaded
+                class2Manager.init();
+            } catch (error) {
+                console.error('Error loading class2.json:', error);
+            }
+        }
+
+        // Generate poem ID from title (simple slugification)
+        function generatePoemId(title) {
+            return title
+                .replace(/[^\u0600-\u06FF]/g, '')
+                .substring(0, 4)
+                .toLowerCase() || 'poem';
+        }
+
+        // Get theme class based on content type
+        function getThemeClass(title) {
+            const titleLower = title.toLowerCase();
+            if (titleLower.includes('حمد')) return 'hamd-theme';
+            if (titleLower.includes('نعت')) return 'hamd-theme';
+            if (titleLower.includes('دعا')) return 'prayer-theme';
+            if (titleLower.includes('گل') || titleLower.includes('موسم')) return 'nature-theme';
+            if (titleLower.includes('ام') || titleLower.includes('پاکستان')) return 'family-theme';
+            if (titleLower.includes('لاٽ') || titleLower.includes('ڙ')) return 'play-theme';
+            return 'nature-theme';
+        }
+
+        // Get emoji for poem
+        function getEmoji(title) {
+            const titleLower = title.toLowerCase();
+            if (titleLower.includes('حمد')) return '🌟';
+            if (titleLower.includes('نعت')) return '🌟';
+            if (titleLower.includes('دعا')) return '🤲';
+            if (titleLower.includes('گل') && titleLower.includes('گلاب')) return '🌹';
+            if (titleLower.includes('موسم')) return '🌸';
+            if (titleLower.includes('ام') || titleLower.includes('مامڙ')) return '👩‍👧‍👦';
+            if (titleLower.includes('پاکستان')) return '💚';
+            if (titleLower.includes('لاٽ')) return '🎎';
+            if (titleLower.includes('ڙ')) return '🪆';
+            return '📚';
+        }
+
+        // Populate religious content section
+        function populateReligiousContent() {
+            const container = document.getElementById('religiousContentContainer');
+            if (!container) return;
+
+            container.innerHTML = class2Data.map((bait, index) => {
+                const poemId = `bait-${index}`;
+                const themeClass = getThemeClass(bait.baitTitle);
+                const emoji = getEmoji(bait.baitTitle);
+                
+                // Split verses into first few and extended
+                const verses = bait.baitContent || [];
+                const firstVerses = verses.slice(0, 4);
+                const extendedVerses = verses.slice(4);
+                
+                return `
+                    <div class="poem-card glass-card ${themeClass} p-8 mb-8 max-w-5xl mx-auto touch-ripple gpu-accelerated">
+                        <div class="text-center mb-6">
+                            <div class="text-6xl mb-4 seasonal-float">${emoji}</div>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-2">${bait.baitTitle}</h3>
+                            <p class="text-lg opacity-90">${bait.author || ''}</p>
+                        </div>
+                        
+                        <div class="poem-content collapsed" id="${poemId}-content">
+                            <div class="text-lg lg:text-xl leading-relaxed space-y-2">
+                                ${firstVerses.map(verse => `<div class="verse-line">${verse}</div>`).join('')}
+                                
+                                ${extendedVerses.length > 0 ? `
+                                    <div class="extended-content">
+                                        ${extendedVerses.map(verse => `<div class="verse-line">${verse}</div>`).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-center gap-4 mt-6">
+                            <button onclick="togglePoemExpansion('${poemId}')" class="glass-button px-6 py-3 font-bold touch-ripple">
+                                <span id="${poemId}-expand-text">مڪمل ڏسو</span>
+                            </button>
+                            <button onclick="playVerse('${poemId}')" class="glass-button px-6 py-3 font-bold touch-ripple">
+                                <span id="${poemId}-audio-btn">ٻڌو 🎵</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            loadClass2Data();
+        });
+
+        // Enhanced Poem Expansion System
+        function togglePoemExpansion(poemId) {
+            const content = document.getElementById(`${poemId}-content`);
+            const button = document.getElementById(`${poemId}-expand-text`);
+            const extendedContent = content.querySelector('.extended-content');
+            const card = content.closest('.poem-card');
+            
+            if (class2Manager.expandedPoems.has(poemId)) {
+                // Collapse
+                extendedContent.style.display = 'none';
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                card.classList.remove('expanded');
+                button.textContent = getExpandButtonText(poemId, false);
+                class2Manager.expandedPoems.delete(poemId);
+            } else {
+                // Expand
+                extendedContent.style.display = 'block';
+                content.classList.remove('collapsed');
+                content.classList.add('expanded');
+                card.classList.add('expanded');
+                button.textContent = getExpandButtonText(poemId, true);
+                class2Manager.expandedPoems.add(poemId);
+                class2Manager.updateProgress(`expand-${poemId}`);
+                
+                // Animate verses entrance with staggered timing
+                const verses = extendedContent.querySelectorAll('.verse-line');
+                verses.forEach((verse, index) => {
+                    verse.style.opacity = '0';
+                    verse.style.transform = 'translateX(-30px) scale(0.95)';
+                    setTimeout(() => {
+                        verse.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                        verse.style.opacity = '1';
+                        verse.style.transform = 'translateX(0) scale(1)';
+                    }, index * 100);
+                });
+            }
+        }
+
+        function getExpandButtonText(poemId, isExpanded) {
+            const buttonTexts = {
+                'hamd': isExpanded ? 'حمد لڪايو' : 'مڪمل حمد ڏسو',
+                'naat': isExpanded ? 'نعت لڪايو' : 'مڪمل نعت ڏسو',
+                'prayer': isExpanded ? 'دعا لڪايو' : 'مڪمل دعا ڏسو',
+                'rose': isExpanded ? 'لڪايو' : 'مڪمل نظم',
+                'seasons': isExpanded ? 'لڪايو' : 'چار موسم',
+                'mother': isExpanded ? 'لڪايو' : 'مڪمل نظم ڏسو',
+                'pakistan': isExpanded ? 'لڪايو' : 'مڪمل نظم ڏسو',
+                'top': isExpanded ? 'لڪايو' : 'مڪمل راند',
+                'doll': isExpanded ? 'لڪايو' : 'مڪمل بيت ڏسو'
+            };
+            return buttonTexts[poemId] || (isExpanded ? 'لڪايو' : 'مڪمل ڏسو');
+        }
+
+        // Enhanced Verse Interaction
+        function highlightVerse(element) {
+            element.classList.add('reading');
+            setTimeout(() => {
+                element.classList.remove('reading');
+            }, 2000);
+            
+            class2Manager.updateProgress(`verse-${Math.random()}`);
+        }
+
+        // Advanced Audio System - REMOVED (using enhanced version below)
+
+        // Enhanced Riddle System
+        function toggleRiddle(container, riddleId) {
+            const card = container.querySelector('.riddle-card');
+            const isRevealed = card.classList.contains('revealed');
+            
+            if (!isRevealed) {
+                card.classList.add('revealed');
+                class2Manager.updateProgress(`riddle-${riddleId}`);
+                
+                // Add celebration effect after flip
+                setTimeout(() => {
+                    const image = container.querySelector('.riddle-back .seasonal-float');
+                    if (image) {
+                        image.style.animation = 'seasonal-float 2s ease-in-out infinite, success-celebration 0.6s ease-out';
+                    }
+                    class2Manager.createConfetti();
+                }, 800);
+            } else {
+                card.classList.remove('revealed');
+            }
+        }
+
+        // Achievement Modal Management
+        function closeAchievement() {
+            const achievementModal = document.getElementById('achievementModal');
+            if (achievementModal) {
+                achievementModal.classList.add('hidden');
+            }
+        }
+
+        // Enhanced Smooth Scrolling
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Initialize lazy loading for heavy animations
+            document.body.classList.add('loaded');
+        });
+
+        // Mapping of bait indices to audio element IDs
+        const audioIdMapping = {
+            'bait-0': 'audio-hamd',
+            'bait-1': 'audio-naat',
+            'bait-2': 'audio-prayer',
+            'bait-3': 'audio-rose',
+            'bait-4': 'audio-seasons',
+            'bait-5': 'audio-mother',
+            'bait-6': 'audio-pakistan',
+            'bait-7': 'audio-top',
+            'bait-8': 'audio-doll'
+        };
+
+        // Enhanced Audio System with actual playback and console logging
+        function playVerse(poemId) {
+            console.log(`🎵 playVerse called with poemId: ${poemId}`);
+            
+            if (!class2Manager.soundEnabled) {
+                console.log('⚠️ Sound is disabled');
+                return;
+            }
+            
+            // Map poemId to actual audio element ID
+            const actualAudioId = audioIdMapping[poemId] || `audio-${poemId}`;
+            const audioElement = document.getElementById(actualAudioId);
+            const button = document.getElementById(`${poemId}-audio-btn`);
+            
+            if (!audioElement) {
+                console.error(`❌ Audio element not found for: ${actualAudioId}`);
+                return;
+            }
+            
+            if (!button) {
+                console.error(`❌ Button element not found for: ${poemId}-audio-btn`);
+                return;
+            }
+            
+            // Check if this audio is currently playing
+            if (class2Manager.currentAudio && class2Manager.currentAudio.poemId === poemId && !audioElement.paused) {
+                console.log(`⏹️ Stopping audio for: ${poemId}`);
+                audioElement.pause();
+                audioElement.currentTime = 0;
+                button.innerHTML = class2Manager.currentAudio.originalText;
+                const card = class2Manager.currentAudio.card;
+                if (card) {
+                    card.classList.remove('glass-glow');
+                }
+                class2Manager.currentAudio = null;
+                return;
+            }
+            
+            // Stop any currently playing audio
+            class2Manager.stopCurrentAudio();
+            
+            console.log(`✅ Found audio element: ${actualAudioId}`);
+            console.log(`✅ Found button element: ${poemId}-audio-btn`);
+            
+            const originalText = button.innerHTML;
+            const card = button.closest('.poem-card') || button.closest('.glass-card');
+            
+            button.innerHTML = `
+                <span>پڙهي رهيو آهي ⏸</span>
+                <div class="audio-player ml-2">
+                    <div class="audio-wave"></div>
+                    <div class="audio-wave"></div>
+                    <div class="audio-wave"></div>
+                    <div class="audio-wave"></div>
+                    <div class="audio-wave"></div>
+                </div>
+            `;
+            
+            // Add glow effect to the card
+            if (card) {
+                card.classList.add('glass-glow');
+                console.log('✨ Added glass-glow effect to card');
+            }
+            
+            // Play the audio
+            console.log(`🎧 Starting audio playback for: ${poemId}`);
+            audioElement.currentTime = 0;
+            audioElement.play()
+                .then(() => {
+                    console.log(`▶️ Audio playing successfully for: ${poemId}`);
+                    console.log(`📊 Audio duration: ${audioElement.duration.toFixed(2)} seconds`);
+                })
+                .catch(error => {
+                    console.error(`❌ Error playing audio for ${poemId}:`, error);
+                    console.error('Error details:', error.message);
+                    button.innerHTML = originalText;
+                    if (card) {
+                        card.classList.remove('glass-glow');
+                    }
+                });
+            
+            // Handle audio end
+            audioElement.onended = function() {
+                console.log(`✅ Audio playback ended for: ${poemId}`);
+                button.innerHTML = originalText;
+                if (card) {
+                    card.classList.remove('glass-glow');
+                }
+                class2Manager.currentAudio = null;
+                class2Manager.updateProgress(`audio-${poemId}`);
+            };
+            
+            // Store current audio info
+            class2Manager.currentAudio = {
+                button: button,
+                originalText: originalText,
+                card: card,
+                audioElement: audioElement,
+                poemId: poemId
+            };
+            
+            console.log(`📝 Stored audio info for poemId: ${poemId}`);
+        }
+
+        // Pause function with console logging
+        function pauseVerse(poemId) {
+            console.log(`⏸️ pauseVerse called for: ${poemId}`);
+            
+            if (!class2Manager.currentAudio || class2Manager.currentAudio.poemId !== poemId) {
+                console.warn(`⚠️ No audio currently playing for: ${poemId}`);
+                return;
+            }
+            
+            const audioElement = class2Manager.currentAudio.audioElement;
+            const button = class2Manager.currentAudio.button;
+            const card = class2Manager.currentAudio.card;
+            
+            audioElement.pause();
+            console.log(`✅ Audio paused for: ${poemId}`);
+            console.log(`⏱️ Paused at: ${audioElement.currentTime.toFixed(2)} seconds`);
+            
+            button.innerHTML = `<span>روڪيل ▶️</span>`;
+            button.onclick = function() { resumeVerse(poemId); };
+            
+            if (card) {
+                card.classList.remove('glass-glow');
+            }
+        }
+
+        // Resume function with console logging
+        function resumeVerse(poemId) {
+            console.log(`▶️ resumeVerse called for: ${poemId}`);
+            
+            if (!class2Manager.currentAudio || class2Manager.currentAudio.poemId !== poemId) {
+                console.log(`⚠️ Current audio doesn't match, calling playVerse instead`);
+                playVerse(poemId);
+                return;
+            }
+            
+            const audioElement = class2Manager.currentAudio.audioElement;
+            const button = class2Manager.currentAudio.button;
+            const card = class2Manager.currentAudio.card;
+            
+            console.log(`🔄 Resuming audio from: ${audioElement.currentTime.toFixed(2)} seconds`);
+            
+            audioElement.play()
+                .then(() => {
+                    console.log(`✅ Audio resumed successfully for: ${poemId}`);
+                })
+                .catch(error => {
+                    console.error(`❌ Error resuming audio for ${poemId}:`, error);
+                    button.innerHTML = class2Manager.currentAudio.originalText;
+                    button.onclick = function() { playVerse(poemId); };
+                });
+            
+            button.innerHTML = `<span>پڙهي رهيو آهي ⏸</span>`;
+            button.onclick = function() { pauseVerse(poemId); };
+            
+            if (card) {
+                card.classList.add('glass-glow');
+            }
+        }
+
+        // Hide header on scroll down, show on scroll up
+        let lastScrollTop = 0;
+        const scrollThreshold = 100;
+        
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.glass-nav');
+            if (!nav) return; // Exit if nav element doesn't exist
+            
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > scrollThreshold) {
+                if (scrollTop > lastScrollTop) {
+                    nav.classList.add('hidden-header');
+                } else {
+                    nav.classList.remove('hidden-header');
+                }
+            } else {
+                nav.classList.remove('hidden-header');
+            }
+            
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        }, false);
+    </script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="glass-nav sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-2">
+            <div class="flex justify-between items-center">
+                <a href="sindhi.html" class="glass-button text-indigo-700 flex items-center gap-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    <span class="hidden sm:inline">واپس گهر ھلو</span>
+                    <span class="sm:hidden">گهر</span>
+                </a>
+                
+                <div class="flex items-center gap-3">
+                    <span class="dancing-letter text-xl lg:text-2xl font-bold">
+                        <span class="text-3xl seasonal-float">📚</span>
+                        <span class="bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text">ڪلاس ٻيو</span>
+                        <span class="text-3xl seasonal-float">✨</span>
+                    </span>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <button id="soundToggle" class="glass-button">
+                        <span id="audioIcon" class="text-2xl">🔊</span>
+                    </button>
+                    <button id="darkModeToggle" class="dark-mode-header-btn" onclick="document.body.classList.toggle('dark'); localStorage.setItem('darkMode', document.body.classList.contains('dark') ? 'enabled' : 'disabled'); document.getElementById('darkModeIconHeader').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';">
+                        <span id="darkModeIconHeader">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    // Inline script to ensure dark mode works regardless of other JS issues
+    (function() {
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark');
+            document.getElementById('darkModeIconHeader').textContent = '☀️';
+        }
+    })();
+    </script>
+
+
+
+    <section class="container mx-auto px-4 py-8 text-center mt-24 mb-36">
+        <h1 class="text-4xl lg:text-6xl font-bold text-indigo-800 mb-4">
+            ڪلاس ٻيو - سوچڻ جِي دُنيا
+        </h1>
+        <p class="text-xl lg:text-2xl text-purple-600 mb-8">قدرت جي سُهڻِي خلق</p>
+        
+        <!-- Enhanced Progress System -->
+        <div class="glass-card max-w-md mx-auto p-6 mb-8">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <span class="text-sm text-indigo-700 font-medium">مڪمل ٿيل:</span>
+                <div class="flex gap-2" id="progressIndicator">
+                    <!-- Dynamic progress dots -->
+                </div>
+                <span id="progressText" class="text-sm font-bold text-indigo-800">0%</span>
+            </div>
+            <div class="glass-card w-full h-2 rounded-full overflow-hidden">
+                <div id="progressBar" class="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500"></div>
+            </div>
+        </div>
+        
+        <!-- Animated Character -->
+        <div class="mb-8 seasonal-float">
+            <div class="text-8xl mb-4">🧙‍♂️</div>
+            <p class="text-indigo-700 text-lg font-medium">سنڌي سيکارڻ وارو روبوٽ!</p>
+        </div>
+    </section>
+
+    <!-- Religious Content Section -->
+    <section class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center text-green-700 mb-12 dancing-letter">
+            🕌 الله ۽ نبيءَ جي واکاڻ 🕌
+        </h2>
+        
+            <!-- Dynamic Religious Content Container -->
+        <div id="religiousContentContainer">
+            <!-- Poems will be loaded dynamically here -->
+        </div>
+    </section>
+
+    <!-- Nature & Seasons Section -->
+    <section class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center text-blue-700 mb-12 dancing-letter">
+            🌸 قدرت جي رنگارنگ دنيا 🌸
+        </h2>
+        
+        <!-- Nature poems are included in the religious section above -->
+    </section>
+
+    <!-- Family Love Section -->
+    <section class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center text-pink-700 mb-12 dancing-letter">
+            💝 گهرُو پيار 💝
+        </h2>
+        
+        <!-- Mother's Love Poem (Updated with full bait) -->
+        <div class="poem-card glass-card family-theme p-8 mb-8 max-w-5xl mx-auto touch-ripple gpu-accelerated">
+            <div class="text-center mb-6">
+                <div class="text-6xl mb-4 seasonal-float">👩‍👧‍👦</div>
+                <h3 class="text-2xl lg:text-3xl font-bold mb-2 text-pink-800">مُنھنجي امڙ</h3>
+                <p class="text-lg opacity-90 text-pink-700">ڀيرومل 'غريب'</p>
+            </div>
+            
+            <div class="poem-content collapsed" id="mother-content">
+                <div class="text-lg lg:text-xl leading-relaxed space-y-2">
+                    <div class="verse-line">مون کي جنهن ٿي کِيرُ پِيارو،</div>
+                    <div class="verse-line">پِيارَ مَنجهان ٿي گودِ وِيهارِيو،</div>
+                    <div class="verse-line">خُوشِ ٿِي ھَر ھَر مون ڏي نِهارِيو،</div>
+                    <div class="verse-line font-bold">مُنهنجِي اَمَڙِ.</div>
+                    
+                    <div class="extended-content">
+                        <div class="verse-line">پَنڌ ڪَندي جي ڌِڪو کاڌُم،</div>
+                        <div class="verse-line">ڪَنهن کڻِي ٿي ڇاتيءَ لاتَم،</div>
+                        <div class="verse-line">پِيارَ مَنجهان ٿي ڀاڪُر پاتَم،</div>
+                        <div class="verse-line font-bold">مُنهنجي اَمَڙِ.</div>
+                        
+                        <div class="verse-line">تو ڪَئي مون سان آھِ ڀَلائِي،</div>
+                        <div class="verse-line">تَنهن لَئه ڪَريان شُڪر سَدائين،</div>
+                        <div class="verse-line">مُور نه وِسري تُنهنجي چَڱائي،</div>
+                        <div class="verse-line font-bold">مُنهنجي اَمَڙِ.</div>
+                        
+                        <div class="verse-line">نِنڊَ ڦِٽي مون جَڏهن ٿي پئي،</div>
+                        <div class="verse-line">ڪَنهن ٿي سُمهارِيو لولِي ڏيئِي،</div>
+                        <div class="verse-line">ڇَڏي نه مون کي ڪِيڏھن وَيئِي،</div>
+                        <div class="verse-line font-bold">مُنهنجي اَمَڙِ.</div>
+                        
+                        <div class="verse-line">صُبحَ سانجھيءَ سارَ لَڌائين،</div>
+                        <div class="verse-line">کاڌو پِيتو ڪِيئن ٿي ڏِنائين،</div>
+                        <div class="verse-line">مون تي پنهنجو ساھُ ڇَڏيائين،</div>
+                        <div class="verse-line font-bold">مُنهنجي اَمَڙِ.</div>
+                        
+                        <div class="verse-line">وَڌي جَڏهن آءٌ وَڏو ٿِيندسُ،</div>
+                        <div class="verse-line">سُکَ سَوين آءٌ توکي ڏِيندسُ،</div>
+                        <div class="verse-line">توتِي پنهنجو ساھُ ڇَڏيندسُ،</div>
+                        <div class="verse-line font-bold">مُنهنجي اَمَڙِ.</div>
+                    </div>
+                </div>
+            </div><div class="flex justify-center gap-4 mt-6">
+                <button onclick="togglePoemExpansion('mother')" class="glass-button text-pink-700 px-6 py-3 font-bold touch-ripple">
+                    <span id="mother-expand-text">مڪمل نظم ڏسو</span>
+                </button>
+                <button onclick="playVerse('mother')" class="glass-button text-pink-700 px-6 py-3 font-bold touch-ripple">
+                    <span id="mother-audio-btn">ماءُ سان پيار جو گيت ٻڌو 💝</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Pakistan Poem (New from provided text) -->
+        <div class="poem-card glass-card family-theme p-8 mb-8 max-w-5xl mx-auto touch-ripple gpu-accelerated">
+            <div class="text-center mb-6">
+                <div class="text-6xl mb-4 seasonal-float">💚</div>
+                <h3 class="text-2xl lg:text-3xl font-bold mb-2 text-pink-800">پِيارو پِيارو پاڪِستان</h3>
+                <p class="text-lg opacity-90 text-pink-700">‘ساز’ ملاڪاتياري</p>
+            </div>
+            
+            <div class="poem-content collapsed" id="pakistan-content">
+                <div class="text-lg lg:text-xl leading-relaxed space-y-2">
+                    <div class="verse-line">سائي اوچي جهنڊي وارو،</div>
+                    <div class="verse-line">چمڪي جنھن ۾ چنڊ ۽ تارو،</div>
+                    <div class="verse-line">جان کان پيارو، پيارا ٻارو!</div>
+                    <div class="verse-line font-bold">پيارو پيارو پاڪستان.</div>
+                    
+                    <div class="extended-content">
+                        <div class="verse-line">مُلڪن ۾ آ مانُ انھيءَ جو،</div>
+                        <div class="verse-line">سڀ کان اوچو شانُ اُنھيءَ جو،</div>
+                        <div class="verse-line">ساري جڳ کان نِيارو نِيارو،</div>
+                        <div class="verse-line font-bold">پيارو پيارو پاڪستان.</div>
+                        
+                        <div class="verse-line">مزور اُن جا محنت وارا،</div>
+                        <div class="verse-line">ھاري اُن جا ھمت وارا،</div>
+                        <div class="verse-line">ساوڪ وارو سُھڻو سارو،</div>
+                        <div class="verse-line font-bold">پيارو پيارو پاڪستان.</div>
+                    </div>
+                </div>
+            </div><div class="flex justify-center gap-4 mt-6">
+                <button onclick="togglePoemExpansion('pakistan')" class="glass-button text-pink-700 px-6 py-3 font-bold touch-ripple">
+                    <span id="pakistan-expand-text">مڪمل نظم ڏسو</span>
+                </button>
+                <button onclick="playVerse('pakistan')" class="glass-button text-pink-700 px-6 py-3 font-bold touch-ripple">
+                    <span id="pakistan-audio-btn">پاڪستان جو گيت ٻڌو 💚</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Riddles Section -->
+    <section class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center text-orange-700 mb-12 dancing-letter">
+            🧩 مزيدار ڳُجهارتون🧩
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Riddle 1: Jaho (Updated from bait) -->
+            <div class="riddle-container glass-card touch-ripple" onclick="toggleRiddle(this, 'jaho')">
+                <div class="riddle-card">
+                    <div class="riddle-front text-gray-800">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4 seasonal-float">❓</div>
+                            <p class="text-base leading-relaxed font-semibold">
+                                ھِيڏڙو ھِيڏڙو پاڻ،<br>
+                                جِنهن کي سَو سُين ساڻ!<br>
+                                جيڪو آھِي سُڄاڻ،<br>
+                                سو ڀَڃي پِرولِي ھاڻ.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="riddle-back text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4 seasonal-float">🌙</div>
+                            <h3 class="text-xl font-bold mb-2">اِجهو! (چنڊ)</h3>
+                            <p class="text-sm">چنڊ رات جو چمڪي ٿو!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riddle 2: Shadow (Updated from bait) -->
+            <div class="riddle-container glass-card touch-ripple" onclick="toggleRiddle(this, 'shadow')">
+                <div class="riddle-card">
+                    <div class="riddle-front text-gray-800">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4 seasonal-float">❓</div>
+                            <p class="text-base leading-relaxed font-semibold">
+                                اُسَ ۾ آءٌ اَچان ٿو،<br>
+                                ڇانءَ ۾ آءٌ پَچان ٿو،<br>
+                                اَدڙِي اَدڙا ! توکان،<br>
+                                پنهنجو نانءُ پُڇان ٿو!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="riddle-back text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4 seasonal-float">👤</div>
+                            <h3 class="text-xl font-bold mb-2">پاڇو!</h3>
+                            <p class="text-sm">اسان جو پاڇو هميشه گڏ!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riddle 3: Owl (Updated from bait) -->
+            <div class="riddle-container glass-card touch-ripple" onclick="toggleRiddle(this, 'owl')">
+                <div class="riddle-card">
+                    <div class="riddle-front text-gray-800">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4 seasonal-float">❓</div>
+                            <p class="text-base leading-relaxed font-semibold">
+                                ويرِي آھِي ھو اوندھِ جو،<br>
+                                راتِ سَڄي ھو جاڳي ٿو،<br>
+                                سارو ڏينهن سُتو پَيو آھِي،<br>
+                                اوھين ٻُڌايو ڇاھي سُو؟
+                            </p>
+                        </div>
+                    </div>
+                    <div class="riddle-back text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4 seasonal-float">🦉</div>
+                            <h3 class="text-xl font-bold mb-2">چِٻرو!</h3>
+                            <p class="text-sm">رات ۾ جاڳڻ وارو پکي!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riddle 4: Radish (Updated from bait) -->
+            <div class="riddle-container glass-card touch-ripple" onclick="toggleRiddle(this, 'radish')">
+                <div class="riddle-card">
+                    <div class="riddle-front text-gray-800">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4 seasonal-float">❓</div>
+                            <p class="text-base leading-relaxed font-semibold">
+                                ڪَچي کاڄي، رَڌل کاڄي،<br>
+                                اَڇي ڪُڪڙ، سائو پُڇُ،<br>
+                                سانڌاڻو به ٺَھي اُنَ جو،<br>
+                                پِيارا ٻالڪَ! ھاڻ ته ڪُڇُ!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="riddle-back text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4 seasonal-float">🥕</div>
+                            <h3 class="text-xl font-bold mb-2">مُوري!</h3>
+                            <p class="text-sm">ھڪ مزيدار سبزي!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riddle 5: Clock (unchanged) -->
+            <div class="riddle-container glass-card touch-ripple" onclick="toggleRiddle(this, 'clock')">
+                <div class="riddle-card">
+                    <div class="riddle-front text-gray-800">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4 seasonal-float">❓</div>
+                            <p class="text-base leading-relaxed font-semibold">
+                                ٽِڪ ٽِڪ ٽِڪ ٽِڪ ڪري ٿو،<br>
+                                وقت اسان کي ٻڌائي ٿو،<br>
+                                ٻہ هٿ آهن گهمندا،<br>
+                                اهو ڇا آهي ٻڌايو!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="riddle-back text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4 seasonal-float">🕐</div>
+                            <h3 class="text-xl font-bold mb-2">گهڙيال!</h3>
+                            <p class="text-sm">وقت ڏيکاڻ وارو اوزار!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Riddle 6: Book (unchanged) -->
+            <div class="riddle-container glass-card touch-ripple" onclick="toggleRiddle(this, 'book')">
+                <div class="riddle-card">
+                    <div class="riddle-front text-black">
+                        <div class="text-center">
+                            <div class="text-4xl mb-4 seasonal-float">❓</div>
+                            <p class="text-base leading-relaxed">
+                                ڪاغذن جو ڍير آهي،<br>
+                                علم جو بھترين ذخيرو آهي،<br>
+                                کوليان تہ پڙهي سگهان ٿو،<br>
+                                اهو ڇا آهي ٻڌايو!
+                            </p>
+                        </div>
+                    </div>
+                    <div class="riddle-back text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4 seasonal-float">📚</div>
+                            <h3 class="text-xl font-bold mb-2">ڪتاب!</h3>
+                            <p class="text-sm">علم جو خزانو!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Play & Games Section -->
+    <section class="container mx-auto px-4 py-8">
+        <h2 class="text-3xl lg:text-4xl font-bold text-center text-purple-700 mb-12 dancing-letter">
+            🎠 مزيدار رانديون 🎠
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Spinning Top Poem (Updated with full bait) -->
+            <div class="poem-card glass-card play-theme p-6 touch-ripple gpu-accelerated">
+                <div class="text-center mb-4">
+                    <div class="text-5xl mb-3 seasonal-float">🌀</div>
+                    <h3 class="text-xl font-bold text-white">لاٽونئڙو ڦيرايون</h3>
+                    <p class="text-sm opacity-90 text-white">الطاف عباسي</p>
+                </div>
+                
+                <div class="poem-content collapsed" id="top-content">
+                    <div class="text-base leading-relaxed space-y-2">
+                        <div class="verse-line">آءُ تہ لاٽُونئَڙو ڦيرايون!</div>
+                        <div class="verse-line">دوست گَهڙِي کن دِل وِندرايون!</div>
+                        
+                        <div class="extended-content">
+                            <div class="verse-line">منھنجو لاٽُون سُھڻو سُھڻو،</div>
+                            <div class="verse-line">رَنگا رَنگي ۽ مَن مُھڻو،</div>
+                            <div class="verse-line">ڪارِيگرَ ڪيئن آھي ٺاھيو،</div>
+                            <div class="verse-line">واھہ جو رنگ سان رَنگ ملايو،</div>
+                            <div class="verse-line">آءُ  تہ ھن سان رُوح رِيجهايُون،</div>
+                            <div class="verse-line">آءُ تہ لاٽُونئَڙو ڦيرايون!</div>
+                            <div class="verse-line">آيُس پَٽ جي ڏور وَٽائي،</div>
+                            <div class="verse-line">ڳاڙھا ڦُندَڻ اُن ۾ لائي،</div>
+                            <div class="verse-line">ويڙھي زور سان پَٽَ تي ھَڻندس،</div>
+                            <div class="verse-line">نِوڙي جهٽ پَٽِ ھٿ تي کڻندُس،</div>
+                            <div class="verse-line">ڪَڍَندو ھٿ تي ھُو ڪِتڪايُون،</div>
+                            <div class="verse-line">آءُ تہ لاٽُونئَڙو ڦيرايون.</div>
+                            <div class="verse-line">ھٿ تي کَڻنَدسُ ھيٺ نہ ڊَھندو،</div>
+                            <div class="verse-line">ڦِرَندو ڦِرَندو ساندھہ رھندو،</div>
+                            <div class="verse-line">ٿڪجِي پوندو گوھيون ھَڻندو،</div>
+                            <div class="verse-line">پوءِ گَهڙي کن ساھہ بہ کڻندو،</div>
+                            <div class="verse-line">بيھڻ جون وارِيندو وايُون،</div>
+                            <div class="verse-line">آءُ تہ لاٽُونئَڙو ڦيرايون!</div>
+                            <div class="verse-line">تُون بہ کڻي اچ لاٽُون ڏور،</div>
+                            <div class="verse-line">پوءِ پُڄايُون ڪَنھن جو زور،</div>
+                            <div class="verse-line">لاٽون آھي سُھڻو منھنجو،</div>
+                            <div class="verse-line">ناھي ھِن کان بھتَر ڪنھن جو،</div>
+                            <div class="verse-line">ڇو نہ ڀلا پوءِ شَرط پُڄايُون،</div>
+                            <div class="verse-line">آءُ تہ لاٽُونئَڙو ڦيرايون!</div>
+                        </div>
+                    </div>
+                </div><div class="flex justify-center gap-2 mt-4">
+                    <button onclick="togglePoemExpansion('top')" class="glass-button text-purple-700 px-4 py-2 text-sm font-bold touch-ripple">
+                        <span id="top-expand-text">مڪمل راند</span>
+                    </button>
+                    <button onclick="playVerse('top')" class="glass-button text-purple-700 px-4 py-2 text-sm font-bold touch-ripple">
+                        <span id="top-audio-btn">ٻڌو 🎵</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Doll Poem (unchanged - full version already present) -->
+            <div class="poem-card glass-card play-theme p-6 touch-ripple gpu-accelerated">
+                <div class="text-center mb-4">
+                    <div class="text-5xl mb-3 seasonal-float">🪆</div>
+                    <h3 class="text-xl font-bold text-white">ڀَڃُ پرولي</h3>
+                    <p class="text-sm opacity-90 text-white">بيت</p>
+                </div>
+                
+                <div class="poem-content collapsed" id="doll-content">
+                    <div class="text-base leading-relaxed space-y-2">
+                        <div class="verse-line">ھيڏڙو ھيڏڙو پاڻ،</div>
+                        <div class="verse-line">جنھن کي سو سُين ساڻ!</div>
+                        <div class="verse-line">جيڪو آھي سُڄاڻ،</div>
+                        <div class="verse-line">سو ڀڃي پرولي ھاڻ.</div>
+                        
+                        <div class="extended-content">
+                            <div class="verse-line">اُس ۾ آءُ اچان ٿو،</div>
+                            <div class="verse-line">ڇانءُ ۾ آءُ ڀڄان ٿو،</div>
+                            <div class="verse-line">ادڙي ادڙا! توکان،</div>
+                            <div class="verse-line">پنھنجو نانءُ پُڇان ٿو!</div>
+                            <div class="verse-line">ويري آھي اوندھہ جو،</div>
+                            <div class="verse-line">رات سڄي ھو جاڳي ٿو،</div>
+                            <div class="verse-line">سارو ڏينھن سُتو پيو آھي،</div>
+                            <div class="verse-line">اوھين ٻُڌايو ڇا ھي سو؟</div>
+                            <div class="verse-line">ڪَچِي کاڄي، رڌل کاڄي،</div>
+                            <div class="verse-line">اَڇي ڪُڪڙ، سائو پُڇُ،</div>
+                            <div class="verse-line">سانڌاڻو بہ ٺھي ان جو،</div>
+                            <div class="verse-line">پيارا ٻالڪ! ھاڻ تہ ڪُڇُ!</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center gap-2 mt-4">
+                    <button onclick="togglePoemExpansion('doll')" class="glass-button text-purple-700 px-4 py-2 text-sm font-bold touch-ripple">
+                        <span id="doll-expand-text">مڪمل بيت ڏسو</span>
+                    </button>
+                    <button onclick="playVerse('doll')" class="glass-button text-purple-700 px-4 py-2 text-sm font-bold touch-ripple">
+                        <span id="doll-audio-btn">ٻڌو 🎵</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievement Modal -->
+    <div id="achievementModal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-lg flex items-center justify-center z-50 p-4">
+        <div class="glass-card p-8 text-center max-w-md w-full success-celebration">
+            <div class="text-6xl mb-4 seasonal-float">🏆</div>
+            <h3 class="text-2xl font-bold text-indigo-800 mb-4" id="achievementTitle">بھترين!</h3>
+            <p class="text-lg text-gray-700 mb-6" id="achievementText">توهان نئون ڏاڪو پورو ڪيو!</p>
+            <button onclick="closeAchievement()" class="glass-button text-indigo-700 px-8 py-3 font-bold touch-ripple">
+                تاڙِيُون! 🎉
+            </button>
+        </div>
+    </div>
+
+    
+    <style>
+        /* Dark mode footer styles */
+        body.dark .site-footer {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body.dark .footer-title {
+            color: #e2e8f0 !important;
+        }
+        
+        body.dark .site-footer p {
+            color: #cbd5e1 !important;
+        }
+    </style>
+</body>
+</html>
+       
+    </script>
+</body>
+</html>
+     
+               <!-- <div class="text-base leading-relaxed space-y-2">
+                        <div class="verse-line">لاٽونئڙو ڦيرايون</div>
+                        <div class="verse-line">ڦِرڻ لڳو ڦِرڻ لڳو</div></div><div class="flex justify-center gap-2 mt-4">
+                    <button onclick="playVerse('top')" class="glass-button text-purple-700 px-4 py-2 text-sm font-bold touch-ripple">
+                        <span id="top-audio-btn">ٻڌو 🎵</span>
+                    </button>
+                </div>
+            </div> -->
+
+            <!-- Doll Poem -->
+            <!-- <div class="poem-card glass-card play-theme p-6 touch-ripple gpu-accelerated">
+                <div class="text-center mb-4">
+                    <div class="text-5xl mb-3 seasonal-float">🎎</div>
+                    <h3 class="text-xl font-bold text-white">گُڏيءَ جي شادي</h3>
+                    <p class="text-sm opacity-90 text-white">روايتي</p>
+                </div> -->
+                
+                <!-- <div class="poem-content collapsed" id="doll-content">
+                    <div class="text-base leading-relaxed space-y-2">
+                        <div class="verse-line">گُڏيءَ جي شادي</div>
+                        <div class="verse-line">مزيدار راند</div></div><div class="flex justify-center gap-2 mt-4">
+                    <button onclick="playVerse('doll')" class="glass-button text-purple-700 px-4 py-2 text-sm font-bold touch-ripple">
+                        <span id="doll-audio-btn">ٻڌو 🎵</span>
+                    </button>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+    <!-- Achievement Modal -->
+    <div id="achievementModal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-lg flex items-center justify-center z-50 p-4">
+        <div class="glass-card p-8 text-center max-w-md w-full success-celebration">
+            <div class="text-6xl mb-4 seasonal-float">🏆</div>
+            <h3 class="text-2xl font-bold text-indigo-800 mb-4" id="achievementTitle">واڌايُون!</h3>
+            <p class="text-lg text-gray-700 mb-6" id="achievementText">توهان نئون ڏاڪو پورو ڪيو!</p>
+            <button onclick="closeAchievement()" class="glass-button text-indigo-700 px-6 py-3 font-bold">
+                تاڙِيُون! 🎉
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-card mt-16 p-8 text-center">
+        <h3 class="text-2xl font-bold mb-4">ڪلاس ٻيو - سنڌي سکيا</h3>
+        <p class="text-lg mb-2">عبدالماجد ڀرگڙي انسٽيٽيوٽ آف لينگويج انجنيئرنگ</p>
+        <p class="text-base">&copy; 2025 ثقافت کاتو، سنڌ حڪومت - سڀ حق محفوظ آهن</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <span class="text-2xl">🌟</span>
+            <span class="text-2xl">📚</span>
+            <span class="text-2xl">🎵</span>
+            <span class="text-2xl">💫</span>
+        </div>
+    </footer>
+
+    <!-- Audio Elements for all poems -->
+    <audio id="audio-hamd" src="/assets/Data/Audio Baits/2/01 Dhaneea Ja Aseen Geet.wav"></audio>
+    <audio id="audio-naat" src="/assets/Data/Audio Baits/2/02 Madine Ja Saeen.wav"></audio>
+    <audio id="audio-prayer" src="/assets/Data/Audio Baits/2/09 Khudaya.wav"></audio>
+    <audio id="audio-rose" src="/assets/Data/Audio Baits/2/03 Gul.wav"></audio>
+    <audio id="audio-seasons" src="/assets/Data/Audio Baits/2/04 Gayoon Chaen Mundan jo Raag.wav"></audio>
+    <audio id="audio-mother" src="/assets/Data/Audio Baits/2/05 Muhinji Amar.wav"></audio>
+    <audio id="audio-pakistan" src="/assets/Data/Audio Baits/2/07 Pyaro Pakistan.wav"></audio>
+    <audio id="audio-top" src="/assets/Data/Audio Baits/2/06 Latoonaro (Niwaree).wav"></audio>
+    <audio id="audio-doll" src="/assets/Data/Audio Baits/2/08 Bhanj Piroli.wav"></audio>
+
+    <script>
+    // Global function to stop all audio elements
+    function stopAllAudio() {
+        document.querySelectorAll('audio').forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+    }
+    
+    // Toggle Poem Expansion Function
+    function togglePoemExpansion(poemId) {
+        const content = document.getElementById(`${poemId}-content`);
+        const expandButton = document.getElementById(`${poemId}-expand-text`);
+        
+        if (!content || !expandButton) {
+            console.error(`Elements not found for poem: ${poemId}`);
+            return;
+        }
+        
+        const extendedContent = content.querySelector('.extended-content');
+        
+        // Handle poems with extended-content structure
+        if (extendedContent) {
+            // Toggle display using CSS class
+            if (extendedContent.classList.contains('show')) {
+                extendedContent.classList.remove('show');
+                // Set appropriate text based on poem type
+                const expandTexts = {
+                    'hamd': 'مڪمل حمد ڏسو',
+                    'naat': 'مڪمل نعت ڏسو',
+                    'prayer': 'مڪمل دعا ڏسو',
+                    'rose': 'مڪمل نظم',
+                    'seasons': 'چار مُندُون',
+                    'mother': 'مڪمل نظم ڏسو',
+                    'pakistan': 'مڪمل نظم ڏسو'
+                };
+                expandButton.textContent = expandTexts[poemId] || 'مڪمل ڏسو';
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+            } else {
+                extendedContent.classList.add('show');
+                expandButton.textContent = 'لڪايو';
+                content.classList.remove('collapsed');
+                content.classList.add('expanded');
+            }
+        } else {
+            // Handle poems without extended-content (like seasons) - toggle collapsed/expanded
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                content.classList.add('expanded');
+                expandButton.textContent = 'لڪايو';
+            } else {
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                const expandTexts = {
+                    'hamd': 'مڪمل حمد ڏسو',
+                    'naat': 'مڪمل نعت ڏسو',
+                    'prayer': 'مڪمل دعا ڏسو',
+                    'rose': 'مڪمل نظم',
+                    'seasons': 'چار مُندُون',
+                    'mother': 'مڪمل نظم ڏسو',
+                    'pakistan': 'مڪمل نظم ڏسو'
+                };
+                expandButton.textContent = expandTexts[poemId] || 'مڪمل ڏسو';
+            }
+        }
+        
+        // Update progress
+        if (typeof class2Manager !== 'undefined') {
+            class2Manager.updateProgress(`expand-${poemId}`);
+        }
+    }
+
+    // Enhanced Audio System with actual playback and console logging
+    function playVerse(poemId) {
+        console.log(`🎵 playVerse called with poemId: ${poemId}`);
+        
+        if (!class2Manager.soundEnabled) {
+            console.log('⚠️ Sound is disabled');
+            return;
+        }
+        
+        class2Manager.stopCurrentAudio();
+        
+        const audioElement = document.getElementById(`audio-${poemId}`);
+        const button = document.getElementById(`${poemId}-audio-btn`);
+        
+        if (!audioElement) {
+            console.error(`❌ Audio element not found for: audio-${poemId}`);
+            return;
+        }
+        
+        if (!button) {
+            console.error(`❌ Button element not found for: ${poemId}-audio-btn`);
+            return;
+        }
+        
+        console.log(`✅ Found audio element: audio-${poemId}`);
+        console.log(`✅ Found button element: ${poemId}-audio-btn`);
+        
+        const originalText = button.innerHTML;
+        const card = button.closest('.poem-card') || button.closest('.glass-card');
+        
+        button.innerHTML = `
+            <span>پڙهي رهيو آهي ⏸</span>
+            <div class="audio-player ml-2">
+                <div class="audio-wave"></div>
+                <div class="audio-wave"></div>
+                <div class="audio-wave"></div>
+                <div class="audio-wave"></div>
+                <div class="audio-wave"></div>
+            </div>
+        `;
+        
+        // Add glow effect to the card
+        if (card) {
+            card.classList.add('glass-glow');
+            console.log('✨ Added glass-glow effect to card');
+        }
+        
+        // Play the audio
+        console.log(`🎧 Starting audio playback for: ${poemId}`);
+        audioElement.currentTime = 0;
+        audioElement.play()
+            .then(() => {
+                console.log(`▶️ Audio playing successfully for: ${poemId}`);
+                console.log(`📊 Audio duration: ${audioElement.duration.toFixed(2)} seconds`);
+            })
+            .catch(error => {
+                console.error(`❌ Error playing audio for ${poemId}:`, error);
+                console.error('Error details:', error.message);
+                button.innerHTML = originalText;
+                if (card) {
+                    card.classList.remove('glass-glow');
+                }
+            });
+        
+        // Handle audio end
+        audioElement.onended = function() {
+            console.log(`✅ Audio playback ended for: ${poemId}`);
+            button.innerHTML = originalText;
+            if (card) {
+                card.classList.remove('glass-glow');
+            }
+            class2Manager.currentAudio = null;
+            class2Manager.updateProgress(`audio-${poemId}`);
+        };
+        
+        // Store current audio info
+        class2Manager.currentAudio = {
+            button: button,
+            originalText: originalText,
+            card: card,
+            audioElement: audioElement,
+            poemId: poemId
+        };
+        
+        console.log(`📝 Stored audio info for poemId: ${poemId}`);
+    }
+
+// Update stopCurrentAudio to actually stop the audio with console logging
+class2Manager.stopCurrentAudio = function() {
+    if (this.currentAudio) {
+        console.log(`🛑 Stopping audio for: ${this.currentAudio.poemId || 'unknown'}`);
+        
+        if (this.currentAudio.audioElement) {
+            this.currentAudio.audioElement.pause();
+            this.currentAudio.audioElement.currentTime = 0;
+            console.log('✅ Audio element paused and reset');
+        }
+        
+        if (this.currentAudio.timeout) {
+            clearTimeout(this.currentAudio.timeout);
+            console.log('✅ Timeout cleared');
+        }
+        
+        this.currentAudio.button.innerHTML = this.currentAudio.originalText;
+        console.log('✅ Button text reset to original');
+        
+        if (this.currentAudio.card) {
+            this.currentAudio.card.classList.remove('glass-glow');
+            console.log('✅ Glow effect removed from card');
+        }
+        
+        this.currentAudio = null;
+        console.log('✅ Current audio object cleared');
+    }
+};
+
+
+    // Pause function with console logging
+    function pauseVerse(poemId) {
+        console.log(`⏸️ pauseVerse called for: ${poemId}`);
+        
+        if (!class2Manager.currentAudio || class2Manager.currentAudio.poemId !== poemId) {
+            console.warn(`⚠️ No audio currently playing for: ${poemId}`);
+            return;
+        }
+        
+        const audioElement = class2Manager.currentAudio.audioElement;
+        const button = class2Manager.currentAudio.button;
+        const card = class2Manager.currentAudio.card;
+        
+        audioElement.pause();
+        console.log(`✅ Audio paused for: ${poemId}`);
+        console.log(`⏱️ Paused at: ${audioElement.currentTime.toFixed(2)} seconds`);
+        
+        button.innerHTML = `<span>روڪيل ▶️</span>`;
+        button.onclick = function() { resumeVerse(poemId); };
+        
+        if (card) {
+            card.classList.remove('glass-glow');
+        }
+    }
+
+    // Resume function with console logging
+    function resumeVerse(poemId) {
+        console.log(`▶️ resumeVerse called for: ${poemId}`);
+        
+        if (!class2Manager.currentAudio || class2Manager.currentAudio.poemId !== poemId) {
+            console.log(`⚠️ Current audio doesn't match, calling playVerse instead`);
+            playVerse(poemId);
+            return;
+        }
+        
+        const audioElement = class2Manager.currentAudio.audioElement;
+        const button = class2Manager.currentAudio.button;
+        const card = class2Manager.currentAudio.card;
+        
+        console.log(`🔄 Resuming audio from: ${audioElement.currentTime.toFixed(2)} seconds`);
+        
+        audioElement.play()
+            .then(() => {
+                console.log(`✅ Audio resumed successfully for: ${poemId}`);
+            })
+            .catch(error => {
+                console.error(`❌ Error resuming audio for ${poemId}:`, error);
+                button.innerHTML = class2Manager.currentAudio.originalText;
+                button.onclick = function() { playVerse(poemId); };
+            });
+        
+        button.innerHTML = `<span>پڙهي رهيو آهي ⏸</span>`;
+        button.onclick = function() { pauseVerse(poemId); };
+        
+        if (card) {
+            card.classList.add('glass-glow');
+        }
+    }
+
+    // Update stopCurrentAudio
+    if (typeof class2Manager !== 'undefined') {
+        class2Manager.stopCurrentAudio = function() {
+            if (this.currentAudio) {
+                if (this.currentAudio.audioElement) {
+                    this.currentAudio.audioElement.pause();
+                    this.currentAudio.audioElement.currentTime = 0;
+                }
+                this.currentAudio.button.innerHTML = this.currentAudio.originalText;
+                this.currentAudio.button.onclick = function() { 
+                    playVerse(this.currentAudio.poemId); 
+                }.bind(this);
+                if (this.currentAudio.card) {
+                    this.currentAudio.card.classList.remove('glass-glow');
+                }
+                this.currentAudio = null;
+            }
+        };
+    }
+    </script>
+
+    <!-- Audio files for all poems -->
+<audio id="audio-hamd" src="/assets/Data/Audio Baits/2/01 Dhaneea Ja Aseen Geet.wav"></audio>
+<audio id="audio-naat" src="/assets/Data/Audio Baits/2/02 Madine Ja Saeen.wav"></audio>
+<audio id="audio-prayer" src="/assets/Data/Audio Baits/2/09 Khudaya.wav"></audio>
+<audio id="audio-rose" src="/assets/Data/Audio Baits/2/03 Gul.wav"></audio>
+<audio id="audio-seasons" src="/assets/Data/Audio Baits/2/04 Gayoon Chaen Mundan jo Raag.wav"></audio>
+<audio id="audio-mother" src="/assets/Data/Audio Baits/2/05 Muhinji Amar.wav"></audio>
+<audio id="audio-pakistan" src="/assets/Data/Audio Baits/2/07 Pyaro Pakistan.wav"></audio>
+<audio id="audio-top" src="/assets/Data/Audio Baits/2/06 Latoonaro (Niwaree).wav"></audio>
+<audio id="audio-doll" src="/assets/Data/Audio Baits/2/08 Bhanj Piroli.wav"></audio>
+
+
+</body>
+</html>
+

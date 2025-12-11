@@ -1,0 +1,1019 @@
+/* ==========================================
+   GLOBAL STYLES FOR KIDS EDUCATIONAL WEBSITE
+   ========================================== */
+
+/* Font Face Declarations */
+@font-face {
+    font-family: 'AMBILE';
+    src: url('/assets/fonts/AMBILE.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'AMBILE2';
+    src: url('/assets/fonts/AMBILE Shadow.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+
+/* Global Font Settings */
+html {
+    font-size: 16px; /* Base font size for desktop */
+}
+
+body {
+    font-family: 'AMBILE', 'Noto Nastaliq Urdu', serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, title {
+    font-family: 'AMBILE2', 'Noto Nastaliq Urdu', serif;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+/* ==========================================
+   MATH CONTENT SPECIFIC STYLES
+   ========================================== */
+
+/* Desktop math content */
+.exercise-content {
+    font-size: 2.5rem !important; /* Large exercise problem text */
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+}
+
+.learning-lesson {
+    font-size: 1.2rem !important; /* Lesson content */
+}
+
+.learning-lesson h4 {
+    font-size: 1.5rem !important; /* Lesson headings */
+    margin-bottom: 1rem !important;
+}
+
+.learning-lesson p {
+    font-size: 1.2rem !important; /* Lesson paragraphs */
+    line-height: 1.6 !important;
+}
+
+.learning-tips li {
+    font-size: 1.2rem !important; /* Tips and hints */
+    line-height: 1.6 !important;
+}
+
+.math-card p {
+    font-size: 1.25rem !important; /* Math cards */
+}
+
+/* Math exercise buttons */
+.exercise-button, .mode-btn, .exercise-type-btn {
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    padding: 0.875rem 1.25rem !important;
+}
+
+/* Math problem display text */
+.text-4xl, .text-5xl, .text-6xl {
+    font-weight: 700 !important;
+}
+
+.text-4xl { font-size: 3.5rem !important; } /* Math problems */
+.text-5xl { font-size: 4.5rem !important; } /* Large numbers */
+.text-6xl { font-size: 5.5rem !important; } /* Very large display */
+
+/* Grid text in lessons */
+.grid .text-sm {
+    font-size: 1.125rem !important;
+}
+
+/* Answer choices and options */
+.grid .text-base {
+    font-size: 1.2rem !important;
+}
+
+/* ==========================================
+   SINDHI CLASS CONTENT SPECIFIC STYLES
+   ========================================== */
+
+/* Verse and poem content - larger for better readability */
+.verse-line {
+    font-size: 1.25rem !important;
+    line-height: 1.7 !important;
+    padding: 1rem !important;
+}
+
+.verse-card .text-lg {
+    font-size: 1.375rem !important;
+}
+
+.verse-card .text-xl {
+    font-size: 1.625rem !important;
+}
+
+/* Riddle content */
+.riddle-front p, .riddle-back p {
+    font-size: 1.2rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Educational card content */
+.educational-card h3 {
+    font-size: 1.5rem !important;
+}
+
+.educational-card p {
+    font-size: 1.2rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Navigation and header text for class pages */
+.glass-nav .text-xl {
+    font-size: 1.5rem !important;
+}
+
+.glass-nav .text-2xl {
+    font-size: 2rem !important;
+}
+
+/* Hero section text */
+.hero-title {
+    font-size: 2rem !important;
+} */
+
+/* .hero-subtitle {
+    font-size: 1.5rem !important;
+}
+
+/* Advanced class content - Poetry and extended content */
+.poem-card h3, .poetry-card h3 {
+    font-size: 1.75rem !important;
+    line-height: 1.3 !important;
+}
+
+.poem-card p, .poetry-card p {
+    font-size: 1.25rem !important;
+    line-height: 1.6 !important;
+}
+
+/* Poem content and verses */
+.poem-content {
+    font-size: 1.2rem !important;
+    line-height: 1.7 !important;
+}
+
+.poem-title {
+    font-size: 1.6rem !important;
+}
+
+.poem-author {
+    font-size: 1.1rem !important;
+}
+
+/* Enhanced verse styling for advanced classes */
+.verse-line {
+    font-size: 1.3rem !important;
+    line-height: 1.8 !important;
+    padding: 1.25rem !important;
+}
+
+/* Extended content for longer poems */
+.extended-content {
+    font-size: 1.2rem !important;
+    line-height: 1.7 !important;
+}
+
+/* Section titles for advanced classes */
+.section-title {
+    font-size: 2.5rem !important;
+}
+
+/* ==========================================
+   RESPONSIVE FONT SIZES
+   ========================================== */
+
+/* Base font size adjustments for better mobile visibility */
+@media (max-width: 768px) {
+    html {
+        font-size: 18px; /* Increase base font size on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    html {
+        font-size: 20px; /* Even larger base font size on small mobile */
+    }
+}
+
+/* Large tablets and small desktops */
+@media (max-width: 1200px) {
+    h1 { font-size: 2.5rem !important; }
+    h2 { font-size: 2rem !important; }
+    h3 { font-size: 1.5rem !important; }
+    h4 { font-size: 1.25rem !important; }
+    h5 { font-size: 1.125rem !important; }
+    h6 { font-size: 1rem !important; }
+    
+    .text-base { font-size: 1.5rem !important; }
+    .text-sm { font-size: 1.2rem !important; }
+    .text-xs { font-size: 1.0rem !important; }
+    .text-lg { font-size: 1.75rem !important; }
+    .text-xl { font-size: 2rem !important; }
+    .text-2xl { font-size: 2.5rem !important; }
+}
+
+/* Tablets */
+@media (max-width: 900px) {
+    h1 { font-size: 2.25rem !important; }
+    h2 { font-size: 1.875rem !important; }
+    h3 { font-size: 1.375rem !important; }
+    h4 { font-size: 1.125rem !important; }
+    h5 { font-size: 1.05rem !important; }
+    h6 { font-size: 0.95rem !important; }
+    
+    .text-base { font-size: 1.125rem !important; }
+    .text-sm { font-size: 1.05rem !important; }
+    .text-xs { font-size: 0.95rem !important; }
+    .text-lg { font-size: 1.5rem !important; }
+    .text-xl { font-size: 1.75rem !important; }
+    .text-2xl { font-size: 2.25rem !important; }
+    
+    /* Button and interactive element sizes */
+    .glass-button, .exercise-button, .mode-btn, .exercise-type-btn {
+        font-size: 1rem !important;
+        padding: 0.875rem 1.25rem !important;
+    }
+    
+    /* Math content adjustments for tablets */
+    .exercise-content {
+        font-size: 2.75rem !important;
+    }
+    
+    .learning-lesson p, .learning-tips li {
+        font-size: 1.25rem !important;
+    }
+    
+    .text-4xl { font-size: 3.25rem !important; }
+    .text-5xl { font-size: 4rem !important; }
+    .text-6xl { font-size: 4.75rem !important; }
+    
+    /* Sindhi class content adjustments for tablets */
+    .verse-line {
+        font-size: 1.375rem !important;
+        padding: 1.125rem !important;
+    }
+    
+    .educational-card h3 {
+        font-size: 1.625rem !important;
+    }
+    
+    .educational-card p {
+        font-size: 1.3rem !important;
+    }
+    
+    .riddle-front p, .riddle-back p {
+        font-size: 1.3rem !important;
+    }
+    
+    /* Advanced class content adjustments for tablets */
+    .poem-card h3, .poetry-card h3 {
+        font-size: 1.875rem !important;
+    }
+    
+    .poem-card p, .poetry-card p {
+        font-size: 1.375rem !important;
+    }
+    
+    .poem-content {
+        font-size: 1.3rem !important;
+    }
+    
+    .poem-title {
+        font-size: 1.75rem !important;
+    }
+    
+    .extended-content {
+        font-size: 1.3rem !important;
+    }
+    
+    .section-title {
+        font-size: 2.75rem !important;
+    }
+}
+
+/* Mobile phones */
+@media (max-width: 768px) {
+    h1 { font-size: 2rem !important; }
+    h2 { font-size: 1.75rem !important; }
+    h3 { font-size: 1.25rem !important; }
+    h4 { font-size: 1.125rem !important; }
+    h5 { font-size: 1.05rem !important; }
+    h6 { font-size: 1rem !important; }
+    
+    .text-base { font-size: 1.2rem !important; }
+    .text-sm { font-size: 1.1rem !important; }
+    .text-xs { font-size: 1rem !important; }
+    
+    /* Larger text for better readability on small screens */
+    .text-lg { font-size: 1.375rem !important; }
+    .text-xl { font-size: 1.5rem !important; }
+    .text-2xl { font-size: 2rem !important; }
+    .text-3xl { font-size: 2.5rem !important; }
+    .text-4xl { font-size: 3rem !important; }
+    .text-5xl { font-size: 3.5rem !important; }
+    .text-6xl { font-size: 4rem !important; }
+    
+    /* Interactive elements */
+    .glass-button, .exercise-button, .mode-btn, .exercise-type-btn {
+        font-size: 1.125rem !important;
+        padding: 1rem 1.5rem !important;
+    }
+    
+    /* Content areas */
+    .glass-card p, .glass-card div,
+    .learning-content p, 
+    .learning-lesson p, 
+    .learning-tips li {
+        font-size: 1.15rem !important;
+    }
+    
+    /* Math-specific content - larger fonts for better visibility */
+    .exercise-content {
+        font-size: 2.25rem !important; /* Increased from default */
+    }
+    
+    .math-card p {
+        font-size: 1.25rem !important; /* Increased from default */
+    }
+    
+    .learning-lesson h4 {
+        font-size: 1.375rem !important; /* Increased lesson headings */
+    }
+    
+    /* Large display text for math problems */
+    .text-4xl { font-size: 3rem !important; }
+    .text-5xl { font-size: 3.75rem !important; }
+    .text-6xl { font-size: 4.5rem !important; }
+    
+    /* Grid text in lessons - better visibility */
+    .grid .text-sm {
+        font-size: 1.2rem !important;
+    }
+    
+    /* Sindhi class content adjustments for mobile */
+    .verse-line {
+        font-size: 1.5rem !important;
+        padding: 1.25rem !important;
+        line-height: 1.8 !important;
+    }
+    
+    .educational-card h3 {
+        font-size: 1.75rem !important;
+    }
+    
+    .educational-card p {
+        font-size: 1.4rem !important;
+    }
+    
+    .riddle-front p, .riddle-back p {
+        font-size: 1.4rem !important;
+    }
+    
+    /* Hero sections for class pages */
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.25rem !important;
+    }
+    
+    /* Advanced class content adjustments for mobile */
+    .poem-card h3, .poetry-card h3 {
+        font-size: 2rem !important;
+    }
+    
+    .poem-card p, .poetry-card p {
+        font-size: 1.5rem !important;
+    }
+    
+    .poem-content {
+        font-size: 1.4rem !important;
+        line-height: 1.8 !important;
+    }
+    
+    .poem-title {
+        font-size: 1.875rem !important;
+    }
+    
+    .poem-author {
+        font-size: 1.2rem !important;
+    }
+    
+    .extended-content {
+        font-size: 1.4rem !important;
+    }
+    
+    .section-title {
+        font-size: 3rem !important;
+    }
+    
+    /* Navigation elements */
+    nav .text-xl { font-size: 1.5rem !important; }
+    nav .text-2xl { font-size: 1.75rem !important; }
+}
+
+/* Small mobile phones */
+@media (max-width: 480px) {
+    h1 { font-size: 1.75rem !important; }
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.125rem !important; }
+    h4 { font-size: 1.05rem !important; }
+    h5 { font-size: 1rem !important; }
+    h6 { font-size: 0.95rem !important; }
+    
+    .text-base { font-size: 1.25rem !important; }
+    .text-sm { font-size: 1.15rem !important; }
+    .text-xs { font-size: 1.05rem !important; }
+    
+    /* Maximum font sizes for very small screens */
+    .glass-card p, .glass-card div,
+    .learning-content p, 
+    .learning-lesson p, 
+    .learning-tips li {
+        font-size: 1.25rem !important;
+    }
+    
+    /* Math-specific content - even larger on mobile for better readability */
+    .exercise-content {
+        font-size: 2.5rem !important; /* Increased for mobile */
+    }
+    
+    .math-card p {
+        font-size: 1.35rem !important; /* Increased for mobile */
+    }
+    
+    .learning-lesson h4 {
+        font-size: 1.5rem !important; /* Increased lesson headings for mobile */
+    }
+    
+    /* Math problem display - optimized for small screens but still readable */
+    .text-4xl { font-size: 2.75rem !important; }
+    .text-5xl { font-size: 3.25rem !important; }
+    .text-6xl { font-size: 3.75rem !important; }
+    
+    /* Grid and interactive elements */
+    .grid .text-sm {
+        font-size: 1.25rem !important;
+    }
+    
+    /* Answer choices */
+    .grid .text-base {
+        font-size: 1.3rem !important;
+    }
+    
+    /* Sindhi class content adjustments for very small mobile */
+    .verse-line {
+        font-size: 1.6rem !important;
+        padding: 1.5rem !important;
+        line-height: 1.9 !important;
+    }
+    
+    .educational-card h3 {
+        font-size: 1.875rem !important;
+    }
+    
+    .educational-card p {
+        font-size: 1.5rem !important;
+    }
+    
+    .riddle-front p, .riddle-back p {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Maximum readability for very small screens */
+    .glass-nav .text-xl {
+        font-size: 1.25rem !important;
+    }
+    
+    .glass-nav .text-2xl {
+        font-size: 1.5rem !important;
+    }
+    
+    /* Advanced class content for very small mobile screens */
+    .poem-card h3, .poetry-card h3 {
+        font-size: 2.125rem !important;
+    }
+    
+    .poem-card p, .poetry-card p {
+        font-size: 1.6rem !important;
+    }
+    
+    .poem-content {
+        font-size: 1.5rem !important;
+        line-height: 1.9 !important;
+    }
+    
+    .poem-title {
+        font-size: 2rem !important;
+    }
+    
+    .poem-author {
+        font-size: 1.3rem !important;
+    }
+    
+    .extended-content {
+        font-size: 1.5rem !important;
+    }
+    
+    .section-title {
+        font-size: 2.5rem !important;
+    }
+    
+    /* Verse lines maximum readability */
+    .verse-line {
+        font-size: 1.7rem !important;
+        padding: 1.75rem !important;
+        line-height: 2rem !important;
+    }
+    
+    /* Large buttons for better accessibility */
+    .glass-button, .exercise-button, .mode-btn, .exercise-type-btn {
+        font-size: 1.2rem !important;
+        padding: 1.125rem 1.75rem !important;
+    }
+    
+    /* Navigation adjustments */
+    nav .text-xl { font-size: 1.25rem !important; }
+    nav .text-2xl { font-size: 1.5rem !important; }
+}
+
+/* ==========================================
+   HEADER STYLES
+   ========================================== */
+
+/* Main site header */
+.site-header {
+    font-family: 'AMBILE2', 'Noto Nastaliq Urdu', serif;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.site-header h1 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.site-header p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+/* Navigation header */
+.nav-header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.nav-header .nav-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4f46e5;
+}
+
+/* Section headers */
+.section-header h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #4f46e5;
+}
+
+/* ==========================================
+   HEADER NAVIGATION STYLES
+   ========================================== */
+
+/* Main page navigation button */
+.main-page-nav {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    border: 2px solid transparent;
+}
+
+.main-page-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    color: white;
+    text-decoration: none;
+}
+
+.main-page-nav:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Dark mode support for main page navigation */
+.dark-mode .main-page-nav {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+}
+
+.dark-mode .main-page-nav:hover {
+    background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
+}
+
+/* Header container for consistent positioning */
+.page-header {
+    position: relative;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.header-nav-container {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+}
+
+/* ==========================================
+   FOOTER STYLES
+   ========================================== */
+
+.site-footer {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 2rem 0;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer-logo h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #4f46e5, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.footer-logo p {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: #6b7280;
+}
+
+.footer-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.footer-button {
+    background: rgba(79, 70, 229, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(79, 70, 229, 0.2);
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #4f46e5;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-button:hover {
+    background: rgba(79, 70, 229, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(79, 70, 229, 0.2);
+}
+
+/* Footer responsive adjustments */
+@media (max-width: 768px) {
+    .footer-content {
+        gap: 2rem;
+        padding: 0 1.5rem;
+    }
+    
+    .footer-logo h3 {
+        font-size: 1.75rem !important;
+    }
+    
+    .footer-logo p {
+        font-size: 1.125rem !important;
+    }
+    
+    .footer-info {
+        font-size: 1.05rem !important;
+    }
+    
+    .footer-button {
+        font-size: 1.05rem !important;
+        padding: 0.875rem 1.75rem !important;
+    }
+    
+    .footer-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .footer-button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .footer-logo h3 {
+        font-size: 2rem !important;
+    }
+    
+    .footer-logo p {
+        font-size: 1.25rem !important;
+    }
+    
+    .footer-info {
+        font-size: 1.15rem !important;
+    }
+    
+    .footer-button {
+        font-size: 1.15rem !important;
+        padding: 1rem 2rem !important;
+    }
+}
+
+/* ==========================================
+   DARK MODE SUPPORT
+   ========================================== */
+
+/* Dark mode styles for headers and footers */
+.dark .site-header h1,
+.dark .section-header h2 {
+    color: #e2e8f0;
+}
+
+.dark .site-header p {
+    color: #cbd5e1;
+}
+
+.dark .nav-header {
+    background: rgba(15, 23, 42, 0.9);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.dark .nav-title {
+    color: #a5b4fc !important;
+}
+
+.dark .site-footer {
+    background: rgba(15, 23, 42, 0.4);
+    border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.dark .footer-logo h3 {
+    background: linear-gradient(45deg, #a5b4fc, #c4b5fd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dark .footer-logo p,
+.dark .footer-info {
+    color: #cbd5e1;
+}
+
+.dark .footer-button {
+    background: rgba(165, 180, 252, 0.1);
+    border: 1px solid rgba(165, 180, 252, 0.2);
+    color: #a5b4fc;
+}
+
+.dark .footer-button:hover {
+    background: rgba(165, 180, 252, 0.2);
+    box-shadow: 0 8px 20px rgba(165, 180, 252, 0.2);
+}
+
+/* ==========================================
+   UTILITY CLASSES
+   ========================================== */
+
+/* Text size utilities with responsive behavior */
+.responsive-text-xs { font-size: 0.75rem; }
+.responsive-text-sm { font-size: 0.875rem; }
+.responsive-text-base { font-size: 1rem; }
+.responsive-text-lg { font-size: 1.125rem; }
+.responsive-text-xl { font-size: 1.25rem; }
+.responsive-text-2xl { font-size: 1.5rem; }
+.responsive-text-3xl { font-size: 1.875rem; }
+.responsive-text-4xl { font-size: 2.25rem; }
+.responsive-text-5xl { font-size: 3rem; }
+.responsive-text-6xl { font-size: 3.75rem; }
+
+/* Button size utilities */
+.btn-xs { padding: 0.5rem 0.75rem; font-size: 0.75rem; }
+.btn-sm { padding: 0.75rem 1rem; font-size: 0.875rem; }
+.btn-base { padding: 0.875rem 1.25rem; font-size: 1rem; }
+.btn-lg { padding: 1rem 1.5rem; font-size: 1.125rem; }
+.btn-xl { padding: 1.125rem 1.75rem; font-size: 1.25rem; }
+
+/* Apply responsive behavior to button utilities */
+@media (max-width: 768px) {
+    .btn-xs { padding: 0.75rem 1rem; font-size: 0.875rem; }
+    .btn-sm { padding: 0.875rem 1.25rem; font-size: 1rem; }
+    .btn-base { padding: 1rem 1.5rem; font-size: 1.125rem; }
+    .btn-lg { padding: 1.125rem 1.75rem; font-size: 1.25rem; }
+    .btn-xl { padding: 1.25rem 2rem; font-size: 1.375rem; }
+}
+
+/* ==========================================
+   ACCESSIBILITY IMPROVEMENTS
+   ========================================== */
+
+/* Focus styles */
+*:focus {
+    outline: 2px solid #4f46e5;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .text-base { font-weight: 500; }
+    .text-sm { font-weight: 500; }
+    .text-xs { font-weight: 500; }
+    
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 900;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    html { font-size: 12pt; }
+    h1 { font-size: 18pt; }
+    h2 { font-size: 16pt; }
+    h3 { font-size: 14pt; }
+    h4, h5, h6 { font-size: 12pt; }
+    .text-base { font-size: 11pt; }
+    .text-sm { font-size: 10pt; }
+    .text-xs { font-size: 9pt; }
+}
+
+/* ==========================================
+   FOOTER STYLES
+   ========================================== */
+
+/* Global footer styling */
+.site-footer {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+    margin: 2rem 1rem 1rem 1rem;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'AMBILE', 'Noto Nastaliq Urdu', serif;
+    color: #4338ca;
+    transition: all 0.3s ease;
+}
+
+/* Dark mode footer */
+body.dark .site-footer {
+    background: rgba(15, 23, 42, 0.95);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+    color: #a78bfa;
+}
+
+/* Footer title */
+.footer-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    font-family: 'AMBILE2', 'Noto Nastaliq Urdu', serif;
+    color: #4338ca;
+}
+
+body.dark .footer-title {
+    color: #c4b5fd;
+}
+
+/* Footer icons container */
+.footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 2rem;
+    margin-top: 1rem;
+}
+
+/* Animated footer icons */
+.footer-icon {
+    display: inline-block;
+    animation: bounce-float 3s ease-in-out infinite;
+    font-size: 2rem;
+}
+
+.footer-icon:nth-child(1) { animation-delay: 0s; }
+.footer-icon:nth-child(2) { animation-delay: 1s; }
+.footer-icon:nth-child(3) { animation-delay: 2s; }
+.footer-icon:nth-child(4) { animation-delay: 3s; }
+
+/* Footer responsive design */
+@media (max-width: 768px) {
+    .site-footer {
+        margin: 1rem 0.5rem 0.5rem 0.5rem;
+        padding: 1.5rem 1rem;
+    }
+    
+    .footer-title {
+        font-size: 1.25rem;
+    }
+    
+    .footer-icons {
+        font-size: 1.75rem;
+        gap: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-footer {
+        margin: 0.5rem 0.25rem 0.25rem 0.25rem;
+        padding: 1.25rem 0.75rem;
+    }
+    
+    .footer-title {
+        font-size: 1.125rem;
+    }
+    
+    .footer-icons {
+        font-size: 1.5rem;
+        gap: 0.5rem;
+    }
+}

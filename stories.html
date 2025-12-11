@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="sd" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ٻاراڻيون آکاڻيُون - Children's Stories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&display=swap');
+        @font-face {
+            font-family: 'AMBILE';
+            src: url('/assets/fonts/AMBILE.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'AMBILE2';
+            src: url('/assets/fonts/AMBILE Shadow.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
+        
+        h1, h2, h3, title {
+            font-family:  'AMBILE2', serif;
+            font-weight: 700;
+        }
+        
+        body {
+            font-family: 'AMBILE', 'Noto Nastaliq Urdu', serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #f8fafc 75%, #ffffff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            transition: all 0.4s ease;
+        }
+
+        /* Dark Mode Styles */
+        body.dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
+            color: #e2e8f0;
+        }
+
+        body.dark .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            color: #e2e8f0;
+        }
+
+        body.dark .glass-nav {
+            background: rgba(15, 23, 42, 0.95);
+            border-bottom: 1px solid rgba(71, 85, 105, 0.2);
+        }
+
+        body.dark .glass-button {
+            background: rgba(51, 65, 85, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.4);
+            color: #e2e8f0;
+        }
+
+        body.dark .glass-button:hover {
+            background: rgba(71, 85, 105, 0.6);
+        }
+
+        body.dark .text-indigo-800 {
+            color: #a5b4fc !important;
+        }
+
+        body.dark .text-indigo-700 {
+            color: #c7d2fe !important;
+        }
+
+        body.dark .text-gray-700 {
+            color: #cbd5e1 !important;
+        }
+
+        body.dark .text-gray-600 {
+            color: #94a3b8 !important;
+        }
+
+        body.dark .text-gray-500 {
+            color: #64748b !important;
+        }
+
+        body.dark .story-paragraph.highlighted {
+            background: linear-gradient(135deg, #1e3a8a, #3730a3) !important;
+            color: #e2e8f0 !important;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        /* Dark Mode Toggle Button */
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+
+        .dark-mode-toggle:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(1.1);
+        }
+
+        body.dark .dark-mode-toggle {
+            background: rgba(51, 65, 85, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.4);
+        }
+
+        body.dark .dark-mode-toggle:hover {
+            background: rgba(71, 85, 105, 0.6);
+        }
+
+        /* Glass Morphism Effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-button {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes bounce-float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+        
+        @keyframes magical-entrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(60px) scale(0.8);
+                filter: blur(5px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1);
+                filter: blur(0px);
+            }
+        }
+
+        .bounce-float { animation: bounce-float 3s ease-in-out infinite; }
+        .magical-entrance { animation: magical-entrance 0.8s ease-out; }
+
+        .story-paragraph {
+            transition: all 0.6s ease;
+            line-height: 2;
+            font-size: 1.1rem;
+        }
+        
+        .story-paragraph.highlighted {
+            background: linear-gradient(135deg, #fef3c7, #fde68a) !important;
+            transform: scale(1.02) !important;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        /* Tablet View Font Size Improvements */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            /* Hero section tablet optimization */
+            h1 {
+                font-size: 3.5rem !important;
+                line-height: 1.2;
+            }
+            
+            .hero-description {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Navigation tablet optimization */
+            .nav-title {
+                font-size: 1.75rem !important;
+            }
+            
+            .nav-button {
+                font-size: 1.125rem !important;
+                padding: 0.75rem 1.5rem !important;
+            }
+            
+            /* Story cards tablet optimization */
+            .story-card-title {
+                font-size: 1.875rem !important;
+            }
+            
+            .story-card-moral {
+                font-size: 1.125rem !important;
+            }
+            
+            .story-card-preview {
+                font-size: 1rem !important;
+            }
+            
+            .story-card-badge {
+                font-size: 0.875rem !important;
+            }
+            
+            .story-card-button {
+                font-size: 1.125rem !important;
+                padding: 1rem !important;
+            }
+            
+            /* Story modal tablet optimization */
+            .story-modal-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .story-modal-moral {
+                font-size: 1.375rem !important;
+            }
+            
+            .story-paragraph {
+                font-size: 1.375rem !important;
+                line-height: 2.2 !important;
+                padding: 1.5rem !important;
+            }
+            
+            .moral-lesson-title {
+                font-size: 1.5rem !important;
+            }
+            
+            .moral-lesson-text {
+                font-size: 1.25rem !important;
+            }
+            
+            /* Modal buttons tablet optimization */
+            .modal-button {
+                font-size: 1.25rem !important;
+                padding: 1rem 1.5rem !important;
+            }
+            
+            /* Emoji sizes for tablet */
+            .story-emoji {
+                font-size: 6rem !important;
+            }
+            
+            .story-modal-emoji {
+                font-size: 2.5rem !important;
+            }
+        }
+
+        /* Large tablet and small desktop adjustments */
+        @media (min-width: 1025px) and (max-width: 1200px) {
+            .story-paragraph {
+                font-size: 1.25rem !important;
+                line-height: 2.1 !important;
+            }
+            
+            .story-card-title {
+                font-size: 1.75rem !important;
+            }
+            
+            .story-modal-title {
+                font-size: 2.25rem !important;
+            }
+        }
+
+        /* Desktop View Font Size Improvements */
+        @media (min-width: 1201px) {
+            /* Hero section desktop optimization */
+            h1 {
+                font-size: 4.5rem !important;
+                line-height: 1.1;
+            }
+            
+            .hero-description {
+                font-size: 1.75rem !important;
+            }
+            
+            /* Navigation desktop optimization */
+            .nav-title {
+                font-size: 2rem !important;
+            }
+            
+            .nav-button {
+                font-size: 1.25rem !important;
+                padding: 1rem 2rem !important;
+            }
+            
+            /* Story cards desktop optimization */
+            .story-card-title {
+                font-size: 2.25rem !important;
+            }
+            
+            .story-card-moral {
+                font-size: 1.375rem !important;
+            }
+            
+            .story-card-preview {
+                font-size: 1.125rem !important;
+            }
+            
+            .story-card-badge {
+                font-size: 1rem !important;
+                padding: 0.5rem 1rem !important;
+            }
+            
+            .story-card-button {
+                font-size: 1.375rem !important;
+                padding: 1.25rem !important;
+            }
+            
+            /* Story modal desktop optimization */
+            .story-modal-title {
+                font-size: 3rem !important;
+            }
+            
+            .story-modal-moral {
+                font-size: 1.5rem !important;
+            }
+            
+            .story-paragraph {
+                font-size: 1.5rem !important;
+                line-height: 2.3 !important;
+                padding: 2rem !important;
+            }
+            
+            .moral-lesson-title {
+                font-size: 1.75rem !important;
+            }
+            
+            .moral-lesson-text {
+                font-size: 1.5rem !important;
+            }
+            
+            /* Modal buttons desktop optimization */
+            .modal-button {
+                font-size: 1.5rem !important;
+                padding: 1.25rem 2rem !important;
+            }
+            
+            /* Emoji sizes for desktop */
+            .story-emoji {
+                font-size: 7rem !important;
+            }
+            
+            .story-modal-emoji {
+                font-size: 3rem !important;
+            }
+            
+            /* Modal close button */
+            .modal-close {
+                font-size: 2.5rem !important;
+            }
+            
+            /* Story content container */
+            .story-content {
+                padding: 2rem !important;
+            }
+            
+            /* Enhanced readability for Sindhi text */
+            .sindhi-text {
+                font-size: 1.625rem !important;
+                line-height: 2.4 !important;
+            }
+        }
+
+        /* Extra large desktop screens */
+        @media (min-width: 1440px) {
+            h1 {
+                font-size: 5.5rem !important;
+            }
+            
+            .hero-description {
+                font-size: 2rem !important;
+            }
+            
+            .story-paragraph {
+                font-size: 1.75rem !important;
+                line-height: 2.5 !important;
+                padding: 2.5rem !important;
+            }
+            
+            .story-modal-title {
+                font-size: 3.5rem !important;
+            }
+            
+            .story-card-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .modal-button {
+                font-size: 1.75rem !important;
+                padding: 1.5rem 2.5rem !important;
+            }
+        }
+
+        /* Mobile View Optimizations */
+        @media (max-width: 768px) {
+            /* Make header buttons smaller */
+            .nav-button {
+                font-size: 0.875rem !important;
+                padding: 0.5rem 0.75rem !important;
+            }
+            
+            .nav-title {
+                font-size: 1rem !important;
+            }
+            
+            /* Dark mode button smaller */
+            .glass-button.w-12.h-12 {
+                width: 2.5rem !important;
+                height: 2.5rem !important;
+            }
+            
+            .glass-button.w-12.h-12 span {
+                font-size: 1.25rem !important;
+            }
+            
+            /* Hero section mobile content */
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.3;
+            }
+            
+            .hero-description {
+                font-size: 1.125rem !important;
+            }
+            
+            /* Story cards mobile content enhancement */
+            .story-card-title {
+                font-size: 1.375rem !important;
+            }
+            
+            .story-card-moral {
+                font-size: 1rem !important;
+            }
+            
+            .story-card-preview {
+                font-size: 0.95rem !important;
+            }
+            
+            .story-card-badge {
+                font-size: 0.75rem !important;
+                padding: 0.25rem 0.5rem !important;
+            }
+            
+            .story-card-button {
+                font-size: 1rem !important;
+                padding: 0.75rem !important;
+            }
+            
+            /* Story modal mobile content enhancement */
+            .story-modal-title {
+                font-size: 1.75rem !important;
+            }
+            
+            .story-modal-moral {
+                font-size: 1.125rem !important;
+            }
+            
+            .story-paragraph {
+                font-size: 1.125rem !important;
+                line-height: 1.8 !important;
+                padding: 1rem !important;
+            }
+            
+            .sindhi-text {
+                font-size: 1.125rem !important;
+                line-height: 1.8 !important;
+            }
+            
+            .moral-lesson-title {
+                font-size: 1.25rem !important;
+            }
+            
+            .moral-lesson-text {
+                font-size: 1.125rem !important;
+            }
+            
+            /* Modal buttons mobile optimization */
+            .modal-button {
+                font-size: 1rem !important;
+                padding: 0.75rem 1rem !important;
+            }
+            
+            /* Modal close button mobile */
+            .modal-close {
+                font-size: 2rem !important;
+            }
+            
+            /* Emoji sizes for mobile */
+            .story-emoji {
+                font-size: 4rem !important;
+            }
+            
+            .story-modal-emoji {
+                font-size: 1.75rem !important;
+            }
+            
+            /* Story content container mobile */
+            .story-content {
+                padding: 1rem !important;
+            }
+            
+            /* Navigation mobile spacing */
+            .glass-nav {
+                padding: 0.5rem 1rem !important;
+            }
+            
+            .glass-nav .container {
+                gap: 0.5rem;
+            }
+            
+            .glass-nav .flex {
+                gap: 0.5rem !important;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .nav-button {
+                font-size: 0.75rem !important;
+                padding: 0.375rem 0.5rem !important;
+            }
+            
+            .nav-title {
+                font-size: 0.875rem !important;
+            }
+            
+            h1 {
+                font-size: 1.75rem !important;
+            }
+            
+            .story-paragraph {
+                font-size: 1rem !important;
+                line-height: 1.7 !important;
+                padding: 0.75rem !important;
+            }
+            
+            .story-card-title {
+                font-size: 1.25rem !important;
+            }
+            
+            .story-modal-title {
+                font-size: 1.5rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="glass-nav p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <a href="sindhi.html" class="nav-button glass-button text-indigo-700 px-4 py-2 font-bold flex items-center gap-2">
+                    <span class="text-xl">🏠</span>
+                    واپس گهر ھلو
+                </a>
+                <div class="nav-title text-indigo-800 text-xl lg:text-2xl font-bold">
+                    📚 ٻاراڻيُون آکاڻِيُون
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <button onclick="toggleAudio()" id="audioBtn" class="nav-button glass-button text-indigo-700 px-4 py-2 font-bold">
+                    🔊 آواز
+                </button>
+                <!-- Dark Mode Toggle in Header -->
+                <button class="glass-button text-indigo-700 w-12 h-12 flex items-center justify-center hover:scale-110 transition-all duration-300" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                    <span id="darkModeIcon" class="text-2xl">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-8 text-center">
+        <h1 class="text-xl lg:text-3xl font-bold text-indigo-800 mb-6">
+            📚 ٻاراڻي آکاڻيُن جو صفحو 📚
+        </h1>
+        <p class="hero-description text-lg text-gray-700 mb-8">
+            مزيدار، تعليمي ۽ سبق ڏيندڙ آکاڻيُون
+        </p>
+    </section>
+
+    <!-- Stories Grid -->
+    <section class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto" id="storiesContainer">
+            <!-- Stories will be loaded here -->
+        </div>
+    </section>
+
+    <!-- Story Reading Modal -->
+    <div id="storyModal" class="hidden fixed inset-0 bg-black/40 backdrop-blur-lg flex items-center justify-center z-50 p-4">
+        <div class="glass-card max-w-4xl w-full max-h-[90vh] overflow-y-auto magical-entrance">
+            <!-- Modal Header -->
+            <div class="glass-card m-4 p-6 bg-gradient-to-r from-indigo-500/20 to-purple-500/20">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h2 id="storyTitle" class="text-3xl font-bold text-indigo-800 mb-2"></h2>
+                        <p id="storyMoral" class="text-lg text-gray-600"></p>
+                    </div>
+                    <button onclick="closeStoryModal()" class="modal-close text-gray-500 hover:text-red-500 text-3xl">×</button>
+                </div>
+            </div>
+            
+            <!-- Story Content -->
+            <div class="story-content p-6" id="storyContent">
+                <!-- Story paragraphs will be loaded here -->
+            </div>
+            
+            <!-- Story Footer -->
+            <div class="p-6 glass-card m-4">
+                <div class="flex justify-center gap-4">
+                    <button onclick="toggleStoryAudio()" id="storyAudioBtn" class="modal-button glass-button text-indigo-700 px-6 py-3 font-bold">
+                        آواز ھلايو 🔊
+                    </button>
+                    <button onclick="restartStory()" class="modal-button glass-button text-purple-700 px-6 py-3 font-bold">
+                        ٻيھر پڙهو 🔄
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Stories Data
+        const fullStoriesData = {
+            story1: {
+                title: 'وڻ ۽ طوفان جو سبق',
+                moral: 'ڌيرج ۽ لچڪ وارو مزاج طاقتور کان ڏاڍو ٿيندو آھي',
+                emoji: '🌳',
+                content: [
+                    'هڪ ڀيري جي ڳالهہ آهي، تہ هڪ تمام وڏو وڻ هئو، جنھن جي ڇانوَ هيٺ ٻار ويھي رانديون کيڏندا هئا۔ وڻ جام خوش ٿيندو هئو، پر هڪ ڏينھن هڪ زوردار طوفان آيو ۽ وڻ سان پنھنجي طاقت جو مقابلو ڪرڻ لڳو۔',
+                    'طوفان چيو: "آءٌ ھاڻي ڏسندم تہ تُون ڪيترو مضبوط آهين، ڏس تہ مان توکي ھاڻي تون کي پنھنجي طاقتور جهُوٽي سان ڪيئن ٿو ڪيريان۔" وڻ چيس: "مان تيار آهيان، ڀلي آزماءِ۔"',
+                    'طوفان زور سان جهوٽو ڏنو، پر وڻ جي ٽاريون ٿورو جهُڪِي ھيٺ ٿيون، ھڪ پاسي کان ٻئي پاسي لُڏيُون، پر اھي پنھنجي ٿُڙ کان جدا نہ ٿيون۔ وري بہ طوفان زور لڳايو، وڻ لُڏندو رھيو پر پنھنجي جاءِ تي بيٺو رهيو۔',
+                    'ان مھل هڪ ننڍڙو پکي اچي وڻ تي ويٺو ۽ چيائين: "اي گهاٽا وڻ! تون ڏاڍو پيارو ۽ لچڪدار آهين، طوفان تہ رڳو گوڙ ڪري ٿو، پر تون سڀني لاءِ ڇانوَ ۽ ميوا ڏين ٿو۔"',
+                    'طوفان کي لڄ اچي وئي ۽ چيائين: "مان سمجهي ويس، طاقت کان لچڪ ۽ ھمدردي گهڻي ڀلي آهي۔"'
+                ]
+            },
+            story2: {
+                title: 'ڪِوِلِ جي محنت',
+                moral: 'محنت ڪڏهن بہ وڃائبي ناھي',
+                emoji: '🐜',
+                content: [
+                    'هڪ ڀيري هڪ ننڍڙي ڪِوِلِڙِي، پنهنجي ٻِرَ لاءِ اناج گڏ ڪري رهي هئي۔ شديد اُس ۽ ڪاڙهي ۾، ھُوءَ شل ٿيندي بغير ٿڪ آرام ڪندي ھُوءَ پنھنجو ڪم ڪري رهي هئي۔',
+                    'ٻيون ڪِوِليُون ان جي محنت کي ڏسي کلنديون چئي رھيون ھيُون: "ڇا ٿي ڪرين؟ اهڙي گرميءَ ۾؟ ڇو ٿي پاڻ کي ٿڪائين؟ پاڻ تہ رات جو آرام ڪنداسين!"',
+                    'چنئي جواب ڏنو: "منهنجو يقين آهي، محنت جو ميوو ضرور ملندو۔"',
+                    'هفتي گذري ويا۔ جڏهن مينهن وسڻ شروع ٿيو، سڀڪئليون پنهنجي بلن ۾ بند ٿي ويون۔ جنڪئلين ڪجهُ به گڏ نه ڪيو هيو، سي بک کان پريشان ٿي ويون۔',
+                    'تنهن تي سڀني چنئي وٽ مدد لاءِ وڃڻ جو فيصلو ڪيو۔ چنئي کين سڻڀ سان ماني ڏني ۽ چيو: "هاڻ سمجهي ويا نه، ته محنت ڇو ضروري آهي؟"',
+                    'سڀني چيو: "تون بلڪل صحيح هئي، اسين به هاڻ محنت ڪنداسين!"'
+                ]
+            },
+            story3: {
+                title: 'هوشيار ٻڪري',
+                moral: 'عقل ۽ حڪمت سان هر مسئلو حل ٿيندو',
+                emoji: '🐐',
+                content: [
+                    'هڪ ننڍڙي ٻڪري جنگل ۾ گھمي رهي هئي جڏهن هڪ بکيو بگھڙ کيس ڏٺو۔ بگھڙ کيس کائڻ لاءِ ويجهو آيو۔',
+                    'ٻڪري ڊڄي وئي پر هوشيار هئي۔ هوءَ چيو: "اي بگھڙ، مان ته ڏاڍي پتلي آهيان، تون مون کي کائيندين ته تنهنجو پيٽ نه ڀرندو۔"',
+                    'بگھڙ چيو: "ته پوءِ ڇا ڪجي؟" ٻڪري چيو: "مان توکي اهڙي جاءِ ڏيکاريان ٿي جتي وڏيون ٻڪريون آهن، انهن کي کائي تنهنجو پيٽ ڀرجي."',
+                    'بگھڙ لالچ ۾ اچي ٻڪري جي پٺيان هليو ويو۔ ٻڪري کيس هڪ اهڙي جاءِ وٺي وئي جتي گڏيءَ جا ڪتا هئا۔',
+                    'ڪتن جو شور ٻڌي گڏي وارا آيا ۽ بگھڙ کي ڀڄائي ڇڏيو۔ ٻڪري محفوظ ٿي وئي ۽ چيائين: "عقل طاقت کان وڌيڪ مضبوط آهي۔"'
+                ]
+            },
+            story4: {
+                title: 'سچو دوست',
+                moral: 'سچو دوست مشڪل وقت ۾ ساٿ ڏئي ٿو',
+                emoji: '🤝',
+                content: [
+                    'ٻه دوست، احمد ۽ علي، هڪ سفر ۾ نڪتا۔ رستي ۾ کين هڪ رڇ ملي۔ احمد ڊڄي ويو ۽ وڻ تي چڙهي ويو۔',
+                    'علي کي چڙهڻ نه آيو. هو زمين تي پئجي ويو ۽ مئل هونڻ جو مظاهرو ڪيو، ڇاڪاڻ ته ٻڌايو هو ته رڇ مئل ماڻهن کي نه کائيندو.',
+                    'رڇ علي جي ويجهو آيو، کيس سونگھيو، ۽ هن جي ڪن ۾ ڪجهه چيو. پوءِ رڇ هليو ويو.',
+                    'احمد وڻ کان هيٺ آيو ۽ پڇيو: "دوست، رڇ تنهنجي ڪن ۾ ڇا چيو هو؟"',
+                    'علي جواب ڏنو: "رڇ چيو ته جيڪو دوست مشڪل وقت ۾ ڇڏي هليو وڃي، اهو ڪو سچو دوست نه آهي۔"',
+                    'احمد شرمسار ٿيو ۽ معافي گهري. هنن کان پوءِ هو هميشه لاءِ سچا دوست بڻجي ويا.'
+                ]
+            }
+        };
+
+        // Current state
+        let currentStoryAudio = null;
+        let isAudioPlaying = false;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStories();
+            checkStoryFromURL();
+        });
+
+        function loadStories() {
+            const container = document.getElementById('storiesContainer');
+            const stories = [
+                { id: 'story1', title: 'وڻ ۽ طوفان جو سبق', emoji: '🌳', difficulty: 'آسان', time: '3 منٽ' },
+                { id: 'story2', title: 'ڪِوِلءَ جي محنت', emoji: '🐜', difficulty: 'آسان', time: '4 منٽ' },
+                { id: 'story3', title: 'هوشيار ٻڪري', emoji: '🐐', difficulty: 'متوسط', time: '5 منٽ' },
+                { id: 'story4', title: 'سچو دوست', emoji: '🤝', difficulty: 'متوسط', time: '6 منٽ' }
+            ];
+
+            container.innerHTML = stories.map(story => `
+                <div class="glass-card p-8 cursor-pointer transform hover:scale-105 transition-all duration-300 magical-entrance" 
+                     onclick="openStoryModal('${story.id}')">
+                    <div class="text-center mb-6">
+                        <div class="story-emoji text-9xl mb-4 bounce-float">${story.emoji}</div>
+                        <h3 class="story-card-title text-2xl font-bold text-indigo-800 mb-3">${story.title}</h3>
+                        <div class="glass-card p-4 mb-4">
+                            <p class="story-card-moral text-indigo-700 text-sm font-medium">${fullStoriesData[story.id].moral}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-3 text-gray-700 mb-6">
+                        <p class="story-card-preview text-sm">${fullStoriesData[story.id].content[0].substring(0, 100)}...</p>
+                    </div>
+                    
+                    <div class="flex justify-between items-center">
+                        <div class="flex gap-2">
+                            <span class="story-card-badge glass-button px-3 py-1 text-xs text-indigo-600">${story.difficulty}</span>
+                            <span class="story-card-badge glass-button px-3 py-1 text-xs text-gray-600">${story.time}</span>
+                        </div>
+                        <div class="flex gap-1">
+                            <span class="text-xl">⭐</span>
+                            <span class="text-xl">⭐</span>
+                            <span class="text-xl">⭐</span>
+                        </div>
+                    </div>
+                    
+                    <button class="story-card-button glass-button text-indigo-700 w-full py-3 font-bold mt-4">
+                        مڪمل آکاڻِي پڙهو 📖
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function checkStoryFromURL() {
+            const hash = window.location.hash.substring(1);
+            if (hash && fullStoriesData[hash]) {
+                openStoryModal(hash);
+            }
+        }
+
+        function openStoryModal(storyId) {
+            const story = fullStoriesData[storyId];
+            if (!story) return;
+
+            document.getElementById('storyTitle').innerHTML = `<span class="story-modal-emoji">${story.emoji}</span> <span class="story-modal-title">${story.title}</span>`;
+            document.getElementById('storyMoral').className = 'story-modal-moral text-lg text-gray-600';
+            document.getElementById('storyMoral').textContent = story.moral;
+
+            // Create story content
+            const content = document.getElementById('storyContent');
+            content.innerHTML = '';
+            
+            story.content.forEach((paragraph, index) => {
+                const p = document.createElement('div');
+                p.className = 'story-paragraph sindhi-text glass-card p-6 mb-4 text-lg leading-relaxed';
+                p.textContent = paragraph;
+                p.setAttribute('data-paragraph', index);
+                content.appendChild(p);
+            });
+
+            // Add moral lesson at the end
+            const moralDiv = document.createElement('div');
+            moralDiv.className = 'glass-card p-6 border-r-4 border-indigo-500';
+            moralDiv.innerHTML = `
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="text-2xl">🎯</span>
+                    <h4 class="moral-lesson-title text-xl font-bold text-indigo-700">اخلاقي سبق</h4>
+                </div>
+                <p class="moral-lesson-text text-indigo-700 font-medium text-lg">${story.moral}</p>
+            `;
+            content.appendChild(moralDiv);
+
+            document.getElementById('storyModal').classList.remove('hidden');
+            window.location.hash = storyId;
+        }
+
+        function closeStoryModal() {
+            document.getElementById('storyModal').classList.add('hidden');
+            if (currentStoryAudio) {
+                clearTimeout(currentStoryAudio);
+                currentStoryAudio = null;
+                isAudioPlaying = false;
+                document.getElementById('storyAudioBtn').textContent = 'آواز ھلايو 🔊';
+            }
+            window.location.hash = '';
+        }
+
+        function toggleStoryAudio() {
+            const btn = document.getElementById('storyAudioBtn');
+            
+            if (currentStoryAudio) {
+                clearTimeout(currentStoryAudio);
+                btn.textContent = 'آواز ھلايو 🔊';
+                currentStoryAudio = null;
+                isAudioPlaying = false;
+                
+                // Reset paragraph highlighting
+                document.querySelectorAll('.story-paragraph').forEach(p => {
+                    p.classList.remove('highlighted');
+                });
+            } else {
+                btn.innerHTML = `
+                    پڙهي رهيو آهي 
+                    <span class="inline-flex ml-2 gap-1">
+                        <div class="w-1 h-4 bg-indigo-700 rounded animate-pulse"></div>
+                        <div class="w-1 h-4 bg-indigo-700 rounded animate-pulse" style="animation-delay: 0.2s;"></div>
+                        <div class="w-1 h-4 bg-indigo-700 rounded animate-pulse" style="animation-delay: 0.4s;"></div>
+                    </span>
+                `;
+                
+                isAudioPlaying = true;
+                startReading();
+            }
+        }
+
+        function startReading() {
+            const paragraphs = document.querySelectorAll('.story-paragraph[data-paragraph]');
+            let currentParagraph = 0;
+            
+            function highlightNext() {
+                if (!isAudioPlaying) return;
+                
+                // Remove previous highlighting
+                if (currentParagraph > 0) {
+                    paragraphs[currentParagraph - 1].classList.remove('highlighted');
+                }
+                
+                if (currentParagraph < paragraphs.length) {
+                    // Highlight current paragraph
+                    paragraphs[currentParagraph].classList.add('highlighted');
+                    paragraphs[currentParagraph].scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                    
+                    currentParagraph++;
+                    currentStoryAudio = setTimeout(highlightNext, 3000);
+                } else {
+                    // Reading finished
+                    document.getElementById('storyAudioBtn').textContent = 'آواز ھلايو 🔊';
+                    currentStoryAudio = null;
+                    isAudioPlaying = false;
+                    
+                    // Reset all paragraphs
+                    paragraphs.forEach(p => p.classList.remove('highlighted'));
+                }
+            }
+            
+            highlightNext();
+        }
+
+        function restartStory() {
+            if (currentStoryAudio) {
+                clearTimeout(currentStoryAudio);
+                currentStoryAudio = null;
+                isAudioPlaying = false;
+                document.getElementById('storyAudioBtn').textContent = 'آواز ھلايو 🔊';
+            }
+            
+            // Reset highlighting and scroll to top
+            document.querySelectorAll('.story-paragraph').forEach(p => {
+                p.classList.remove('highlighted');
+            });
+            
+            document.getElementById('storyContent').scrollTop = 0;
+        }
+
+        function toggleAudio() {
+            // Global audio toggle functionality
+            const btn = document.getElementById('audioBtn');
+            if (btn.textContent.includes('🔊')) {
+                btn.innerHTML = '🔇 خاموش';
+            } else {
+                btn.innerHTML = '🔊 آواز';
+            }
+        }
+
+        // Dark Mode Toggle Functionality
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkModeIcon = document.getElementById('darkModeIcon');
+            
+            body.classList.toggle('dark');
+            
+            // Update icon based on current mode
+            if (body.classList.contains('dark')) {
+                darkModeIcon.textContent = '☀️';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeIcon.textContent = '🌙';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Initialize Dark Mode
+        function initializeDarkMode() {
+            const darkMode = localStorage.getItem('darkMode');
+            const darkModeIcon = document.getElementById('darkModeIcon');
+            
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark');
+                darkModeIcon.textContent = '☀️';
+            } else {
+                darkModeIcon.textContent = '🌙';
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDarkMode();
+            loadStories();
+            checkStoryFromURL();
+        });
+    </script>
+</body>
+</html>

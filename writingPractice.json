@@ -1,0 +1,204 @@
+{
+  "writingPractice": [
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🏠",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'house'",
+      "correctAnswer": "گھر",
+      "english": "House",
+      "urdu": "گھر",
+      "exampleUsage": "اسان گھر ۾ رهون ٿا",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🐱",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'cat'",
+      "correctAnswer": "ٻلي",
+      "english": "Cat",
+      "urdu": "بلی",
+      "exampleUsage": "ٻلي کير پيئي ٿي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 💧",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'water'",
+      "correctAnswer": "پاڻي",
+      "english": "Water",
+      "urdu": "پانی",
+      "exampleUsage": "پاڻي صاف آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 📚",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'book'",
+      "correctAnswer": "ڪتاب",
+      "english": "Book",
+      "urdu": "کتاب",
+      "exampleUsage": "ڪتاب مان سکون ٿا",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: ☀️",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'sun'",
+      "correctAnswer": "سج",
+      "english": "Sun",
+      "urdu": "سورج",
+      "exampleUsage": "سج اڀري آيو آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🌳",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'tree'",
+      "correctAnswer": "وڻ",
+      "english": "Tree",
+      "urdu": "درخت",
+      "exampleUsage": "وڻ سائو آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🐶",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'dog'",
+      "correctAnswer": "ڪتو",
+      "english": "Dog",
+      "urdu": "کتا",
+      "exampleUsage": "ڪتو گھر جي سامهون آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🍎",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'mango'",
+      "correctAnswer": "انب",
+      "english": "Mango",
+      "urdu": "آم",
+      "exampleUsage": "انب ميٺو آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: ✏️",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'pen'",
+      "correctAnswer": "قلم",
+      "english": "Pen",
+      "urdu": "قلم",
+      "exampleUsage": "قلم سان لکون ٿا",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🌙",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'moon'",
+      "correctAnswer": "چانڊ",
+      "english": "Moon",
+      "urdu": "چاند",
+      "exampleUsage": "چانڊ رات جو چمڪي ٿو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي لاءِ لکو: The bird is sitting on the tree",
+      "type": "sentence",
+      "prompt": "Write the Sindhi sentence for 'The bird is sitting on the tree'",
+      "correctAnswer": "پکي وڻ تي ويٺو آهي",
+      "english": "The bird is sitting on the tree",
+      "urdu": "پرندہ درخت پر بیٹھا ہے",
+      "exampleUsage": "پکي وڻ تي ويٺو آهي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي لاءِ لکو: The boy goes to school",
+      "type": "sentence",
+      "prompt": "Write the Sindhi sentence for 'The boy goes to school'",
+      "correctAnswer": "ڇوڪرو اسڪول وڃي ٿو",
+      "english": "The boy goes to school",
+      "urdu": "لڑکا اسکول جاتا ہے",
+      "exampleUsage": "ڇوڪرو اسڪول وڃي ٿو",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي لاءِ لکو: The mother prepares food",
+      "type": "sentence",
+      "prompt": "Write the Sindhi sentence for 'The mother prepares food'",
+      "correctAnswer": "ماءُ کاڌو ٺاهي ٿي",
+      "english": "The mother prepares food",
+      "urdu": "ماں کھانا تیار کرتی ہے",
+      "exampleUsage": "ماءُ کاڌو ٺاهي ٿي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🧺",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'basket'",
+      "correctAnswer": "ٽوڪري",
+      "english": "Basket",
+      "urdu": "ٹوکری",
+      "exampleUsage": "ٽوڪري ۾ ميوا آهن",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🐄",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'cow'",
+      "correctAnswer": "ڳئون",
+      "english": "Cow",
+      "urdu": "گائے",
+      "exampleUsage": "ڳئون کير ڏئي ٿي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🛏️",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'bed'",
+      "correctAnswer": "کٽ",
+      "english": "Bed",
+      "urdu": "پلنگ",
+      "exampleUsage": "کٽ تي سمهيو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن تصوير لاءِ لفظ لکو: 🌺",
+      "type": "word",
+      "prompt": "Write the Sindhi word for 'flower'",
+      "correctAnswer": "گل",
+      "english": "Flower",
+      "urdu": "پھول",
+      "exampleUsage": "گل خوبصورت آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي لاءِ لکو: The teacher teaches the students",
+      "type": "sentence",
+      "prompt": "Write the Sindhi sentence for 'The teacher teaches the students'",
+      "correctAnswer": "استاد شاگردن کي سيکاري ٿو",
+      "english": "The teacher teaches the students",
+      "urdu": "استاد طالب علموں کو پڑھاتا ہے",
+      "exampleUsage": "استاد شاگردن کي سيکاري ٿو",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي لاءِ لکو: The stars shine at night",
+      "type": "sentence",
+      "prompt": "Write the Sindhi sentence for 'The stars shine at night'",
+      "correctAnswer": "تارا رات جو چمڪن ٿا",
+      "english": "The stars shine at night",
+      "urdu": "ستارے رات کو چمکتے ہیں",
+      "exampleUsage": "تارا رات جو چمڪن ٿا",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي لاءِ لکو: The person is happy",
+      "type": "sentence",
+      "prompt": "Write the Sindhi sentence for 'The person is happy'",
+      "correctAnswer": "ماڻھو خوش آهي",
+      "english": "The person is happy",
+      "urdu": "انسان خوش ہے",
+      "exampleUsage": "ماڻھو خوش آهي",
+      "difficulty": "medium"
+    }
+  ]
+}

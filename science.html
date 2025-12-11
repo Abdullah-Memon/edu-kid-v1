@@ -1,0 +1,2706 @@
+<!DOCTYPE html>
+<html lang="sd" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سائنس سکیا - Complete Learning Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href=".//assets/css/global-styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu&display=swap');
+        @font-face {
+            font-family: 'AMBILE';
+            src: url('/assets/fonts/AMBILE.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'AMBILE2';
+            src: url('/assets/fonts/AMBILE Shadow.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        /* Glass Navigation Styles */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark .glass-nav {
+            background: rgba(15, 23, 42, 0.9);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-button {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark .glass-button {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            color: #e2e8f0;
+        }
+        
+        .dark .glass-button:hover {
+            background: rgba(30, 41, 59, 0.7);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        .touch-button {
+            min-width: 44px;
+            min-height: 44px;
+            padding: 12px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Mobile Menu Button - Header Integrated */
+        .mobile-menu-btn {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            color: #374151;
+            font-weight: 600;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-menu-btn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark .mobile-menu-btn {
+            background: rgba(15, 23, 42, 0.5);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: #e2e8f0;
+        }
+        
+        .dark .mobile-menu-btn:hover {
+            background: rgba(30, 41, 59, 0.7);
+        }
+
+        /* Mobile Menu Visibility Control */
+        @media (max-width: 767px) {
+            .mobile-nav-items {
+                display: none !important;
+            }
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+            .mobile-menu-btn-group {
+                display: flex !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-nav-items {
+                display: flex !important;
+            }
+            .mobile-menu-btn {
+                display: none !important;
+            }
+            .mobile-menu-btn-group {
+                display: none !important;
+            }
+        }
+
+        /* Enhanced Mobile Menu Sidebar */
+        .mobile-menu {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.95), rgba(139, 92, 246, 0.95));
+            backdrop-filter: blur(20px);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .mobile-menu {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.95));
+            border-left: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .mobile-menu-link {
+            padding: 16px 24px;
+            border-radius: 12px;
+            margin: 8px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
+        }
+
+        .mobile-menu-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(-5px);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+        
+        body {
+            font-family: 'AMBILE', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            transition: all 0.4s ease;
+        }
+
+        /* Dark Mode Styles */
+        body.dark {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+        }
+
+        body.dark .science-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(71, 85, 105, 0.3);
+            color: #e2e8f0;
+        }
+
+        body.dark .bg-white {
+            background: rgba(30, 41, 59, 0.6) !important;
+        }
+
+        body.dark .text-gray-800 {
+            color: #e2e8f0 !important;
+        }
+
+        body.dark .text-gray-600 {
+            color: #cbd5e1 !important;
+        }
+
+        body.dark .text-blue-600 {
+            color: #93c5fd !important;
+        }
+
+        body.dark .text-purple-600 {
+            color: #c4b5fd !important;
+        }
+
+        body.dark .text-green-600 {
+            color: #86efac !important;
+        }
+
+        body.dark .text-red-600 {
+            color: #fca5a5 !important;
+        }
+
+        h1,h2,h3,title{
+            font-family: 'AMBILE2'
+        }
+        
+        
+        /* Enhanced Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8); }
+        }
+        
+        .float-animation { animation: float 3s ease-in-out infinite; }
+        .slide-in-right { animation: slideInRight 0.6s ease-out; }
+        .slide-in-left { animation: slideInLeft 0.6s ease-out; }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out; }
+        .pulse-animation { animation: pulse 2s infinite; }
+        .glow-effect { animation: glow 2s infinite; }
+        
+        /* Glass Morphism Cards */
+        .science-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        
+        .science-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .science-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 35px 60px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 0 50px rgba(99, 102, 241, 0.2);
+        }
+        
+        .science-card:hover::before {
+            left: 100%;
+        }
+        
+        .lesson-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(15px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .lesson-card:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.3);
+        }
+        
+        .lesson-card.completed {
+            border: 2px solid rgba(16, 185, 129, 0.6);
+            background: rgba(16, 185, 129, 0.1);
+            backdrop-filter: blur(15px);
+        }
+        
+        .lesson-card.current {
+            border: 2px solid rgba(245, 158, 11, 0.6);
+            background: rgba(245, 158, 11, 0.1);
+            backdrop-filter: blur(15px);
+            animation: glow 2s infinite;
+        }
+        
+        .interactive-demo {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .interactive-demo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 1s ease;
+            pointer-events: none;
+        }
+        
+        .interactive-demo:hover::before {
+            left: 100%;
+        }
+        
+        .navigation-breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 15px 25px;
+            margin-bottom: 20px;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 20px 0;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visual-demo {
+            background: rgba(102, 126, 234, 0.3);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            color: #1e40af;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+        
+        .concept-box {
+            background: rgba(255, 236, 210, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            border-left: 5px solid #f59e0b;
+        }
+        
+        .fact-highlight {
+            background: rgba(168, 237, 234, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #06b6d4;
+        }
+        
+        /* Glass Button Styles */
+        .btn-primary {
+            background: rgba(59, 130, 246, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            color: #1e40af;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+        }
+        
+        .btn-primary:hover {
+            background: rgba(59, 130, 246, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .btn-secondary {
+            background: rgba(107, 114, 128, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(107, 114, 128, 0.4);
+            color: #374151;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(107, 114, 128, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(107, 114, 128, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(107, 114, 128, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(107, 114, 128, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.4);
+        }
+        
+        /* ===== CHILD-FRIENDLY RESPONSIVE FONT SYSTEM ===== */
+        
+        /* Base Desktop Fonts (1024px+) */
+        html {
+            font-size: 18px;
+        }
+
+        body {
+            font-size: 1.5rem;
+            line-height: 1.7;
+        }
+
+        h1 {
+            font-size: 3.5rem !important;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        h2 {
+            font-size: 2.75rem !important;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        h3 {
+            font-size: 2.25rem !important;
+            line-height: 1.4;
+            font-weight: 600;
+        }
+
+        p, span, div:not(.text-6xl):not(.text-7xl):not(.text-8xl), a, li {
+            font-size: 1.5rem !important;
+            line-height: 1.7;
+        }
+
+        button, .btn-primary, .btn-secondary, .btn-success {
+            font-size: 1.5rem !important;
+            padding: 1rem 2rem;
+            font-weight: 600;
+        }
+
+        /* ===== TABLET RESPONSIVE (768px - 1023px) ===== */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            html {
+                font-size: 19px;
+            }
+
+            body {
+                font-size: 1.625rem;
+                line-height: 1.7;
+            }
+
+            h1 {
+                font-size: 3.5rem !important;
+            }
+
+            h2 {
+                font-size: 2.875rem !important;
+            }
+
+            h3 {
+                font-size: 2.375rem !important;
+            }
+
+            p, span, div:not(.text-6xl):not(.text-7xl):not(.text-8xl), a, li {
+                font-size: 1.625rem !important;
+            }
+
+            button, .btn-primary, .btn-secondary, .btn-success {
+                font-size: 1.625rem !important;
+                padding: 1.125rem 2rem;
+            }
+
+            .science-card h3 {
+                font-size: 2.375rem !important;
+            }
+
+            .science-card p {
+                font-size: 1.5rem !important;
+            }
+
+            .lesson-card h3 {
+                font-size: 2rem !important;
+            }
+
+            .content-section {
+                padding: 2rem;
+            }
+
+            /* Grid adjustments */
+            .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            /* Mobile menu for tablet */
+            .mobile-nav-items {
+                display: none !important;
+            }
+
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+
+            .mobile-menu-btn-group {
+                display: flex !important;
+            }
+        }
+
+        /* ===== MOBILE RESPONSIVE (< 768px) ===== */
+        @media (max-width: 767px) {
+            html {
+                font-size: 18px;
+            }
+
+            body {
+                font-size: 1.5rem;
+                line-height: 1.7;
+            }
+
+            h1 {
+                font-size: 2.875rem !important;
+            }
+
+            h2 {
+                font-size: 2.375rem !important;
+            }
+
+            h3 {
+                font-size: 2rem !important;
+            }
+
+            h4 {
+                font-size: 1.75rem !important;
+            }
+
+            p, span, div:not(.text-6xl):not(.text-7xl):not(.text-8xl), a, li {
+                font-size: 1.5rem !important;
+                line-height: 1.7;
+            }
+
+            button, .btn-primary, .btn-secondary, .btn-success {
+                font-size: 1.5rem !important;
+                padding: 1.125rem 1.75rem;
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Cards */
+            .science-card {
+                transform: none !important;
+                padding: 1.5rem;
+            }
+            
+            .science-card:hover {
+                transform: scale(1.02) !important;
+            }
+
+            .science-card h3 {
+                font-size: 2rem !important;
+            }
+
+            .science-card p {
+                font-size: 1.375rem !important;
+            }
+
+            .lesson-card {
+                padding: 1.5rem;
+            }
+
+            .lesson-card h3 {
+                font-size: 1.75rem !important;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            /* Grid - Single column */
+            .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3.xl\\:grid-cols-4,
+            .grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3 {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            /* Navigation */
+            .glass-nav {
+                padding: 0.75rem 1rem;
+            }
+
+            .mobile-nav-items {
+                display: none !important;
+            }
+
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+
+            .mobile-menu-btn-group {
+                display: flex !important;
+            }
+
+            /* Mobile menu sidebar */
+            .mobile-menu {
+                width: 85%;
+                max-width: 350px;
+                padding: 1.5rem;
+            }
+
+            .mobile-menu h2 {
+                font-size: 2rem !important;
+            }
+
+            .mobile-menu-link {
+                font-size: 1.625rem !important;
+                padding: 1.25rem 1rem;
+            }
+
+            /* Visual demos */
+            .visual-demo {
+                padding: 1.5rem;
+            }
+
+            .visual-demo p {
+                font-size: 1.5rem !important;
+            }
+
+            .concept-box, .fact-highlight {
+                padding: 1.25rem;
+            }
+
+            .concept-box p, .fact-highlight p {
+                font-size: 1.25rem !important;
+            }
+
+            /* Navigation breadcrumb */
+            .navigation-breadcrumb {
+                padding: 1rem 1.25rem;
+            }
+
+            .navigation-breadcrumb div {
+                font-size: 1.25rem !important;
+            }
+
+            /* Interactive demo */
+            .interactive-demo {
+                padding: 1.5rem;
+            }
+
+            .interactive-demo h3 {
+                font-size: 1.75rem !important;
+            }
+
+            .interactive-demo p {
+                font-size: 1.25rem !important;
+            }
+
+            /* Container padding */
+            .max-w-7xl {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            /* Icon sizes */
+            .text-8xl {
+                font-size: 5rem !important;
+            }
+
+            .text-6xl {
+                font-size: 4rem !important;
+            }
+
+            .text-5xl {
+                font-size: 3.5rem !important;
+            }
+        }
+
+        /* ===== ULTRA-SMALL MOBILE (< 480px) ===== */
+        @media (max-width: 479px) {
+            html {
+                font-size: 17px;
+            }
+
+            h1 {
+                font-size: 2.625rem !important;
+            }
+
+            h2 {
+                font-size: 2.125rem !important;
+            }
+
+            h3 {
+                font-size: 1.75rem !important;
+            }
+
+            p, span, div:not(.text-6xl):not(.text-7xl):not(.text-8xl), a, li {
+                font-size: 1.375rem !important;
+            }
+
+            button, .btn-primary, .btn-secondary, .btn-success {
+                font-size: 1.375rem !important;
+                padding: 1rem 1.375rem;
+            }
+
+            .science-card h3 {
+                font-size: 1.75rem !important;
+            }
+
+            .science-card p {
+                font-size: 1.25rem !important;
+            }
+
+            .mobile-menu {
+                width: 90%;
+                max-width: 320px;
+            }
+
+            .mobile-menu-link {
+                font-size: 1.5rem !important;
+            }
+
+            .text-8xl {
+                font-size: 4rem !important;
+            }
+
+            .text-6xl {
+                font-size: 3.5rem !important;
+            }
+
+            .text-5xl {
+                font-size: 3rem !important;
+            }
+        }
+
+        /* ===== MOBILE MENU OVERLAY FIX ===== */
+        @media (max-width: 1023px) {
+            /* Ensure mobile menu doesn't overlap content */
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                z-index: 1000;
+                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                overflow-y: auto;
+            }
+
+            .mobile-menu.active {
+                right: 0;
+            }
+
+            /* Backdrop overlay */
+            .mobile-menu::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+                opacity: 0;
+                pointer-events: none;
+                transition: opacity 0.3s ease;
+                z-index: -1;
+            }
+
+            .mobile-menu.active::before {
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            /* Prevent body scroll when menu is open */
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            /* Touch-friendly elements */
+            button, a, .mobile-menu-link {
+                min-height: 44px;
+                min-width: 44px;
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
+            }
+
+            /* Better text wrapping */
+            h1, h2, h3, p {
+                word-wrap: break-word;
+                hyphens: auto;
+                overflow-wrap: break-word;
+            }
+        }
+
+        /* ===== ACCESSIBILITY ===== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-green-100 via-blue-100 to-purple-100 min-h-screen">
+    <!-- Glass Navigation -->
+    <nav class="glass-nav p-4 sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Mobile Menu Button - Integrated in Header -->
+            <button id="mobileMenuBtn" class="mobile-menu-btn touch-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+            
+            <!-- Desktop Navigation Items -->
+            <div class="mobile-nav-items gap-5 mx-auto flex justify-center items-center">
+                <a href="index.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🏠 گهر</a>
+                <a href="sindhi.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">📖 سنڌي</a>
+                <a href="math.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔢 رياضي</a>
+                <a href="science.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔬 سائنس</a>
+                <a href="family-tree.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🌳 ڪُٽنب</a>
+            </div>
+
+            <!-- Enhanced Progress Indicator -->
+            <div class="mobile-nav-items items-center gap-4">
+                <div class="glass-card w-16 h-16 flex items-center justify-center">
+                    <span id="totalScore" class="font-bold text-indigo-700 dark:text-indigo-300">0</span>
+                </div>
+                <div class="glass-card w-12 h-12 flex items-center justify-center">
+                    <span id="currentLevel" class="text-xl">🥉</span>
+                </div>
+                <!-- Progress Bar -->
+                <div class="glass-card w-32 h-4 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                    <div id="progressBar" class="progress-bar bg-gradient-to-r from-purple-500 to-indigo-600 h-full rounded-full w-0 transition-all duration-500"></div>
+                </div>
+                <span id="progressText" class="text-indigo-700 dark:text-indigo-300 font-semibold">0%</span>
+                
+                <!-- Sound Toggle -->
+                <button id="soundToggle" class="glass-button text-indigo-700 dark:text-indigo-300 px-4 py-2 font-bold">
+                    آواز: کليل 🔊
+                </button>
+                
+                <!-- Dark Mode Toggle in Header -->
+                <button class="glass-button text-indigo-700 dark:text-indigo-300 w-12 h-12 flex items-center justify-center hover:scale-110 transition-all duration-300" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                    <span id="darkModeIconHeader" class="text-2xl">🌙</span>
+                </button>
+            </div>
+            
+            <!-- Mobile Right Section (Dark Mode + Score) -->
+            <div class="mobile-menu-btn-group flex items-center gap-2">
+                <!-- Mobile Score Display -->
+                <div class="glass-button w-12 h-12 flex items-center justify-center">
+                    <span id="mobileScore" class="font-bold text-indigo-700 dark:text-indigo-300 text-sm">0</span>
+                </div>
+                <!-- Mobile Dark Mode Toggle -->
+                <button class="glass-button text-indigo-700 dark:text-indigo-300 w-12 h-12 flex items-center justify-center transition-all duration-300" onclick="toggleDarkMode()" aria-label="Toggle Dark Mode">
+                    <span id="darkModeIconMobile" class="text-xl">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Enhanced Mobile Menu Sidebar -->
+    <div id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 h-full z-[70] p-6">
+        <!-- Close Button -->
+        <button id="closeMobileMenu" class="absolute top-6 left-6 text-white hover:text-yellow-300 touch-button">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        
+        <!-- Header -->
+        <div class="mt-16 mb-8 text-center">
+            <h2 class="text-2xl font-bold text-white mb-2">تعليمي مينيو</h2>
+            <div class="w-20 h-1 bg-yellow-400 mx-auto rounded-full"></div>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="space-y-3">
+            <a href="index.html" class="mobile-menu-link text-white">
+                <span class="text-2xl">🏠</span>
+                <span>گهر</span>
+            </a>
+            <a href="sindhi.html" class="mobile-menu-link text-white">
+                <span class="text-2xl">📖</span>
+                <span>سنڌي سکيا</span>
+            </a>
+            <a href="math.html" class="mobile-menu-link text-white">
+                <span class="text-2xl">🔢</span>
+                <span>رياضي</span>
+            </a>
+            <a href="science.html" class="mobile-menu-link text-white bg-white/20">
+                <span class="text-2xl">🔬</span>
+                <span>سائنس</span>
+                <span class="ml-auto text-yellow-400">●</span>
+            </a>
+            <a href="family-tree.html" class="mobile-menu-link text-white">
+                <span class="text-2xl">🌳</span>
+                <span>ڪُٽنب</span>
+            </a>
+        </div>
+
+        <!-- Mobile Progress Section -->
+        <div class="mt-8 bg-white/10 rounded-2xl p-4 backdrop-filter blur-10">
+            <h3 class="text-white font-bold mb-3 text-center">اڳڀرائِي</h3>
+            
+            <!-- Score Display -->
+            <div class="flex justify-between items-center mb-3">
+                <span class="text-white text-sm">ڪل پوائنٽس:</span>
+                <span id="mobileScoreDisplay" class="text-yellow-400 font-bold text-lg">0</span>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="w-full bg-white/30 rounded-full h-3 mb-3">
+                <div id="mobileProgressBar" class="progress-bar bg-gradient-to-r from-yellow-400 to-orange-400 h-full rounded-full w-0 transition-all duration-500"></div>
+            </div>
+            
+            <!-- Progress Text -->
+            <p class="text-center text-white text-sm" id="mobileProgressText">0% مڪمل</p>
+            
+            <!-- Level Indicator -->
+            <div class="flex justify-center mt-3">
+                <div class="bg-white/20 rounded-full px-3 py-1 flex items-center gap-2">
+                    <span id="mobileLevelIcon" class="text-xl">🥉</span>
+                    <span class="text-white text-sm font-semibold">شروعاتي سطح</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sound Toggle -->
+        <div class="mt-6">
+            <button id="mobileSoundToggle" class="w-full mobile-menu-link text-white justify-center">
+                <span class="text-2xl">🔊</span>
+                <span>آواز: کليل</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Progress Ring -->
+    <!-- <div class="fixed top-20 left-4 z-30">
+        <div class="relative w-16 h-16">
+            <svg class="w-16 h-16 transform -rotate-90">
+                <circle class="stroke-gray-300" stroke-width="4" fill="transparent" r="24" cx="32" cy="32"/>
+                <circle class="stroke-green-500" stroke-width="4" fill="transparent" r="24" cx="32" cy="32" 
+                        stroke-dasharray="150" stroke-dashoffset="150" id="progressCircle"/>
+            </svg>
+            <div class="absolute inset-0 flex items-center justify-center text-xs font-bold text-green-600" id="progressPercent">0%</div>
+        </div>
+    </div> -->
+
+    <!-- Main Content -->
+    <section id="mainSection" class="max-w-7xl mx-auto px-4 py-8">
+        <!-- Back to Main Website Button -->
+        <!-- <div class="mb-6">
+            <button onclick="window.location.href='index.html'" class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-bold text-lg transition-colors duration-200">
+                <span class="text-2xl">←</span>
+                <span>واپس مين ويب سائيٽ ڏانهن</span>
+            </button>
+        </div> -->
+        
+        <h1 class="text-3xl lg:text-5xl font-bold text-center text-green-800 mb-4 float-animation">
+            سائنس جي حیرت انگیز دنیا! 🌟
+        </h1>
+        <p class="text-center text-gray-600 mb-8">قدرت جا راز ڳوليو ۽ تجربا ڪريو</p>
+        
+        <!-- Science Topics Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-8">
+            <!-- Biology Section -->
+            <div onclick="showSection('biology')" class="science-card text-gray-700 p-6 rounded-3xl cursor-pointer">
+                <div class="text-center">
+                    <div class="text-5xl mb-4 float-animation">🧬</div>
+                    <h3 class="text-xl font-bold mb-2">جیون سائنس</h3>
+                    <p class="text-sm opacity-90 mb-4">جانداروں جي دنیا</p>
+                    <div class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        5 سبق
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plants Section -->
+            <div onclick="showSection('plants')" class="science-card text-gray-700 p-6 rounded-3xl cursor-pointer">
+                <div class="text-center">
+                    <div class="text-5xl mb-4 float-animation">🌱</div>
+                    <h3 class="text-xl font-bold mb-2">ٻوٽن جي دنیا</h3>
+                    <p class="text-sm opacity-90 mb-4">ٻوٽن جو مطالعو</p>
+                    <div class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        5 سبق
+                    </div>
+                </div>
+            </div>
+
+            <!-- Human Body Section -->
+            <div onclick="showSection('humanBody')" class="science-card text-gray-700 p-6 rounded-3xl cursor-pointer">
+                <div class="text-center">
+                    <div class="text-5xl mb-4 float-animation">🫀</div>
+                    <h3 class="text-xl font-bold mb-2">انساني عضوہ</h3>
+                    <p class="text-sm opacity-90 mb-4">جسم جا حصا</p>
+                    <div class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        5 سبق
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weather Section -->
+            <div onclick="showSection('weather')" class="science-card text-gray-700 p-6 rounded-3xl cursor-pointer">
+                <div class="text-center">
+                    <div class="text-5xl mb-4 float-animation">🌦️</div>
+                    <h3 class="text-xl font-bold mb-2">موسمیات</h3>
+                    <p class="text-sm opacity-90 mb-4">موسم جون تبديليون</p>
+                    <div class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        5 سبق
+                    </div>
+                </div>
+            </div>
+
+            <!-- Space Section -->
+            <div onclick="showSection('space')" class="science-card text-gray-700 p-6 rounded-3xl cursor-pointer">
+                <div class="text-center">
+                    <div class="text-5xl mb-4 float-animation">🚀</div>
+                    <h3 class="text-xl font-bold mb-2">خلائي علم</h3>
+                    <p class="text-sm opacity-90 mb-4">ستارن جو سفر</p>
+                    <div class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        5 سبق
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chemistry Section -->
+            <div onclick="showSection('chemistry')" class="science-card text-gray-700 p-6 rounded-3xl cursor-pointer">
+                <div class="text-center">
+                    <div class="text-5xl mb-4 float-animation">⚗️</div>
+                    <h3 class="text-xl font-bold mb-2">ڪيميا</h3>
+                    <p class="text-sm opacity-90 mb-4">محفوظ تجربا</p>
+                    <div class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        5 سبق
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physics Section -->
+            <div onclick="showSection('physics')" class="science-card text-gray-700 p-6 rounded-3xl cursor-pointer">
+                <div class="text-center">
+                    <div class="text-5xl mb-4 float-animation">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">طبیعیات</h3>
+                    <p class="text-sm opacity-90 mb-4">طاقت ۽ حرڪت</p>
+                    <div class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        5 سبق
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environment Section -->
+            <div onclick="showSection('environment')" class="science-card text-gray-700 p-6 rounded-3xl cursor-pointer">
+                <div class="text-center">
+                    <div class="text-5xl mb-4 float-animation">🌍</div>
+                    <h3 class="text-xl font-bold mb-2">ماحولیات</h3>
+                    <p class="text-sm opacity-90 mb-4">فطرت جي بچاءُ</p>
+                    <div class="bg-white/20 px-3 py-1 rounded-full text-sm">
+                        5 سبق
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Content Container -->
+    <div id="dynamicContent"></div>
+
+    <script>
+        // Learning Management System Architecture
+        const LearningPlatform = {
+            currentSection: '',
+            currentView: 'main', // main, lessons, lesson, exercise
+            currentLesson: 0,
+            currentExercise: 0,
+            navigationStack: [],
+            userProgress: {
+                biology: { completed: [], currentLesson: 0 },
+                plants: { completed: [], currentLesson: 0 },
+                humanBody: { completed: [], currentLesson: 0 },
+                weather: { completed: [], currentLesson: 0 },
+                space: { completed: [], currentLesson: 0 },
+                chemistry: { completed: [], currentLesson: 0 },
+                physics: { completed: [], currentLesson: 0 },
+                environment: { completed: [], currentLesson: 0 }
+            },
+            scores: {
+                biology: 0, plants: 0, humanBody: 0, weather: 0,
+                space: 0, chemistry: 0, physics: 0, environment: 0
+            }
+        };
+
+        // Comprehensive Learning Content Database
+        const LearningContent = {
+            biology: {
+                title: "🧬 جيون سائنس",
+                description: "زندگيءَ جا عجائبات سمجھو",
+                lessons: [
+                    {
+                        id: 1,
+                        title: "جانورن جي دنيا",
+                        icon: "🐾",
+                        content: {
+                            introduction: "دنيا ۾ لکين قسم جا جانور رهن ٿا۔ هر جانور جون پنهنجون خصوصيتون ۽ رهڻ جو طريقو آهي۔",
+                            concepts: [
+                                {
+                                    title: "پاليل جانور",
+                                    description: "هي جانور انسانن سان گڏ رهن ٿا جهڙوڪ ڪتو، ٻلي، ڳئون، ٻڪري",
+                                    visual: "🏠🐕🐱🐄",
+                                    details: "پاليل جانور انسانن جا دوست آهن۔ اهي اسان جو خيال رکن ٿا ۽ اسين انهن جو۔"
+                                },
+                                {
+                                    title: "جهنگلي جانور",
+                                    description: "هي جانور جهنگلن ۾ آزادي سان رهن ٿا جهڙوڪ شيھن، هاٿي، ڀولڙو",
+                                    visual: "🌲🦁🐘🐒",
+                                    details: "جهنگلي جانور پنهنجو کاڌو پاڻ ڳولين ٿا ۽ پنهنجو بچاءُ ڪن ٿا۔"
+                                },
+                                {
+                                    title: "پاڻي جا جانور",
+                                    description: "هي جانور پاڻي ۾ رهن ٿا جهڙوڪ مڇي، وهيل، ڊالفن",
+                                    visual: "🌊🐠🐋🐬",
+                                    details: "پاڻي جا جانور پاڻي ۾ ترڻ ڄاڻن ٿا ۽ پاڻي ۾ ساھ وٺي سگهن ٿا۔"
+                                }
+                            ],
+                            activities: [
+                                {
+                                    type: "interactive",
+                                    title: "جانورن کي سڃاڻو",
+                                    description: "مختلف جانورن جون آوازون ٻڌو ۽ انهن جون قسمون ٻڌايو"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "🐕 ڪتو ڪهڙي قسم جو جانور آهي؟",
+                                options: ["پاليل", "جهنگلي", "پاڻي جو", "هوائي"],
+                                correct: 0,
+                                explanation: "ڪتو پاليل جانور آهي جيڪو انسانن سان گڏ رهي ٿو۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: "کاڌي جو سلسلو",
+                        icon: "🍃",
+                        content: {
+                            introduction: "فطرت ۾ هر جاندار ڪنهن نه ڪنهن جو کاڌو آهي ۽ هيءُ هڪ مسلسل سلسلو ٺاهي ٿو۔",
+                            concepts: [
+                                {
+                                    title: "پيداوار ڪندڙ",
+                                    description: "ٻوٽا جيڪي سج جي روشني سان پنهنجو کاڌو ٺاهين ٿا",
+                                    visual: "🌱☀️💚",
+                                    details: "ٻوٽا کاڌي جي سلسلي جو بنياد آهن ڇاڪاڻ ته اهي پنهنجو کاڌو پاڻ ٺاهين ٿا۔"
+                                },
+                                {
+                                    title: "گاھُہ خور",
+                                    description: "اهي جانور جيڪي صرف ٻوٽا کائين ٿا جهڙوڪ خرگوش، هرڻ",
+                                    visual: "🐰🦌🌿",
+                                    details: "گاھُہ خور جانورن جا ڏند پنن ۽ گاھُہ چٻائڻ لاءِ آهن۔"
+                                },
+                                {
+                                    title: "گوشت خور",
+                                    description: "اهي جانور جيڪي ٻين جانورن کي کائين ٿا جهڙوڪ شيھن، چيتو",
+                                    visual: "🦁🐅🥩",
+                                    details: "گوشت خور جانورن جا ڏند تيز هوندا آهن شڪار پڪڙڻ لاءِ۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "کاڌي جي سلسلي ۾ پهرين ڪير اچي ٿو؟",
+                                options: ["ٻوٽا", "ڀاڄي خور", "گوشت خور", "انسان"],
+                                correct: 0,
+                                explanation: "ٻوٽا کاڌي جي سلسلي جو بنياد آهن۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: "جانورن جا گهر",
+                        icon: "🏠",
+                        content: {
+                            introduction: "هر جانور جو پنهنجو خاص گهر ۽ ماحول هوندو آهي جتي اهو بهترين طريقي سان رهي سگهي ٿو۔",
+                            concepts: [
+                                {
+                                    title: "ٻيلو",
+                                    description: "وڻن ۽ ٻوٽن جو علائقو جتي ڪيترائي جانور رهن ٿا",
+                                    visual: "🌲🦁🐘🐒",
+                                    details: "ٻيلي ۾ جانورن کي کاڌو، پاڻي ۽ لڪڻ جي جاءِ ملي ٿي۔"
+                                },
+                                {
+                                    title: "ريگستان",
+                                    description: "ٻيلي جو علائقو جتي خاص جانور رهن ٿا",
+                                    visual: "🏜️🐪🦎🏺",
+                                    details: "ريگستاني جانور گهٽ پاڻي ۾ زنده رهي سگهن ٿا۔"
+                                },
+                                {
+                                    title: "برفاني علائقا",
+                                    description: "ٿڌا علائقا جتي برف هوندي آهي",
+                                    visual: "🧊🐧🐻‍❄️❄️",
+                                    details: "برفاني جانورن وٽ ٿلهي چمڙي هوندي آهي ٿڌ کان بچڻ لاءِ۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "🐧 پينگوئن ڪٿي رهن ٿا؟",
+                                options: ["ٻيلو", "ريگستان", "برفاني علائقا", "شهر"],
+                                correct: 2,
+                                explanation: "پينگوئن برفاني علائقن ۾ رهن ٿا۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        title: "زندگيءَ جا مرحلا",
+                        icon: "🔄",
+                        content: {
+                            introduction: "هر جانور جي زندگي مختلف مرحلن مان گذري ٿي جهڙوڪ پيدائش، وڌڻ، ۽ بالغ ٿيڻ۔",
+                            concepts: [
+                                {
+                                    title: "پوپٽ جي زندگي",
+                                    description: "آنو → ڪيڙو → خول → پوپٽ",
+                                    visual: "🥚→🐛→🛡️→🦋",
+                                    details: "هيءُ مڪمل تبديلي چئبوندي آهي جتي شڪل بلڪل بدلجي وڃي ٿي۔"
+                                },
+                                {
+                                    title: "ڪڪڙ جي زندگي",
+                                    description: "آنو → چوزو → جوان ڪڪڙ → بالغ ڪڪڙ ",
+                                    visual: "🥚→🐣→🐤→🐓",
+                                    details: "ڪڪڙ  جي زندگي ۾ صرف سائيز وڌي ٿو، شڪل نٿي بدلجي۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "پوپٽ جي زندگي ۾ ڪيڙي کان پوءِ ڇا اچي ٿو؟",
+                                options: ["آنڊو", "خول", "پوپٽ", "وڏو ڪيڙو"],
+                                correct: 1,
+                                explanation: "ڪيڙي کان پوءِ خول جو مرحلو اچي ٿو۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        title: "جانورن جو بچاءُ",
+                        icon: "🛡️",
+                        content: {
+                            introduction: "جانورن جو بچاءُ ضروري آهي ته جيئن ايندڙ نسلون به انهن کي ڏسي سگهن۔",
+                            concepts: [
+                                {
+                                    title: "خطري ۾ جانور",
+                                    description: "ڪجهہ جانور ختم ٿيڻ جي خطري ۾ آهن",
+                                    visual: "🐅🦏🐼🐘",
+                                    details: "شڪار ۽ ٻيلن جي ڪٽڻ سان جانور خطري ۾ پئجي ويا آهن۔"
+                                },
+                                {
+                                    title: "بچاءُ جا طريقا",
+                                    description: "جانورن کي بچائڻ جا طريقا",
+                                    visual: "🏞️🚫🏹💚",
+                                    details: "قومي پارڪ ٺاهڻ، شڪار بند ڪرڻ، ٻيلن جي حفاظت۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "جانورن جي بچاءُ ڇو ضروري آهي؟",
+                                options: ["تماشي لاءِ", "فطري توازن لاءِ", "شڪار لاءِ", "صرف خوبصورتي"],
+                                correct: 1,
+                                explanation: "جانورن جي بچاءُ فطري توازن لاءِ ضروري آهي۔"
+                            }
+                        ]
+                    }
+                ]
+            },
+            plants: {
+                title: "🌱 ٻوٽن جي دنیا",
+                description: "ٻوٽن جي حيرت انگيز دنيا",
+                lessons: [
+                    {
+                        id: 1,
+                        title: "ٻوٽي جا حصا",
+                        icon: "🌿",
+                        content: {
+                            introduction: "ٻوٽي جا مختلف حصا آهن ۽ هر حصي جو پنهنجو ڪم آهي۔",
+                            concepts: [
+                                {
+                                    title: "پاڙا",
+                                    description: "زمين جي اندر لڪيل حصو",
+                                    visual: "🌳⬇️💧",
+                                    details: "پاڙا پاڻي ۽ غذا جذب ڪن ٿا ۽ ٻوٽي کي مضبوطي ڏين ٿا۔"
+                                },
+                                {
+                                    title: "ٿڙ",
+                                    description: "ٻوٽي جو مضبوط حصو جيڪو ان کي بيٺو رکي ٿو",
+                                    visual: "🌲⬆️💪",
+                                    details: "ٿڙ ٻوٽي کي سهارو ڏئي ٿو ۽ پاڻي کي پنن تائين پهچائي ٿو۔"
+                                },
+                                {
+                                    title: "پن",
+                                    description: "سائو رنگ جا حصا جيڪي کاڌو ٺاهين ٿا",
+                                    visual: "🍃☀️🍯",
+                                    details: "پن سج جي روشني سان کاڌو ٺاهين ٿا ۽ آڪسيجن ڏين ٿا۔"
+                                },
+                                {
+                                    title: "گل",
+                                    description: "رنگ برنگا خوبصورت حصا",
+                                    visual: "🌸🐝🌰",
+                                    details: "گل ٻج ٺاهين ٿا ۽ نوان ٻوٽا پيدا ڪن ٿا۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ٻوٽي جو ڪهڙو حصو کاڌو ٺاهي ٿو؟",
+                                options: ["پاڙا", "ٿڙ", "پن", "گل"],
+                                correct: 2,
+                                explanation: "پن فوٽو سنٿيسس ذريعي کاڌو ٺاهين ٿا۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: "ٻج کان وڻ تائين",
+                        icon: "🌰",
+                        content: {
+                            introduction: "هر وڏو وڻ هڪ ننڍڙي ٻج کان شروع ٿئي ٿو۔",
+                            concepts: [
+                                {
+                                    title: "ٻج",
+                                    description: "نئين زندگيءَ جي شروعات",
+                                    visual: "🌰💧🌡️",
+                                    details: "ٻج ۾ نئين ٻوٽي جي پوري معلومات موجود آهن۔"
+                                },
+                                {
+                                    title: "پهريون حصو",
+                                    description: "ٻج مان نڪرندڙ پهريون حصو",
+                                    visual: "🌱⬆️💚",
+                                    details: "پهريون حصي ۾ ننڍڙا پن ۽ پاڙ هوندي آهي۔"
+                                },
+                                {
+                                    title: "نوجوان ٻوٽو",
+                                    description: "وڌندڙ ٻوٽو",
+                                    visual: "🌿📈🌞",
+                                    details: "هن ۾ ٻوٽو تيزي سان وڌي ٿو۔"
+                                },
+                                {
+                                    title: "مڪمل وڻ",
+                                    description: "پورو بالغ وڻ",
+                                    visual: "🌳🍃🌸",
+                                    details: "هاڻي هيءُ پنهنجا ٻج ٺاهي سگهي ٿو۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ٻوٽي جي نشوونما جو پهريون مرحلو ڪهڙو آهي؟",
+                                options: ["ٻج", "ٻڪرو", "نوجوان ٻوٽو", "وڻ"],
+                                correct: 0,
+                                explanation: "ٻج ٻوٽي جي نشوونما جو پهريون مرحلو آهي۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: "ٻوٽاڪيئن کاڌو ٺاهين ٿا",
+                        icon: "☀️",
+                        content: {
+                            introduction: "ٻوٽا پنهنجو کاڌو پاڻ ٺاهين ٿا، هيءُ ڏاڍو حيرت انگيز عمل آهي!",
+                            concepts: [
+                                {
+                                    title: "فوٽو سنٿيسس",
+                                    description: "روشني سان کاڌو ٺاهڻ جو عمل",
+                                    visual: "☀️+💧+💨=🍯",
+                                    details: "سج جي روشني + پاڻي + ڪاربن ڊائي آڪسائيڊ = گلوڪوز + آڪسيجن"
+                                },
+                                {
+                                    title: "ڪلوروفل",
+                                    description: "پنن جو سائو رنگ",
+                                    visual: "🍃💚✨",
+                                    details: "ڪلوروفل روشني کي پڪڙي ٿو ۽ کاڌو ٺاهڻ ۾ مدد ڪري ٿو۔"
+                                },
+                                {
+                                    title: "آڪسيجن جي پيداوار",
+                                    description: "ٻوٽا اسان کي ساھُ کڻڻ لاءِ آڪسيجن ڏين ٿا",
+                                    visual: "🍃➡️💨😤",
+                                    details: "ٻوٽا ڪاربن ڊائي آڪسائيڊ وٺن ٿا ۽ آڪسيجن ڏين ٿا۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ٻوٽا کاڌو ٺاهڻ لاءِ ڇا استعمال ڪن ٿا؟",
+                                options: ["صرف پاڻي", "صرف روشني", "صرف هوا", "سڀ ڪجهه"],
+                                correct: 3,
+                                explanation: "ٻوٽا فوٽو سنٿيسس لاءِ روشني، پاڻي ۽ ڪاربن ڊائي آڪسائيڊ سڀني جي ضرورت آهي۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        title: "ٻوٽن جون قسمون",
+                        icon: "🌳",
+                        content: {
+                            introduction: "مختلف قسم جا ٻوٽا مختلف ماحول ۾ رهن ٿا۔",
+                            concepts: [
+                                {
+                                    title: "وڻ",
+                                    description: "وڏا ۽ ڊگها ٻوٽا جن ۾ ڪاٺي هوندي آهي",
+                                    visual: "🌳🌲🌴",
+                                    details: "وڻ ڪيترائي سال زنده رهن ٿا ۽ اسان کي ڇانو ڏين ٿا۔"
+                                },
+                                {
+                                    title: "ٻوٽڙا",
+                                    description: "وچولي قد جا ٻوٽا",
+                                    visual: "🌿🍃🌱",
+                                    details: "ٻوٽڙا وڻن کان ننڍا پر گاھُہ کان وڏا هوندا آهن۔"
+                                },
+                                {
+                                    title: "گاھُہ",
+                                    description: "ننڍا ۽ نرم ٻوٽا",
+                                    visual: "🌱🌾🍀",
+                                    details: "گاھُہ ۾ ڪاٺي نه هوندي آهي ۽ اها نرم هوندي آهي۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "🌳 هي ڪهڙي قسم جو ٻوٽو آهي؟",
+                                options: ["وڻ", "ٻوٽڙو", "گھاس", "ٻيل"],
+                                correct: 0,
+                                explanation: "هيءُ وڻ آهي جيڪو وڏو ۽ ڊگهو هوندو آهي۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 5,
+                        title: "ٻوٽن جي اهميت",
+                        icon: "💚",
+                        content: {
+                            introduction: "ٻوٽا اسان جي زندگيءَ لاءِ ڏاڍا اهم آهن۔",
+                            concepts: [
+                                {
+                                    title: "آڪسيجن جي فراهمي",
+                                    description: "ٻوٽا اسان کي سانس وٺڻ لاءِ صاف هوا ڏين ٿا",
+                                    visual: "🍃💨😤💚",
+                                    details: "ٻوٽن کان سواءِ اسين سانس نٿا وٺي سگهون۔"
+                                },
+                                {
+                                    title: "کاڌي جي فراهمي",
+                                    description: "ٻوٽا اسان کي ميوا، ڀاڄيون ۽ اناج ڏين ٿا",
+                                    visual: "🍎🥕🌾🍞",
+                                    details: "اسان جو گهڻو کاڌو ٻوٽن مان اچي ٿو۔"
+                                },
+                                {
+                                    title: "ماحولياتي توازن",
+                                    description: "ٻوٽا موسم کي ڪنٽرول ڪن ٿا",
+                                    visual: "🌳🌧️🌤️❄️",
+                                    details: "ٻوٽا مينهن آڻين ٿا ۽ گرمي کي ڪنٽرول ڪن ٿا۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ٻوٽن جو سڀ کان اهم فائدو ڇا آهي؟",
+                                options: ["خوبصورتي", "آڪسيجن", "ڇانو", "سڀ فائدا"],
+                                correct: 3,
+                                explanation: "ٻوٽن جا سڀ فائدا اهم آهن - آڪسيجن، کاڌو، ۽ ماحولياتي توازن۔"
+                            }
+                        ]
+                    }
+                ]
+            },
+            humanBody: {
+                title: "🫀 انساني عضوہ",
+                description: "انساني جسم جا عجائبات",
+                lessons: [
+                    {
+                        id: 1,
+                        title: "جسم جا اهم حصا",
+                        icon: "🫀",
+                        content: {
+                            introduction: "اسان جو جسم مختلف حصن مان ٺهيو آهي ۽ هر حصي جو پنهنجو ڪم آهي۔",
+                            concepts: [
+                                {
+                                    title: "دماغ (Brain)",
+                                    description: "اسان جي جسم جو ڪنٽرول سينٽر",
+                                    visual: "🧠💭⚡",
+                                    details: "دماغ اسان کي سوچڻ، ياد رکڻ ۽ جسم کي ڪنٽرول ڪرڻ ۾ مدد ڪري ٿو۔"
+                                },
+                                {
+                                    title: "دل (Heart)",
+                                    description: "رت کي سڄي جسم ۾ پمپ ڪري ٿو",
+                                    visual: "❤️🩸🔄",
+                                    details: "دل هر منٽ ۾ 70-80 ڀيرا ڌڙڪي ٿو ۽ رت کي سڄي جسم ۾ موڪلي ٿو۔"
+                                },
+                                {
+                                    title: "ڦيڦڙا (Lungs)",
+                                    description: "ساھ کڻڻ جو ڪم ڪن ٿا",
+                                    visual: "🫁💨😤",
+                                    details: "ڦيڦڙا آڪسيجن اندر وڃن ٿا ۽ ڪاربن ڊائي آڪسائيڊ ٻاهر ڪڍن ٿا۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ڪهڙو حصو سانس وٺڻ جو ڪم ڪري ٿو؟",
+                                options: ["دماغ", "دل", "ڦڦڙا", "پيٽ"],
+                                correct: 2,
+                                explanation: "ڦڦڙا سانس وٺڻ جو ڪم ڪن ٿا۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: "حواس خميس",
+                        icon: "👁️",
+                        content: {
+                            introduction: "اسان جا پنج حواس آهن جيڪي اسان کي دنيا کي سمجهڻ ۾ مدد ڪن ٿا۔",
+                            concepts: [
+                                {
+                                    title: "نظر (Watching)",
+                                    description: "اکين سان ڏسڻ",
+                                    visual: "👁️🌈🖼️",
+                                    details: "اکيون اسان کي رنگ، شڪل ۽ حرڪت ڏسڻ ۾ مدد ڪن ٿيون۔"
+                                },
+                                {
+                                    title: "ٻڌڻ (Hearing)",
+                                    description: "ڪنن سان آوازون ٻڌڻ",
+                                    visual: "👂🎵🔊",
+                                    details: "ڪن اسان کي موسيقي، گفتگو ۽ خطري جون آوازون ٻڌڻ ۾ مدد ڪن ٿا۔"
+                                },
+                                {
+                                    title: "بوءُ (Smelling)",
+                                    description: "نڪ سان بوءُ محسوس ڪرڻ",
+                                    visual: "👃🌹💐",
+                                    details: "نڪ اسان کي خوشبو ۽ بدبوءُ جي وچ ۾ فرق ڪرڻ ۾ مدد ڪري ٿو۔"
+                                },
+                                {
+                                    title: "ذائقو (Taste)",
+                                    description: "زبان سان ذائقو چکڻ",
+                                    visual: "👅🍯🍋",
+                                    details: "زبان اسان کي مٺو، کٽو، تيز ۽ ڪاوڙو ذائقو محسوس ڪرڻ ۾ مدد ڪري ٿي۔"
+                                },
+                                {
+                                    title: "ڇُهڻ (Touching)",
+                                    description: "چمڙي سان ڇُهڻ",
+                                    visual: "✋🤚🔥",
+                                    details: "چمڙي اسان کي گرم، ٿڌو، نرم ۽ سخت محسوس ڪرڻ ۾ مدد ڪري ٿي۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "اسان وٽ ڪيترا حواس آهن؟",
+                                options: ["3", "4", "5", "6"],
+                                correct: 2,
+                                explanation: "اسان وٽ پنج حواس آهن: نظر، ٻڌڻ، بوءُ، ذائقو ۽ ڇهڻ۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: "هڏا ۽ عضلا",
+                        icon: "🦴",
+                        content: {
+                            introduction: "اسان جو جسم هڏن ۽ عضلن سان ٺهيل آهي جيڪي اسان کي حرڪت ڪرڻ ۾ مدد ڪن ٿا۔",
+                            concepts: [
+                                {
+                                    title: "هڏا (Bones)",
+                                    description: "جسم جو سخت ۽ مضبوط حصو",
+                                    visual: "🦴💪🏗️",
+                                    details: "هڏا اسان جي جسم کي سهارو ڏين ٿا ۽ اندروني عضون کي بچائين ٿا۔"
+                                },
+                                {
+                                    title: "عضلا (Muscles)",
+                                    description: "نرم حصا جيڪي سڪڙين ۽ ڦهلجن ٿا",
+                                    visual: "💪🏃‍♂️🤸‍♀️",
+                                    details: "عضلا اسان کي حرڪت ڪرڻ، ڊوڙڻ ۽ ٽپو ڏيڻ ۾ مدد ڪن ٿا۔"
+                                },
+                                {
+                                    title: "جوڙ (Joints)",
+                                    description: "هڏن جا ملڻ جا نقطا",
+                                    visual: "🦵🤲⚙️",
+                                    details: "جوڙ اسان کي هٿ، پير ۽ ٻيا حصا موڙڻ ۾ مدد ڪن ٿا۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ڪهڙو حصو اسان جي جسم کي سهارو ڏئي ٿو؟",
+                                options: ["عضلا", "هڏا", "چمڙي", "رت"],
+                                correct: 1,
+                                explanation: "هڏا اسان جي جسم کي سهارو ڏين ٿا۔"
+                            }
+                        ]
+                    }
+                ]
+            },
+            weather: {
+                title: "🌦️ موسمیات",
+                description: "موسم جون تبديليون ۽ قدرتي واقعا",
+                lessons: [
+                    {
+                        id: 1,
+                        title: " مُندُون",
+                        icon: "🌤️",
+                        content: {
+                            introduction: "سال ۾ مختلف مُندُون اينديو رهن ٿيو جيڪي اسان جي زندگي تي اثر وجهن ٿيو۔",
+                            concepts: [
+                               {
+                                    "title": "اونهارو",
+                                    "description": "گرم ۽ انتهائي سُڪو موسم (Summer)",
+                                    "visual": "☀️🌵🔥",
+                                    "details": "اونهارو (Summer) مئي کان سيپٽمبر تائين ٿئي ٿو، جڏهن هوا گهڻي گرم (اڪثر 43–46 °C) ۽ خشڪ هوندي آهي۔ راتيون پڻ گرم رهن ٿيون ۽ برسات تقريباً نه ٿيندي آهي۔"
+                                    },
+                                {
+                                    title: "سانوڻ",
+                                    description: "گرم ۽ گهڻي برسات وارو موسم (مون سون)",
+                                    visual: "🌧️☔🌿",
+                                    details: "سانوڻ (ورشا موسم) 15 جون کان 15 آگسٽ تائين هلندي آهي۔ ان ۾ گرمي سان گڏ وڌيڪ برساتون ٿين ٿيون جيڪي زرعي فصلن لاءِ مفيد آهن۔."
+                                },
+                                {
+                                    title: "سرءُ",
+                                    description: "خزان واري موسم (سرء)",
+                                    visual: "🍂🍁🌬️",
+                                    details: "سرءُ، خريف جي موسم آهي، جيڪا سيپٽمبر کان نومبر تائين  سنڌ ۾ ٿيندي آهي ۽ ان درميان خشڪ، ٿڌي ۽ خوشگوار موسم هوندي آهي۔ وڻن جا پن پيلا ٿي ڇڻڻ لڳن ٿا ۽ آسمان صاف رهي ٿو"
+                                },
+                                {
+                                    "title": "سيارو",
+                                    "description": "ٿڌي ۽ خشڪ موسم (Winter)",
+                                    "visual": "❄️🧊🌙",
+                                    "details": "سيارو نومبر کان فيبروري تائين رهندو آهي۔ ان دوران راتيون تمام ٿڌيون (ڪجهه علائقن ۾ 2 °C يا ان کان گهٽ) ۽ خشڪ هونديون آهن، جڏهن ته بارش گهٽ ٿئي ٿي۔"
+                                },
+                                {
+                                    "title": "بهار",
+                                    "description": "خوشگوار ۽ ٿڌي موسم (Spring)",
+                                    "visual": "🌸🌼🌱",
+                                    "details": " بہار جي موسم جيڪا فيبروري کان اپريل تائين هلندي آهي۔ ان دوران موسم خوشگوار ۽ ٿڌي هوندي آهي، جڏهن ته وڻن تي نوان پن ۽ گل کلي ويندا آهن۔"
+                                },
+                                
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ڪهڙي موسم ۾ گهڻو مينهن وسندو آهي؟",
+                                options: ["اونهارو", "برساتي موسم", "سياري", "بهار"],
+                                correct: 1,
+                                explanation: "برساتي موسم ۾ گهڻو مينهن وسندو آهي۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: "پاڻي جو چڪر",
+                        icon: "💧",
+                        content: {
+                            introduction: "پاڻي قدرت ۾ مختلف شڪلن ۾ تبديل ٿيندو رهي ٿو۔",
+                            concepts: [
+                                {
+                                    title: "ٻاڦجڻ (Evaporation)",
+                                    description: "پاڻي جو گيس ۾ تبديل ٿيڻ",
+                                    visual: "💧➡️☁️",
+                                    details: "سج جي گرمي سان پاڻي بخارات بڻجي آسمان ۾ چڙهي وڃي ٿو۔"
+                                },
+                                {
+                                    title: "گهاٽاڻ (Condensation)",
+                                    description: "ٻاڦ جو واپس پاڻي بڻجڻ",
+                                    visual: "☁️💧⬇️",
+                                    details: "آسمان ۾ ٻاڦ ٿڌي ٿي واپس پاڻي جا قطرا بڻجن ٿا۔"
+                                },
+                                {
+                                    title: "اُٻهرائي (Precipitation)",
+                                    description: "پاڻي جي قطرن جو زمين تي ڪرڻ",
+                                    visual: "🌧️💦🌍",
+                                    details: "ڪڪر جا قطرا ڳڙا ٿي مينهن بڻجي زمين تي ڪرن ٿا۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "پاڻي جي چڪر جو پهريون قدم ڇا آهي؟",
+                                options: ["مينهن", "بخارات", "ڪڪر", "برف"],
+                                correct: 1,
+                                explanation: "پاڻي جي چڪر جو پهريون قدم بخارات آهي۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 3,
+                        title: "آسماني عناصر",
+                        icon: "🌌",
+                        content: {
+                            introduction: "آسمان ۾ مختلف عناصر نظر ايندا آهن جيڪي موسم ۽ وقت جي ڪري تبديل ٿيندا رهن ٿا۔",
+                            concepts: [
+                                {
+                                    title: "اڇا ڪڪر",
+                                    description: "آسمان ۾ اڃي رنگ جا ڪڪر",
+                                    visual: "☁️⚪🌫️",
+                                    details: "مُندُون آسمان ۾ مختلف شڪلن ۾ نظر ايندا آهن۔ اِھي مُندُون خوشگوار موسم جو اشارو آهن۔"
+                                },
+                                {
+                                    title: " ڪارا ڪڪر",
+                                    description: "آسمان ۾ ڪارا ۽ خطرناڪ ڪڪر",
+                                    visual: "⛈️🌩️⚡",
+                                    details: "اھي ڪارا ۽ ڳرا ڪڪر آهن جيڪي طوفان ۽ مينهن آڻيندا آهن۔ انهن مان بجلي به ڪرندي آهي۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ڪهڙا ڪڪر طوفان آڻيندا آهن؟",
+                                options: ["مُندُون", "سرءُ", "برف", "بخارات"],
+                                correct: 1,
+                                explanation: "سرءُ (ڪارا ڪڪر) طوفان ۽ مينهن آڻيندا آهن۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 4,
+                        title: "آسماني شيون",
+                        icon: "🌟",
+                        content: {
+                            introduction: "آسمان ۾ مختلف خوبصورت شيون نظر ايندا آهن جيڪي اسان کي حيران ڪن ٿيون۔",
+                            concepts: [
+                                {
+                                    title: "قوس",
+                                    description: "مينهن کان پوءِ آسمان ۾ رنگ برنگو قوس",
+                                    visual: "🌈🌧️☀️",
+                                    details: "قوس تڏهن نظر ايندو آهي جڏهن مينهن ۽ سج گڏ هوندا آهن۔ ان ۾ ست رنگ هوندا آهن۔"
+                                },
+                                {
+                                    title: "سيارو",
+                                    description: "آسمان ۾ چمڪندڙ نقطا",
+                                    visual: "⭐🌟✨",
+                                    details: "سيارا رات جو آسمان ۾ نظر ايندا آهن۔ اهي پري جا سج آهن جيڪي اسان کي روشني ڏيندا آهن۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "سانوِڻ ڪڏهن نظر ايندو آهي؟",
+                                options: ["صرف مينهن ۾", "صرف سج ۾", "مينهن ۽ سج گڏ", "رات جو"],
+                                correct: 2,
+                                explanation: "سانوِڻ تڏهن نظر ايندو آهي جڏهن مينهن ۽ سج گڏ هوندا آهن۔"
+                            }
+                        ]
+                    }
+                ]
+            },
+            space: {
+                title: "🚀 خلائي علم",
+                description: "ستارن، سيارن ۽ خلاءَ جي دنيا",
+                lessons: [
+                    {
+                        id: 1,
+                        title: "نظام شمسي",
+                        icon: "🌞",
+                        content: {
+                            introduction: "اسان جو نظام شمسي سج ۽ ان جي چوڌاري گردش ڪندڙ سيارن تي ٻڌل آهي۔",
+                            concepts: [
+                                {
+                                    title: "سج (Sun)",
+                                    description: "اسان جو ويجهڙو تارو",
+                                    visual: "☀️🔥💛",
+                                    details: "سج هڪ وڏو تارو آهي جيڪو روشني ۽ گرمي ڏئي ٿو۔"
+                                },
+                                {
+                                    title: "زمين (Earth)",
+                                    description: "اسان جو گهر سيارو",
+                                    visual: "🌍🏠💙",
+                                    details: "زمين تي پاڻي ۽ هوا موجود آهي جنهن ڪري هتي زندگي آهي۔"
+                                },
+                                {
+                                    title: "چنڊ (Moon)",
+                                    description: "زمين جو قدرتي سيٽلائيٽ",
+                                    visual: "🌙✨🌃",
+                                    details: "چنڊ زمين جي چوڌاري گردش ڪري ٿو ۽ رات جو روشني ڏئي ٿو۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ڪهڙو سيارو اسان جو گهر آهي؟",
+                                options: ["مريخ", "زمين", "وينس", "مشتري"],
+                                correct: 1,
+                                explanation: "زمين اسان جو گهر سيارو آهي۔"
+                            }
+                        ]
+                    }
+                ]
+            },
+            chemistry: {
+                title: "⚗️ ڪیمیا",
+                description: "مادن جي خاصيتون ۽ تبديليون",
+                lessons: [
+                    {
+                        id: 1,
+                        title: "مادي جون حالتون",
+                        icon: "🧪",
+                        content: {
+                            introduction: "مادو ٽن مختلف حالتن ۾ ملي سگهي ٿو۔",
+                            concepts: [
+                                {
+                                    title: "جامد (Solid)",
+                                    description: "سخت ۽ مضبوط شڪل",
+                                    visual: "🧊📦⚡",
+                                    details: "جامد مادو مضبوط هوندو آهي ۽ ان جي شڪل تبديل نه ٿيندي۔"
+                                },
+                                {
+                                    title: "مائع (Liquid)",
+                                    description: "وهڻ وارو مادو",
+                                    visual: "💧🌊🥛",
+                                    details: "مائع مادو وهي سگهي ٿو ۽ ٿانو جي شڪل اختيار ڪري ٿو۔"
+                                },
+                                {
+                                    title: "گيس (Gas)",
+                                    description: "هوا جهڙو مادو",
+                                    visual: "💨☁️🎈",
+                                    details: "گيس هر طرف پکڙجي وڃي ٿي ۽ نظر نه ايندي۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "پاڻي ڪهڙي حالت ۾ آهي؟",
+                                options: ["جامد", "مائع", "گيس", "پلازما"],
+                                correct: 1,
+                                explanation: "پاڻي مائع حالت ۾ آهي۔"
+                            }
+                        ]
+                    }
+                ]
+            },
+            physics: {
+                title: "⚡ طبیعیات",
+                description: "طاقت، حرڪت ۽ توانائي جا قانون",
+                lessons: [
+                    {
+                        id: 1,
+                        title: "حرڪت جا قسم",
+                        icon: "🏃‍♂️",
+                        content: {
+                            introduction: "مختلف شيون مختلف طريقن سان حرڪت ڪن ٿيون۔",
+                            concepts: [
+                                {
+                                    title: "سڌي حرڪت",
+                                    description: "سڌي لڪير ۾ حرڪت",
+                                    visual: "➡️🚗🏃‍♂️",
+                                    details: "ڪار روڊ تي سڌي حرڪت ڪري ٿي۔"
+                                },
+                                {
+                                    title: "گول حرڪت",
+                                    description: "دائري ۾ حرڪت",
+                                    visual: "🌍🔄☀️",
+                                    details: "زمين سج جي چوڌاري گول حرڪت ڪري ٿي۔"
+                                },
+                                {
+                                    title: "واپسي حرڪت",
+                                    description: "اڳ پوئتي حرڪت",
+                                    visual: "↔️🪃🎢",
+                                    details: "جُھولو اڳتي پوئتي واپسي حرڪت ڪري ٿو۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "زمين سج جي چوڌاري ڪهڙي حرڪت ڪري ٿي؟",
+                                options: ["سڌي", "گول", "واپسي", "بي ترتيب"],
+                                correct: 1,
+                                explanation: "زمين سج جي چوڌاري گول حرڪت ڪري ٿي۔"
+                            }
+                        ]
+                    }
+                ]
+            },
+            environment: {
+                title: "🌍 ماحولیات",
+                description: "فطرت جي بچاءُ ۽ ماحولياتي توازن",
+                lessons: [
+                    {
+                        id: 1,
+                        title: "ماحولياتي مسئلا",
+                        icon: "🌱",
+                        content: {
+                            introduction: "اسان جي ڌرتي کي ڪيترائي ماحولياتي مسئلا منهن ڏئي رهيا آهن۔",
+                            concepts: [
+                                {
+                                    title: "فضائي آلودگي",
+                                    description: "هوا ۾ نقصانڪار گيسز",
+                                    visual: "🏭💨😷",
+                                    details: "فيڪٽرين ۽ گاڏين مان نڪرندڙ دونهون هوا کي آلوده ڪري ٿو۔"
+                                },
+                                {
+                                    title: "پاڻي جي آلودگي",
+                                    description: "پاڻي ۾ گندگي جو اچڻ",
+                                    visual: "🏭💧🐟",
+                                    details: "فيڪٽرين جو خراب پاڻي دريائن ۽ سمنڊ کي آلوده ڪري ٿو۔"
+                                },
+                                {
+                                    title: "ڪچري جو مسئلو",
+                                    description: "پلاسٽڪ ۽ ٻين فضولن جو جمع ٿيڻ",
+                                    visual: "🗑️♻️🌍",
+                                    details: "پلاسٽڪ جو ڪچرو ماحول لاءِ خطرناڪ آهي۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ڪهڙي شيءِ ماحول لاءِ تمام خطرناڪ آهي؟",
+                                options: ["ڪاغذ", "پلاسٽڪ", "ڪاٺ", "ڪپڙو"],
+                                correct: 1,
+                                explanation: "پلاسٽڪ ماحول لاءِ تمام خطرناڪ آهي۔"
+                            }
+                        ]
+                    },
+                    {
+                        id: 2,
+                        title: "ماحول جي بچاءُ",
+                        icon: "♻️",
+                        content: {
+                            introduction: "اسان سڀني کي مل ڪري ماحول جي بچاءُ ڪرڻ گهرجي۔",
+                            concepts: [
+                                {
+                                    title: "ٻيهر استعمال",
+                                    description: "شين کي ٻيهر استعمال ڪرڻ",
+                                    visual: "♻️🔄💚",
+                                    details: "ڪاغذ، شيشو ۽ ڌاتو کي ٻيهر استعمال ڪري سگهجي ٿو۔"
+                                },
+                                {
+                                    title: "توانائي جي بچت",
+                                    description: "بجلي ۽ پاڻي جو صحيح استعمال",
+                                    visual: "💡💧⚡",
+                                    details: "غير ضروري بجلي ۽ پاڻي جو استعمال بند ڪرڻ گهرجي۔"
+                                },
+                                {
+                                    title: "وڻ پوکڻ",
+                                    description: "وڌيڪ وڻ پوکڻ",
+                                    visual: "🌳🌱🌿",
+                                    details: "وڻ هوا صاف ڪن ٿا ۽ آڪسيجن ڏين ٿا۔"
+                                }
+                            ]
+                        },
+                        exercises: [
+                            {
+                                question: "ماحول جي بچاءُ لاءِ ڇا ڪرڻ گهرجي؟",
+                                options: ["وڌيڪ ڪچرو ڪرڻ", "وڻ ڪٽڻ", "وڻ پوکڻ", "پاڻي ضايع ڪرڻ"],
+                                correct: 2,
+                                explanation: "ماحول جي بچاءُ لاءِ وڻ پوکڻ گهرجي۔"
+                            }
+                        ]
+                    }
+                ]
+            }
+        };
+
+        // Navigation and State Management
+        function showSection(sectionName) {
+            try {
+                LearningPlatform.currentSection = sectionName;
+                LearningPlatform.currentView = 'lessons';
+                LearningPlatform.navigationStack.push('main');
+                updateNavigation();
+                loadLessonsView(sectionName);
+            } catch (error) {
+                console.error('Error in showSection:', error);
+                alert('خرابي: ' + error.message);
+            }
+        }
+
+        function loadLessonsView(sectionName) {
+            try {
+                const sectionData = LearningContent[sectionName];
+                if (!sectionData) {
+                    console.error('No section data found for:', sectionName);
+                    return;
+                }
+
+                if (!sectionData.lessons || !Array.isArray(sectionData.lessons)) {
+                    console.error('Invalid lessons data for section:', sectionName);
+                    return;
+                }
+
+                document.getElementById('mainSection').style.display = 'none';
+                
+                const content = `
+                    <section class="max-w-7xl mx-auto px-4 py-8 slide-in-right">
+                        <!-- Back Button -->
+                        <div class="mb-4">
+                            <button onclick="goToMain()" class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-bold text-xl lg:text-2xl transition-colors duration-200">
+                                <span class="text-3xl">←</span>
+                                <span>واپس سائنس سیکشنز ڏانهن</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Breadcrumb Navigation -->
+                        <div class="navigation-breadcrumb">
+                            <div class="flex items-center gap-2 text-lg lg:text-xl">
+                                <button onclick="goToMain()" class="text-blue-600 hover:underline">🏠 گهر</button>
+                                <span class="text-gray-400">›</span>
+                                <span class="font-bold">${sectionData.title || 'نامعلوم سیکشن'}</span>
+                            </div>
+                        </div>
+
+                        <!-- Section Header -->
+                        <div class="content-section text-center mb-8">
+                            <h1 class="text-5xl lg:text-6xl font-bold mb-6 glow-effect">${sectionData.title || 'نامعلوم سیکشن'}</h1>
+                            <p class="text-2xl lg:text-3xl text-gray-600 mb-8">${sectionData.description || 'تفصيلات دستياب نه آهن'}</p>
+                            <div class="btn-primary text-center px-8 py-4 rounded-full inline-block text-xl lg:text-2xl">
+                                ${sectionData.lessons.length} تعليمي سبق
+                            </div>
+                        </div>
+
+                        <!-- Lessons Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            ${sectionData.lessons.map((lesson, index) => {
+                                try {
+                                    const userProgress = LearningPlatform.userProgress[sectionName] || { completed: [], currentLesson: 0 };
+                                    const isCompleted = userProgress.completed.includes(lesson.id);
+                                    const isCurrent = userProgress.currentLesson === index;
+                                    const cardClass = isCompleted ? 'completed' : (isCurrent ? 'current' : '');
+                                    
+                                    return `
+                                        <div onclick="loadLesson(${index})" class="lesson-card ${cardClass} p-6 rounded-2xl cursor-pointer">
+                                            <div class="text-center">
+                                                <div class="text-6xl mb-6">${lesson.icon || '📚'}</div>
+                                                <h3 class="text-2xl lg:text-3xl font-bold mb-4">${lesson.title || 'سبق ' + (index + 1)}</h3>
+                                                <div class="flex justify-center items-center gap-2 mt-4">
+                                                    ${isCompleted ? '<span class="text-green-600 text-lg lg:text-xl font-bold">✅ مڪمل</span>' : 
+                                                      isCurrent ? '<span class="text-orange-600 text-lg lg:text-xl font-bold">📖 موجوده</span>' : 
+                                                      '<span class="text-gray-600 text-lg lg:text-xl">🔒 بند</span>'}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                } catch (lessonError) {
+                                    console.error('Error rendering lesson:', lessonError);
+                                    return `
+                                        <div class="lesson-card p-6 rounded-2xl">
+                                            <div class="text-center">
+                                                <div class="text-4xl mb-4">❌</div>
+                                                <h3 class="text-xl font-bold mb-2">خرابي</h3>
+                                                <p class="text-sm text-red-600">هن سبق ۾ خرابي آهي</p>
+                                            </div>
+                                        </div>
+                                    `;
+                                }
+                            }).join('')}
+                        </div>
+
+                        <!-- Section Progress -->
+                        <div class="content-section mt-8 text-center">
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-6">توهان جي پيش قدمي</h3>
+                            <div class="bg-gray-200 rounded-full h-6 mb-6">
+                                <div class="bg-green-500 h-6 rounded-full transition-all duration-500" 
+                                     style="width: ${(() => {
+                                         try {
+                                             const userProgress = LearningPlatform.userProgress[sectionName] || { completed: [] };
+                                             return (userProgress.completed.length / sectionData.lessons.length) * 100;
+                                         } catch (e) {
+                                             return 0;
+                                         }
+                                     })()}%">
+                                </div>
+                            </div>
+                            <p class="text-xl lg:text-2xl text-gray-600">
+                                ${(() => {
+                                    try {
+                                        const userProgress = LearningPlatform.userProgress[sectionName] || { completed: [] };
+                                        return userProgress.completed.length;
+                                    } catch (e) {
+                                        return 0;
+                                    }
+                                })()} ۾ کان ${sectionData.lessons.length} سبق مڪمل
+                            </p>
+                        </div>
+                    </section>
+                `;
+
+                document.getElementById('dynamicContent').innerHTML = content;
+            } catch (error) {
+                console.error('Error in loadLessonsView:', error);
+                // Show error message to user
+                document.getElementById('dynamicContent').innerHTML = `
+                    <div class="max-w-4xl mx-auto px-4 py-8">
+                        <div class="content-section text-center">
+                            <h1 class="text-3xl font-bold mb-4 text-red-600">خرابي!</h1>
+                            <p class="text-xl mb-6">هن سیکشن کي لوڊ ڪرڻ ۾ مسئلو آهي۔</p>
+                            <button onclick="goToMain()" class="btn-primary px-6 py-3 rounded-full">
+                                واپس مين پيج ڏانهن
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function loadLesson(lessonIndex) {
+            const sectionData = LearningContent[LearningPlatform.currentSection];
+            const lesson = sectionData.lessons[lessonIndex];
+            
+            LearningPlatform.currentLesson = lessonIndex;
+            LearningPlatform.currentView = 'lesson';
+            LearningPlatform.navigationStack.push('lessons');
+            updateNavigation();
+
+            const content = `
+                <section class="max-w-7xl mx-auto px-4 py-8 fade-in-up">
+                    <!-- Back Button -->
+                    <div class="mb-4">
+                        <button onclick="goToLessons()" class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-bold text-xl lg:text-2xl transition-colors duration-200">
+                            <span class="text-3xl">←</span>
+                            <span>واپس سیکشن ڏانهن</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Breadcrumb Navigation -->
+                    <div class="navigation-breadcrumb">
+                        <div class="flex items-center gap-2 text-lg lg:text-xl">
+                            <button onclick="goToMain()" class="text-blue-600 hover:underline">🏠 گهر</button>
+                            <span class="text-gray-400">›</span>
+                            <button onclick="goToLessons()" class="text-blue-600 hover:underline">${sectionData.title}</button>
+                            <span class="text-gray-400">›</span>
+                            <span class="font-bold">${lesson.title}</span>
+                        </div>
+                    </div>
+
+                    <!-- Lesson Header -->
+                    <div class="content-section text-center mb-8">
+                        <div class="text-8xl mb-6">${lesson.icon}</div>
+                        <h1 class="text-5xl lg:text-6xl font-bold mb-6">${lesson.title}</h1>
+                        <p class="text-2xl lg:text-3xl text-gray-600">${lesson.content.introduction}</p>
+                    </div>
+
+                    <!-- Learning Content -->
+                    ${lesson.content.concepts.map(concept => `
+                        <div class="content-section mb-6">
+                            <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-blue-800">${concept.title}</h2>
+                            
+                            <div class="visual-demo">
+                                <div class="text-6xl mb-6">${concept.visual}</div>
+                                <p class="text-2xl lg:text-3xl font-bold">${concept.description}</p>
+                            </div>
+                            
+                            <div class="concept-box">
+                                <p class="text-xl lg:text-2xl leading-relaxed">${concept.details}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+
+                    <!-- Interactive Activities -->
+                    ${lesson.content.activities ? `
+                        <div class="content-section mb-6">
+                            <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-purple-800">🎮  انٽرايڪٽو سرگرميون</h2>
+                            ${lesson.content.activities.map(activity => `
+                                <div class="interactive-demo">
+                                    <h3 class="text-2xl lg:text-3xl font-bold mb-4">${activity.title}</h3>
+                                    <p class="text-xl lg:text-2xl">${activity.description}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    ` : ''}
+
+                    <!-- Key Facts -->
+                    <div class="fact-highlight">
+                        <h3 class="text-2xl lg:text-3xl font-bold mb-4">📝 اهم ڳالهيون:</h3>
+                        <ul class="list-disc list-inside space-y-3">
+                            ${lesson.content.concepts.map(concept => 
+                                `<li class="text-lg lg:text-xl">${concept.title}: ${concept.description}</li>`
+                            ).join('')}
+                        </ul>
+                    </div>
+
+                    <!-- Navigation Buttons -->
+                    <div class="content-section text-center">
+                        <div class="flex justify-center gap-6 flex-wrap">
+                            ${lessonIndex > 0 ? `
+                                <button onclick="loadLesson(${lessonIndex - 1})" class="btn-secondary text-lg lg:text-xl px-8 py-4">
+                                    ← پويون سبق
+                                </button>
+                            ` : ''}
+                            
+                            <button onclick="startExercises()" class="btn-primary text-lg lg:text-xl px-8 py-4">
+                                🎯 مشق شروع ڪريو
+                            </button>
+                            
+                            ${lessonIndex < sectionData.lessons.length - 1 ? `
+                                <button onclick="loadLesson(${lessonIndex + 1})" class="btn-primary text-lg lg:text-xl px-8 py-4">
+                                    اڳيون سبق →
+                                </button>
+                            ` : ''}
+                        </div>
+                    </div>
+                </section>
+            `;
+
+            document.getElementById('dynamicContent').innerHTML = content;
+        }
+
+        function startExercises() {
+            const sectionData = LearningContent[LearningPlatform.currentSection];
+            const lesson = sectionData.lessons[LearningPlatform.currentLesson];
+            
+            LearningPlatform.currentView = 'exercise';
+            LearningPlatform.currentExercise = 0;
+            LearningPlatform.navigationStack.push('lesson');
+            updateNavigation();
+
+            loadExercise(lesson.exercises[0]);
+        }
+
+        function loadExercise(exercise) {
+            const content = `
+                <section class="max-w-4xl mx-auto px-4 py-8 fade-in-up">
+                    <!-- Back Button -->
+                    <div class="mb-4">
+                        <button onclick="goToLesson()" class="flex items-center gap-2 text-blue-600 hover:text-blue-800 font-bold text-lg transition-colors duration-200">
+                            <span class="text-2xl">←</span>
+                            <span>واپس سبق ڏانهن</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Breadcrumb Navigation -->
+                    <div class="navigation-breadcrumb">
+                        <div class="flex items-center gap-2 text-sm">
+                            <button onclick="goToMain()" class="text-blue-600 hover:underline">🏠 گهر</button>
+                            <span class="text-gray-400">›</span>
+                            <button onclick="goToLessons()" class="text-blue-600 hover:underline">${LearningContent[LearningPlatform.currentSection].title}</button>
+                            <span class="text-gray-400">›</span>
+                            <button onclick="goToLesson()" class="text-blue-600 hover:underline">${LearningContent[LearningPlatform.currentSection].lessons[LearningPlatform.currentLesson].title}</button>
+                            <span class="text-gray-400">›</span>
+                            <span class="font-bold">مشق</span>
+                        </div>
+                    </div>
+
+                    <!-- Exercise Content -->
+                    <div class="content-section">
+                        <div class="text-center mb-8">
+                            <h2 class="text-3xl font-bold mb-4 text-purple-800">🎯 مشق جو وقت!</h2>
+                            <div class="text-6xl mb-6">🧠</div>
+                            <p class="text-xl font-bold">${exercise.question}</p>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            ${exercise.options.map((option, index) => `
+                                <button onclick="selectAnswer(${index})" 
+                                        class="option-button p-6 rounded-xl font-bold text-lg text-gray-800 hover:transform hover:scale-105 transition-all duration-300"
+                                        data-index="${index}">
+                                    ${option}
+                                </button>
+                            `).join('')}
+                        </div>
+                        
+                        <div id="feedbackContainer" class="hidden mt-6">
+                            <div id="feedbackMessage" class="p-6 rounded-xl text-center">
+                                <div id="feedbackText" class="text-xl font-bold mb-4"></div>
+                                <div id="explanationText" class="text-base"></div>
+                            </div>
+                        </div>
+
+                        <!-- Exercise Navigation -->
+                        <div class="text-center mt-8">
+                            <button onclick="goToLesson()" class="btn-secondary mr-4">
+                                ← واپس سبق ۾
+                            </button>
+                            <button onclick="nextExerciseOrComplete()" id="nextButton" class="btn-primary" style="display: none;">
+                                اگلا سوال →
+                            </button>
+                        </div>
+                    </div>
+                </section>
+            `;
+
+            document.getElementById('dynamicContent').innerHTML = content;
+        }
+
+        function selectAnswer(selectedIndex) {
+            const sectionData = LearningContent[LearningPlatform.currentSection];
+            const lesson = sectionData.lessons[LearningPlatform.currentLesson];
+            const exercise = lesson.exercises[LearningPlatform.currentExercise];
+            
+            const isCorrect = selectedIndex === exercise.correct;
+            
+            // Update button states
+            document.querySelectorAll('.option-button').forEach((btn, index) => {
+                btn.style.pointerEvents = 'none';
+                if (index === selectedIndex) {
+                    btn.style.background = isCorrect ? 
+                        'linear-gradient(135deg, #10b981, #34d399)' : 
+                        'linear-gradient(135deg, #ef4444, #f87171)';
+                    btn.style.color = 'white';
+                }
+                if (index === exercise.correct && !isCorrect) {
+                    btn.style.background = 'linear-gradient(135deg, #10b981, #34d399)';
+                    btn.style.color = 'white';
+                }
+            });
+
+            // Show feedback
+            const feedbackContainer = document.getElementById('feedbackContainer');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const feedbackText = document.getElementById('feedbackText');
+            const explanationText = document.getElementById('explanationText');
+            
+            feedbackContainer.classList.remove('hidden');
+            feedbackMessage.className = isCorrect ? 
+                'p-6 rounded-xl text-center bg-green-100 border-2 border-green-500' : 
+                'p-6 rounded-xl text-center bg-red-100 border-2 border-red-500';
+            
+            feedbackText.textContent = isCorrect ? '🎉 بهترين! صحيح جواب!' : '❌ غلط جواب! ٻيهر ڪوشش ڪريو!';
+            explanationText.textContent = exercise.explanation;
+            
+            if (isCorrect) {
+                updateScore(LearningPlatform.currentSection, 20);
+                document.getElementById('nextButton').style.display = 'inline-block';
+                
+                // Mark lesson as completed
+                const lessonId = lesson.id;
+                if (!LearningPlatform.userProgress[LearningPlatform.currentSection].completed.includes(lessonId)) {
+                    LearningPlatform.userProgress[LearningPlatform.currentSection].completed.push(lessonId);
+                    LearningPlatform.userProgress[LearningPlatform.currentSection].currentLesson++;
+                }
+            }
+        }
+
+        function nextExerciseOrComplete() {
+            const sectionData = LearningContent[LearningPlatform.currentSection];
+            const lesson = sectionData.lessons[LearningPlatform.currentLesson];
+            
+            if (LearningPlatform.currentExercise < lesson.exercises.length - 1) {
+                LearningPlatform.currentExercise++;
+                loadExercise(lesson.exercises[LearningPlatform.currentExercise]);
+            } else {
+                // Lesson completed
+                showNotification('🎊 سبق مڪمل! بهترين ڪارڪردگي!');
+                setTimeout(() => {
+                    goToLessons();
+                }, 2000);
+            }
+        }
+
+        // Navigation Functions
+        function updateNavigation() {
+            const backButton = document.getElementById('backButton');
+            if (backButton) {
+                backButton.style.display = LearningPlatform.currentView === 'main' ? 'none' : 'block';
+            }
+        }
+
+        function handleBackNavigation() {
+            const previousView = LearningPlatform.navigationStack.pop();
+            
+            switch (previousView) {
+                case 'main':
+                    goToMain();
+                    break;
+                case 'lessons':
+                    goToLessons();
+                    break;
+                case 'lesson':
+                    goToLesson();
+                    break;
+            }
+        }
+
+        function goToMain() {
+            LearningPlatform.currentView = 'main';
+            LearningPlatform.navigationStack = [];
+            document.getElementById('mainSection').style.display = 'block';
+            document.getElementById('dynamicContent').innerHTML = '';
+            updateNavigation();
+        }
+
+        function goToLessons() {
+            LearningPlatform.currentView = 'lessons';
+            loadLessonsView(LearningPlatform.currentSection);
+        }
+
+        function goToLesson() {
+            LearningPlatform.currentView = 'lesson';
+            loadLesson(LearningPlatform.currentLesson);
+        }
+
+        // Utility Functions
+        function updateScore(section, points) {
+            LearningPlatform.scores[section] += points;
+            const totalScore = Object.values(LearningPlatform.scores).reduce((a, b) => a + b, 0);
+            
+            // Update all score displays
+            document.getElementById('totalScore').textContent = totalScore;
+            const mobileScore = document.getElementById('mobileScore');
+            const mobileScoreDisplay = document.getElementById('mobileScoreDisplay');
+            
+            if (mobileScore) mobileScore.textContent = totalScore;
+            if (mobileScoreDisplay) mobileScoreDisplay.textContent = totalScore;
+            
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const totalScore = Object.values(LearningPlatform.scores).reduce((a, b) => a + b, 0);
+            const progress = Math.min((totalScore / 1000) * 100, 100);
+            
+            // Update desktop progress
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            
+            if (progressBar) progressBar.style.width = progress + '%';
+            if (progressText) progressText.textContent = Math.round(progress) + '%';
+            
+            // Update mobile progress
+            const mobileProgressBar = document.getElementById('mobileProgressBar');
+            const mobileProgressText = document.getElementById('mobileProgressText');
+            
+            if (mobileProgressBar) mobileProgressBar.style.width = progress + '%';
+            if (mobileProgressText) mobileProgressText.textContent = Math.round(progress) + '% مڪمل';
+            
+            // Update level based on progress
+            updateLevelIndicator(progress);
+        }
+        
+        function updateLevelIndicator(progress) {
+            const currentLevel = document.getElementById('currentLevel');
+            const mobileLevelIcon = document.getElementById('mobileLevelIcon');
+            
+            let levelIcon, levelText;
+            
+            if (progress >= 80) {
+                levelIcon = '🏆';
+                levelText = 'ماهر سطح';
+            } else if (progress >= 60) {
+                levelIcon = '🥇';
+                levelText = 'اعليٰ سطح';
+            } else if (progress >= 40) {
+                levelIcon = '🥈';
+                levelText = 'وچولي سطح';
+            } else if (progress >= 20) {
+                levelIcon = '🥉';
+                levelText = 'بنيادي سطح';
+            } else {
+                levelIcon = '🌱';
+                levelText = 'شروعاتي سطح';
+            }
+            
+            if (currentLevel) currentLevel.textContent = levelIcon;
+            if (mobileLevelIcon) {
+                mobileLevelIcon.textContent = levelIcon;
+                const levelTextElement = mobileLevelIcon.nextElementSibling;
+                if (levelTextElement) levelTextElement.textContent = levelText;
+            }
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+            notification.className = `fixed top-32 left-1/2 transform -translate-x-1/2 ${bgColor} text-white px-6 py-3 rounded-full shadow-lg z-50 fade-in-up`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.5s';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
+
+        // Test function for mobile menu (call from console)
+        window.testMobileMenu = function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            console.log('Mobile Menu Test:');
+            console.log('Button exists:', !!mobileMenuBtn);
+            console.log('Menu exists:', !!mobileMenu);
+            console.log('Button visible:', mobileMenuBtn ? window.getComputedStyle(mobileMenuBtn).display !== 'none' : false);
+            console.log('Button position:', mobileMenuBtn ? mobileMenuBtn.getBoundingClientRect() : 'N/A');
+            console.log('Menu active:', mobileMenu ? mobileMenu.classList.contains('active') : false);
+            
+            if (mobileMenuBtn) {
+                console.log('Simulating click...');
+                mobileMenuBtn.click();
+            }
+        };
+
+        // Initialize platform
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDarkMode();
+            updateProgress();
+            
+            // Mobile Menu Functionality
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+            if (mobileMenuBtn && mobileMenu && closeMobileMenu) {
+                mobileMenuBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Mobile menu button clicked');
+                    mobileMenu.classList.add('active');
+                    document.body.classList.add('menu-open');
+                });
+
+                closeMobileMenu.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Close mobile menu clicked');
+                    mobileMenu.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                });
+
+                // Close mobile menu when clicking outside (on backdrop)
+                mobileMenu.addEventListener('click', (e) => {
+                    if (e.target === mobileMenu) {
+                        mobileMenu.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    }
+                });
+
+                // Close menu when clicking on a link
+                const menuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
+                menuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.remove('active');
+                        document.body.classList.remove('menu-open');
+                    });
+                });
+            } else {
+                console.error('Mobile menu elements not found:', {
+                    mobileMenuBtn: !!mobileMenuBtn,
+                    mobileMenu: !!mobileMenu,
+                    closeMobileMenu: !!closeMobileMenu
+                });
+            }
+        });
+
+        // Dark Mode Toggle Functionality
+        function toggleDarkMode() {
+            const body = document.body;
+            const darkModeIconHeader = document.getElementById('darkModeIconHeader');
+            const darkModeIconMobile = document.getElementById('darkModeIconMobile');
+            
+            body.classList.toggle('dark');
+            
+            // Update both icons based on current mode
+            const isDark = body.classList.contains('dark');
+            const icon = isDark ? '☀️' : '🌙';
+            
+            if (darkModeIconHeader) darkModeIconHeader.textContent = icon;
+            if (darkModeIconMobile) darkModeIconMobile.textContent = icon;
+            
+            localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+        }
+
+        // Initialize Dark Mode
+        function initializeDarkMode() {
+            const darkMode = localStorage.getItem('darkMode');
+            const darkModeIconHeader = document.getElementById('darkModeIconHeader');
+            const darkModeIconMobile = document.getElementById('darkModeIconMobile');
+            
+            const isDark = darkMode === 'enabled';
+            const icon = isDark ? '☀️' : '🌙';
+            
+            if (isDark) {
+                document.body.classList.add('dark');
+            }
+            
+            if (darkModeIconHeader) darkModeIconHeader.textContent = icon;
+            if (darkModeIconMobile) darkModeIconMobile.textContent = icon;
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer 
+    class="bg-gradient-to-r from-gray-50 via-white to-gray-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 p-5 shadow-xl text-gray-800 dark:text-gray-200 lg:p-5 w-full"
+    >
+        <!-- Logo Row -->
+        <div class="flex justify-between items-center mb-1">
+            <!-- Left Logo -->
+            <div class="flex-shrink-0">
+                <img src="/assets/images/AMBILE LOGO PNG.png" alt="Left Logo" class="h-24 w-auto md:h-24">
+            </div>
+            
+            <div class="text-center">
+            <!-- Educational Program Title -->
+            <h3 class="text-xl lg:text-2xl font-bold text-indigo-800 dark:text-indigo-300 mb-1">
+                سنڌي ٻارن لاءِ تعليمي سکيا جِي رٿا
+            </h3>
+            
+            <!-- Organization Info -->
+            <div class="text-base lg:text-lg text-gray-700 dark:text-gray-300 mb-2 leading-relaxed">
+                <p class="mb-1">پاران</p>
+                <p class="font-semibold mb-1 text-lg lg:text-xl">&copy; 2025 عبدالماجد ڀرگڙي انسٽيٽيوٽ آف لينگويج انجنيئرنگ. سڀ حق محفوظ آهن.</p>
+                <p class="text-base lg:text-lg">ثقافت کاتو، سنڌ حڪومت</p>
+            </div>
+            
+            <!-- More Info Button -->
+            <button class="glass-button bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 dark:from-indigo-600 dark:to-purple-700 dark:hover:from-indigo-700 dark:hover:to-purple-800 text-white hover:text-purple-700 px-6 py-3 font-bold text-base shadow-lg transition-all duration-300 rounded-full">
+                وڌيڪ ڏسو
+            </button>
+        </div>
+
+            <!-- Right Logo -->
+            <div class="flex-shrink-0">
+                <img src="/assets/images/govt.png" alt="Right Logo" class="h-24 w-auto md:h-24">
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

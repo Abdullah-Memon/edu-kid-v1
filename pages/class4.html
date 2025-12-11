@@ -1,0 +1,2009 @@
+<!DOCTYPE html>
+<html lang="sd" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0">
+    <title>ڪلاس چوٿون - سنڌي بيت ۽ گيت</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/global-styles.css">
+    <style>
+        /* Hide/Show Nav on Scroll */
+        nav {
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        nav.nav-hidden {
+            transform: translateY(-100%);
+        }
+        
+        /* Dark Mode Styles */
+        body.dark {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 25%, #1e293b 50%, #0f172a 75%, #111827 100%);
+            color: #e2e8f0;
+        }
+        
+        body.dark .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        
+        body.dark .glass-card:hover {
+            box-shadow: 
+                0 35px 60px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 50px rgba(139, 92, 246, 0.3);
+        }
+
+        body.dark .glass-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px) saturate(150%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        body.dark .glass-button {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        body.dark .glass-button:hover {
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Color adjustments for dark mode */
+        body.dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+        
+        body.dark .text-gray-600 {
+            color: #cbd5e1;
+        }
+        
+        body.dark .text-gray-700 {
+            color: #d1d5db;
+        }
+        
+        body.dark .text-blue-600 {
+            color: #93c5fd;
+        }
+        
+        body.dark .text-purple-600 {
+            color: #c4b5fd;
+        }
+        
+        body.dark .text-green-600 {
+            color: #86efac;
+        }
+        
+        body.dark .text-red-600 {
+            color: #fca5a5;
+        }
+        
+        body.dark .text-yellow-600 {
+            color: #fcd34d;
+        }
+        
+        body.dark .text-indigo-600, body.dark .text-indigo-700, body.dark .text-indigo-800 {
+            color: #a5b4fc;
+        }
+        
+        body.dark .bg-white {
+            background-color: #1e293b;
+        }
+        
+        body.dark .bg-gray-50 {
+            background-color: #0f172a;
+        }
+        
+        body.dark .bg-blue-50 {
+            background-color: #172554;
+        }
+        
+        body.dark .bg-purple-50 {
+            background-color: #2e1065;
+        }
+        
+        /* Dark Mode Toggle Button */
+        .dark-mode-header-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8));
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        .dark-mode-header-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1));
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5), inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+        
+        .dark-mode-header-btn:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 5px rgba(99, 102, 241, 0.3);
+        }
+        
+        body.dark .dark-mode-header-btn {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            color: #f1f5f9;
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
+        }
+        
+        body.dark .dark-mode-header-btn:hover {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 1));
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(99, 102, 241, 0.3);
+            border: 2px solid rgba(99, 102, 241, 0.6);
+        }
+        
+        /* Add a subtle glow effect */
+        .dark-mode-header-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dark-mode-header-btn:hover::before {
+            opacity: 1;
+        }
+        
+        body {
+            font-family: 'AMBILE', serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #f8fafc 75%, #ffffff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            -webkit-tap-highlight-color: transparent;
+            color: #1f2937;
+        }
+        h1,h2,h3,title{
+            font-family: 'AMBILE2';
+            text-shadow: none;
+        }
+        
+        /* Make headings white in dark mode */
+        body.dark h1, 
+        body.dark h2, 
+        body.dark h3, 
+        body.dark .section-title {
+            color: #ffffff;
+            text-shadow: none;
+        }
+
+        /* Remove shadow and make section titles white in dark mode */
+        .section-title {
+            text-shadow: none;
+        }
+        
+        body.dark .section-title {
+            color: #ffffff;
+            text-shadow: none;
+        }
+        
+        body.dark .shimmer-text {
+            background-image: none;
+            color: #ffffff;
+            -webkit-text-fill-color: #ffffff;
+            text-shadow: none;
+        }
+
+        /* Glass Morphism Effects */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            color: #1f2937;
+        }
+        
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 
+                0 35px 60px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 0 50px rgba(99, 102, 241, 0.2);
+        }
+        
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-button {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Advanced Animation System */
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-10px) rotateX(5deg); }
+        }
+        
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 20px rgba(255,255,255,0.5); }
+            50% { text-shadow: 0 0 30px rgba(255,215,0,0.8), 0 0 40px rgba(255,165,0,0.6); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes modalSlideIn {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.8) translateY(-50px) rotateX(-30deg); 
+            }
+            70% { 
+                transform: scale(1.05) translateY(10px) rotateX(5deg); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) translateY(0) rotateX(0deg); 
+            }
+        }
+        
+        @keyframes verseHighlight {
+            0% { background: transparent; }
+            50% { 
+                background: linear-gradient(135deg, rgba(255,215,0,0.3), rgba(255,165,0,0.4));
+                transform: translateX(15px) scale(1.02);
+            }
+            100% { 
+                background: transparent;
+                transform: translateX(0) scale(1);
+            }
+        }
+
+        @keyframes bounce-float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.05); }
+        }
+        
+        @keyframes glass-glow {
+            0% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.5); }
+            100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+        }
+        
+        @keyframes magical-entrance {
+            0% { 
+                opacity: 0; 
+                transform: translateY(60px) scale(0.8) rotate(-5deg);
+                filter: blur(5px);
+            }
+            50% { 
+                opacity: 0.8; 
+                transform: translateY(-10px) scale(1.05) rotate(2deg);
+                filter: blur(1px);
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0) scale(1) rotate(0deg);
+                filter: blur(0px);
+            }
+        }
+        
+        @keyframes verse-shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        @keyframes letter-dance {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-2deg); }
+            50% { transform: translateY(-15px) rotate(0deg); }
+            75% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+
+        @keyframes success-celebration {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1) rotate(3deg); }
+            50% { transform: scale(1.05) rotate(-3deg); }
+            75% { transform: scale(1.08) rotate(2deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+        
+        /* Modern Card Styling with Glass Morphism */
+        .poetry-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            color: #1f2937;
+            animation: magical-entrance 0.8s ease-out;
+        }
+        
+        /* Dark mode styles for poetry cards */
+        body.dark .poetry-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+        }
+        
+        body.dark .poetry-card:hover {
+            box-shadow: 
+                0 35px 60px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 50px rgba(139, 92, 246, 0.3);
+        }
+
+        .poetry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s ease;
+        }
+        
+        .poetry-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 
+                0 35px 60px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                0 0 50px rgba(99, 102, 241, 0.2);
+        }
+
+        .poetry-card:hover::before {
+            left: 100%;
+        }
+        
+        .hamd-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+            color: #065f46;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .nazm-card {
+            background: linear-gradient(145deg, 
+            rgba(247, 147, 251, 0.25) 0%, 
+            rgba(118, 75, 162, 0.25) 50%, 
+            rgba(102, 126, 234, 0.25) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(247, 147, 251, 0.3);
+            box-shadow: 
+            0 25px 45px rgba(118, 75, 162, 0.15),
+            inset 0 1px 0 rgba(247, 147, 251, 0.4);
+            color: #1f2937;
+        }
+        
+        .bait-card {
+            background: linear-gradient(135deg, rgba(168, 237, 234, 0.4), rgba(254, 214, 227, 0.4));
+            color: #2d3748;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .ghazal-card {
+            background: linear-gradient(135deg, rgba(210, 153, 194, 0.4), rgba(254, 249, 215, 0.4));
+            color: #553c9a;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        /* Dark mode styles for theme-specific cards */
+        body.dark .hamd-card {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.4), rgba(16, 185, 129, 0.4));
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body.dark .nazm-card {
+            background: linear-gradient(145deg, 
+            rgba(124, 58, 237, 0.4) 0%, 
+            rgba(99, 102, 241, 0.4) 50%, 
+            rgba(79, 70, 229, 0.4) 100%);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+            0 25px 45px rgba(0, 0, 0, 0.25),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        body.dark .bait-card {
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.4), rgba(59, 130, 246, 0.4));
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body.dark .ghazal-card {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.5), rgba(99, 102, 241, 0.5));
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Interactive Elements */
+        .verse-line {
+            padding: 0.75rem 1rem;
+            margin: 0.5rem 0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #1f2937;
+            font-weight: 500;
+        }
+        
+        .verse-line:hover {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(236, 72, 153, 0.15));
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.2);
+        }
+        
+        .verse-line.reading {
+            background: linear-gradient(135deg, rgba(255,215,0,0.4), rgba(255,165,0,0.4));
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            animation: verse-shimmer 2s linear infinite;
+            background-size: 200% 100%;
+        }
+        
+        /* Modal Enhancements */
+        .modal-backdrop {
+            backdrop-filter: blur(15px) brightness(0.7);
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            border-radius: 25px;
+            box-shadow: 
+                0 50px 100px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.2);
+            animation: modalSlideIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        /* Enhanced Modal System for dark mode */
+        body.dark .modal-backdrop {
+            backdrop-filter: blur(20px) brightness(0.5);
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        body.dark .modal-content {
+            background: linear-gradient(135deg, #1e293b, #0f172a, #1e1b4b);
+            box-shadow: 
+                0 50px 100px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+        }
+        
+        /* Floating Elements */
+        .floating-element {
+            animation: cardFloat 4s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(2n) {
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3n) {
+            animation-delay: 4s;
+        }
+        
+        /* Header Effects */
+        .hero-title {
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #667eea);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 4s ease infinite, textGlow 3s ease-in-out infinite;
+        }
+        
+        /* Progress System */
+        .progress-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .progress-dot.active {
+            background: linear-gradient(135deg, #ffd700, #ffb347);
+            border-color: #ffd700;
+            transform: scale(1.4);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+        }
+        
+        /* Audio Visualization */
+        .audio-wave {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            margin-left: 8px;
+        }
+        
+        .wave-bar {
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(to top, #667eea, #ffd700);
+            border-radius: 2px;
+            animation: waveAnimation 1.2s ease-in-out infinite;
+        }
+        
+        .wave-bar:nth-child(1) { animation-delay: 0s; }
+        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
+        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
+        .wave-bar:nth-child(4) { animation-delay: 0.6s; }
+        
+        @keyframes waveAnimation {
+            0%, 100% { height: 20px; opacity: 0.7; }
+            50% { height: 35px; opacity: 1; }
+        }
+        
+        /* Touch Ripple Effect */
+        .touch-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .touch-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .touch-ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        @keyframes rippleAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        /* Enhanced Mobile Interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .poetry-card:hover {
+                transform: none;
+            }
+            
+            .poetry-card:active {
+                transform: scale(0.98);
+            }
+            
+            .glass-button:hover {
+                transform: none;
+            }
+            
+            .glass-button:active {
+                transform: scale(0.95);
+            }
+            
+            .verse-line:hover {
+                transform: none;
+            }
+            
+            .verse-line:active {
+                transform: scale(0.98);
+            }
+        }
+        
+        /* Enhanced Effects */
+        @keyframes confetti-fall {
+            0% { 
+                transform: translateY(-100vh) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh) rotate(720deg) scale(0.3);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        /* ENHANCED RESPONSIVE DESIGN */
+        
+        /* Base mobile-first approach */
+        * {
+            box-sizing: border-box;
+        }
+        
+        /* Improved touch targets for mobile */
+        .touch-target {
+            min-height: 48px;
+            min-width: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Comprehensive Mobile & Tablet Responsive Design */
+        
+        /* Mobile First - Base styles for all devices */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Tablet Design (768px - 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            /* Navigation tablet optimizations */
+            .glass-nav {
+                padding: 0.75rem 1rem;
+                margin: 0.5rem;
+                border-radius: 15px;
+            }
+            
+            .glass-nav .container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .glass-nav a {
+                font-size: 0.875rem;
+                padding: 0.5rem;
+            }
+            
+            .glass-nav .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            .glass-nav .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .glass-nav .text-3xl {
+                font-size: 1.5rem;
+            }
+            
+            .glass-nav button {
+                padding: 0.5rem;
+                min-width: 40px;
+                height: 40px;
+            }
+            
+            /* Hero section tablet */
+            .hero-title,
+            h1 {
+                font-size: 3rem !important;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+            
+            .text-5xl, .text-6xl {
+                font-size: 3rem !important;
+            }
+            
+            .text-7xl, .text-8xl {
+                font-size: 3.5rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 1.75rem !important;
+            }
+            
+            .text-4xl {
+                font-size: 2rem !important;
+            }
+            
+            /* Cards tablet */
+            .poetry-card {
+                padding: 2rem;
+                margin: 1rem;
+                border-radius: 20px;
+            }
+            
+            .glass-card {
+                padding: 1.75rem;
+            }
+            
+            /* Verse lines tablet */
+            .verse-line {
+                font-size: 1.125rem;
+                line-height: 1.6;
+                padding: 0.875rem;
+                margin: 0.5rem 0;
+            }
+            
+            /* Floating elements tablet */
+            .floating-element {
+                font-size: 2.5rem !important;
+            }
+            
+            /* Progress system tablet */
+            .progress-dot {
+                width: 14px;
+                height: 14px;
+            }
+        }
+        
+        /* Mobile Design (≤767px) */
+        @media (max-width: 767px) {
+            /* Prevent horizontal scroll */
+            body {
+                overflow-x: hidden;
+            }
+            
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Navigation mobile optimizations */
+            .glass-nav {
+                padding: 0.5rem 0.75rem;
+                margin: 0.25rem;
+                border-radius: 12px;
+            }
+            
+            /* Mobile navigation layout */
+            .glass-nav .container {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: center;
+            }
+            
+            .glass-nav a {
+                font-size: 0.875rem;
+                padding: 0.375rem 0.5rem;
+                text-align: center;
+            }
+            
+            .glass-nav .text-gray-800.text-xl {
+                font-size: 1rem !important;
+            }
+            
+            .glass-nav .text-2xl {
+                font-size: 1.125rem !important;
+            }
+            
+            .glass-nav .text-3xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .glass-nav button {
+                padding: 0.375rem;
+                min-width: 36px;
+                height: 36px;
+            }
+            
+            /* Hero section mobile */
+            .hero-title,
+            h1 {
+                font-size: 2rem !important;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+                padding: 0 1rem;
+                word-wrap: break-word;
+            }
+            
+            .text-5xl, .text-6xl {
+                font-size: 2rem !important;
+            }
+            
+            .text-7xl, .text-8xl {
+                font-size: 2.5rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .text-4xl {
+                font-size: 1.75rem !important;
+            }
+            
+            /* Section titles mobile */
+            h2 {
+                font-size: 1.75rem !important;
+                line-height: 1.3;
+                margin-bottom: 1.5rem;
+                padding: 0 1rem;
+                word-wrap: break-word;
+            }
+            
+            /* Cards mobile */
+            .poetry-card {
+                padding: 1.25rem;
+                margin: 0.5rem;
+                border-radius: 15px;
+                max-width: calc(100vw - 1rem);
+                overflow-x: hidden;
+                word-wrap: break-word;
+            }
+            
+            .glass-card {
+                padding: 1rem;
+                margin: 0.5rem;
+                max-width: calc(100vw - 1rem);
+                overflow-x: hidden;
+            }
+            
+            /* Verse lines mobile */
+            .verse-line {
+                font-size: 1rem;
+                line-height: 1.5;
+                padding: 0.75rem;
+                margin: 0.375rem 0;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                border-radius: 10px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+            
+            /* Floating elements mobile */
+            .floating-element {
+                font-size: 1.75rem !important;
+            }
+            
+            /* Progress system mobile */
+            .progress-dot {
+                width: 10px;
+                height: 10px;
+            }
+            
+            /* Section spacing mobile */
+            section {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            
+            /* Button mobile optimizations */
+            button, .glass-button {
+                font-size: 0.875rem;
+                padding: 0.5rem 0.75rem;
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Text content mobile */
+            p {
+                font-size: 1rem;
+                line-height: 1.5;
+                word-wrap: break-word;
+                padding: 0 0.5rem;
+            }
+            
+            /* Card titles mobile */
+            h3 {
+                font-size: 1.25rem !important;
+                line-height: 1.3;
+                margin-bottom: 0.75rem;
+                word-wrap: break-word;
+            }
+            
+            /* Grid adjustments mobile */
+            .grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            /* Modal mobile */
+            .modal-content {
+                margin: 1rem;
+                max-height: 90vh;
+                overflow-y: auto;
+                border-radius: 20px;
+            }
+            
+            /* Footer mobile */
+            footer {
+                padding: 1.5rem 1rem;
+                text-align: center;
+            }
+            
+            /* Progress tracker mobile enhancement */
+            .glass-card:has(#progressDots) {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            #progressDots {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            /* Better text readability */
+            .verse-line {
+                background: rgba(255, 255, 255, 0.2);
+                backdrop-filter: blur(10px);
+            }
+        }
+        
+        /* Ultra-small mobile (≤480px) */
+        @media (max-width: 480px) {
+            .glass-nav {
+                padding: 0.375rem 0.5rem;
+                margin: 0.125rem;
+            }
+            
+            .glass-nav .container {
+                gap: 0.5rem;
+            }
+            
+            .glass-nav button {
+                min-width: 32px;
+                height: 32px;
+                padding: 0.25rem;
+            }
+            
+            h1 {
+                font-size: 1.75rem !important;
+                padding: 0 0.5rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+                padding: 0 0.5rem;
+            }
+            
+            h3 {
+                font-size: 1.125rem !important;
+            }
+            
+            .poetry-card {
+                padding: 1rem;
+                margin: 0.25rem;
+            }
+            
+            .verse-line {
+                font-size: 0.9rem;
+                padding: 0.625rem;
+            }
+            
+            .floating-element {
+                font-size: 1.5rem !important;
+            }
+            
+            .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            
+            button, .glass-button {
+                font-size: 0.75rem;
+                padding: 0.375rem 0.5rem;
+            }
+        }
+        
+        /* Large tablets and small laptops (1024px - 1199px) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .poetry-card {
+                padding: 2.5rem;
+            }
+            
+            .verse-line {
+                font-size: 1.25rem;
+                line-height: 1.7;
+            }
+            
+            h1 {
+                font-size: 4rem !important;
+            }
+            
+            h2 {
+                font-size: 3rem !important;
+            }
+        }
+        
+        /* Enhanced Mobile Touch Interactions */
+        @media (max-width: 768px) {
+            /* Touch-friendly interactions */
+            .poetry-card {
+                cursor: pointer;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            
+            .verse-line {
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .glass-button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+            
+            /* Enhanced card spacing */
+            .poetry-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Section margins mobile */
+            .mb-12 {
+                margin-bottom: 2rem !important;
+            }
+            
+            .py-8 {
+                padding-top: 1.5rem !important;
+                padding-bottom: 1.5rem !important;
+            }
+            
+            .py-16 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+        }
+        
+        /* Large screens (1200px+) */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1200px;
+            }
+            
+            .poetry-card {
+                padding: 3rem;
+            }
+            
+            .verse-line {
+                font-size: 1.5rem;
+                line-height: 1.8;
+            }
+            
+            /* Enhanced Desktop Header - Class 5 Style */
+            .glass-nav {
+                background: rgba(255, 255, 255, 0.95);
+                backdrop-filter: blur(20px) saturate(180%);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 20px;
+                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+                margin: 1rem 1.5rem;
+                padding: 1.5rem;
+            }
+            
+            .glass-nav .container {
+                max-width: 1400px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 2rem;
+            }
+            
+            /* Desktop navigation link styles like class-5 */
+            .glass-nav a {
+                color: #6b7280;
+                font-size: 1.125rem;
+                font-weight: 600;
+                padding: 0.75rem 1.5rem;
+                border-radius: 12px;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                background: rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .glass-nav a:hover {
+                color: #2563eb;
+                background: rgba(255, 255, 255, 0.5);
+                transform: translateY(-2px);
+                box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            }
+            
+            .nav-brand {
+                font-size: 2rem !important;
+                font-weight: bold;
+                color: #1f2937;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                text-align: center;
+            }
+            
+            .nav-brand .floating-element {
+                font-size: 3rem !important;
+                animation: cardFloat 4s ease-in-out infinite;
+            }
+            
+            .nav-actions {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+            
+            .nav-actions button {
+                background: rgba(255, 255, 255, 0.3);
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(255, 255, 255, 0.4);
+                border-radius: 15px;
+                transition: all 0.3s ease;
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+                color: #374151;
+                font-weight: 600;
+                width: 48px;
+                height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.25rem;
+            }
+            
+            .nav-actions button:hover {
+                background: rgba(255, 255, 255, 0.5);
+                transform: translateY(-2px);
+                box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+            }
+            
+            /* Desktop Hero Section Enhancement */
+            .hero-title {
+                font-size: 4.5rem !important;
+                font-weight: bold;
+                margin-bottom: 2rem;
+                letter-spacing: 1px;
+            }
+            
+            /* Desktop Progress Tracker */
+            .glass-card {
+                background: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(20px) saturate(180%);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 20px;
+                box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                padding: 2rem 3rem;
+            }
+            
+            .progress-dot {
+                width: 16px;
+                height: 16px;
+                border-width: 3px;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2, #f093fb);
+        }
+        
+        /* Dark mode scrollbar */
+        body.dark ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.3);
+        }
+        
+        body.dark ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #1e293b, #4c1d95);
+            border: 2px solid rgba(15, 23, 42, 0.5);
+        }
+        
+        body.dark ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #4c1d95, #6d28d9);
+        }
+
+        /* Enhanced text visibility for different sections */
+        .hamd-card .verse-line {
+            color: #065f46;
+            background: rgba(255, 255, 255, 0.4);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .nazm-card .verse-line {
+            color: #1f2937;
+            background: rgba(255, 255, 255, 0.4);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .bait-card .verse-line {
+            color: #2d3748;
+            background: rgba(255, 255, 255, 0.4);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        .ghazal-card .verse-line {
+            color: #553c9a;
+            background: rgba(255, 255, 255, 0.4);
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Dark mode styles for verse lines */
+        body.dark .verse-line {
+            background: rgba(0, 0, 0, 0.15);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        body.dark .verse-line:hover {
+            background: rgba(0, 0, 0, 0.25);
+            transform: translateX(8px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+        }
+        
+        body.dark .hamd-card .verse-line,
+        body.dark .nazm-card .verse-line,
+        body.dark .bait-card .verse-line,
+        body.dark .ghazal-card .verse-line {
+            color: white;
+            background: rgba(0, 0, 0, 0.15);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Animation utility classes */
+        .magical-entrance { animation: magical-entrance 1s ease-out; }
+        .success-celebration { animation: success-celebration 0.6s ease-out; }
+        .glass-glow { animation: glass-glow 2s ease-in-out infinite; }
+        .bounce-float { animation: bounce-float 3s ease-in-out infinite; }
+
+        /* Enhanced Button System */
+        .expand-button {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #1e293b;
+            font-weight: 700;
+            text-shadow: none;
+            position: relative;
+            z-index: 10;
+            cursor: pointer;
+            min-height: 48px;
+            min-width: 48px;
+        }
+        
+        .expand-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            color: #000;
+        }
+        
+        /* Dark mode version of expand button */
+        .dark .expand-button {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .dark .expand-button:hover {
+            background: rgba(30, 41, 59, 0.95);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* Enhanced Verse Cards */
+        .verse-card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: magical-entrance 0.8s ease-out;
+        }
+        
+        .verse-card:hover {
+            transform: translateY(-8px) scale(1.02);
+        }
+
+        /* Accessibility improvements */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        
+        /* High contrast mode support */
+        @media (prefers-contrast: high) {
+            .glass-card, .poetry-card {
+                border: 2px solid;
+                backdrop-filter: none;
+            }
+            
+            .verse-line {
+                border: 1px solid;
+                background: rgba(255, 255, 255, 0.9);
+            }
+            
+            body.dark .verse-line {
+                background: rgba(0, 0, 0, 0.9);
+                color: white;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            .glass-nav, .floating-element, .modal-backdrop, .modal-content {
+                display: none !important;
+            }
+            
+            .poetry-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #000;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+        }
+        
+        /* RTL improvements for mobile */
+        @media (max-width: 768px) {
+            [dir="rtl"] .verse-line:hover {
+                transform: translateX(-8px) scale(1.02);
+            }
+            
+            [dir="rtl"] .glass-nav a svg {
+                transform: scaleX(-1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="mainNav" class="white-card white-nav sticky top-0 z-50 m-4 p-4"></nav>
+        <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
+            <a href="sindhi.html" class="text-gray-600 hover:text-blue-600 transition-all duration-300 flex items-center p-3 rounded-xl hover:bg-gray-50 order-3 lg:order-1">
+                <svg class="w-6 h-6 mr-2 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                <span class="font-semibold hidden sm:inline">واپس گهر ھلو</span>
+                <span class="font-semibold sm:hidden">گهر</span>
+            </a>
+            
+            <div class="text-gray-800 text-xl lg:text-2xl font-bold flex items-center order-1 lg:order-2 text-center">
+                <span class="text-3xl ml-2 float-icon">📚</span>
+                <span class="hero-text text-2xl lg:text-3xl">ڪلاس چوٿون</span>
+                <span class="text-3xl mr-2 float-icon" style="animation-delay: 2s;">✨</span>
+            </div>
+            
+            <div class="flex items-center gap-3 order-2 lg:order-3">
+                <button id="audioToggle" class="white-button text-gray-700 hover:text-blue-600 transition-all duration-300 p-3 rounded-xl touch-ripple">
+                    <span id="audioIcon" class="text-2xl">🔊</span>
+                </button>
+                <button id="darkModeToggle" class="white-button dark-mode-header-btn touch-ripple" onclick="document.body.classList.toggle('dark'); localStorage.setItem('darkMode', document.body.classList.contains('dark') ? 'enabled' : 'disabled'); document.getElementById('darkModeIconHeader').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';" aria-label="Toggle Dark Mode">
+                    <span id="darkModeIconHeader">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    // Inline script to ensure dark mode works regardless of other JS issues
+    (function() {
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark');
+            document.getElementById('darkModeIconHeader').textContent = '☀️';
+        }
+
+        // Setup nav hiding on scroll
+        let lastScrollY = window.scrollY;
+        let scrollTimeout;
+        
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (nav) {
+                if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                    // Scrolling down - hide nav
+                    nav.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up - show nav
+                    nav.style.transform = 'translateY(0)';
+                }
+                lastScrollY = window.scrollY;
+                
+                // Clear previous timeout
+                clearTimeout(scrollTimeout);
+                
+                // Set new timeout to hide nav after 3 seconds of no scrolling
+                scrollTimeout = setTimeout(() => {
+                    if (window.scrollY > 100) {
+                        nav.style.transform = 'translateY(-100%)';
+                    }
+                }, 3000);
+            }
+        });
+    })();
+    </script>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-8 lg:py-12 text-center mt-24 mb-36">
+        <h1 class="text-gray-800 text-3xl sm:text-4xl lg:text-5xl xl:text-7xl font-bold mb-6 lg:mb-8 drop-shadow-lg hero-title">
+            سنڌي بيت ۽ گِيت
+        </h1>
+        <p class="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-gray-700 mb-6 lg:mb-8 drop-shadow-lg px-2">ڪلاس چوٿون - دلچسپ بيت ۽ گيتن جي دُنيا</p>
+        
+        <!-- Progress Tracker -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-3 mb-6 lg:mb-8 glass-card px-4 sm:px-6 py-3 mx-2">
+            <span class="text-gray-800 font-semibold text-sm sm:text-base">اڳڀرائِي:</span>
+            <div id="progressDots" class="flex gap-2 sm:gap-3 flex-wrap justify-center">
+                <!-- Progress dots will be generated by JavaScript -->
+            </div>
+            <span id="progressText" class="text-gray-800 font-bold text-base sm:text-lg">0%</span>
+        </div>
+    </section>
+
+    <!-- Dynamic Poetry Sections Container -->
+    <div id="poetrySectionsContainer" class="container mx-auto px-4">
+        <!-- Content will be populated dynamically from JSON -->
+    </div>
+
+    <!-- Achievement Modal -->
+    <div id="achievementModal" class="hidden fixed inset-0 modal-backdrop flex items-center justify-center z-50 p-4">
+        <div class="modal-content p-8 text-center max-w-md w-full text-white">
+            <div class="text-7xl mb-6 floating-element">🏆</div>
+            <h3 class="text-3xl font-bold mb-4" id="achievementTitle">واڌايُون!</h3>
+            <p class="text-xl mb-8" id="achievementText">توهان نئون ڏاڪو پورو ڪيو!</p>
+            <button onclick="closeAchievement()" class="bg-white bg-opacity-20 backdrop-blur-lg text-white px-6 py-3 rounded-full font-bold hover:bg-opacity-30 transition-all duration-300">
+                تاڙِيُون! 🎉
+            </button>
+        </div>
+    </div>
+
+    <!-- Poetry Modal -->
+    <div id="poetryModal" class="hidden fixed inset-0 modal-backdrop flex items-center justify-center z-50 p-4">
+        <div class="modal-content max-w-4xl w-full max-h-[90vh] overflow-y-auto text-gray-800 relative">
+            <button class="absolute top-6 right-6 text-gray-800 hover:text-red-600 text-3xl transition-all duration-300 touch-target" onclick="closeModal()">✕</button>
+            <div class="text-center mb-8">
+                <h2 id="modalTitle" class="text-4xl font-bold mb-4">شاعري</h2>
+                <p id="modalAuthor" class="text-xl opacity-80">شاعر</p>
+            </div>
+            <div id="modalContent" class="text-xl leading-relaxed space-y-4">
+                <!-- Content will be loaded here -->
+            </div>
+            <div class="text-center mt-8">
+                <button onclick="closeModal()" class="expand-button px-6 py-3 rounded-full font-bold transition-all duration-300">
+                    بند ڪريو
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="section bg-gradient-to-r from-blue-50 to-purple-50 text-center py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="text-2xl font-bold text-gray-800 mb-4">ڪلاس چوٿون - سنڌي بيت ۽ گيت</div>
+            <p class="text-lg mb-2 text-gray-700">عبدالماجد ڀرگڙي انسٽيٽيوٽ آف لينگويج انجنيئرنگ</p>
+            <p class="text-base text-gray-600">&copy; 2025 ثقافت کاتو، سنڌ حڪومت - سڀ حق محفوظ آهن</p>
+            <div class="flex justify-center gap-4 mt-4">
+                <span class="text-2xl">🌟</span>
+                <span class="text-2xl">📖</span>
+                <span class="text-2xl">🎭</span>
+                <span class="text-2xl">✨</span>
+            </div>
+        </div>
+    </footer>
+    
+    <style>
+        /* Dark mode footer styles */
+        body.dark footer {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.8));
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body.dark footer .text-gray-800 {
+            color: #e2e8f0 !important;
+        }
+        
+        body.dark footer .text-gray-700 {
+            color: #cbd5e1 !important;
+        }
+        
+        body.dark footer .text-gray-600 {
+            color: #94a3b8 !important;
+        }
+    </style>
+
+    <!-- Audio elements will be created dynamically based on JSON data -->
+
+    <script>
+        // State Management Architecture
+        class PoetryApp {
+            constructor() {
+                this.soundEnabled = true;
+                this.currentAudio = null;
+                this.progress = 0;
+                this.completedItems = new Set();
+                this.totalItems = 0;
+                this.poetryData = [];
+                this.init();
+            }
+
+            async init() {
+                await this.loadPoetryData();
+                this.initializeProgressDots();
+                this.setAnimationDelays();
+                this.bindEventHandlers();
+                this.setupResponsiveFeatures();
+            }
+
+            async loadPoetryData() {
+                try {
+                    const response = await fetch('/assets/Data/classes/class4.json');
+                    this.poetryData = await response.json();
+                    this.totalItems = this.poetryData.length;
+                    this.renderPoetryContent();
+                } catch (error) {
+                    console.error('Error loading poetry data:', error);
+                    this.showError('خرابي: ڊيٽا لوڊ نه ٿي سگهيو');
+                }
+            }
+
+            renderPoetryContent() {
+                const container = document.getElementById('poetrySectionsContainer');
+                if (!container) return;
+                container.innerHTML = '';
+
+                this.poetryData.forEach((item, index) => {
+                    const section = this.createPoetrySection(item, index);
+                    container.appendChild(section);
+                });
+
+                // Re-attach event listeners after dynamic content creation
+                this.attachDynamicEventListeners();
+            }
+
+            createPoetrySection(item, index) {
+                const section = document.createElement('section');
+                section.className = 'section container mx-auto px-4 mb-12';
+                
+                const sectionType = this.getSectionType(item.baitTitle);
+                const cardClass = this.getCardClass(sectionType);
+                const audioId = `audio-${index}`;
+                const icon = this.getSectionIcon(sectionType);
+                
+                section.innerHTML = `
+                    <h2 class="text-4xl lg:text-5xl font-bold text-center text-gray-800 mb-8 drop-shadow-lg section-title">
+                        ${this.getSectionTitle(sectionType)}
+                    </h2>
+                    
+                    <div class="poetry-card glass-card ${cardClass} p-6 lg:p-12 rounded-3xl shadow-2xl max-w-5xl mx-auto mb-12 touch-ripple magical-entrance">
+                        <div class="text-center mb-8">
+                            <div class="text-7xl mb-6 floating-element">${icon}</div>
+                            <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">${item.baitTitle}</h3>
+                            <p class="text-xl opacity-90 text-gray-700">مصنف: ${item.author}</p>
+                        </div>
+                        
+                        <div class="verses-container space-y-4 text-xl lg:text-2xl leading-relaxed text-center max-w-4xl mx-auto">
+                            ${item.baitContent.map((line, lineIndex) => 
+                                `<div class="verse-line cursor-pointer hover:bg-white hover:bg-opacity-20 p-3 rounded-lg transition-all duration-300" 
+                                     onclick="highlightVerse(this)" 
+                                     data-verse="${lineIndex}">
+                                    ${line}
+                                </div>`
+                            ).join('')}
+                        </div>
+                        
+                        <div class="text-center mt-8">
+                            <button onclick="playPoetry('${audioId}')" class="glass-button expand-button px-8 py-4 rounded-full text-lg font-bold transition-all duration-300 touch-ripple">
+                                <span id="${audioId}-btn">${sectionType === 'hamd' ? 'حمد ٻڌو' : sectionType === 'naat' ? 'نعت ٻڌو' : sectionType === 'nazm' ? 'نظم ٻڌو' : 'بيت ٻڌو'} 🎵</span>
+                            </button>
+                        </div>
+                        
+                        <audio id="${audioId}" src="${item.audioPath || ''}" preload="metadata"></audio>
+                    </div>
+                `;
+                
+                return section;
+            }
+
+            getSectionType(title) {
+                if (title.includes('حمد')) return 'hamd';
+                if (title.includes('نعت')) return 'naat';  
+                if (title.includes('نظم')) return 'nazm';
+                return 'bait';
+            }
+
+            getCardClass(type) {
+                switch(type) {
+                    case 'hamd': return 'hamd-card';
+                    case 'naat': return 'hamd-card'; // Using same style as hamd
+                    case 'nazm': return 'nazm-card';
+                    default: return 'bait-card';
+                }
+            }
+
+            getSectionTitle(type) {
+                switch(type) {
+                    case 'hamd': return '🌟 حمد 🌟';
+                    case 'naat': return '☪️ نعت ☪️';
+                    case 'nazm': return '🏛️ نظم 🏛️';
+                    default: return '💎 بيت 💎';
+                }
+            }
+
+            getSectionIcon(type) {
+                switch(type) {
+                    case 'hamd': return '🕌';
+                    case 'naat': return '☪️';
+                    case 'nazm': return '🏛️';
+                    default: return '💎';
+                }
+            }
+
+            attachDynamicEventListeners() {
+                // Re-attach any event listeners that were lost during dynamic content creation
+                const verseLines = document.querySelectorAll('.verse-line');
+                verseLines.forEach(line => {
+                    line.addEventListener('click', () => {
+                        this.highlightVerse(line);
+                    });
+                });
+            }
+
+            playPoetry(audioId) {
+                if (this.currentAudio && !this.currentAudio.paused) {
+                    this.currentAudio.pause();
+                }
+                
+                const audio = document.getElementById(audioId);
+                if (audio && audio.src && audio.src !== window.location.href) {
+                    this.currentAudio = audio;
+                    audio.play().catch(error => {
+                        console.error('Audio playback failed:', error);
+                        this.showNotification('آڊيو چلائڻ ۾ مسئلو آهي');
+                    });
+                    this.showAudioVisualization();
+                    this.markAsCompleted(audioId);
+                } else {
+                    this.showNotification('آڊيو دستياب نه آهي');
+                }
+            }
+
+            highlightVerse(element) {
+                // Remove previous highlights
+                document.querySelectorAll('.verse-line.reading').forEach(el => {
+                    el.classList.remove('reading');
+                });
+                
+                // Add highlight to current verse
+                element.classList.add('reading');
+                
+                // Add celebration effect
+                this.createConfetti(element);
+            }
+
+            markAsCompleted(itemId) {
+                this.completedItems.add(itemId);
+                this.updateProgress();
+                
+                if (this.completedItems.size === this.totalItems) {
+                    this.showAchievement('واڌايون!', 'توهان سڀ شعر مڪمل ڪيا!');
+                }
+            }
+
+            updateProgress() {
+                this.progress = (this.completedItems.size / this.totalItems) * 100;
+                const progressText = document.getElementById('progressText');
+                if (progressText) {
+                    progressText.textContent = Math.round(this.progress) + '%';
+                }
+                this.updateProgressDots();
+            }
+
+            updateProgressDots() {
+                const dots = document.querySelectorAll('.progress-dot');
+                const completedCount = Math.floor((this.completedItems.size / this.totalItems) * dots.length);
+                
+                dots.forEach((dot, index) => {
+                    if (index < completedCount) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            showError(message) {
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'glass-card p-6 text-center text-red-600 mb-6';
+                errorDiv.innerHTML = `<h3 class="text-xl font-bold">${message}</h3>`;
+                const container = document.getElementById('poetrySectionsContainer');
+                if (container) container.appendChild(errorDiv);
+            }
+
+            showNotification(message) {
+                // Create and show notification
+                const notification = document.createElement('div');
+                notification.className = 'fixed top-24 right-4 glass-card p-4 text-center z-50 text-gray-800';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+
+            showAchievement(title, message) {
+                const modal = document.getElementById('achievementModal');
+                const titleElement = document.getElementById('achievementTitle');
+                const textElement = document.getElementById('achievementText');
+                
+                if (titleElement) titleElement.textContent = title;
+                if (textElement) textElement.textContent = message;
+                if (modal) modal.classList.remove('hidden');
+            }
+
+            showAudioVisualization() {
+                // Add audio visualization effect
+                const visualization = document.createElement('div');
+                visualization.className = 'audio-wave fixed bottom-4 left-4 z-50';
+                visualization.innerHTML = '<div class="wave-bar"></div>'.repeat(4);
+                document.body.appendChild(visualization);
+                
+                setTimeout(() => {
+                    visualization.remove();
+                }, 3000);
+            }
+
+            createConfetti(element) {
+                // Create confetti effect
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.cssText = `
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+                    animation: confetti-fall 1s ease-out forwards;
+                    pointer-events: none;
+                    top: 50%;
+                    left: 50%;
+                `;
+                element.style.position = 'relative';
+                element.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 1000);
+            }
+
+            setupResponsiveFeatures() {
+                // Add viewport meta tag for better mobile experience
+                let viewport = document.querySelector('meta[name="viewport"]');
+                if (viewport) {
+                    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0');
+                }
+                
+                // Handle orientation change
+                window.addEventListener('orientationchange', () => {
+                    setTimeout(() => {
+                        this.recalculateLayout();
+                    }, 500);
+                });
+
+                // Handle touch events for better mobile interaction
+                this.bindTouchEvents();
+            }
+
+            bindTouchEvents() {
+                // Improve touch feedback
+                document.addEventListener('touchstart', (e) => {
+                    if (e.target.classList.contains('verse-line') || e.target.classList.contains('poetry-card')) {
+                        e.target.style.transform = 'scale(0.98)';
+                    }
+                });
+
+                document.addEventListener('touchend', (e) => {
+                    if (e.target.classList.contains('verse-line') || e.target.classList.contains('poetry-card')) {
+                        setTimeout(() => {
+                            e.target.style.transform = '';
+                        }, 150);
+                    }
+                });
+            }
+
+            recalculateLayout() {
+                // Recalculate any layout-dependent features
+                const cards = document.querySelectorAll('.poetry-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.2}s`;
+                });
+            }
+
+            initializeProgressDots() {
+                const container = document.getElementById('progressDots');
+                if (container) {
+                    container.innerHTML = '';
+                    for (let i = 0; i < this.totalItems; i++) {
+                        const dot = document.createElement('div');
+                        dot.className = 'progress-dot w-3 h-3 rounded-full bg-gray-300 transition-all duration-300';
+                        container.appendChild(dot);
+                    }
+                }
+            }
+
+            setAnimationDelays() {
+                const cards = document.querySelectorAll('.poetry-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.3}s`;
+                });
+            }
+
+            bindEventHandlers() {
+                // Dark mode toggle
+                const darkModeToggle = document.getElementById('darkModeToggle');
+                if (darkModeToggle) {
+                    darkModeToggle.addEventListener('click', () => this.toggleDarkMode());
+                }
+
+                // Apply dark mode on initialization
+                if (localStorage.getItem('darkMode') === 'enabled') {
+                    document.body.classList.add('dark');
+                }
+            }
+
+            toggleDarkMode() {
+                const isDark = document.body.classList.toggle('dark');
+                localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+            }
+
+            closeModal() {
+                const modal = document.getElementById('poetryModal');
+                if (modal) modal.classList.add('hidden');
+            }
+
+            closeAchievement() {
+                const modal = document.getElementById('achievementModal');
+                if (modal) modal.classList.add('hidden');
+            }
+        }
+
+        // Initialize the application
+
+        let poetryApp;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            poetryApp = new PoetryApp();
+        });
+
+        // Global function exports for HTML onclick handlers
+        function highlightVerse(element) {
+            if (poetryApp) poetryApp.highlightVerse(element);
+        }
+
+        function playPoetry(audioId) {
+            if (poetryApp) poetryApp.playPoetry(audioId);
+        }
+
+        function openPoetryModal(index) {
+            if (poetryApp) poetryApp.openPoetryModal(index);
+        }
+
+        function playVerse(type) {
+            if (poetryApp) poetryApp.playVerse(type);
+        }
+
+        function toggleDarkMode() {
+            if (poetryApp) poetryApp.toggleDarkMode();
+        }
+
+        function toggleSound() {
+            if (poetryApp) poetryApp.toggleSound();
+        }
+    </script>
+
+    <!-- Audio elements are now created dynamically from JSON data -->
+</body>
+</html>

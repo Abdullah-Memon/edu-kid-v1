@@ -1,0 +1,1966 @@
+<!DOCTYPE html>
+<html lang="sd" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 سنڌي AI ايڊونچر - Sindhi AI Adventure World</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Fredoka+One&display=swap');
+        @font-face {
+        font-family: 'AMBILE';
+        src: url('file:///D:/AMBILE/Shah Abdul latif Bot/ambile/AMBILE.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: 'AMBILE', 'Fredoka One', serif;
+            background: linear-gradient(45deg, #667eea, #764ba2, #ff6b6b, #4ecdc4);
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Interactive Background Elements */
+        .background-world {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .floating-cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            animation: cloudFloat 15s linear infinite;
+            opacity: 0.7;
+        }
+        
+        @keyframes cloudFloat {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(calc(100vw + 100px)); }
+        }
+        
+        .star-particle {
+            position: absolute;
+            color: #ffd700;
+            font-size: 1.5rem;
+            animation: starTwinkle 3s ease-in-out infinite;
+            pointer-events: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .star-particle:hover {
+            transform: scale(1.5);
+        }
+        
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.6; transform: rotate(0deg); }
+            50% { opacity: 1; transform: rotate(180deg); }
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 10px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Enhanced Character System */
+        .character-companion {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 100px;
+            height: 100px;
+            z-index: 1000;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        .character-avatar {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: characterBreathe 3s ease-in-out infinite;
+            position: relative;
+        }
+        
+        .character-avatar::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #ffd700, #ff6b6b);
+            background-size: 200% 200%;
+            animation: characterGlow 4s ease infinite;
+            z-index: -1;
+        }
+        
+        @keyframes characterBreathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes characterGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .character-speech {
+            position: absolute;
+            bottom: 120px;
+            right: 0;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            direction: rtl;
+        }
+        
+        .character-speech.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .character-speech::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            border: 10px solid transparent;
+            border-top-color: white;
+        }
+        
+        /* Enhanced Game Header */
+        .game-header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            backdrop-filter: blur(15px);
+            overflow: hidden;
+        }
+        
+        .game-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: headerShimmer 3s infinite;
+        }
+        
+        @keyframes headerShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .game-title {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #ffd700);
+            background-size: 200% 200%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGradient 4s ease infinite, titleFloat 6s ease-in-out infinite;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        @keyframes titleGradient {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes titleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .game-subtitle {
+            font-size: 1.5rem;
+            color: #7c3aed;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        /* Progress System */
+        .player-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            padding: 20px;
+            border-radius: 20px;
+            color: white;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .progress-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .progress-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            animation: counterGlow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes counterGlow {
+            0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+            100% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+        }
+        
+        .xp-bar {
+            width: 200px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+        
+        .xp-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            border-radius: 10px;
+            transition: width 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+        }
+        
+        .xp-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+            animation: xpShimmer 2s infinite;
+        }
+        
+        @keyframes xpShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Adventure World Map */
+        .adventure-world {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+            perspective: 1000px;
+        }
+        
+        .world-island {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-style: preserve-3d;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .world-island::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #ffd700, #ff6b6b);
+            background-size: 300% 300%;
+            border-radius: 25px;
+            z-index: -1;
+            opacity: 0;
+            animation: islandGlow 6s ease infinite;
+            transition: opacity 0.3s ease;
+        }
+        
+        .world-island:hover::before {
+            opacity: 1;
+        }
+        
+        @keyframes islandGlow {
+            0%, 100% { background-position: 0% 50%; }
+            33% { background-position: 100% 0%; }
+            66% { background-position: 0% 100%; }
+        }
+        
+        .world-island:hover {
+            transform: translateY(-15px) rotateX(10deg) rotateY(10deg);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .island-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: islandFloat 4s ease-in-out infinite;
+            display: block;
+        }
+        
+        @keyframes islandFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-10px) rotate(-2deg); }
+            75% { transform: translateY(-5px) rotate(2deg); }
+        }
+        
+        .island-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .island-description {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .island-progress {
+            width: 100%;
+            height: 8px;
+            background: #ecf0f1;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .island-progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #2ecc71, #27ae60);
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+        
+        .island-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        
+        /* Interactive Game Area */
+        .game-arena {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15px);
+            display: none;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-arena::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            animation: arenaRotate 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes arenaRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Dynamic Question Display */
+        .question-stage {
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .question-bubble {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 25px;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: bold;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            animation: questionPulse 4s ease-in-out infinite;
+        }
+        
+        .question-bubble::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: questionShimmer 3s infinite;
+        }
+        
+        @keyframes questionPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); }
+            50% { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
+        }
+        
+        @keyframes questionShimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        /* Interactive Answer System */
+        .answer-playground {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .answer-card {
+            background: white;
+            border: 4px solid #ecf0f1;
+            border-radius: 20px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+        
+        .answer-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.3), transparent);
+            border-radius: 50%;
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        .answer-card:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .answer-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: #4ecdc4;
+            box-shadow: 0 20px 40px rgba(78, 205, 196, 0.3);
+        }
+        
+        .answer-card.correct {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            border-color: #27ae60;
+            color: white;
+            animation: correctBurst 0.8s ease;
+        }
+        
+        .answer-card.incorrect {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            border-color: #c0392b;
+            color: white;
+            animation: incorrectShake 0.6s ease;
+        }
+        
+        @keyframes correctBurst {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.3); }
+            60% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes incorrectShake {
+            0%, 100% { transform: translateX(0); }
+            20% { transform: translateX(-20px); }
+            40% { transform: translateX(20px); }
+            60% { transform: translateX(-10px); }
+            80% { transform: translateX(10px); }
+        }
+        
+        .answer-text {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .answer-icon {
+            font-size: 2rem;
+            opacity: 0.7;
+        }
+        
+        /* Creative Input Area */
+        .creative-input {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .input-field {
+            width: 100%;
+            max-width: 500px;
+            padding: 20px;
+            border: 3px solid #dee2e6;
+            border-radius: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+            background: white;
+            transition: all 0.3s ease;
+            direction: rtl;
+        }
+        
+        .input-field:focus {
+            outline: none;
+            border-color: #4ecdc4;
+            box-shadow: 0 0 0 8px rgba(78, 205, 196, 0.2);
+            transform: scale(1.05);
+        }
+        
+        /* Drag and Drop System */
+        .drag-drop-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 30px 0;
+            min-height: 300px;
+        }
+        
+        .drag-source {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .drag-target {
+            background: #e9ecef;
+            border: 3px dashed #adb5bd;
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .drag-target.dragover {
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .draggable-item {
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin: 10px;
+            cursor: grab;
+            display: inline-block;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .draggable-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .draggable-item.dragging {
+            transform: rotate(5deg) scale(1.1);
+            opacity: 0.8;
+            cursor: grabbing;
+        }
+        
+        /* Achievement System */
+        .achievement-shower {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            z-index: 2000;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 500px;
+        }
+        
+        .achievement-shower.show {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .achievement-emoji {
+            font-size: 6rem;
+            animation: achievementBounce 2s ease-in-out;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes achievementBounce {
+            0% { transform: scale(0) rotate(0deg); }
+            30% { transform: scale(1.3) rotate(180deg); }
+            60% { transform: scale(0.9) rotate(270deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+        
+        /* Game Controls */
+        .game-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .control-btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            min-width: 140px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        
+        .control-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all 0.6s ease;
+            transform: translate(-50%, -50%);
+        }
+        
+        .control-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .control-btn:active {
+            transform: translateY(-4px);
+        }
+        
+        .btn-primary { background: linear-gradient(45deg, #3498db, #2980b9); }
+        .btn-success { background: linear-gradient(45deg, #2ecc71, #27ae60); }
+        .btn-warning { background: linear-gradient(45deg, #f39c12, #e67e22); }
+        .btn-danger { background: linear-gradient(45deg, #e74c3c, #c0392b); }
+        .btn-purple { background: linear-gradient(45deg, #9b59b6, #8e44ad); }
+        
+        /* Particle Effects */
+        .particle-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1500;
+        }
+        
+        .particle {
+            position: absolute;
+            font-size: 1.5rem;
+            animation: particleFloat 4s ease-out forwards;
+        }
+        
+        @keyframes particleFloat {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) rotate(360deg);
+            }
+        }
+        
+        /* Loading States */
+        .thinking-animation {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin: 30px 0;
+        }
+        
+        .thinking-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #4ecdc4;
+            animation: thinkingBounce 1.4s ease-in-out infinite;
+        }
+        
+        .thinking-dot:nth-child(1) { animation-delay: 0s; }
+        .thinking-dot:nth-child(2) { animation-delay: 0.2s; }
+        .thinking-dot:nth-child(3) { animation-delay: 0.4s; }
+        
+        @keyframes thinkingBounce {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-25px); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            .game-header { padding: 20px; }
+            .player-progress { flex-direction: column; gap: 15px; }
+            .xp-bar { width: 100%; max-width: 300px; }
+            .answer-playground { grid-template-columns: 1fr; }
+            .drag-drop-area { grid-template-columns: 1fr; gap: 20px; }
+            .character-companion { bottom: 10px; right: 10px; width: 80px; height: 80px; }
+            .character-avatar { font-size: 2.5rem; }
+            .character-speech { max-width: 250px; font-size: 0.9rem; }
+        }
+        
+        .hidden { display: none !important; }
+        
+        /* API Setup (Simplified) */
+        .api-setup {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 15px;
+            z-index: 1000;
+            max-width: 300px;
+        }
+        
+        .api-input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        .api-btn {
+            padding: 8px 12px;
+            margin: 2px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            color: white;            background: #4ecdc4;
+        }
+        
+        /* Back to Home Button Enhancement */
+        .back-home-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3) !important;
+        }
+    </style>
+</head>
+<body>    <!-- Back to Home Button -->
+    <div style="position: fixed; top: 20px; left: 20px; z-index: 1001;">
+        <a href="index.html" class="control-btn back-home-btn" style="background: linear-gradient(45deg, #667eea, #764ba2); color: white; padding: 12px 20px; border-radius: 25px; text-decoration: none; font-weight: bold; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 1.2em;">🏠</span>
+            <span>واپس گھر</span>
+        </a>
+    </div>
+
+    <!-- Interactive Background World -->
+    <div class="background-world" id="backgroundWorld"></div>
+    
+    <!-- Particle Effect Container -->
+    <div class="particle-container" id="particleContainer"></div>
+    
+    <!-- API Setup -->
+    <div class="api-setup" id="apiSetup">
+        <div style="font-weight: bold; margin-bottom: 10px;">⚙️ AI سيٽاپ</div>
+        <input type="password" class="api-input" id="apiKeyInput" placeholder="Together AI API Key">
+        <div>
+            <button class="api-btn" onclick="saveApiKey()">Save</button>
+            <button class="api-btn" onclick="toggleSetup()">Hide</button>
+            <button class="api-btn" onclick="enableOfflineMode()">Offline</button>
+        </div>
+        <div style="font-size: 11px; opacity: 0.8; margin-top: 5px;">
+            <a href="https://together.ai" target="_blank" style="color: #4ecdc4;">Get API Key</a>
+        </div>
+    </div>
+    
+    <!-- Achievement Modal -->
+    <div class="achievement-shower" id="achievementModal">
+        <div class="achievement-emoji" id="achievementEmoji">🏆</div>
+        <h2 id="achievementTitle" style="color: #2c3e50; margin-bottom: 15px;">شاباش!</h2>
+        <p id="achievementDesc" style="color: #7f8c8d; margin-bottom: 25px;">نئي ڪاميابي حاصل ڪئي!</p>
+        <button class="control-btn btn-success" onclick="closeAchievement()">اڳتي وڌو! 🚀</button>
+    </div>
+    
+    <!-- AI Character Companion -->
+    <div class="character-companion" id="characterCompanion" onclick="speakWithCharacter()">
+        <div class="character-avatar" id="characterAvatar">🤖</div>
+        <div class="character-speech" id="characterSpeech">
+            سلام! مان توهان جو AI دوست آهيان!
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Enhanced Game Header -->
+        <div class="game-header">
+            <h1 class="game-title">🌟 سنڌي AI ايڊونچر 🎯</h1>
+            <p class="game-subtitle">دنيا جو سڀ کان مزيدار تعليمي کيل!</p>
+            
+            <!-- Player Progress System -->
+            <div class="player-progress">
+                <div class="progress-item">
+                    <div class="progress-value" id="playerLevel">1</div>
+                    <div>درجو</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-value" id="playerScore">0</div>
+                    <div>اسڪور</div>
+                </div>
+                <div class="progress-item">
+                    <div>تجربو</div>
+                    <div class="xp-bar">
+                        <div class="xp-fill" id="xpFill" style="width: 0%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-value" id="streakCount">0</div>
+                    <div>پائون</div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-value" id="achievementCount">0</div>
+                    <div>انعام</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Adventure World Map -->
+        <div class="adventure-world" id="adventureWorld">
+            <div class="world-island" onclick="enterWorld('alphabet')" data-world="alphabet">
+                <div class="island-icon">📝</div>
+                <h3 class="island-title">حروف جو ٻيٽ</h3>
+                <p class="island-description">سنڌي حروف سکو ۽ انهن سان کيڏو!</p>
+                <div class="island-progress">
+                    <div class="island-progress-fill" style="width: 0%" id="alphabetProgress"></div>
+                </div>
+                <div class="island-badge">
+                    <span>0/20</span>
+                    <span>⭐</span>
+                </div>
+            </div>
+            
+            <div class="world-island" onclick="enterWorld('numbers')" data-world="numbers">
+                <div class="island-icon">🔢</div>
+                <h3 class="island-title">نمبرن جو قلعو</h3>
+                <p class="island-description">رياضي ۽ شمار جي جادوگري!</p>
+                <div class="island-progress">
+                    <div class="island-progress-fill" style="width: 0%" id="numbersProgress"></div>
+                </div>
+                <div class="island-badge">
+                    <span>0/15</span>
+                    <span>⭐</span>
+                </div>
+            </div>
+            
+            <div class="world-island" onclick="enterWorld('vocabulary')" data-world="vocabulary">
+                <div class="island-icon">💭</div>
+                <h3 class="island-title">لفظن جي باغ</h3>
+                <p class="island-description">لفظن جو خزانو دريافت ڪريو!</p>
+                <div class="island-progress">
+                    <div class="island-progress-fill" style="width: 0%" id="vocabularyProgress"></div>
+                </div>
+                <div class="island-badge">
+                    <span>0/25</span>
+                    <span>⭐</span>
+                </div>
+            </div>
+            
+            <!-- <div class="world-island" onclick="enterWorld('stories')" data-world="stories">
+                <div class="island-icon">📚</div>
+                <h3 class="island-title">ڪهاڻين جو محل</h3>
+                <p class="island-description">AI سان گڏ ڪهاڻيون ٺاهيو!</p>
+                <div class="island-progress">
+                    <div class="island-progress-fill" style="width: 0%" id="storiesProgress"></div>
+                </div>
+                <div class="island-badge">
+                    <span>0/10</span>
+                    <span>⭐</span>
+                </div>
+            </div> -->
+            
+            <div class="world-island" onclick="enterWorld('creative')" data-world="creative">
+                <div class="island-icon">🎨</div>
+                <h3 class="island-title">تخليقي دنيا</h3>
+                <p class="island-description">رنگ، شڪل ۽ ڊزائن!</p>
+                <div class="island-progress">
+                    <div class="island-progress-fill" style="width: 0%" id="creativeProgress"></div>
+                </div>
+                <div class="island-badge">
+                    <span>0/12</span>
+                    <span>⭐</span>
+                </div>
+            </div>
+            
+            <div class="world-island" onclick="enterWorld('puzzle')" data-world="puzzle">
+                <div class="island-icon">🧩</div>
+                <h3 class="island-title">معما جو ٻيٽ</h3>
+                <p class="island-description">دماغي کيلن جو چيلنج!</p>
+                <div class="island-progress">
+                    <div class="island-progress-fill" style="width: 0%" id="puzzleProgress"></div>
+                </div>
+                <div class="island-badge">
+                    <span>0/18</span>
+                    <span>⭐</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Game Arena -->
+        <div class="game-arena" id="gameArena">
+            <!-- Question Stage -->
+            <div class="question-stage">
+                <div class="question-bubble" id="questionBubble">
+                    سوال لوڊ ٿي رهيو آهي...
+                </div>
+                
+                <!-- Thinking Animation -->
+                <div class="thinking-animation hidden" id="thinkingAnimation">
+                    <div class="thinking-dot"></div>
+                    <div class="thinking-dot"></div>
+                    <div class="thinking-dot"></div>
+                    <p style="margin-left: 20px;">AI سوال تيار ڪري رهيو آهي...</p>
+                </div>
+                
+                <!-- Answer Playground -->
+                <div class="answer-playground" id="answerPlayground"></div>
+                
+                <!-- Creative Input Area -->
+                <div class="creative-input hidden" id="creativeInput">
+                    <input type="text" class="input-field" id="inputField" placeholder="پنهنجو جواب هتي لکو..." dir="rtl">
+                </div>
+                
+                <!-- Drag & Drop Area -->
+                <div class="drag-drop-area hidden" id="dragDropArea">
+                    <div class="drag-source" id="dragSource">
+                        <h4>هتان کان کڇو:</h4>
+                        <div id="draggableItems"></div>
+                    </div>
+                    <div class="drag-target" id="dragTarget">
+                        <p>هتي ڇڏيو</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Game Controls -->
+            <div class="game-controls">
+                <button class="control-btn btn-primary" onclick="generateNewQuestion()">نئون سوال 🎯</button>
+                <button class="control-btn btn-success" onclick="getSmartHint()">ذهين مدد 💡</button>
+                <button class="control-btn btn-warning" onclick="skipCurrentQuestion()">اڳتي وڌو ⏭️</button>
+                <button class="control-btn btn-purple" onclick="backToWorld()">واپس گھر 🏠</button>
+                <button class="control-btn btn-danger hidden" id="submitBtn" onclick="submitAnswer()">جواب ڏيو ✅</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // === ENHANCED GAME ENGINE ===
+        class AdvancedGameEngine {
+            constructor() {
+                this.currentWorld = null;
+                this.playerData = {
+                    level: 1,
+                    score: 0,
+                    xp: 0,
+                    streak: 0,
+                    achievements: [],
+                    worldProgress: {
+                        alphabet: { completed: 0, total: 20 },
+                        numbers: { completed: 0, total: 15 },
+                        vocabulary: { completed: 0, total: 25 },
+                        stories: { completed: 0, total: 10 },
+                        creative: { completed: 0, total: 12 },
+                        puzzle: { completed: 0, total: 18 }
+                    }
+                };
+                this.currentQuestion = null;
+                this.isAnswering = false;
+                this.offlineMode = false;
+                this.apiKey = localStorage.getItem('sindhi_ai_key') || '';
+                
+                this.initializeBackground();
+                this.loadPlayerData();
+                this.updateDisplay();
+            }
+
+            initializeBackground() {
+                const backgroundWorld = document.getElementById('backgroundWorld');
+                
+                // Create floating clouds
+                for (let i = 0; i < 3; i++) {
+                    setTimeout(() => this.createCloud(), i * 5000);
+                }
+                
+                // Create interactive stars
+                for (let i = 0; i < 15; i++) {
+                    this.createInteractiveStar();
+                }
+                
+                // Continue creating elements
+                setInterval(() => {
+                    if (Math.random() < 0.3) this.createCloud();
+                    if (Math.random() < 0.2) this.createInteractiveStar();
+                }, 8000);
+            }
+
+            createCloud() {
+                const cloud = document.createElement('div');
+                cloud.className = 'floating-cloud';
+                cloud.style.width = (60 + Math.random() * 40) + 'px';
+                cloud.style.height = (30 + Math.random() * 20) + 'px';
+                cloud.style.top = (10 + Math.random() * 60) + '%';
+                cloud.style.animationDuration = (12 + Math.random() * 8) + 's';
+                
+                document.getElementById('backgroundWorld').appendChild(cloud);
+                
+                setTimeout(() => cloud.remove(), 20000);
+            }
+
+            createInteractiveStar() {
+                const star = document.createElement('div');
+                star.className = 'star-particle';
+                star.textContent = '⭐';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                
+                star.onclick = () => {
+                    this.collectStar(star);
+                };
+                
+                document.getElementById('backgroundWorld').appendChild(star);
+                
+                setTimeout(() => {
+                    if (star.parentNode) star.remove();
+                }, 15000);
+            }
+
+            collectStar(star) {
+                this.addXP(5);
+                this.createParticleEffect(star.offsetLeft, star.offsetTop, '✨');
+                this.characterSpeak('زبردست! تارو گڏ ڪيو! +5 XP');
+                star.remove();
+            }
+
+            createParticleEffect(x, y, emoji) {
+                for (let i = 0; i < 5; i++) {
+                    const particle = document.createElement('div');
+                    particle.className = 'particle';
+                    particle.textContent = emoji;
+                    particle.style.left = x + 'px';
+                    particle.style.top = y + 'px';
+                    particle.style.animationDelay = (i * 0.1) + 's';
+                    
+                    document.getElementById('particleContainer').appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 4000);
+                }
+            }
+
+            addXP(amount) {
+                this.playerData.xp += amount;
+                const xpNeeded = this.playerData.level * 100;
+                
+                if (this.playerData.xp >= xpNeeded) {
+                    this.levelUp();
+                }
+                
+                this.updateDisplay();
+            }
+
+            levelUp() {
+                this.playerData.level++;
+                this.playerData.xp = 0;
+                this.showAchievement('🆙', 'نئون درجو!', `درجو ${this.playerData.level} حاصل ڪيو!`);
+                this.createCelebration();
+            }
+
+            addScore(points) {
+                this.playerData.score += points;
+                this.addXP(points);
+                this.updateDisplay();
+            }
+
+            incrementStreak() {
+                this.playerData.streak++;
+                if (this.playerData.streak >= 5) {
+                    this.checkStreakAchievements();
+                }
+            }
+
+            resetStreak() {
+                this.playerData.streak = 0;
+            }
+
+            checkStreakAchievements() {
+                const streakMilestones = [5, 10, 15, 25];
+                const streak = this.playerData.streak;
+                
+                if (streakMilestones.includes(streak)) {
+                    const achievementId = `streak_${streak}`;
+                    if (!this.playerData.achievements.includes(achievementId)) {
+                        this.playerData.achievements.push(achievementId);
+                        this.showAchievement('🔥', `${streak} پائون!`, `${streak} صحيح جواب پئي پئي!`);
+                    }
+                }
+            }
+
+            updateDisplay() {
+                document.getElementById('playerLevel').textContent = this.playerData.level;
+                document.getElementById('playerScore').textContent = this.playerData.score;
+                document.getElementById('streakCount').textContent = this.playerData.streak;
+                document.getElementById('achievementCount').textContent = this.playerData.achievements.length;
+                
+                const xpNeeded = this.playerData.level * 100;
+                const xpProgress = (this.playerData.xp / xpNeeded) * 100;
+                document.getElementById('xpFill').style.width = Math.min(xpProgress, 100) + '%';
+                
+                // Update world progress
+                Object.keys(this.playerData.worldProgress).forEach(world => {
+                    const progress = this.playerData.worldProgress[world];
+                    const percentage = (progress.completed / progress.total) * 100;
+                    const progressBar = document.getElementById(world + 'Progress');
+                    if (progressBar) {
+                        progressBar.style.width = percentage + '%';
+                    }
+                });
+            }
+
+            showAchievement(emoji, title, description) {
+                document.getElementById('achievementEmoji').textContent = emoji;
+                document.getElementById('achievementTitle').textContent = title;
+                document.getElementById('achievementDesc').textContent = description;
+                document.getElementById('achievementModal').classList.add('show');
+                
+                this.createCelebration();
+            }
+
+            createCelebration() {
+                const celebrationEmojis = ['🎉', '🎊', '✨', '🌟', '🎈'];
+                
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const emoji = celebrationEmojis[Math.floor(Math.random() * celebrationEmojis.length)];
+                        this.createParticleEffect(
+                            Math.random() * window.innerWidth,
+                            Math.random() * window.innerHeight,
+                            emoji
+                        );
+                    }, i * 100);
+                }
+            }
+
+            characterSpeak(message) {
+                const speech = document.getElementById('characterSpeech');
+                const avatar = document.getElementById('characterAvatar');
+                
+                speech.textContent = message;
+                speech.classList.add('show');
+                avatar.style.animation = 'characterBreathe 0.5s ease-in-out infinite';
+                
+                setTimeout(() => {
+                    speech.classList.remove('show');
+                    avatar.style.animation = 'characterBreathe 3s ease-in-out infinite';
+                }, 4000);
+            }
+
+            savePlayerData() {
+                localStorage.setItem('sindhi_player_data', JSON.stringify(this.playerData));
+            }
+
+            loadPlayerData() {
+                const saved = localStorage.getItem('sindhi_player_data');
+                if (saved) {
+                    this.playerData = { ...this.playerData, ...JSON.parse(saved) };
+                }
+            }
+        }
+
+        // === ENHANCED AI MANAGER ===
+        class EnhancedAIManager {
+            constructor() {
+                this.apiKey = localStorage.getItem('sindhi_ai_key') || '';
+                this.isOnline = false;
+                this.fallbackMode = true;
+                this.requestQueue = [];
+                this.testConnection();
+            }
+
+            async testConnection() {
+                if (!this.apiKey) {
+                    this.setOfflineMode();
+                    return false;
+                }
+
+                try {
+                    // Simplified test - in production, implement proper CORS proxy
+                    this.isOnline = !!this.apiKey;
+                    this.fallbackMode = !this.isOnline;
+                    
+                    if (this.isOnline) {
+                        game.characterSpeak('AI آن لائن آهي! بهترين سوال تيار ڪندس!');
+                    } else {
+                        this.setOfflineMode();
+                    }
+                    
+                    return this.isOnline;
+                } catch (error) {
+                    this.setOfflineMode();
+                    return false;
+                }
+            }
+
+            setOfflineMode() {
+                this.fallbackMode = true;
+                this.isOnline = false;
+                game.characterSpeak('آف لائن موڊ! لوڪل سوال استعمال ڪندس!');
+            }
+
+            async generateQuestion(world, difficulty = 1) {
+                if (this.fallbackMode) {
+                    return this.generateLocalQuestion(world, difficulty);
+                }
+
+                try {
+                    // In production, implement proper API call through CORS proxy
+                    return this.generateLocalQuestion(world, difficulty);
+                } catch (error) {
+                    console.warn('AI generation failed, using local fallback');
+                    return this.generateLocalQuestion(world, difficulty);
+                }
+            }
+
+            generateLocalQuestion(world, difficulty) {
+                const generators = questionGenerators[world];
+                if (generators && generators.generate) {
+                    return generators.generate(difficulty);
+                }
+                
+                return this.getBasicFallback(world);
+            }
+
+            getBasicFallback(world) {
+                const fallbacks = {
+                    alphabet: {
+                        question: 'هي ڪهڙو حرف آهي؟ "ا"',
+                        type: 'multiple_choice',
+                        options: ['الف', 'بي', 'پي', 'تي'],
+                        correct: 'الف',
+                        explanation: 'بلڪل صحيح! "ا" کي الف چئجي۔'
+                    },
+                    numbers: {
+                        question: '2 + 3 = ڪيترو؟',
+                        type: 'multiple_choice',
+                        options: ['4', '5', '6', '7'],
+                        correct: '5',
+                        explanation: 'زبردست! 2 + 3 = 5'
+                    }
+                };
+
+                return fallbacks[world] || fallbacks.alphabet;
+            }
+        }
+
+        // === ADVANCED QUESTION GENERATORS ===
+        const questionGenerators = {
+            alphabet: {
+                letters: ['ا', 'ب', 'پ', 'ت', 'ٺ', 'ٿ', 'ج', 'چ', 'ح', 'خ', 'د', 'ڌ', 'ر', 'ز', 'س', 'ش', 'ف', 'ق', 'ڪ', 'گ', 'ل', 'م', 'ن', 'و', 'ه', 'ي'],
+                
+                generate(difficulty = 1) {
+                    const questionTypes = [
+                        () => this.generateLetterRecognition(),
+                        () => this.generateWordMatch(),
+                        () => this.generateLetterOrder(),
+                        () => this.generateDragDrop()
+                    ];
+                    
+                    const selectedType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
+                    return selectedType.call(this);
+                },
+
+                generateLetterRecognition() {
+                    const letter = this.letters[Math.floor(Math.random() * this.letters.length)];
+                    const letterNames = {
+                        'ا': 'الف', 'ب': 'بي', 'پ': 'پي', 'ت': 'تي',
+                        'ٺ': 'ٺي', 'ٿ': 'ٿي', 'ج': 'جيم', 'چ': 'چي'
+                    };
+                    
+                    const correct = letterNames[letter] || 'نامعلوم';
+                    const wrongOptions = Object.values(letterNames).filter(name => name !== correct);
+                    const options = [correct, ...wrongOptions.slice(0, 3)].sort(() => Math.random() - 0.5);
+                    
+                    return {
+                        question: `هي ڪهڙو حرف آهي؟ "${letter}"`,
+                        type: 'multiple_choice',
+                        options: options,
+                        correct: correct,
+                        explanation: `صحيح! "${letter}" کي ${correct} چئجي۔`,
+                        points: 10
+                    };
+                },
+
+                generateWordMatch() {
+                    const words = {
+                        'ا': ['انب', 'اک', 'آم'],
+                        'ب': ['بيت', 'بگ', 'بندر'],
+                        'پ': ['پاڻي', 'پکي', 'پل']
+                    };
+                    
+                    const letter = Object.keys(words)[Math.floor(Math.random() * Object.keys(words).length)];
+                    const correctWords = words[letter];
+                    const correctWord = correctWords[Math.floor(Math.random() * correctWords.length)];
+                    
+                    const allWords = Object.values(words).flat();
+                    const wrongWords = allWords.filter(word => !correctWords.includes(word));
+                    const options = [correctWord, ...wrongWords.slice(0, 3)].sort(() => Math.random() - 0.5);
+                    
+                    return {
+                        question: `"${letter}" سان شروع ٿيندڙ لفظ ڪهڙو آهي؟`,
+                        type: 'multiple_choice',
+                        options: options,
+                        correct: correctWord,
+                        explanation: `واهه! "${correctWord}" "${letter}" سان شروع ٿئي ٿو۔`,
+                        points: 15
+                    };
+                },
+
+                generateDragDrop() {
+                    const targetLetter = this.letters[Math.floor(Math.random() * 10)]; // First 10 letters
+                    const shuffledLetters = [...this.letters.slice(0, 8)].sort(() => Math.random() - 0.5);
+                    
+                    return {
+                        question: `"${targetLetter}" حرف ڳوليو ۽ صحيح جاءِ تي رکو`,
+                        type: 'drag_drop',
+                        target: targetLetter,
+                        items: shuffledLetters,
+                        explanation: `شاباش! "${targetLetter}" صحيح ملايو!`,
+                        points: 20
+                    };
+                }
+            },
+
+            numbers: {
+                generate(difficulty = 1) {
+                    const questionTypes = [
+                        () => this.generateArithmetic(difficulty),
+                        () => this.generateCounting(difficulty),
+                        () => this.generateComparison(difficulty)
+                    ];
+                    
+                    const selectedType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
+                    return selectedType.call(this);
+                },
+
+                generateArithmetic(difficulty) {
+                    const maxNum = Math.min(5 + (difficulty * 3), 20);
+                    const operations = ['+', '-'];
+                    
+                    if (difficulty > 2) operations.push('×');
+                    
+                    const op = operations[Math.floor(Math.random() * operations.length)];
+                    let num1, num2, answer;
+                    
+                    switch(op) {
+                        case '+':
+                            num1 = Math.floor(Math.random() * maxNum) + 1;
+                            num2 = Math.floor(Math.random() * maxNum) + 1;
+                            answer = num1 + num2;
+                            break;
+                        case '-':
+                            num1 = Math.floor(Math.random() * maxNum) + 5;
+                            num2 = Math.floor(Math.random() * num1);
+                            answer = num1 - num2;
+                            break;
+                        case '×':
+                            num1 = Math.floor(Math.random() * 5) + 1;
+                            num2 = Math.floor(Math.random() * 5) + 1;
+                            answer = num1 * num2;
+                            break;
+                    }
+                    
+                    const wrongAnswers = [];
+                    while (wrongAnswers.length < 3) {
+                        const wrong = answer + Math.floor(Math.random() * 8) - 4;
+                        if (wrong > 0 && wrong !== answer && !wrongAnswers.includes(wrong)) {
+                            wrongAnswers.push(wrong);
+                        }
+                    }
+                    
+                    const options = [answer, ...wrongAnswers].sort(() => Math.random() - 0.5);
+                    
+                    return {
+                        question: `${num1} ${op} ${num2} = ڪيترو؟`,
+                        type: 'multiple_choice',
+                        options: options.map(String),
+                        correct: answer.toString(),
+                        explanation: `بهترين! ${num1} ${op} ${num2} = ${answer}`,
+                        points: 15
+                    };
+                },
+
+                generateCounting(difficulty) {
+                    const maxCount = Math.min(5 + (difficulty * 2), 15);
+                    const count = Math.floor(Math.random() * maxCount) + 3;
+                    const emoji = ['🍎', '🌟', '🎈', '🦋', '🌺'][Math.floor(Math.random() * 5)];
+                    
+                    const wrongCounts = [];
+                    while (wrongCounts.length < 3) {
+                        const wrong = count + Math.floor(Math.random() * 6) - 3;
+                        if (wrong > 0 && wrong !== count && !wrongCounts.includes(wrong)) {
+                            wrongCounts.push(wrong);
+                        }
+                    }
+                    
+                    const options = [count, ...wrongCounts].sort(() => Math.random() - 0.5);
+                    
+                    return {
+                        question: `ڪيترا ${emoji} آهن؟\n${emoji.repeat(count)}`,
+                        type: 'multiple_choice',
+                        options: options.map(String),
+                        correct: count.toString(),
+                        explanation: `زبردست! ${count} صحيح جواب آهي!`,
+                        points: 12
+                    };
+                }
+            },
+
+            vocabulary: {
+                wordPairs: {
+                    'گل': 'گلاب', 'سج': 'سورج', 'چنڊ': 'چاند',
+                    'پاڻي': 'پاني', 'گھر': 'گهر', 'ماء': 'ماں',
+                    'پيء': 'باپ', 'ٻار': 'بچہ', 'ڪتاب': 'کتاب',
+                    'قلم': 'قلم', 'رنگ': 'رنگ', 'کاڌو': 'کانا'
+                },
+
+                generate(difficulty = 1) {
+                    const questionTypes = [
+                        () => this.generateMeaning(),
+                        () => this.generateOpposite(),
+                        () => this.generateCategory()
+                    ];
+                    
+                    const selectedType = questionTypes[Math.floor(Math.random() * questionTypes.length)];
+                    return selectedType.call(this);
+                },
+
+                generateMeaning() {
+                    const entries = Object.entries(this.wordPairs);
+                    const [word, meaning] = entries[Math.floor(Math.random() * entries.length)];
+                    
+                    const wrongMeanings = Object.values(this.wordPairs).filter(m => m !== meaning);
+                    const selectedWrong = wrongMeanings.slice(0, 3);
+                    const options = [meaning, ...selectedWrong].sort(() => Math.random() - 0.5);
+                    
+                    return {
+                        question: `"${word}" جو مطلب ڇا آهي؟`,
+                        type: 'multiple_choice',
+                        options: options,
+                        correct: meaning,
+                        explanation: `صحيح! "${word}" جو مطلب "${meaning}" آهي۔`,
+                        points: 12
+                    };
+                }
+            },
+
+            stories: {
+                starters: [
+                    'هڪ دفعي هڪ ننڍڙو خرگوش ٻيلي ۾...',
+                    'ڪجهه ڏينهن اڳ هڪ شيھن پنهنجي ماند ۾...',
+                    'هڪ سهڻي صبح ۾ هڪ ٻار اسڪول...',
+                    'ڪنهن زماني ۾ هڪ هوشيار ڪوو...'
+                ],
+
+                generate(difficulty = 1) {
+                    const starter = this.starters[Math.floor(Math.random() * this.starters.length)];
+                    
+                    return {
+                        question: `هن ڪهاڻي کي اڳتي وڌايو: "${starter}"`,
+                        type: 'creative_input',
+                        placeholder: 'پنهنجي تخيل سان ڪهاڻي جاري رکو...',
+                        sampleAnswers: ['نئون دوست مليو', 'مزيدار سفر شروع ٿيو', 'ڪجھ جادوگري ٿي'],
+                        encouragement: 'واهه! زبردست تخيل! تمام سٺي ڪهاڻي!',
+                        points: 25
+                    };
+                }
+            },
+
+            creative: {
+                generate(difficulty = 1) {
+                    const challenges = [
+                        'پنهنجي پسنديده رنگ بابت ٻڌايو',
+                        'توهان جو پسنديده جانور ڪهڙو آهي؟',
+                        'اسڪول ۾ ڇا سکيو آج؟',
+                        'پنهنجي خاندان بابت لکو'
+                    ];
+                    
+                    const challenge = challenges[Math.floor(Math.random() * challenges.length)];
+                    
+                    return {
+                        question: challenge,
+                        type: 'creative_input',
+                        placeholder: 'پنهنجا خيال شيئر ڪريو...',
+                        encouragement: 'زبردست! تمام سٺو جواب!',
+                        points: 20
+                    };
+                }
+            },
+
+            puzzle: {
+                generate(difficulty = 1) {
+                    const puzzleTypes = [
+                        () => this.generatePattern(),
+                        () => this.generateLogic()
+                    ];
+                    
+                    const selectedType = puzzleTypes[Math.floor(Math.random() * puzzleTypes.length)];
+                    return selectedType.call(this);
+                },
+
+                generatePattern() {
+                    const patterns = [
+                        ['🔴', '🔵', '🔴', '🔵', '?'],
+                        ['⭐', '⭐', '🌙', '⭐', '⭐', '?'],
+                        ['🍎', '🍊', '🍎', '🍊', '?']
+                    ];
+                    
+                    const pattern = patterns[Math.floor(Math.random() * patterns.length)];
+                    const answer = pattern[0]; // Simple pattern completion
+                    
+                    const options = ['🔴', '🔵', '⭐', '🌙'];
+                    
+                    return {
+                        question: `هي پٽرن مڪمل ڪريو: ${pattern.join(' ')}`,
+                        type: 'multiple_choice',
+                        options: options,
+                        correct: answer,
+                        explanation: 'شاباش! صحيح پٽرن!',
+                        points: 18
+                    };
+                }
+            }
+        };
+
+        // === GAME INSTANCE INITIALIZATION ===
+        let game = new AdvancedGameEngine();
+        let ai = new EnhancedAIManager();
+
+        // === CORE GAME FUNCTIONS ===
+        function enterWorld(worldName) {
+            game.currentWorld = worldName;
+            document.getElementById('adventureWorld').style.display = 'none';
+            document.getElementById('gameArena').style.display = 'block';
+            
+            const worldTitles = {
+                alphabet: 'حروف جو ٻيٽ',
+                numbers: 'نمبرن جو قلعو',
+                vocabulary: 'لفظن جي باغ',
+                stories: 'ڪهاڻين جو محل',
+                creative: 'تخليقي دنيا',
+                puzzle: 'معما جو ٻيٽ'
+            };
+            
+            game.characterSpeak(`${worldTitles[worldName]} ۾ خوش آمديد!`);
+            generateNewQuestion();
+        }
+
+        function backToWorld() {
+            document.getElementById('adventureWorld').style.display = 'grid';
+            document.getElementById('gameArena').style.display = 'none';
+            game.currentWorld = null;
+            game.characterSpeak('واپس ايڊونچر ورلڊ ۾! نئون ٻيٽ چونڊيو!');
+        }
+
+        async function generateNewQuestion() {
+            if (!game.currentWorld) return;
+
+            showThinking(true);
+            game.isAnswering = false;
+            
+            try {
+                const difficulty = Math.floor(game.playerData.level / 3) + 1;
+                const questionData = await ai.generateQuestion(game.currentWorld, difficulty);
+                
+                game.currentQuestion = questionData;
+                displayQuestion(questionData);
+                
+            } catch (error) {
+                console.error('Question generation failed:', error);
+                game.characterSpeak('سوال تيار ڪرڻ ۾ مسئلو! ٻيهر ڪوشش ڪريو۔');
+            } finally {
+                showThinking(false);
+            }
+        }
+
+        function displayQuestion(questionData) {
+            document.getElementById('questionBubble').textContent = questionData.question;
+            
+            // Hide all input areas
+            document.getElementById('answerPlayground').innerHTML = '';
+            document.getElementById('creativeInput').classList.add('hidden');
+            document.getElementById('dragDropArea').classList.add('hidden');
+            document.getElementById('submitBtn').classList.add('hidden');
+            
+            switch(questionData.type) {
+                case 'multiple_choice':
+                    setupMultipleChoice(questionData);
+                    break;
+                case 'creative_input':
+                    setupCreativeInput(questionData);
+                    break;
+                case 'drag_drop':
+                    setupDragDrop(questionData);
+                    break;
+            }
+        }
+
+        function setupMultipleChoice(questionData) {
+            const playground = document.getElementById('answerPlayground');
+            
+            questionData.options.forEach(option => {
+                const card = document.createElement('div');
+                card.className = 'answer-card';
+                card.onclick = () => selectAnswer(card, option);
+                
+                card.innerHTML = `
+                    <div class="answer-text">${option}</div>
+                    <div class="answer-icon">🤔</div>
+                `;
+                
+                playground.appendChild(card);
+            });
+        }
+
+        function setupCreativeInput(questionData) {
+            document.getElementById('creativeInput').classList.remove('hidden');
+            document.getElementById('submitBtn').classList.remove('hidden');
+            
+            const inputField = document.getElementById('inputField');
+            inputField.placeholder = questionData.placeholder || 'پنهنجو جواب لکو...';
+            inputField.value = '';
+            inputField.focus();
+        }
+
+        function setupDragDrop(questionData) {
+            document.getElementById('dragDropArea').classList.remove('hidden');
+            
+            const dragSource = document.getElementById('draggableItems');
+            dragSource.innerHTML = '';
+            
+            questionData.items.forEach(item => {
+                const dragItem = document.createElement('div');
+                dragItem.className = 'draggable-item';
+                dragItem.textContent = item;
+                dragItem.draggable = true;
+                dragItem.ondragstart = (e) => {
+                    e.dataTransfer.setData('text/plain', item);
+                    dragItem.classList.add('dragging');
+                };
+                dragItem.ondragend = () => {
+                    dragItem.classList.remove('dragging');
+                };
+                
+                dragSource.appendChild(dragItem);
+            });
+            
+            const dropTarget = document.getElementById('dragTarget');
+            dropTarget.ondragover = (e) => {
+                e.preventDefault();
+                dropTarget.classList.add('dragover');
+            };
+            dropTarget.ondragleave = () => {
+                dropTarget.classList.remove('dragover');
+            };
+            dropTarget.ondrop = (e) => {
+                e.preventDefault();
+                const droppedItem = e.dataTransfer.getData('text/plain');
+                dropTarget.classList.remove('dragover');
+                checkDragDropAnswer(droppedItem);
+            };
+        }
+
+        function selectAnswer(card, selectedAnswer) {
+            if (game.isAnswering) return;
+            game.isAnswering = true;
+
+            const question = game.currentQuestion;
+            const isCorrect = selectedAnswer === question.correct;
+
+            // Disable all cards
+            document.querySelectorAll('.answer-card').forEach(c => {
+                c.style.pointerEvents = 'none';
+            });
+
+            if (isCorrect) {
+                card.classList.add('correct');
+                card.querySelector('.answer-icon').textContent = '✅';
+                handleCorrectAnswer();
+            } else {
+                card.classList.add('incorrect');
+                card.querySelector('.answer-icon').textContent = '❌';
+                
+                // Show correct answer
+                document.querySelectorAll('.answer-card').forEach(c => {
+                    if (c.querySelector('.answer-text').textContent === question.correct) {
+                        c.classList.add('correct');
+                        c.querySelector('.answer-icon').textContent = '✅';
+                    }
+                });
+                handleIncorrectAnswer();
+            }
+
+            setTimeout(() => {
+                generateNewQuestion();
+            }, 3000);
+        }
+
+        function submitAnswer() {
+            const userInput = document.getElementById('inputField').value.trim();
+            if (!userInput || game.isAnswering) return;
+
+            game.isAnswering = true;
+            const question = game.currentQuestion;
+
+            // For creative questions, all answers are considered good
+            if (question.type === 'creative_input') {
+                handleCorrectAnswer();
+                game.characterSpeak(question.encouragement || 'واہ! زبردست جواب!');
+            }
+
+            setTimeout(() => {
+                generateNewQuestion();
+            }, 2000);
+        }
+
+        function checkDragDropAnswer(droppedItem) {
+            if (game.isAnswering) return;
+            game.isAnswering = true;
+
+            const question = game.currentQuestion;
+            const isCorrect = droppedItem === question.target;
+
+            const dropTarget = document.getElementById('dragTarget');
+            
+            if (isCorrect) {
+                dropTarget.innerHTML = `<div style="font-size: 3rem;">${droppedItem} ✅</div>`;
+                dropTarget.style.background = 'rgba(46, 204, 113, 0.2)';
+                handleCorrectAnswer();
+            } else {
+                dropTarget.innerHTML = `<div style="font-size: 3rem;">${droppedItem} ❌</div>`;
+                dropTarget.style.background = 'rgba(231, 76, 60, 0.2)';
+                handleIncorrectAnswer();
+            }
+
+            setTimeout(() => {
+                generateNewQuestion();
+            }, 3000);
+        }
+
+        function handleCorrectAnswer() {
+            const question = game.currentQuestion;
+            const points = question.points || 10;
+            const bonusPoints = game.playerData.streak * 2;
+            
+            game.addScore(points + bonusPoints);
+            game.incrementStreak();
+            
+            // Update world progress
+            if (game.currentWorld && game.playerData.worldProgress[game.currentWorld]) {
+                game.playerData.worldProgress[game.currentWorld].completed++;
+                game.updateDisplay();
+                game.savePlayerData();
+            }
+            
+            game.characterSpeak(question.explanation || 'شاباش! بلڪل صحيح!');
+            game.createParticleEffect(window.innerWidth/2, window.innerHeight/2, '✨');
+        }
+
+        function handleIncorrectAnswer() {
+            const question = game.currentQuestion;
+            game.resetStreak();
+            game.characterSpeak(question.explanation || 'ڪوشش ڪريو! ٻيهر سوچيو۔');
+        }
+
+        function getSmartHint() {
+            const hints = [
+                'آرام سان سوچيو ۽ بهترين جواب چونڊيو!',
+                'توهان ڪري سگهو ٿا! پنهنجي ڄاڻ استعمال ڪريو!',
+                'هر سوال جو جواب توهان وٽ آهي!',
+                'ٿوري محنت سان سڀ ڪجھ آسان ٿي وڃي ٿو!'
+            ];
+            
+            const hint = hints[Math.floor(Math.random() * hints.length)];
+            game.characterSpeak('💡 ' + hint);
+        }
+
+        function skipCurrentQuestion() {
+            game.characterSpeak('ڪو مسئلو ناهي! اڳتي وڌون!');
+            setTimeout(generateNewQuestion, 1000);
+        }
+
+        function showThinking(show) {
+            document.getElementById('thinkingAnimation').classList.toggle('hidden', !show);
+            document.getElementById('questionBubble').style.opacity = show ? '0.5' : '1';
+        }
+
+        function speakWithCharacter() {
+            const greetings = [
+                'سلام! مان توهان جو AI دوست آهيان!',
+                'اچو گڏجي سکون!',
+                'توهان تمام هوشيار آهيو!',
+                'مزو ايندو آهي سکڻ ۾!',
+                'نئون ايڊونچر شروع ڪريون!'
+            ];
+            
+            const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+            game.characterSpeak(greeting);
+        }
+
+        function closeAchievement() {
+            document.getElementById('achievementModal').classList.remove('show');
+        }
+
+        // === API FUNCTIONS ===
+        function saveApiKey() {
+            const key = document.getElementById('apiKeyInput').value.trim();
+            if (key) {
+                ai.apiKey = key;
+                localStorage.setItem('sindhi_ai_key', key);
+                ai.testConnection();
+            }
+        }
+
+        function toggleSetup() {
+            document.getElementById('apiSetup').classList.toggle('hidden');
+        }
+
+        function enableOfflineMode() {
+            ai.setOfflineMode();
+        }
+
+        // === INITIALIZATION ===
+        function initializeGame() {
+            // Test API if key exists
+            if (ai.apiKey) {
+                document.getElementById('apiKeyInput').value = ai.apiKey;
+                ai.testConnection();
+            } else {
+                ai.setOfflineMode();
+            }
+
+            // Initial character greeting
+            setTimeout(() => {
+                game.characterSpeak('سلام! مان توهان جو AI دوست آهيان! ڪو ايڊونچر چونڊيو!');
+            }, 2000);
+
+            // Keyboard shortcuts
+            document.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const inputField = document.getElementById('inputField');
+                    if (!inputField.classList.contains('hidden') && inputField.value.trim()) {
+                        submitAnswer();
+                    }
+                }
+            });
+
+            // Auto-hide setup on mobile
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    document.getElementById('apiSetup').classList.add('hidden');
+                }, 5000);
+            }
+
+            game.updateDisplay();
+        }
+
+        // Start the enhanced game
+        document.addEventListener('DOMContentLoaded', initializeGame);
+    </script>
+</body>
+</html>

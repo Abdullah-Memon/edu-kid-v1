@@ -1,0 +1,2931 @@
+<!DOCTYPE html>
+<html lang="sd" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ڪلاس پنجون - سنڌي گيتن، نظمن ۽ نثر جو درجو</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/css/global-styles.css">
+    <style>
+        
+        /* Dark Mode Styles */
+        body.dark {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 25%, #1e293b 50%, #0f172a 75%, #111827 100%);
+            color: #e2e8f0;
+        }
+        
+        body.dark .white-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        
+
+
+        body.dark .white-nav {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(20px) saturate(150%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+
+        body.dark .white-button {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        body.dark .white-button:hover {
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Color adjustments for dark mode */
+        body.dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+        
+        body.dark .text-gray-600 {
+            color: #cbd5e1;
+        }
+        
+        body.dark .text-gray-700 {
+            color: #d1d5db;
+        }
+        
+        body.dark .text-blue-600 {
+            color: #93c5fd;
+        }
+        
+        body.dark .text-purple-600 {
+            color: #c4b5fd;
+        }
+        
+        body.dark .text-green-600 {
+            color: #86efac;
+        }
+        
+        body.dark .text-red-600 {
+            color: #fca5a5;
+        }
+        
+        body.dark .text-yellow-600 {
+            color: #fcd34d;
+        }
+        
+        body.dark .text-indigo-600, body.dark .text-indigo-700, body.dark .text-indigo-800 {
+            color: #a5b4fc;
+        }
+        
+        body.dark .bg-white {
+            background-color: #1e293b;
+        }
+        
+        body.dark .bg-gray-50 {
+            background-color: #0f172a;
+        }
+        
+        body.dark .bg-blue-50 {
+            background-color: #172554;
+        }
+        
+        body.dark .bg-purple-50 {
+            background-color: #2e1065;
+        }
+        
+        /* Dark Mode Toggle Button */
+        .dark-mode-header-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 44px;
+            min-height: 44px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.8));
+            box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+        
+        .dark-mode-header-btn:hover {
+            transform: translateY(-3px);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 1));
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.5), inset 0 1px 0 rgba(255, 255, 255, 1);
+        }
+        
+        .dark-mode-header-btn:active {
+            transform: translateY(0px);
+            box-shadow: 0 2px 5px rgba(99, 102, 241, 0.3);
+        }
+        
+        body.dark .dark-mode-header-btn {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            color: #f1f5f9;
+            border: 2px solid rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.2);
+        }
+        
+        body.dark .dark-mode-header-btn:hover {
+            background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(15, 23, 42, 1));
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 25px rgba(99, 102, 241, 0.3);
+            border: 2px solid rgba(99, 102, 241, 0.6);
+        }
+        
+        /* Add a subtle glow effect */
+        .dark-mode-header-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .dark-mode-header-btn:hover::before {
+            opacity: 1;
+        }
+        
+        /* Fluid Typography - Responsive across all dimensions */
+        html {
+            font-size: clamp(16px, 2.5vw, 20px);
+        }
+        
+        body {
+            font-family: 'AMBILE', serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #f8fafc 75%, #ffffff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: #1f2937;
+        }
+        
+        h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: clamp(1.75rem, 4vw, 3rem);
+            line-height: 1.3;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 3.5vw, 2.5rem);
+            line-height: 1.3;
+        }
+        
+        h4 {
+            font-size: clamp(1.25rem, 3vw, 2rem);
+            line-height: 1.4;
+        }
+        
+        p, .verse-line {
+            font-size: clamp(1.125rem, 2.5vw, 1.75rem);
+            line-height: 1.6;
+        }
+        
+        .btn-white {
+            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+        }
+        
+        h1, h2, h3, title {
+            font-family:  'AMBILE2', serif;
+            font-weight: 700;
+            text-shadow: none;
+        }
+        
+        /* Make headings white in dark mode */
+        body.dark h1, 
+        body.dark h2, 
+        body.dark h3, 
+        body.dark .section-title {
+            color: #ffffff;
+            text-shadow: none;
+        }
+
+        /* Remove shadow and make section titles white in dark mode */
+        .section-title {
+            text-shadow: none;
+        }
+        
+        body.dark .section-title {
+            color: #ffffff;
+            text-shadow: none;
+        }
+        
+        body.dark .hero-text {
+            color: #ffffff;
+        }
+
+        /* Glass Morphism Card System */
+        .white-card {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            color: #1f2937;
+        }
+        
+        .white-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.8s ease;
+        }
+        
+
+
+        .white-nav {
+            background: rgba(255, 255, 255, 0.98);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .white-button {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            color: #374151;
+            font-weight: 600;
+        }
+        
+        .white-button:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .white-card.expanded {
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 
+                0 35px 60px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+            transform: scale(1.02);
+        }
+        
+        /* Animation Framework */
+        @keyframes fadeInUp {
+            0% { 
+                opacity: 0; 
+                transform: translateY(30px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+        
+        @keyframes expandContent {
+            0% { 
+                opacity: 0; 
+                transform: translateY(-20px); 
+                max-height: 0; 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+                max-height: 1000px; 
+            }
+        }
+        
+        @keyframes verseHighlight {
+            0% { background: transparent; }
+            50% { 
+                background: #fef3c7; 
+                transform: translateX(8px); 
+                box-shadow: 0 2px 8px rgba(245, 158, 11, 0.2);
+            }
+            100% { background: transparent; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Category Color System */
+        .category-religious {
+            border-left: 6px solid #10b981;
+        }
+        
+        .category-patriotic {
+            border-left: 6px solid #ef4444;
+        }
+        
+        .category-nature {
+            border-left: 6px solid #22c55e;
+        }
+        
+        .category-social {
+            border-left: 6px solid #6366f1;
+        }
+        
+        .category-classical {
+            border-left: 6px solid #f59e0b;
+        }
+        
+        .category-motivational {
+            border-left: 6px solid #a855f7;
+        }
+        
+        /* Dark Mode Category Cards */
+        body.dark .category-religious {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.4), rgba(16, 185, 129, 0.4));
+            border-left: 6px solid #10b981;
+        }
+        
+        body.dark .category-patriotic {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.4), rgba(220, 38, 38, 0.4));
+            border-left: 6px solid #ef4444;
+        }
+        
+        body.dark .category-nature {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.4), rgba(22, 163, 74, 0.4));
+            border-left: 6px solid #22c55e;
+        }
+        
+        body.dark .category-social {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(79, 70, 229, 0.4));
+            border-left: 6px solid #6366f1;
+        }
+        
+        body.dark .category-classical {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.4), rgba(217, 119, 6, 0.4));
+            border-left: 6px solid #f59e0b;
+        }
+        
+        body.dark .category-motivational {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.4), rgba(139, 92, 246, 0.4));
+            border-left: 6px solid #a855f7;
+        }
+        
+        /* Interactive Verse Lines with Glass Effect */
+        .verse-line {
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin: 0.75rem 0;
+            cursor: pointer;
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            color: #111827;
+            font-weight: 500;
+            line-height: 1.8;
+            min-height: 50px;
+            display: block;
+            will-change: auto;
+        }
+        
+        .verse-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.4), 
+                transparent
+            );
+            transition: left 0.6s ease;
+        }
+        
+        .verse-line:hover {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(236, 72, 153, 0.15));
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(168, 85, 247, 0.2);
+        }
+        
+        .verse-line:hover::before {
+            left: 100%;
+        }
+        
+        .verse-line.active {
+            background: linear-gradient(135deg, rgba(255,215,0,0.4), rgba(255,165,0,0.4));
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+            animation: verseHighlight 1.5s ease-out;
+        }
+        
+        /* Content Management - Always show full content */
+        .extended-content {
+            overflow: visible;
+            max-height: none;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Hide expansion buttons since all content is visible */
+        button[id$="-toggle"] {
+            display: none;
+        }
+        
+        /* Button System with Glass Effect */
+        .btn-white {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            padding: 12px 24px;
+            color: #1f2937;
+            font-weight: 600;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-white::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .btn-white:hover {
+            background: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-white:hover::before {
+            left: 100%;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.8), rgba(52, 211, 153, 0.8));
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.8), rgba(245, 158, 11, 0.8));
+            color: #1f2937;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+        }
+        
+        /* Modal System with Glass Effect */
+        .modal-backdrop {
+            backdrop-filter: blur(15px) brightness(0.7);
+            background: rgba(0, 0, 0, 0.6);
+        }
+        
+        .modal-container {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(30px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 32px;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            animation: modalSlideIn 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        
+        /* Dark mode modal styles */
+        body.dark .modal-backdrop {
+            backdrop-filter: blur(20px) brightness(0.5);
+            background: rgba(0, 0, 0, 0.8);
+        }
+        
+        body.dark .modal-container {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(30px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 25px 45px rgba(0, 0, 0, 0.25),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
+        }
+        
+        
+        @keyframes modalSlideIn {
+            0% { 
+                opacity: 0;
+                transform: scale(0.8) rotateY(-15deg);
+                filter: blur(8px);
+            }
+            100% { 
+                opacity: 1;
+                transform: scale(1) rotateY(0deg);
+                filter: blur(0px);
+            }
+        }
+        
+        .modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            color: #374151;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1) rotate(90deg);
+        }
+        
+        /* Progress System */
+        .progress-indicator {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #f3f4f6;
+            border: 2px solid #d1d5db;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .progress-indicator.completed {
+            background: #10b981;
+            border-color: #059669;
+            transform: scale(1.2);
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.2);
+        }
+        
+        .progress-indicator.completed::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        
+        /* Audio Visualizer */
+        .audio-visualizer {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            margin-left: 12px;
+        }
+        
+        .wave-element {
+            width: 3px;
+            height: 20px;
+            background: linear-gradient(to top, #3b82f6, #6366f1);
+            border-radius: 2px;
+            animation: waveMotion 1.2s ease-in-out infinite;
+        }
+        
+        .wave-element:nth-child(1) { animation-delay: 0s; }
+        .wave-element:nth-child(2) { animation-delay: 0.15s; }
+        .wave-element:nth-child(3) { animation-delay: 0.3s; }
+        .wave-element:nth-child(4) { animation-delay: 0.45s; }
+        .wave-element:nth-child(5) { animation-delay: 0.6s; }
+        
+        @keyframes waveMotion {
+            0%, 100% { height: 20px; opacity: 0.7; }
+            50% { height: 32px; opacity: 1; }
+        }
+        
+        /* Float Animation - Disabled for performance */
+        .float-icon {
+            display: inline-block;
+            /* animation: float 3s ease-in-out infinite; */
+        }
+        
+        /* Typography */
+        .hero-text {
+            background: linear-gradient(135deg, #3b82f6, #6366f1, #8b5cf6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        @keyframes rippleAnimation {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        /* Dark mode hero text */
+        body.dark .hero-text {
+            background: linear-gradient(135deg, #60a5fa, #818cf8, #a78bfa);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Enhanced text visibility */
+        .category-religious .verse-line {
+            border-left: 4px solid #10b981;
+        }
+        
+        .category-patriotic .verse-line {
+            border-left: 4px solid #ef4444;
+        }
+        
+        .category-nature .verse-line {
+            border-left: 4px solid #22c55e;
+        }
+        
+        .category-social .verse-line {
+            border-left: 4px solid #6366f1;
+        }
+        
+        .category-classical .verse-line {
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .category-motivational .verse-line {
+            border-left: 4px solid #a855f7;
+        }
+        
+        /* Dark mode styles for verses and categories */
+        body.dark .verse-line {
+            background: rgba(0, 0, 0, 0.15);
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            border-left-width: 4px;
+        }
+        
+        body.dark .verse-line:hover {
+            background: rgba(0, 0, 0, 0.25);
+            transform: translateX(15px) scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+        }
+        
+        /* Dark mode styles for buttons */
+        body.dark .btn-white {
+            background: rgba(30, 41, 59, 0.6);
+            color: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+        }
+        
+        body.dark .btn-white:hover {
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+        }
+
+        /* Touch Ripple Effect */
+        .touch-ripple {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .touch-ripple::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .touch-ripple:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        /* Animation utility classes - Simplified for performance */
+        .fade-in-up { 
+            animation: fadeInUp 0.8s ease-out;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .verse-card {
+            animation: fadeInUp 0.8s ease-out;
+            transition: all 0.3s ease;
+        }
+        
+        .verse-card:hover {
+            transform: translateY(-6px);
+        }
+        
+        /* Enhanced Mobile Interactions */
+        @media (hover: none) and (pointer: coarse) {
+            .verse-card:hover {
+                transform: none;
+            }
+            
+            .verse-card:active {
+                transform: scale(0.98);
+            }
+            
+            .btn-white:hover {
+                transform: none;
+            }
+            
+            .btn-white:active {
+                transform: scale(0.95);
+            }
+        }
+
+        /* Comprehensive Mobile & Tablet Responsive Design */
+        
+        /* Mobile First - Base styles for all devices */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            overflow-x: hidden;
+        }
+        
+        /* Tablet Design (768px - 1023px) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            /* Navigation tablet optimizations */
+            .white-nav {
+                padding: 0.75rem 1rem;
+                margin: 0.5rem;
+                border-radius: 15px;
+            }
+            
+            .white-nav .container {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .white-nav a {
+                font-size: 0.875rem;
+                padding: 0.5rem;
+            }
+            
+            .white-nav .text-xl {
+                font-size: 1.125rem;
+            }
+            
+            .white-nav .text-2xl {
+                font-size: 1.25rem;
+            }
+            
+            .white-nav .text-3xl {
+                font-size: 1.5rem;
+            }
+            
+            .white-nav button {
+                padding: 0.5rem;
+                min-width: 40px;
+                height: 40px;
+            }
+            
+            /* Hero section tablet */
+            .hero-text,
+            h1 {
+                font-size: 3.5rem !important;
+                line-height: 1.2;
+                margin-bottom: 1.5rem;
+            }
+            
+            .text-5xl, .text-6xl {
+                font-size: 3.5rem !important;
+            }
+            
+            .text-7xl, .text-8xl {
+                font-size: 4rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 2rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 2.25rem !important;
+            }
+            
+            .text-4xl {
+                font-size: 2.5rem !important;
+            }
+            
+            /* Cards tablet */
+            .white-card {
+                padding: 2rem;
+                margin: 1rem;
+                border-radius: 20px;
+            }
+            
+            .verse-card {
+                padding: 1.75rem;
+            }
+            
+            /* Verse lines tablet */
+            .verse-line {
+                font-size: 1.5rem;
+                line-height: 1.7;
+                padding: 1rem;
+                margin: 0.625rem 0;
+            }
+            
+            /* Floating elements tablet */
+            .float-icon {
+                font-size: 3rem !important;
+            }
+            
+            /* Text content tablet */
+            p {
+                font-size: 1.375rem;
+                line-height: 1.6;
+            }
+            
+            /* Card titles tablet */
+            h3 {
+                font-size: 2rem !important;
+            }
+            
+            /* Buttons tablet */
+            .btn-white {
+                font-size: 1.375rem;
+                padding: 0.875rem 1.25rem;
+            }
+            
+            /* Progress system tablet */
+            .progress-indicator {
+                width: 14px;
+                height: 14px;
+            }
+        }
+        
+        /* Mobile Design (≤767px) */
+        @media (max-width: 767px) {
+            /* Prevent horizontal scroll */
+            body {
+                overflow-x: hidden;
+                padding-top: 60px; /* Adjust for smaller header on mobile */
+            }
+            
+            .container section:first-of-type {
+                margin-top: 40px; /* Smaller margin on mobile */
+            }
+            
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            
+            /* Navigation mobile optimizations */
+            .white-nav {
+                padding: 0.5rem 0.75rem;
+                margin: 0.25rem;
+                border-radius: 12px;
+            }
+            
+            /* Mobile navigation layout */
+            .white-nav .container {
+                flex-direction: column;
+                gap: 0.75rem;
+                align-items: center;
+            }
+            
+            .white-nav a {
+                font-size: 0.875rem;
+                padding: 0.375rem 0.5rem;
+                text-align: center;
+            }
+            
+            .white-nav .text-gray-800.text-xl {
+                font-size: 1rem !important;
+            }
+            
+            .white-nav .text-2xl {
+                font-size: 1.125rem !important;
+            }
+            
+            .white-nav .text-3xl {
+                font-size: 1.25rem !important;
+            }
+            
+            .white-nav button {
+                padding: 0.375rem;
+                min-width: 36px;
+                height: 36px;
+            }
+            
+            /* Hero section mobile */
+            .hero-text,
+            h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.3;
+                margin-bottom: 1rem;
+                padding: 0 1rem;
+                word-wrap: break-word;
+            }
+            
+            .text-5xl, .text-6xl {
+                font-size: 2.5rem !important;
+            }
+            
+            .text-7xl, .text-8xl {
+                font-size: 3rem !important;
+            }
+            
+            .text-2xl {
+                font-size: 1.75rem !important;
+            }
+            
+            .text-3xl {
+                font-size: 2rem !important;
+            }
+            
+            .text-4xl {
+                font-size: 2.25rem !important;
+            }
+            
+            /* Section titles mobile */
+            h2 {
+                font-size: 2.25rem !important;
+                line-height: 1.3;
+                margin-bottom: 1.5rem;
+                padding: 0 1rem;
+                word-wrap: break-word;
+            }
+            
+            /* Cards mobile */
+            .white-card {
+                padding: 1.25rem;
+                margin: 0.5rem;
+                border-radius: 15px;
+                max-width: calc(100vw - 1rem);
+                overflow-x: hidden;
+                word-wrap: break-word;
+            }
+            
+            .verse-card {
+                padding: 1rem;
+                margin: 0.5rem;
+            }
+            
+            /* Verse lines mobile */
+            .verse-line {
+                font-size: 1.375rem;
+                line-height: 1.6;
+                padding: 0.875rem;
+                margin: 0.5rem 0;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                hyphens: auto;
+                border-radius: 10px;
+            }
+            
+            /* Floating elements mobile */
+            .float-icon {
+                font-size: 2.5rem !important;
+            }
+            
+            /* Progress system mobile */
+            .progress-indicator {
+                width: 10px;
+                height: 10px;
+            }
+            
+            /* Section spacing mobile */
+            section {
+                padding-top: 1.5rem;
+                padding-bottom: 1.5rem;
+            }
+            
+            /* Button mobile optimizations */
+            .btn-white {
+                font-size: 1.25rem;
+                padding: 0.75rem 1rem;
+            }
+            
+            /* Text content mobile */
+            p {
+                font-size: 1.25rem;
+                line-height: 1.6;
+                word-wrap: break-word;
+                padding: 0 0.5rem;
+            }
+            
+            /* Card titles mobile */
+            h3 {
+                font-size: 1.75rem !important;
+                line-height: 1.3;
+                margin-bottom: 0.75rem;
+                word-wrap: break-word;
+            }
+            
+            /* Grid adjustments mobile */
+            .grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+            
+            /* Modal mobile */
+            .modal-container {
+                margin: 1rem;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            
+            /* Footer mobile */
+            footer {
+                padding: 1.5rem 1rem;
+                text-align: center;
+            }
+        }
+        
+        /* Ultra-small mobile (≤480px) */
+        @media (max-width: 480px) {
+            .white-nav {
+                padding: 0.375rem 0.5rem;
+                margin: 0.125rem;
+            }
+            
+            .white-nav .container {
+                gap: 0.5rem;
+            }
+            
+            .white-nav button {
+                min-width: 32px;
+                height: 32px;
+                padding: 0.25rem;
+            }
+            
+            h1 {
+                font-size: 1.75rem !important;
+                padding: 0 0.5rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+                padding: 0 0.5rem;
+            }
+            
+            h3 {
+                font-size: 1.125rem !important;
+            }
+            
+            .white-card {
+                padding: 1rem;
+                margin: 0.25rem;
+            }
+            
+            .verse-line {
+                font-size: 0.9rem;
+                padding: 0.625rem;
+            }
+            
+            .float-icon {
+                font-size: 1.5rem !important;
+            }
+            
+            .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            
+            .btn-white {
+                font-size: 0.75rem;
+                padding: 0.375rem 0.5rem;
+            }
+        }
+        
+        /* Large tablets and small laptops (1024px - 1199px) */
+        @media (min-width: 1024px) and (max-width: 1199px) {
+            .white-card {
+                padding: 2.5rem;
+            }
+            
+            .verse-line {
+                font-size: 1.25rem;
+                line-height: 1.7;
+            }
+            
+            h1 {
+                font-size: 4rem !important;
+            }
+            
+            h2 {
+                font-size: 3rem !important;
+            }
+        }
+        
+        /* Enhanced Mobile Touch Interactions */
+        @media (max-width: 768px) {
+            /* Touch-friendly interactions */
+            .white-card {
+                cursor: pointer;
+                -webkit-user-select: none;
+                user-select: none;
+            }
+            
+            .verse-line {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                cursor: pointer;
+            }
+            
+            .btn-white {
+                min-height: 44px;
+                min-width: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+            
+            /* Enhanced card spacing */
+            .verse-card {
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Better text readability */
+            .verse-line {
+                background: #ffffff;
+                border: 1px solid #e5e7eb;
+            }
+            
+            /* Progress system mobile enhancement */
+            .white-card:has(#progressContainer) {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            #progressContainer {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+            
+            /* Modal mobile optimization */
+            .modal-container {
+                border-radius: 20px;
+                max-width: 95vw;
+                max-height: 85vh;
+            }
+            
+            .modal-close {
+                top: 0.5rem;
+                right: 0.5rem;
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            /* Grid system mobile fix */
+            .grid-cols-1 {
+                grid-template-columns: 1fr;
+            }
+            
+            .lg\\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .lg\\:grid-cols-4 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .xl\\:grid-cols-3 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .md\\:grid-cols-2 {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* Section margins mobile */
+            .mb-16 {
+                margin-bottom: 2rem !important;
+            }
+            
+            .py-12 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            
+            .py-16 {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            
+            /* Button spacing mobile */
+            .space-x-3 > * + * {
+                margin-left: 0 !important;
+                margin-top: 0.5rem;
+            }
+            
+            .space-x-2 > * + * {
+                margin-left: 0 !important;
+                margin-top: 0.375rem;
+            }
+            
+            /* Make buttons stack vertically on mobile */
+            .space-x-3,
+            .space-x-2 {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            
+            .space-x-3 .btn-white,
+            .space-x-2 .btn-white {
+                width: 100%;
+                max-width: 250px;
+            }
+        }
+        
+        /* Utility Classes */
+        .shadow-soft {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .shadow-medium {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .border-accent {
+            border-color: #3b82f6;
+        }
+        
+        .text-accent {
+            color: #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="white-card white-nav sticky top-0 z-50 m-4 p-4">
+        <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center">
+            <a href="sindhi.html" class="text-gray-600 hover:text-blue-600 transition-all duration-300 flex items-center p-3 rounded-xl hover:bg-gray-50 order-3 lg:order-1">
+                <svg class="w-6 h-6 mr-2 transition-transform hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+                <span class="font-semibold hidden sm:inline">واپس گهر ھلو</span>
+                <span class="font-semibold sm:hidden">گهر</span>
+            </a>
+            
+            <div class="text-gray-800 text-xl lg:text-2xl font-bold flex items-center order-1 lg:order-2 text-center">
+                <span class="text-3xl ml-2 float-icon">📚</span>
+                <span class="hero-text text-2xl lg:text-3xl">ڪلاس پنجون</span>
+                <span class="text-3xl mr-2 float-icon" style="animation-delay: 2s;">✨</span>
+            </div>
+            
+            <div class="flex items-center gap-3 order-2 lg:order-3">
+                <button id="audioToggle" class="white-button text-gray-700 hover:text-blue-600 transition-all duration-300 p-3 rounded-xl touch-ripple">
+                    <span id="audioIcon" class="text-2xl">🔊</span>
+                </button>
+                <button id="darkModeToggle" class="white-button dark-mode-header-btn touch-ripple" onclick="document.body.classList.toggle('dark'); localStorage.setItem('darkMode', document.body.classList.contains('dark') ? 'enabled' : 'disabled'); document.getElementById('darkModeIconHeader').textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';" aria-label="Toggle Dark Mode">
+                    <span id="darkModeIconHeader">🌙</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <script>
+    // Inline script for dark mode and scroll handling
+    (function() {
+        // Load dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.body.classList.add('dark');
+            document.getElementById('darkModeIconHeader').textContent = '☀️';
+        }
+
+        // Scroll handling
+        let lastScrollTop = 0;
+        const nav = document.querySelector('.white-nav');
+        const scrollThreshold = 50;
+
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                // Scrolling down & past threshold - hide nav
+                nav.style.transform = 'translateY(-100%)';
+                nav.style.transition = 'transform 0.3s ease-in-out';
+            } else {
+                // Scrolling up or at top - show nav
+                nav.style.transform = 'translateY(0)';
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+    })();
+    </script>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto px-4 py-8 lg:py-16 text-center" style="margin-top: 80px; padding-top: 40px;">
+        <h1 class="text-gray-800 text-3xl sm:text-4xl lg:text-3xl xl:text-6xl font-bold mb-6 lg:mb-8 hero-text">
+            نصابي گيتن، نظمن ۽ نثر جو درجو
+        </h1>
+        <p class="text-lg sm:text-xl lg:text-2xl xl:text-3xl text-gray-600 mb-8 lg:mb-12 px-2">
+            ڪلاس پنجون - مٿانھين درجي جا سبق
+        </p>
+        
+        <!-- Progress System -->
+        <div class="white-card flex flex-col sm:flex-row items-center gap-2 sm:gap-4 px-4 sm:px-8 py-4 mb-8 lg:mb-12 mx-2">
+            <span class="text-gray-700 font-semibold text-base sm:text-lg">اڳڀرائِي:</span>
+            <div id="progressContainer" class="flex gap-2 sm:gap-3 flex-wrap justify-center">
+                <!-- Progress indicators will be generated dynamically -->
+            </div>
+            <span id="progressPercentage" class="text-blue-600 font-bold text-lg sm:text-xl">0%</span>
+        </div>
+    </section>
+
+    <!-- Religious Poetry Section -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-5xl lg:text-6xl font-bold text-center text-gray-800 mb-16">
+            🕌 حمد ۽ نعت 🕌
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto" id="religious-content">
+            <!-- Content will be loaded dynamically from JSON -->
+        </div>
+    </section>
+
+    <!-- Patriotic Poetry Section -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-5xl lg:text-6xl font-bold text-center text-gray-800 mb-16">
+            🏳️ وطن جا گيت 🏳️
+        </h2>
+        
+        <div class="max-w-7xl mx-auto space-y-12" id="patriotic-content">
+            <!-- Content will be loaded dynamically from JSON -->
+        </div>
+            <div class="white-card category-patriotic p-8 lg:p-10 verse-card mb-8" data-poem="flag">
+                <div class="text-center mb-8">
+                    <div class="text-7xl mb-6 float-icon">🏳️</div>
+                    <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">هَلو سَبز پَرچَم اُڏاري هَلو</h3>
+                    <p class="text-xl text-gray-600">سليم ڳاڙھوي</p>
+                </div>
+                
+                <div class="text-xl lg:text-2xl leading-relaxed space-y-4" id="flag-content">
+                    <div class="verse-line" onclick="app.highlightVerse(this)">وطن جي چمن کي سنواري هلو، سنواري، سُڌاري، اُجاري هلو.</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">سخا جي نظر سان نھاري هلو، وفا جي اکر کي اُچاري هلو.</div>
+                    
+                    <div class="extended-content" id="flag-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سوين سِجَ اُڀ تي اُڀاري هلو، سڄو ساٿُ ساري سنڀاري هلو.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪدورت ۽ ڪيني کي دل مان ڪڍي، فقط ديس جو ڌيان ڌاري هلو.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">جبل، جهنگ، دريا لتاڙي لنگهو، ڏکن جي تہ ڏونگر کي ڏاري هلو.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪچَائي، ڪُپت، ڪوڙُ ڪوري ڪڍو، صداقت ۽ سچ جي سھَاري هلو.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">بلنديءَ جي عظمت جا کوڙي عَلَمَ،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">زماني کي حيرت ڏياري ھلو.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪنارا اچي نيٺ چُمندا قدم،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">تَوڪل جي تُرھي کي تاري ھلو.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ھلڻ جو،وڌڻ جو، بِگلُ ٿو وڄي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">اُٿو قافلي، کي اٿاري ھلو.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">امانت اوھان کي، ٿي سُونھي 'سليم'،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ھلوسبز پرچم اُڏاري ھلو.</div>
+                    </div>
+                </div>
+                    
+                    <div class="text-center mt-6 space-x-3">
+                        <button onclick="app.toggleExpansion('flag')" class="btn-white btn-primary touch-ripple" id="flag-toggle">
+                            مڪمل نظم ڏسو
+                        </button>
+                        <button onclick="app.playAudio('flag')" class="btn-white btn-warning touch-ripple" id="flag-btn">
+                            🎵 ٻڌو
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beloved Homeland -->
+            <div class="white-card category-patriotic p-8 lg:p-10 verse-card mb-8" data-poem="homeland">
+                <div class="text-center mb-8">
+                    <div class="text-7xl mb-6 float-icon" style="animation-delay: 1s;">💖</div>
+                    <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">پيارا وطن</h3>
+                    <p class="text-xl text-gray-600">سليم ڳاڙھوي</p>
+                </div>
+                <div class="text-xl lg:text-2xl leading-relaxed space-y-4" id="homeland-content">
+                    <div class="verse-line" onclick="app.highlightVerse(this)">مُنھِنجا وطن پيارا وطن، اکڙين سندا تارا وطن!</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">اي دوست دل وارا وطن، هر جاءِ هاڪارا وطن!</div>
+                    
+                    <div class="extended-content" id="homeland-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">تون ئي جياپوجان جو، تو سان سندم جيءَ جون جڙيون،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">توسان اڙيو مَن آ سَندمُ، اَي سرس سُونھارا وطن!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">مٺڙاوطن تنھنجي مٿان، سر ساھہ سڀ گهوري ڇڏيان!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">تنھنجو نہ مَٽ ڪو ديس ٻيو، محبوب موچارا وطن!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سُکيو ستابو شل رھين، ڪوسو لڳي توکي نہ واءُ،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ماکي ۽ مصريءَ کان مِٺا، اي جان کان پيارا وطن!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">تنھنجي مٽيءَ ۾ مُشڪُ ۽ تنھنجي ھوائن ۾ ھُڳاءُ،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">مھراڻ جي ھر موج، ڄڻ امرت سندي ڌارا وطن!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">منھنجا وطن، شل شَھرَ ۽ سڀ ڳوٺڙا تنھنجا وسن،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">رحمت سندا تو تي ڪڪر ڪن خوب وسڪارا وطن!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">منھنجا محبت جا 'سليم' آھن، سوين تو تي سلام،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">منٺار موچارا وطن، او سُونھن سِڪ وارا وطن!</div>
+                    </div>
+                </div>
+                    
+                    <div class="text-center mt-6 space-x-3">
+                        <button onclick="app.toggleExpansion('homeland')" class="btn-white btn-primary touch-ripple" id="homeland-toggle">
+                            مڪمل نظم ڏسو
+                        </button>
+                        <button onclick="app.playAudio('homeland')" class="btn-white btn-warning touch-ripple" id="homeland-btn">
+                            🎵 ٻڌو
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- National Scenes -->
+            <div class="white-card category-patriotic p-8 lg:p-10 verse-card mb-8" data-poem="scenes">
+                <div class="text-center mb-8">
+                    <div class="text-7xl mb-6 float-icon" style="animation-delay: 2s;">🌾</div>
+                    <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">نظارا وَطَن جا</h3>
+                    <p class="text-xl text-gray-600">احمد خان 'آصف'</p>
+                </div>
+                <div class="text-xl lg:text-2xl leading-relaxed space-y-4" id="scenes-content">
+                    <div class="verse-line" onclick="app.highlightVerse(this)">هي سرسبز ٻنيون ۽ ٻارا وطن جا،</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">وڻن واھ جو ٿا نظارا وطن جا.</div>
+                    
+                    <div class="extended-content" id="scenes-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">اچو کيت کيڙيون، اچو سونُ ميڙيون،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڀلا ڏاند آهن ڀٽارا وطن جا.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪمندُ، ڪڻڪَ، ساريون، ڪپھَ، انبَ، ڪيلا،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سٺا فصل ميوا موچارا وطن جا.</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">هي مزدور هاري، ڪمي ڪاسبي سڀ،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">جِيئَنِ شال سانگي سگهارا وطن جا.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">هي واڍا، هي رازا، هي ڪوري، هي موچي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">هي لوھارَ پورهيت پيارا وطن جا.</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">اسان جو سھارو وطن ئي تہ آهي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">اسين پاڻَ آهيون سھارا وطن جا.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">صُبح جو سويرو پڙهڻ لاءِ وڃون ٿا،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">اسين ٻارِڙا چنڊَ تارا وطن جا.</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">وڏي مانَ وارو، وڏي شانَ وارو،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سدا ڀاڳ آهن، ڀَلارا وطن جا.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ملي پاڻ ۾ سڀ ننڍا توڙي وڏڙا،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪنداسين اي ”آصف“ سُڌارا وطن جا.</div>
+                    </div>
+                    
+                    <div class="text-center mt-6 space-x-3">
+                        <button onclick="app.toggleExpansion('scenes')" class="btn-white btn-primary touch-ripple" id="scenes-toggle">
+                            مڪمل گيت ڏسو
+                        </button>
+                        <button onclick="app.playAudio('scenes')" class="btn-white btn-warning touch-ripple" id="scenes-btn">
+                            🎵 ٻڌو
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nature & Seasonal Poetry -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-5xl lg:text-6xl font-bold text-center text-gray-800 mb-16">
+            🌸 قدرت تي گيت 🌸
+        </h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto" id="nature-content">
+            <!-- Content will be loaded dynamically from JSON -->
+        </div>
+            <div class="white-card category-nature p-8 lg:p-10 verse-card" data-poem="spring">
+                <div class="text-center mb-8">
+                    <div class="text-7xl mb-6 float-icon">🌺</div>
+                    <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">بھار</h3>
+                    <p class="text-xl text-gray-600">سنڌيءَ ۾ قدرت تي بيت ۽ نظم</p>
+                </div>
+                
+                <div class="text-xl lg:text-2xl leading-relaxed space-y-4" id="spring-content">
+                    <div class="verse-line" onclick="app.highlightVerse(this)">آئي مُند ملهار! پکين ڪئي لَلڪار،</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">رُتيون مڙيئي ڀليون، ڪانهي تُلَ بَھار،</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">انگوريون ۽ ڪيتڪيون، کڙيا کٽڻھار،</div>
+                    
+                    <div class="extended-content" id="spring-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">کليو گل گلاب جو، هنڌ هنڌ ٿي هُٻڪار،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">کِلي ڪا کيدي ڪئي، لات مٺي للڪار-</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سُڻ ڪوئل جي ڪُونجار!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">آئي رُت بسنت جي، ٽِلِي سڀڪا ٽار،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">موتيو، مگرو، زعفران، چنبيلي چوڌار،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">کستوري خوشبوءِ ٿي، ڀريا ڀَونر هزار،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">باتيون ڪَن بُستان ۾، بُلبلن جا دُئار-</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سُڻ ڀوريءَ جي ڀُڻڪار!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">آئي رُت بسنت جي، پکين سَرهائي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سينو ڪڍيو، چُھنبون پٽيو، ڏين وڻ وڻ واڌائي،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">چوٽِيَرَ ٽيڙي چوٽي، لات مٺي لائي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">انبن مٿان اُسري، طوطي ڪئي تنوار-</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سُڻ چَتونءَ جي چُونگار!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">پَٽن کي پھراڻ پيو، ڏس قادر جو ڪم!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">چِيھو چِلُ چڱو ٿيو، سائون، ڳنڍير، ڳم،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">پاريھل خوشيءَ مان، دم دم ڀري دم،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڀَتَلَ مٿان ڀُڻندي، اگن ڪيا اُچار-</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سُڻ هُڙيءَ جي هُونگار!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">کائي ويٺي کيٽ کي، ڏس ٻوڙيءَ جا پار،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">کنيون کانڀاڻي هٿ ۾، ٻَنيرنِ جا ٻار،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">هڻن گُليلا هن کي، هڪل ڪيو هاڪار،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">مٿان لنگهندي مُوسِڙي، عجب ڪيا اظھار-</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سُڻ جِهرڙ جي جُهونگار!</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">وڻن مٿان مورَ ٿِي، جهمڪڻ لڳو جهنگ،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سونھي ٿو سبزيءَ کان، سڀ ڪو دڙو دنگ،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">واکاڻيو واحد کي، چِيھَن چوري چنگ،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ٽپندي ڪَنھن ٽاريءَ تي، ڪئي گاڏيرِڻ گفتار-</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سُڻ ٽِڪليءَ جو ٽُونڪار،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سُڻ پکين جي لَلڪار.</div>
+                    </div>
+                    
+                    <div class="text-center mt-6 space-x-3">
+                        <button onclick="app.toggleExpansion('spring')" class="btn-white btn-primary touch-ripple" id="spring-toggle">
+                            سڄو نظم پڙهو
+                        </button>
+                        <button onclick="app.openModal('spring')" class="btn-white btn-success touch-ripple">
+                            تفصيل سان پڙهو 📖
+                        </button>
+                        <button onclick="app.playAudio('spring')" class="btn-white btn-warning touch-ripple" id="spring-btn">
+                            🎵 ٻڌو
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Classical Sur Sarang -->
+            <div class="white-card category-classical p-8 lg:p-10 verse-card" data-poem="sarang">
+                <div class="text-center mb-8">
+                    <div class="text-7xl mb-6 float-icon" style="animation-delay: 1.5s;">🎭</div>
+                    <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">سُر سارنگ</h3>
+                    <p class="text-xl text-gray-600">شاھُ عبداللطيف ڀٽائِيؒ</p>
+                </div>
+                
+                <div class="text-xl lg:text-2xl leading-relaxed space-y-4" id="sarang-content">
+					<div class="verse-line" onclick="app.highlightVerse(this)">اڄ پڻ اُتر پار ڏي، ڪَڪَرَ ٿو ڪَري،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">روضي پاڪ رسولَ جي، پلٽيو پَٽَ ڀري،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">وِڄُنِ ساڻ وَري، تہ سنگهارن سُک ٿئي.</div>
+                    
+                    <div class="extended-content" id="sarang-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">***</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">آگميو آهي، لَڳھَ پَسُ لطيف چئي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">وُٺو مِينھُن وڏ ڦُڙو، ڪڍو ڌڻ ڪاهي.</div>
+                       <div class="verse-line" onclick="app.highlightVerse(this)">ڇَنَ ڇڏي پَٽَ پئو، سمر سنباهي،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">وِهومَ لاهي، آسرو اللهَ مان.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">***</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">آگم ڪيا اللھَ، لَڳھَ پَسُ لطيف چئي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">پَلُرَ جي پالوٽَ سين، پَٽن جهليا پاھَ،</div>
+						<div class="verse-line" onclick="app.highlightVerse(this)">واحِدَ وڏائي ڪيا، مَٿي گسَن گاھَ،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سانگين وريا ساھَ، اُٺن آب آگُوندرو.</div>
+						
+                    </div>
+                    
+                    <div class="text-center mt-6 space-x-3">
+                        <button onclick="app.toggleExpansion('sarang')" class="btn-white btn-primary touch-ripple" id="sarang-toggle">
+                            سڀَ بيت ڏسو
+                        </button>
+                        <button onclick="app.openModal('sarang')" class="btn-white btn-success touch-ripple">
+                            تفصيل سان پڙهو 📖
+                        </button>
+                        <button onclick="app.playAudio('sarang')" class="btn-white btn-warning touch-ripple" id="sarang-btn">
+                            🎵 ٻڌو
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social & Educational Content -->
+    <section class="container mx-auto px-4 py-12">
+        <h2 class="text-5xl lg:text-6xl font-bold text-center text-gray-800 mb-16">
+            🏫 سماجي تعليم 🏫
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto" id="social-content">
+            <!-- Content will be loaded dynamically from JSON -->
+        </div>
+            <div class="white-card category-social p-8 verse-card touch-ripple">
+                <div class="text-center mb-6">
+                    <div class="text-6xl mb-4 float-icon">🏘️</div>
+                    <h3 class="text-2xl lg:text-3xl font-bold mb-2 text-gray-800">اچو تہ پنھِنجو ڳوٺ سڌاريون</h3>
+                    <p class="text-lg text-gray-600">سليم هالائي</p>
+                </div>
+                
+                <div class="text-lg leading-relaxed space-y-3" id="village-content">
+                    <div class="verse-line" onclick="app.highlightVerse(this)">ٻنيون ٻارا باغ سنواريون، پنھِنجا گهر ۽ گهاٽَ اُجاريون،</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">روشن مُسَتقبلَ ڏي نھاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.</div>
+                    
+                    <div class="extended-content" id="village-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">رستن تي ڇڻڪارَ ڪنداسون، پاسن کان وڻڪارَ ڪنداسون،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">لڳي وڃن چَوطرف بَھاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">علمُ، هُنُرُ هڪ دولت آهي، جنھن کي چوريءَ جو ڊپ ناهي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ننڍن وڏن کي علم سيکاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">گندَ ڪِچري ۾ آ بيماري، آهي صفائي حڪمت واري،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڳوٺن مان ڪچري کي ٻُھاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">موليٰ ملڪ ۾ مالُ وڌائي، پنهنجو "سليم" تي ڀالُ ڀلائي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڀَليون هجن شل پنھنجون ڀٽَاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.</div>
+                    </div>
+                    
+                    <div class="text-center mt-4 space-x-3">
+                        <button onclick="app.toggleExpansion('village')" class="btn-white btn-primary text-sm touch-ripple" id="village-toggle">
+                            مڪمل نظم ڏسو
+                        </button>
+                        <button onclick="app.playAudio('village')" class="btn-white btn-warning text-sm touch-ripple" id="village-btn">
+                            🎵 ٻڌو
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Morning Prayer -->
+            <div class="white-card category-social p-8 verse-card touch-ripple">
+                <div class="text-center mb-6">
+                    <div class="text-6xl mb-4 float-icon" style="animation-delay: 0.5s;">🤲</div>
+                    <h3 class="text-2xl lg:text-3xl font-bold mb-2 text-gray-800">ٻارن لاءِ صبح جي دعا</h3>
+                    <p class="text-lg text-gray-600">مرزا قليچ بيگ</p>
+                </div>
+                
+                <div class="text-lg leading-relaxed space-y-3" id="prayer-content">
+                    <div class="verse-line" onclick="app.highlightVerse(this)">ڌڻي تُنھنجي ڏسجي ٿي جت ڪٿ خدائي،</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">ڪرم ساڻ ڪر تون اسان تي ڀلائي.</div>
+                    
+                    <div class="extended-content" id="prayer-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سکون ساڻ سعيي سُپت ۽ سچائي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">پروڙيون ۽ پرکيون ڀلائي بُرائي.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">پڙهڻ ۽ لکڻ جو تون ڏي شوق اسان کي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">اسان ۾ تون وجهہ علم جي روشنائي.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">پڙهي عمديون ڳالهيون ۽ قصا عجائب،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪڍون عقل جي وات مان پنھنجي وائي.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">۽ ورزش سان قائم رکون تندرستي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪريون پنھنجي عادت صفائي سُٺائي.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪريون سير گهر ويٺي ملڪن جو هردم،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">جَنين جي هُئي سون اڳي سُڌ نہ ڪائي.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">جبل ۽ سمنڊ ۽ نديون، ٻيٽ، راسيون،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">انهن جي خبر پئي اسان کي سَڀائي.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ننڍي هوندي علم ۽ هنر سڀ پرائي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">وڏي هوندي عمدي ڪريون ڪا ڪمائي.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪريون د ولت ۽ آبرو نيٺ حاصل،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">اسان جي ٿئي نيٺ محنت سجائي.</div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button onclick="app.toggleExpansion('prayer')" class="btn-white btn-primary text-sm touch-ripple" id="prayer-toggle">
+                            مڪمل دعا ڏسو
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company's Effect -->
+            <div class="white-card category-social p-8 verse-card touch-ripple">
+                <div class="text-center mb-6">
+                    <div class="text-6xl mb-4 float-icon" style="animation-delay: 1s;">👥</div>
+                    <h3 class="text-2xl lg:text-3xl font-bold mb-2 text-gray-800">صحبت جو اثر</h3>
+                    <p class="text-lg text-gray-600">عبدالله "اثر"</p>
+                </div>
+                
+                <div class="text-lg leading-relaxed space-y-3" id="company-content">
+                    <div class="verse-line" onclick="app.highlightVerse(this)">چَڱن جي سنگت ٿي رهي ڪارگر، بُرن جو سدائين بُرو ٿئي اَثر،</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">چڱن کان چڱائي ٿي حاصل ٿئي، چڱن ۾ رهي مرد ڪامُل ٿئي.</div>
+                    
+                    <div class="extended-content" id="company-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">بُري دوستي ٿي بڻائي بُرو، لڳي ڪاٺ کي جيئن ٻارو! سُرو.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">چڱن کان ملي ماڻهپو ٿو مدام، ۽ سڌري پوي ٿو جتان خاص عام.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">چڱن ساڻ جيڪو ٿو صحبت ڪري، اُهو پنهنجي حاصل ٿو عظمت ڪري.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">چڱن جي ٿِي سنگت سڌاري ڇڏي، ٿي بگڙي بڻائي سنواري ڇڏي.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">چڱن ساڻ زنده ٿئي ٿو ضمير، برائي بڻائي ڇڏي ٿي اَسير.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">چڱيون ٿي وڃن جيڪڏهن عادتون، تہ گذرن خوشيءَ سان سڀئي ساعتون.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">چَڱين صُحبتن جو چڱو آ "اثر" بُرن کان ڀڄو، آ قصو مُختصر.</div>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button onclick="app.toggleExpansion('company')" class="btn-white btn-primary text-sm touch-ripple" id="company-toggle">
+                            مڪمل نظم ڏسو
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Motivational -->
+            <div class="white-card category-motivational p-8 verse-card touch-ripple">
+                <div class="text-center mb-6">
+                    <div class="text-6xl mb-4 float-icon" style="animation-delay: 1.5s;">🚀</div>
+                    <h3 class="text-2xl lg:text-3xl font-bold mb-2 text-gray-800">قدم وَڌائي اڳتي هل</h3>
+                    <p class="text-lg text-gray-600">امداد حسيني</p>
+                </div>
+                
+                <div class="text-lg leading-relaxed space-y-3" id="motivation-content">
+                    <div class="verse-line" onclick="app.highlightVerse(this)">سُستي مان ڪي هَڙ حاصل،</div>
+                    <div class="verse-line" onclick="app.highlightVerse(this)">قدم وڌائي اڳتي هل.</div>
+                    
+                    <div class="extended-content" id="motivation-extended">
+                        <div class="verse-line" onclick="app.highlightVerse(this)">چنڊ تي پھتو آ انسان،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">محنت جو سڀ آهي ڦل.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪنھنجو تون محتاج نہ ٿي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڪنھن جي آڏو جهول نہ جهل.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">همت وارن جي آڏو،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">جُهڪي پوي ٿو نيٺ جَبَل.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">سردي گرمي سر تي سھي،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">گُلَ جهلي ٿي تڏهين وَل.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">گذري جيڪو وقت ويو،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">هاڻ انهيءَ تي هٿ نہ مَل.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ڏونگر پاڻ ڏري پوندا،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">اگر ارادو آھي اَٽل.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">علم تہ آهي سچ جي واٽَ،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">واٽ انهيءَ تي هلندو هَل.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">پھاڙِ پرزا ٿي پوندا،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">ٻانھُن ۾ جي آهي ٻَل.</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">وقت وڃائين صفت متان،</div>
+                        <div class="verse-line" onclick="app.highlightVerse(this)">قيمت لهڻي، هر ڪو پَل.</div>
+                    </div>
+                    
+                    <div class="text-center mt-4 space-x-3">
+                        <button onclick="app.toggleExpansion('motivation')" class="btn-white btn-primary text-sm touch-ripple" id="motivation-toggle">
+                            مڪمل نظم ڏسو
+                        </button>
+                        <button onclick="app.playAudio('motivation')" class="btn-white btn-warning text-sm touch-ripple" id="motivation-btn">
+                            🎵 ٻڌو
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievement Modal -->
+    <div id="achievementModal" class="hidden fixed inset-0 modal-backdrop flex items-center justify-center z-50 p-4">
+        <div class="modal-container p-8 text-center max-w-md w-full">
+            <div class="text-8xl mb-8 float-icon">🏆</div>
+            <h3 class="text-4xl font-bold mb-6 text-gray-800" id="achievementTitle">واڌايُون!</h3>
+            <p class="text-xl mb-8 text-gray-600" id="achievementMessage">توهان نئون ڏاڪو پورو ڪيو!</p>
+            <button onclick="app.closeAchievement()" class="btn-white btn-warning text-lg px-8 py-4 touch-ripple">
+                تاڙِيُون! 🎉
+            </button>
+        </div>
+    </div>
+
+    <!-- Content Modal -->
+    <div id="contentModal" class="hidden fixed inset-0 modal-backdrop flex items-center justify-center z-50 p-4">
+        <div class="modal-container w-full max-w-5xl">
+            <button class="modal-close absolute top-4 right-4" onclick="app.closeModal()" aria-label="بند ڪريو">×</button>
+            
+            <div class="p-8 max-h-[80vh] overflow-y-auto">
+                <div class="text-center mb-8">
+                    <h2 id="modalTitle" class="text-4xl font-bold mb-4 text-gray-800"></h2>
+                    <p id="modalAuthor" class="text-xl text-gray-600"></p>
+                </div>
+                
+                <div id="modalContent" class="text-gray-700 text-lg leading-relaxed space-y-6">
+                    <!-- Content will be loaded here -->
+                </div>
+                
+                <div class="text-center mt-8">
+                    <button onclick="app.closeModal()" class="btn-white btn-primary text-lg px-8 py-4 touch-ripple">
+                        بند ڪريو
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-title">ڪلاس پنجون - سنڌي گيتن، نظمن ۽ نثر جو درجو</div>
+        <p class="text-lg mb-2">عبدالماجد ڀرگڙي انسٽيٽيوٽ آف لينگويج انجنيئرنگ</p>
+        <p class="text-base">&copy; 2025 ثقافت کاتو، سنڌ حڪومت - سڀ حق محفوظ آهن</p>
+        <div class="footer-icons">
+            <span class="footer-icon">🌟</span>
+            <span class="footer-icon">📚</span>
+            <span class="footer-icon">🎭</span>
+            <span class="footer-icon">✨</span>
+        </div>
+    </footer>
+
+    <script>
+        // Sindhi Literature Platform - White Theme Architecture
+        class SindhiLiteraturePlatform {
+            constructor() {
+                this.currentlyPlaying = null;
+                this.progress = JSON.parse(localStorage.getItem('class5Progress')) || [];
+                this.achievements = {
+                    halfComplete: false,
+                    fullComplete: false
+                };
+                this.jsonData = null;
+                
+                // Additional state properties
+                this.state = {
+                    audioEnabled: true,
+                    currentAudio: null,
+                    progressData: new Set(),
+                    totalModules: 15,
+                    expandedPoems: new Set()
+                };
+                
+                this.contentDatabase = this.initializeContent();
+                this.init();
+            }
+
+            async init() {
+                try {
+                    await this.loadJSONData();
+                    this.setupProgressSystem();
+                    this.renderContent();
+                    this.bindEventHandlers();
+                    this.bindTouchRippleEffects();
+                    this.initializeAnimations();
+                } catch (error) {
+                    console.error('Error initializing app:', error);
+                }
+            }
+
+            async loadJSONData() {
+                try {
+                    const response = await fetch('/assets/Data/classes/class5.json');
+                    this.jsonData = await response.json();
+                } catch (error) {
+                    console.error('Error loading JSON data:', error);
+                    throw error;
+                }
+            }
+
+            renderContent() {
+                if (!this.jsonData) return;
+                
+                this.renderReligiousSection();
+                this.renderPatrioticSection();
+                this.renderNatureSection();
+                this.renderSocialSection();
+            }
+
+            renderReligiousSection() {
+                const religiousContent = document.getElementById('religious-content');
+                if (!religiousContent) return;
+
+                const religiousPoems = this.jsonData.filter(item => 
+                    item.baitTitle.includes('حمد') || item.baitTitle.includes('نعت')
+                );
+
+                religiousContent.innerHTML = religiousPoems.map((poem, index) => {
+                    const poemId = poem.baitTitle.includes('حمد') ? 'divine' : 'naat';
+                    return `
+                        <div class="white-card category-religious p-8 lg:p-10 verse-card" data-poem="${poemId}">
+                            <div class="text-center mb-8">
+                                <div class="text-7xl mb-6 float-icon" style="animation-delay: ${index}s;">🕌</div>
+                                <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">${poem.baitTitle.replace(/\s*\([^)]*\)/g, '')}</h3>
+                                <p class="text-xl text-gray-600">${poem.author}</p>
+                            </div>
+                            
+                            <div class="text-xl lg:text-2xl leading-relaxed space-y-4" id="${poemId}-content">
+                                ${poem.baitContent.map(line => 
+                                    `<div class="verse-line" onclick="app.highlightVerse(this)">${line}</div>`
+                                ).join('')}
+                                
+                                <div class="text-center mt-6 space-x-3">
+                                    <button onclick="app.playAudio('${poemId}')" class="btn-white btn-warning touch-ripple" id="${poemId}-btn">
+                                        🎵 ٻڌو
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            renderPatrioticSection() {
+                const patrioticContent = document.getElementById('patriotic-content');
+                if (!patrioticContent) return;
+
+                const patrioticPoems = this.jsonData.filter(item => 
+                    item.baitTitle.includes('پرچم') || item.baitTitle.includes('وطن') || item.baitTitle.includes('نظارا')
+                );
+
+                patrioticContent.innerHTML = patrioticPoems.map((poem, index) => {
+                    let poemId;
+                    if (poem.baitTitle.includes('پرچم')) poemId = 'flag';
+                    else if (poem.baitTitle.includes('پيارا وطن')) poemId = 'homeland';
+                    else if (poem.baitTitle.includes('نظارا')) poemId = 'scenes';
+
+                    return `
+                        <div class="white-card category-patriotic p-8 lg:p-10 verse-card mb-8" data-poem="${poemId}">
+                            <div class="text-center mb-8">
+                                <div class="text-7xl mb-6 float-icon" style="animation-delay: ${index}s;">${poem.icon}</div>
+                                <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">${poem.baitTitle.replace(/\s*\([^)]*\)/g, '')}</h3>
+                                <p class="text-xl text-gray-600">${poem.author}</p>
+                            </div>
+                            
+                            <div class="text-xl lg:text-2xl leading-relaxed space-y-4" id="${poemId}-content">
+                                ${poem.baitContent.slice(0, 2).map(line => 
+                                    `<div class="verse-line" onclick="app.highlightVerse(this)">${line}</div>`
+                                ).join('')}
+                                
+                                <div class="extended-content" id="${poemId}-extended" style="display: none;">
+                                    ${poem.baitContent.slice(2).map(line => 
+                                        `<div class="verse-line" onclick="app.highlightVerse(this)">${line}</div>`
+                                    ).join('')}
+                                </div>
+                                
+                                <div class="text-center mt-6 space-x-3">
+                                    <button onclick="app.toggleExpansion('${poemId}')" class="btn-white btn-primary touch-ripple" id="${poemId}-toggle">
+                                        مُڪمل پڙھو
+                                    </button>
+                                    <button onclick="app.openModal('${poemId}')" class="btn-white btn-success touch-ripple">
+                                        تفصيل
+                                    </button>
+                                    <button onclick="app.playAudio('${poemId}')" class="btn-white btn-warning touch-ripple" id="${poemId}-btn">
+                                        ٻڌو
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            renderNatureSection() {
+                const natureContent = document.getElementById('nature-content');
+                if (!natureContent) return;
+
+                const naturePoems = this.jsonData.filter(item => 
+                    item.baitTitle.includes('ھرڻِي') || item.baitTitle.includes('سُرسارَنگ')
+                );
+
+                natureContent.innerHTML = naturePoems.map((poem, index) => {
+                    let poemId, categoryClass, displayTitle;
+                    if (poem.baitTitle.includes('ھرڻِي')) {
+                        poemId = 'spring';
+                        categoryClass = 'category-nature';
+                        displayTitle = 'بھار';
+                    } else {
+                        poemId = 'sarang';
+                        categoryClass = 'category-classical';
+                        displayTitle = poem.baitTitle;
+                    }
+
+                    return `
+                        <div class="white-card ${categoryClass} p-8 lg:p-10 verse-card" data-poem="${poemId}">
+                            <div class="text-center mb-8">
+                                <div class="text-7xl mb-6 float-icon" style="animation-delay: ${index * 1.5}s;">${poem.icon}</div>
+                                <h3 class="text-3xl lg:text-4xl font-bold mb-3 text-gray-800">${displayTitle}</h3>
+                                <p class="text-xl text-gray-600">${poem.author}</p>
+                            </div>
+                            
+                            <div class="text-xl lg:text-2xl leading-relaxed space-y-4" id="${poemId}-content">
+                                ${poem.baitContent.slice(0, 3).map(line => 
+                                    `<div class="verse-line" onclick="app.highlightVerse(this)">${line}</div>`
+                                ).join('')}
+                                
+                                <div class="extended-content" id="${poemId}-extended" style="display: none;">
+                                    ${poem.baitContent.slice(3).map(line => 
+                                        `<div class="verse-line" onclick="app.highlightVerse(this)">${line}</div>`
+                                    ).join('')}
+                                </div>
+                                
+                                <div class="text-center mt-6 space-x-3">
+                                    <button onclick="app.toggleExpansion('${poemId}')" class="btn-white btn-primary touch-ripple" id="${poemId}-toggle">
+                                        مُڪمل پڙھو
+                                    </button>
+                                    <button onclick="app.openModal('${poemId}')" class="btn-white btn-success touch-ripple">
+                                        تفصيل
+                                    </button>
+                                    <button onclick="app.playAudio('${poemId}')" class="btn-white btn-warning touch-ripple" id="${poemId}-btn">
+                                        ٻڌو
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            renderSocialSection() {
+                const socialContent = document.getElementById('social-content');
+                if (!socialContent) return;
+
+                const socialPoems = this.jsonData.filter(item => 
+                    item.baitTitle.includes('ڳوٺ') || item.baitTitle.includes('قدم وَڌائي')
+                );
+
+                socialContent.innerHTML = socialPoems.map((poem, index) => {
+                    let poemId, displayIcon, displayTitle;
+                    if (poem.baitTitle.includes('ڳوٺ')) {
+                        poemId = 'village';
+                        displayIcon = '🏘️';
+                        displayTitle = 'اچو تہ پنھِنجو ڳوٺ سڌاريون';
+                    } else {
+                        poemId = 'motivation';
+                        displayIcon = '⚡';
+                        displayTitle = poem.baitTitle.replace(/\s*\([^)]*\)/g, '');
+                    }
+
+                    return `
+                        <div class="white-card category-${poemId === 'village' ? 'social' : 'motivational'} p-8 verse-card touch-ripple">
+                            <div class="text-center mb-6">
+                                <div class="text-6xl mb-4 float-icon" style="animation-delay: ${index * 0.5}s;">${displayIcon}</div>
+                                <h3 class="text-2xl lg:text-3xl font-bold mb-2 text-gray-800">${displayTitle}</h3>
+                                <p class="text-lg text-gray-600">${poem.author}</p>
+                            </div>
+                            
+                            <div class="text-lg leading-relaxed space-y-3" id="${poemId}-content">
+                                ${poem.baitContent.slice(0, 2).map(line => 
+                                    `<div class="verse-line" onclick="app.highlightVerse(this)">${line}</div>`
+                                ).join('')}
+                                
+                                <div class="extended-content" id="${poemId}-extended" style="display: none;">
+                                    ${poem.baitContent.slice(2).map(line => 
+                                        `<div class="verse-line" onclick="app.highlightVerse(this)">${line}</div>`
+                                    ).join('')}
+                                </div>
+                                
+                                <div class="text-center mt-4 space-x-3">
+                                    <button onclick="app.toggleExpansion('${poemId}')" class="btn-white btn-primary touch-ripple" id="${poemId}-toggle">
+                                        مُڪمل پڙھو
+                                    </button>
+                                    <button onclick="app.openModal('${poemId}')" class="btn-white btn-success touch-ripple">
+                                        تفصيل
+                                    </button>
+                                    <button onclick="app.playAudio('${poemId}')" class="btn-white btn-warning touch-ripple" id="${poemId}-btn">
+                                        ٻڌو
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            }
+
+            getAudioId(type) {
+                const audioMap = {
+                    'divine': 'audio-divine',
+                    'naat': 'audio-naat',
+                    'flag': 'audio-flag',
+                    'homeland': 'audio-homeland',
+                    'scenes': 'audio-scenes',
+                    'village': 'audio-village',
+                    'motivation': 'audio-motivation',
+                    'spring': 'audio-spring',
+                    'sarang': 'audio-sarang'
+                };
+                return audioMap[type] || `audio-${type}`;
+            }
+
+            resetAudioButton(button) {
+                button.textContent = 'ٻڌو';
+                button.classList.remove('btn-danger', 'btn-success');
+                button.classList.add('btn-warning');
+            }
+
+            createAudioVisualizer(button) {
+                // Simple visual feedback for audio playing
+                button.style.animation = 'pulse 1s infinite';
+            }
+
+            // Progress System
+            setupProgressSystem() {
+                const progressContainer = document.getElementById('progressContainer');
+                const progressPercentage = document.getElementById('progressPercentage');
+                
+                if (!progressContainer || !progressPercentage) return;
+                
+                const modules = ['divine', 'naat', 'flag', 'homeland', 'scenes', 'village', 'motivation', 'spring', 'sarang'];
+                progressContainer.innerHTML = modules.map((moduleId, index) => `
+                    <div class="progress-indicator" id="progress-${moduleId}" data-module="${moduleId}">
+                        ${index + 1}
+                    </div>
+                `).join('');
+            }
+
+            updateProgress(moduleId) {
+                if (!this.progress.includes(moduleId)) {
+                    this.progress.push(moduleId);
+                    localStorage.setItem('class5Progress', JSON.stringify(this.progress));
+                    
+                    const indicator = document.getElementById(`progress-${moduleId}`);
+                    if (indicator) {
+                        indicator.classList.add('completed');
+                        this.animateProgressUpdate(indicator);
+                    }
+                    
+                    const percentage = Math.round((this.progress.length / 9) * 100);
+                    const percentageEl = document.getElementById('progressPercentage');
+                    if (percentageEl) percentageEl.textContent = `${percentage}%`;
+                    
+                    if (percentage >= 50) {
+                        this.evaluateAchievements();
+                    }
+                }
+            }
+
+            animateProgressUpdate(element) {
+                element.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    element.style.transform = 'scale(1)';
+                }, 300);
+            }
+
+            // Enhanced Expansion Logic
+            toggleExpansion(poemId) {
+                const extendedContent = document.getElementById(`${poemId}-extended`);
+                const toggle = document.getElementById(`${poemId}-toggle`);
+                
+                if (!extendedContent || !toggle) return;
+                
+                const isExpanded = extendedContent.style.display === 'block';
+                
+                if (isExpanded) {
+                    extendedContent.style.display = 'none';
+                    toggle.textContent = 'مُڪمل پڙھو';
+                } else {
+                    extendedContent.style.display = 'block';
+                    toggle.textContent = 'لڪايو';
+                    this.animateVerseEntrance(extendedContent);
+                    this.updateProgress(poemId);
+                }
+            }
+
+            animateVerseEntrance(container) {
+                const verses = container.querySelectorAll('.verse-line');
+                verses.forEach((verse, index) => {
+                    verse.style.opacity = '0';
+                    verse.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        verse.style.transition = 'all 0.5s ease';
+                        verse.style.opacity = '1';
+                        verse.style.transform = 'translateY(0)';
+                    }, index * 100);
+                });
+            }
+
+            // Verse Interaction
+            highlightVerse(element) {
+                document.querySelectorAll('.verse-line.active').forEach(el => {
+                    el.classList.remove('active');
+                });
+                element.classList.add('active');
+            }
+
+            // Audio Management
+            playAudio(type) {
+                const button = document.getElementById(`${type}-btn`);
+                const audioId = this.getAudioId(type);
+                const audio = document.getElementById(audioId);
+                
+                if (!audio || !button) {
+                    console.warn(`Audio element or button not found for ${type}`);
+                    return;
+                }
+                
+                this.stopCurrentAudio();
+                
+                if (audio.paused) {
+                    audio.play().then(() => {
+                        button.textContent = 'رُڪايو';
+                        button.classList.add('btn-danger');
+                        button.classList.remove('btn-warning');
+                        this.currentlyPlaying = { audio, button, type };
+                        this.updateProgress(type);
+                        this.createAudioVisualizer(button);
+                        
+                        audio.onended = () => {
+                            this.resetAudioButton(button);
+                            this.currentlyPlaying = null;
+                        };
+                    }).catch(error => {
+                        console.error('Error playing audio:', error);
+                        button.textContent = 'آڊيو نٿو پلي ٿو';
+                    });
+                } else {
+                    audio.pause();
+                    this.resetAudioButton(button);
+                    this.currentlyPlaying = null;
+                }
+            }
+
+            stopCurrentAudio() {
+                if (this.currentlyPlaying) {
+                    this.currentlyPlaying.audio.pause();
+                    this.currentlyPlaying.audio.currentTime = 0;
+                    this.resetAudioButton(this.currentlyPlaying.button);
+                    this.currentlyPlaying = null;
+                }
+            }
+
+            // Modal Management
+            openModal(contentKey) {
+                const modal = document.getElementById('contentModal');
+                const modalContent = document.getElementById('modalContent');
+                
+                if (modal && modalContent && this.jsonData) {
+                    const poem = this.jsonData.find(item => {
+                        if (contentKey === 'divine' && item.baitTitle.includes('حمد')) return true;
+                        if (contentKey === 'naat' && item.baitTitle.includes('نعت')) return true;
+                        if (contentKey === 'flag' && item.baitTitle.includes('پرچم')) return true;
+                        if (contentKey === 'homeland' && item.baitTitle.includes('پيارا وطن')) return true;
+                        if (contentKey === 'scenes' && item.baitTitle.includes('نظارا')) return true;
+                        if (contentKey === 'village' && item.baitTitle.includes('ڳوٺ')) return true;
+                        if (contentKey === 'motivation' && item.baitTitle.includes('قدم وَڌائي')) return true;
+                        if (contentKey === 'spring' && item.baitTitle.includes('ھرڻِي')) return true;
+                        if (contentKey === 'sarang' && item.baitTitle.includes('سُرسارَنگ')) return true;
+                        return false;
+                    });
+                    
+                    if (poem) {
+                        modalContent.innerHTML = `
+                            <h3 class="text-2xl font-bold mb-4">${poem.baitTitle}</h3>
+                            <p class="text-lg mb-6 text-gray-600">${poem.author}</p>
+                            <div class="space-y-3">
+                                ${poem.baitContent.map(line => `<div class="verse-line">${line}</div>`).join('')}
+                            </div>
+                        `;
+                        modal.classList.remove('hidden');
+                        this.updateProgress(contentKey);
+                    }
+                }
+            }
+
+            closeModal() {
+                document.getElementById('contentModal').classList.add('hidden');
+            }
+
+            // Achievement System
+            evaluateAchievements() {
+                const completedModules = this.progress.length;
+                const percentage = (completedModules / 9) * 100;
+                
+                if (percentage >= 50 && !this.achievements.halfComplete) {
+                    this.displayAchievement(
+                        "واڌايون! اڌ سبق مُڪمل!",
+                        "توهان اڌ کان وڌيڪ سبق پڙھي ويا آهيو!"
+                    );
+                    this.achievements.halfComplete = true;
+                } else if (percentage === 100 && !this.achievements.fullComplete) {
+                    this.displayAchievement(
+                        "واڌايون! مُڪمل سبق!",
+                        "توهان سڀني سبقن کي مُڪمل ڪيو!"
+                    );
+                    this.achievements.fullComplete = true;
+                }
+            }
+
+            displayAchievement(title, message) {
+                const modal = document.getElementById('achievementModal');
+                document.getElementById('achievementTitle').textContent = title;
+                document.getElementById('achievementMessage').textContent = message;
+                modal.classList.remove('hidden');
+            }
+
+            closeAchievement() {
+                document.getElementById('achievementModal').classList.add('hidden');
+            }
+
+            // Event Binding
+            bindEventHandlers() {
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('modal-backdrop')) {
+                        this.closeModal();
+                        this.closeAchievement();
+                    }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeModal();
+                        this.closeAchievement();
+                    }
+                });
+            }
+
+            // Touch Ripple Effects
+            bindTouchRippleEffects() {
+                document.querySelectorAll('.touch-ripple').forEach(element => {
+                    element.addEventListener('touchstart', (e) => {
+                        this.createRippleEffect(e, element);
+                    });
+                    
+                    element.addEventListener('mousedown', (e) => {
+                        this.createRippleEffect(e, element);
+                    });
+                });
+            }
+
+            createRippleEffect(e, element) {
+                const ripple = document.createElement('span');
+                const rect = element.getBoundingClientRect();
+                
+                const size = Math.max(rect.width, rect.height);
+                const x = (e.clientX || e.touches[0].clientX) - rect.left - size / 2;
+                const y = (e.clientY || e.touches[0].clientY) - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.4);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: rippleAnimation 0.6s ease-out;
+                    pointer-events: none;
+                `;
+                
+                element.style.position = 'relative';
+                element.style.overflow = 'hidden';
+                element.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+
+            // Animation Systems
+            initializeAnimations() {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in-up');
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -50px 0px'
+                });
+
+                document.querySelectorAll('.verse-card').forEach(card => {
+                    observer.observe(card);
+                });
+            }
+
+            // Content Database
+            initializeContent() {
+                return {
+                    divine: {
+                        title: "تُون حبيبُ تُون طبيب",
+                        author: "شاھ عبداللطيف ڀٽائيؒ",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">تُون حبيبُ، تُون طبيبُ، تُون دردَ جي دَوا،<br>جانِبَ منهنجي جيءَ ۾، آزار جا اَنواع،<br>صاحبَ ڏي شِفا، ميان! مريضنِ کي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">تُون حبيبُ، توُن طبيبُ، تون دردَ جو دارُون،<br>دوا آهِنِ دل کي، تُنهنجيون تنوارُون،<br>ڪريان ٿي ڪارُون، جئن ٻُڪي ٻِئنِئُون نه ٿئي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">تُون حبيبُ، تُون طبيبُ، تُنھمِ ڊَٺَن ڊَبُ،<br>تُون ڏيين، تُوڳن لاهيين، تُنھمِ هادِي ربُ،<br>آهمِ اِيءُ عجبُ، جئن وارئو ويڄ وِهاريين.</div>
+                        `
+                    },
+                    naat: {
+                        title: "نعت شريف",
+                        author: "حافظ محمد \"احسن\" چنا",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">هِي ٿيا پيدا زمين و آسمان تنھنجي ڪري،<br>ڪِينَ آهي هي رڳو پر سڀ جھان تنھنجي ڪري!</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ٿي بھاري تنھنجي آئي ۽ گهُلي بادِ صبا،<br>گلشنِ اسلام مان ويئي خزان تنھنجي ڪري!</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">هو اڳي جيڪو عرب ۾ جنگ، فتنو ۽ فساد،<br>مُلڪ ساڳيو ٿي پيو دارالامان تنھنجي ڪري!</div>
+                        `
+                    },
+                    flag: {
+                        title: "هلو سبز پرچم اڏاري هلو",
+                        author: "سليم ڳاڙهوي",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">وطن جي چمن کي سنواري هلو، سنواري، سُڌاري، اُجاري هلو.<br>سخا جي نظر سان نھاري هلو، وفا جي اکر کي اُچاري هلو.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">سوين سِجَ اُڀ تي اُڀاري هلو، سڄو ساٿُ ساري سنڀاري هلو.<br>ڪدورت ۽ ڪيني کي دل مان ڪڍي، فقط ديس جو ڌيان ڌاري هلو.</div>
+                        `
+                    },
+                    spring: {
+                        title: "بھار",
+                        author: "سنڌي نصاب",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">آئي مُند ملهار! پکين ڪئي لَلڪار،<br>رُتيون مڙيئي ڀليون، ڪانهي تُلَ بَھار،<br>انگوريون ۽ ڪيتڪيون، کڙيا کٽڻھار</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">کليو گل گلاب جو، هنڌ هنڌ ٿي هُٻڪار،<br>کِلي ڪا کيدي ڪئي، لات مٺي للڪار-<br>سُڻ ڪوئل جي ڪُونجارا!</div>
+                        `
+                    },
+                    homeland: {
+                        title: "پيارا وطن",
+                        author: "سليم ڳاڙهوي",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">منھنجا وطن پيارا وطن، اکڙين سندا تارا وطن!<br>اي دوست دل وارا وطن، هر جاءِ هاڪارا وطن!</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">تون ئي جياپو جان جو، تون سان سندم جيءَ جون جڙيون،<br>تو سان اَڙيون مَن آ سَندُم، اي سرس سُونھارا وطن!</div>
+                        `
+                    },
+                    scenes: {
+                        title: "نظارا وطن جا",
+                        author: "احمد خان آصف",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">هي سرسبز ٻنيون ۽ ٻارا وطن جا،<br>وڻن واھ جو ٿا نظارا وطن جا.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">اچو کيت کيڙيون، اچو سونُ ميڙيون،<br>ڀلا ڏاند آهن ڀٽارا وطن جا.</div>
+                        `
+                    },
+                    sarang: {
+                        title: "سر سارنگ",
+                        author: "شاھ عبداللطيف ڀٽائيؒ",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">آگميو آهي، لَڳھَ پَسُ لطيف چئي،<br>وُٺو مينھُن وڏ ڦُڙو، ڪڍو ڌڻ ڪاهي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ڇَنَ ڇڏي پَٽَ پئو، سمر سنباهي،<br>وِهومَ لاهي، آسرو اللهَ مان.</div>
+                        `
+                    },
+                    village: {
+                        title: "اچو تہ پنھنجو ڳوٺ سڌاريون",
+                        author: "سليم هالائي",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ٻنيون ٻارا باغ سنواريون، پنھِنجا گهر ۽ گهاٽَ اُجاريون،
+                                <br>روشن مُسَتقبلَ ڏي نھاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.
+                                <br>رستن تي ڇڻڪارَ ڪنداسون، پاسن کان وڻڪارَ ڪنداسون،
+                                <br>لڳي وڃن چَوطرف بَھاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.
+</div>                  
+                        <div class="verse-line mb-6 p-4 white-card shadow-soft">
+                            علمُ، هُنُرُ هڪ دولت آهي، جنھن کي چوريءَ جو ڊپ ناهي،
+                            <br>ننڍن وڏن کي علم سيکاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.
+                            <br>گندَ ڪِچري ۾ آ بيماري، آهي صفائي حڪمت واري،
+</div>
+                    <div class="verse-line mb-6 p-4 white-card shadow-soft">
+                        ڳوٺن مان ڪچري کي ٻُھاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.
+                        <br>موليٰ ملڪ ۾ مالُ وڌائي، پنهنجو ”سليم“ تي ڀالُ ڀلائي،
+                        <br>ڀَليون هجن شل پنھنجون ڀٽَاريون، اچو تہ پنھنجو ڳوٺُ سُڌاريون.
+
+                        `
+                    },
+                    prayer: {
+                        title: "ٻارن لاءِ صبح جي دعا",
+                        author: "مرزا قليچ بيگ",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ڌڻي تُنھنجي ڏسجي ٿي جت ڪٿ خدائي،<br>ڪرم ساڻ ڪر تون اسان تي ڀلائي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">سکون ساڻ سعيي سُپت ۽ سچائي،<br>پروڙيون ۽ پرکيون ڀلائي بُرائي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">پڙهڻ ۽ لکڻ جو تون ڏي شوق اسان کي،<br>اسان ۾ تون وجهہ علم جي روشنائي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">پڙهي عمديون ڳالهيون ۽ قصا عجائب،<br>ڪڍون عقل جي وات مان پنھنجي وائي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">۽ ورزش سان قائم رکون تندرستي،<br>ڪريون پنھنجي عادت صفائي سُٺائي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ڪريون سير گهر ويٺي ملڪن جو هردم،<br>جَنين جي هُئي سون اڳي سُڌ نہ ڪائي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">جبل ۽ سمنڊ ۽ نديون، ٻيٽ، راسيون،<br>انهن جي خبر پئي اسان کي سَڀائي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ننڍي هوندي علم ۽ هنر سڀ پرائي،<br>وڏي هوندي عمدي ڪريون ڪا ڪمائي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ڪريون د ولت ۽ آبرو نيٺ حاصل،<br>اسان جي ٿئي نيٺ محنت سجائي.</div>
+                        `
+                    },
+                    company: {
+                        title: "صحبت جو اثر",
+                        author: "عبدالله \"اثر\"",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">چَڱن جي سنگت ٿي رهي ڪارگر، بُرن جو سدائين بُرو ٿئي اَثر،<br>چڱن کان چڱائي ٿي حاصل ٿئي، چڱن ۾ رهي مرد ڪامُل ٿئي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">بُري دوستي ٿي بڻائي بُرو، لڳي ڪاٺ کي جيئن ٻارو! سُرو.<br>چڱن کان ملي ماڻهپو ٿو مدام، ۽ سڌري پوي ٿو جتان خاص عام.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">چڱن ساڻ جيڪو ٿو صحبت ڪري، اُهو پنهنجي حاصل ٿو عظمت ڪري.<br>چڱن جي ٿِي سنگت سڌاري ڇڏي، ٿي بگڙي بڻائي سنواري ڇڏي.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">چڱن ساڻ زنده ٿئي ٿو ضمير، برائي بڻائي ڇڏي ٿي اَسير.<br>چڱيون ٿي وڃن جيڪڏهن عادتون، تہ گذرن خوشيءَ سان سڀئي ساعتون.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">چَڱين صُحبتن جو چڱو آ "اثر" بُرن کان ڀڄو، آ قصو مُختصر.</div>
+                        `
+                    },
+                    motivation: {
+                        title: "قدم وَڌائي اڳتي هل",
+                        author: "امداد حسيني",
+                        content: `
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">سُستي مان ڪا هَڙ حاصل،<br>قدم وڌائي اڳتي هل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">چنڊ تي پھتو آ انسان،<br>محنت جو سڀ آهي ڦل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ڪنھنجو تون محتاج نہ ٿي،<br>ڪنھن جي آڏو جهول نہ جهل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">همت وارن جي آڏو،<br>جُهڪي پوي ٿو نيٺ جَبَل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">سردي گرمي سر تي سھي،<br>گُلَ جهلي ٿي تڏهين وَل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">گذري جيڪو وقت ويو،<br>هاڻ انهيءَ تي هٿ نہ مَل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">ڏونگر پاڻ ڏري پوندا،<br>اگر ارادو آھي اَٽل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">علم تہ آهي سچ جي واٽَ،<br>واٽ انهيءَ تي هلندو هَل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">پھاڙِ پرزا ٿي پوندا،<br>ٻانھُن ۾ جي آهي ٻَل.</div>
+                            <div class="verse-line mb-6 p-4 white-card shadow-soft">وقت وڃائين صفت متان،<br>قيمت لهڻي، هر ڪو پَل.</div>
+                        `
+                    }
+                };
+            }
+
+            // Progress System
+            setupProgressSystem() {
+                const container = document.getElementById('progressContainer');
+                container.innerHTML = '';
+                
+                for (let i = 0; i < this.state.totalModules; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'progress-indicator';
+                    indicator.id = `progress-${i}`;
+                    container.appendChild(indicator);
+                }
+            }
+
+            updateProgress(moduleId) {
+                if (!this.state.progressData.has(moduleId)) {
+                    this.state.progressData.add(moduleId);
+                    
+                    const index = this.state.progressData.size - 1;
+                    const indicator = document.getElementById(`progress-${index}`);
+                    
+                    if (indicator) {
+                        indicator.classList.add('completed');
+                        this.animateProgressUpdate(indicator);
+                    }
+                    
+                    const percentage = (this.state.progressData.size / this.state.totalModules) * 100;
+                    document.getElementById('progressPercentage').textContent = `${Math.round(percentage)}%`;
+                    
+                    this.evaluateAchievements();
+                }
+            }
+
+            animateProgressUpdate(element) {
+                element.style.transform = 'scale(1.5)';
+                setTimeout(() => {
+                    element.style.transform = 'scale(1.2)';
+                }, 300);
+            }
+
+            // Enhanced Expansion Logic
+            toggleExpansion(poemId) {
+                const extendedContent = document.getElementById(`${poemId}-extended`);
+                const toggleButton = document.getElementById(`${poemId}-toggle`);
+                const card = document.querySelector(`[data-poem="${poemId}"]`);
+                
+                if (!extendedContent || !toggleButton) {
+                    console.error(`Elements not found for poem: ${poemId}`);
+                    return;
+                }
+                
+                if (this.state.expandedPoems.has(poemId)) {
+                    // Collapse with smooth animation
+                    extendedContent.style.maxHeight = '0';
+                    extendedContent.style.opacity = '0';
+                    extendedContent.style.transform = 'translateY(-10px)';
+                    extendedContent.classList.remove('expanded');
+                    
+                    toggleButton.textContent = this.getToggleText(poemId, false);
+                    if (card) card.classList.remove('expanded');
+                    this.state.expandedPoems.delete(poemId);
+                    
+                } else {
+                    // Expand with smooth animation
+                    extendedContent.style.maxHeight = '1000px';
+                    extendedContent.style.opacity = '1';
+                    extendedContent.style.transform = 'translateY(0)';
+                    extendedContent.classList.add('expanded');
+                    
+                    toggleButton.textContent = this.getToggleText(poemId, true);
+                    if (card) card.classList.add('expanded');
+                    this.state.expandedPoems.add(poemId);
+                    
+                    this.updateProgress(`expand-${poemId}`);
+                    this.animateVerseEntrance(extendedContent);
+                }
+            }
+
+            getToggleText(poemId, isExpanded) {
+                const texts = {
+                    'divine': isExpanded ? 'لڪايو' : 'مڪمل بيت ڏسو',
+                    'naat': isExpanded ? 'لڪايو' : 'مڪمل نعت ڏسو',
+                    'flag': isExpanded ? 'لڪايو' : 'مڪمل نظم ڏسو',
+                    'spring': isExpanded ? 'لڪايو' : 'مڪمل نظم ڏسو',
+                    'homeland': isExpanded ? 'لڪايو' : 'مڪمل نظم ڏسو',
+                    'scenes': isExpanded ? 'لڪايو' : 'مڪمل نظم ڏسو',
+                    'sarang': isExpanded ? 'لڪايو' : 'مڪمل بيت ڏسو'
+                };
+                return texts[poemId] || (isExpanded ? 'لڪايو' : 'مڪمل ڏسو');
+            }
+
+            animateVerseEntrance(container) {
+                const verses = container.querySelectorAll('.verse-line');
+                verses.forEach((verse, index) => {
+                    verse.style.opacity = '0';
+                    verse.style.transform = 'translateX(-20px)';
+                    
+                    setTimeout(() => {
+                        verse.style.transition = 'all 0.4s ease';
+                        verse.style.opacity = '1';
+                        verse.style.transform = 'translateX(0)';
+                    }, index * 100);
+                });
+            }
+
+            // Verse Interaction
+            highlightVerse(element) {
+                element.classList.add('active');
+                setTimeout(() => {
+                    element.classList.remove('active');
+                }, 2000);
+                
+                this.updateProgress(`verse-${Date.now()}`);
+            }
+
+            // Audio Management with Pause/Play
+            playAudio(type) {
+                if (!this.state.audioEnabled) return;
+                
+                const audioElement = document.getElementById(`audio-${type}`);
+                const button = document.getElementById(`${type}-btn`);
+                
+                if (!audioElement) {
+                    console.error(`Audio element not found for: ${type}`);
+                    return;
+                }
+                
+                if (!button) {
+                    console.error(`Button not found for: ${type}`);
+                    return;
+                }
+                
+                // Check if this audio is already playing
+                if (this.state.currentAudio && this.state.currentAudio.type === type) {
+                    if (audioElement.paused) {
+                        // Resume
+                        this.resumeAudio(type);
+                    } else {
+                        // Pause
+                        this.pauseAudio(type);
+                    }
+                    return;
+                }
+                
+                // Stop any other audio
+                this.stopCurrentAudio();
+                
+                const originalContent = button.innerHTML;
+                
+                // Update button to show pause state
+                button.innerHTML = `⏸️ روڪيو`;
+                button.onclick = () => this.pauseAudio(type);
+                
+                // Play the audio
+                audioElement.currentTime = 0;
+                audioElement.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                    button.innerHTML = originalContent;
+                    button.onclick = () => this.playAudio(type);
+                });
+                
+                // Store current audio state
+                this.state.currentAudio = {
+                    element: audioElement,
+                    button: button,
+                    originalContent: originalContent,
+                    type: type
+                };
+                
+                // Reset button when audio ends
+                audioElement.onended = () => {
+                    button.innerHTML = originalContent;
+                    button.onclick = () => this.playAudio(type);
+                    this.state.currentAudio = null;
+                    this.updateProgress(`audio-${type}`);
+                };
+            }
+
+            pauseAudio(type) {
+                if (!this.state.currentAudio || this.state.currentAudio.type !== type) return;
+                
+                const audioElement = this.state.currentAudio.element;
+                const button = this.state.currentAudio.button;
+                
+                audioElement.pause();
+                button.innerHTML = `▶️ هلايو`;
+                button.onclick = () => this.resumeAudio(type);
+            }
+
+            resumeAudio(type) {
+                if (!this.state.currentAudio || this.state.currentAudio.type !== type) return;
+                
+                const audioElement = this.state.currentAudio.element;
+                const button = this.state.currentAudio.button;
+                
+                audioElement.play().catch(error => {
+                    console.error('Audio playback failed:', error);
+                });
+                
+                button.innerHTML = `⏸️ روڪيو`;
+                button.onclick = () => this.pauseAudio(type);
+            }
+
+            stopCurrentAudio() {
+                if (this.state.currentAudio) {
+                    if (this.state.currentAudio.element) {
+                        this.state.currentAudio.element.pause();
+                        this.state.currentAudio.element.currentTime = 0;
+                    }
+                    if (this.state.currentAudio.timeout) {
+                        clearTimeout(this.state.currentAudio.timeout);
+                    }
+                    this.state.currentAudio.button.innerHTML = this.state.currentAudio.originalContent;
+                    this.state.currentAudio = null;
+                }
+            }
+
+            // Modal Management
+            openModal(contentKey) {
+                const content = this.contentDatabase[contentKey];
+                if (!content) return;
+                
+                document.getElementById('modalTitle').textContent = content.title;
+                document.getElementById('modalAuthor').textContent = content.author;
+                document.getElementById('modalContent').innerHTML = content.content;
+                document.getElementById('contentModal').classList.remove('hidden');
+                
+                this.updateProgress(`modal-${contentKey}`);
+            }
+
+            closeModal() {
+                document.getElementById('contentModal').classList.add('hidden');
+            }
+
+            // Achievement System
+            evaluateAchievements() {
+                const completionRate = this.state.progressData.size / this.state.totalModules;
+                const milestones = [
+                    { threshold: 0.25, key: 'first', title: 'بھترين شروعات!', message: 'توهان پھريون 25% مڪمل ڪيو! 🌟' },
+                    { threshold: 0.5, key: 'half', title: 'اڃا اڌ ڪورس آھي!', message: 'توهان 50% سفر مڪمل ڪيو! 🚀' },
+                    { threshold: 0.75, key: 'advanced', title: 'ماهر شاگرد!', message: 'توهان 75% مڪمل ڪيو! 💪' },
+                    { threshold: 1.0, key: 'master', title: 'مڪمل ماسٽر!', message: 'مبارڪ! توهان سڀ ڪجهہ مڪمل ڪيو! 🏆' }
+                ];
+
+                milestones.forEach(milestone => {
+                    if (completionRate >= milestone.threshold && !this.state.progressData.has(milestone.key)) {
+                        this.displayAchievement(milestone.title, milestone.message);
+                        this.state.progressData.add(milestone.key);
+                    }
+                });
+            }
+
+            displayAchievement(title, message) {
+                document.getElementById('achievementTitle').textContent = title;
+                document.getElementById('achievementMessage').textContent = message;
+                document.getElementById('achievementModal').classList.remove('hidden');
+            }
+
+            closeAchievement() {
+                document.getElementById('achievementModal').classList.add('hidden');
+            }
+
+            // Event Binding
+            bindEventHandlers() {
+                // Audio toggle
+                document.getElementById('audioToggle').addEventListener('click', () => {
+                    this.state.audioEnabled = !this.state.audioEnabled;
+                    document.getElementById('audioIcon').textContent = this.state.audioEnabled ? '🔊' : '🔇';
+                    
+                    if (!this.state.audioEnabled) {
+                        this.stopCurrentAudio();
+                    }
+                });
+
+                // Modal close on backdrop click
+                document.addEventListener('click', (e) => {
+                    if (e.target.id === 'contentModal' || e.target.id === 'achievementModal') {
+                        this.closeModal();
+                        this.closeAchievement();
+                    }
+                });
+
+                // Keyboard navigation
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.closeModal();
+                        this.closeAchievement();
+                    }
+                });
+
+                // Touch ripple effects
+                this.bindTouchRippleEffects();
+            }
+
+            // Touch Ripple Effects
+            bindTouchRippleEffects() {
+                // Bind to explicit touch-ripple elements
+                document.querySelectorAll('.touch-ripple').forEach(element => {
+                    element.addEventListener('touchstart', (e) => this.createRippleEffect(e, element));
+                    element.addEventListener('click', (e) => this.createRippleEffect(e, element));
+                });
+                
+                // Automatically bind to all verse lines
+                document.querySelectorAll('.verse-line').forEach(element => {
+                    element.addEventListener('touchstart', (e) => this.createRippleEffect(e, element));
+                    element.addEventListener('click', (e) => this.createRippleEffect(e, element));
+                });
+            }
+
+            createRippleEffect(e, element) {
+                const ripple = document.createElement('div');
+                const rect = element.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                
+                let x, y;
+                if (e.touches && e.touches[0]) {
+                    x = e.touches[0].clientX - rect.left - size / 2;
+                    y = e.touches[0].clientY - rect.top - size / 2;
+                } else {
+                    x = e.clientX - rect.left - size / 2;
+                    y = e.clientY - rect.top - size / 2;
+                }
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.6);
+                    transform: scale(0);
+                    animation: rippleAnimation 0.6s linear;
+                    left: ${x}px;
+                    top: ${y}px;
+                    width: ${size}px;
+                    height: ${size}px;
+                    pointer-events: none;
+                    z-index: 1000;
+                `;
+                
+                element.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 600);
+            }
+
+            // Animation Systems
+            initializeAnimations() {
+                // Stagger card animations
+                const cards = document.querySelectorAll('.white-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.1}s`;
+                });
+
+                // Intersection Observer for performance
+                if ('IntersectionObserver' in window) {
+                    const observer = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('fade-in-up');
+                            }
+                        });
+                    }, { threshold: 0.1 });
+
+                    cards.forEach(card => observer.observe(card));
+                }
+            }
+        }
+
+        // Global Application Instance
+        let app;
+
+        // Initialize Application
+        document.addEventListener('DOMContentLoaded', () => {
+            app = new SindhiLiteraturePlatform();
+            
+            // Performance monitoring
+            if ('performance' in window) {
+                window.addEventListener('load', () => {
+                    const loadTime = performance.now();
+                    console.log(`Platform loaded in ${loadTime.toFixed(2)}ms`);
+                });
+            }
+        });
+    </script>
+
+    <!-- Audio Elements for Class 5 -->
+    <audio id="audio-divine" src="/assets/Data/Audio Baits/Class 5/Class 5/01 Jedo Tuhinjo Naaun.wav"></audio>
+    <audio id="audio-naat" src="/assets/Data/Audio Baits/Class 5/Class 5/02 Naat (NEW).wav"></audio>
+    <audio id="audio-flag" src="/assets/Data/Audio Baits/Class 5/Class 5/03 Sabz Parcham.wav"></audio>
+    <audio id="audio-homeland" src="/assets/Data/Audio Baits/Class 5/Class 5/04 Pyara Watan.wav"></audio>
+    <audio id="audio-scenes" src="/assets/Data/Audio Baits/Class 5/Class 5/05 watan ja nazara.wav"></audio>
+    <audio id="audio-village" src="/assets/Data/Audio Baits/Class 5/Class 5/06 Goth Sudharyoon (NEW).wav"></audio>
+    <audio id="audio-motivation" src="/assets/Data/Audio Baits/Class 5/Class 5/07 Qadam Wadhaye.wav"></audio>
+    <audio id="audio-spring" src="/assets/Data/Audio Baits/Class 5/Class 5/08 Harni.wav"></audio>
+    <audio id="audio-sarang" src="/assets/Data/Audio Baits/Class 5/Class 5/09 Sur Sarang.wav"></audio>
+    <audio id="audio-divine" src="/assets/Data/Audio Baits/Class 5/Class 5/01 Jedo Tuhinjo Naaun.wav"></audio>
+    <audio id="audio-naat" src="/assets/Data/Audio Baits/Class 5/Class 5/02 Naat (NEW).wav"></audio>
+    <audio id="audio-flag" src="/assets/Data/Audio Baits/Class 5/Class 5/03 Sabz Parcham.wav"></audio>
+    <audio id="audio-homeland" src="/assets/Data/Audio Baits/Class 5/Class 5/04 Pyara Watan.wav"></audio>
+    <audio id="audio-scenes" src="/assets/Data/Audio Baits/Class 5/Class 5/05 watan ja nazara.wav"></audio>
+    <audio id="audio-village" src="/assets/Data/Audio Baits/Class 5/Class 5/06 Goth Sudharyoon (NEW).wav"></audio>
+    <audio id="audio-motivation" src="/assets/Data/Audio Baits/Class 5/Class 5/07 Qadam Wadhaye.wav"></audio>
+    <audio id="audio-spring" src="/assets/Data/Audio Baits/Class 5/Class 5/08 Harni.wav"></audio>
+    <audio id="audio-sarang" src="/assets/Data/Audio Baits/Class 5/Class 5/09 Sur Sarang.wav"></audio>
+</body>
+</html>

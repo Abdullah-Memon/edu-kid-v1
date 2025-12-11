@@ -1,0 +1,204 @@
+{
+  "vocabularyBuilding": [
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🏠",
+      "word": "گھر",
+      "correctAnswer": "گھر",
+      "options": ["گھر", "ٻلي", "پاڻي", "ڪتاب"],
+      "english": "House",
+      "urdu": "گھر",
+      "exampleSentence": "اسان گھر ۾ رهون ٿا",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🐱",
+      "word": "ٻلي",
+      "correctAnswer": "ٻلي",
+      "options": ["ٻلي", "گھر", "پاڻي", "سج"],
+      "english": "Cat",
+      "urdu": "بلی",
+      "exampleSentence": "ٻلي کير پيئي ٿي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 💧",
+      "word": "پاڻي",
+      "correctAnswer": "پاڻي",
+      "options": ["پاڻي", "کير", "ڪتاب", "وڻ"],
+      "english": "Water",
+      "urdu": "پانی",
+      "exampleSentence": "پاڻي صاف آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 📚",
+      "word": "ڪتاب",
+      "correctAnswer": "ڪتاب",
+      "options": ["ڪتاب", "قلم", "گھر", "ٻلي"],
+      "english": "Book",
+      "urdu": "کتاب",
+      "exampleSentence": "ڪتاب مان سکون ٿا",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ ☀️",
+      "word": "سج",
+      "correctAnswer": "سج",
+      "options": ["سج", "چانڊ", "تارو", "بادل"],
+      "english": "Sun",
+      "urdu": "سورج",
+      "exampleSentence": "سج اڀري آيو آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🌳",
+      "word": "وڻ",
+      "correctAnswer": "وڻ",
+      "options": ["وڻ", "گل", "سج", "چانڊ"],
+      "english": "Tree",
+      "urdu": "درخت",
+      "exampleSentence": "وڻ سائو آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🐶",
+      "word": "ڪتو",
+      "correctAnswer": "ڪتو",
+      "options": ["ڪتو", "ٻلي", "پکي", "ڳئون"],
+      "english": "Dog",
+      "urdu": "کتا",
+      "exampleSentence": "ڪتو گھر جي سامهون آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🍎",
+      "word": "انب",
+      "correctAnswer": "انب",
+      "options": ["انب", "ميوو", "کيل", "ماني"],
+      "english": "Mango",
+      "urdu": "آم",
+      "exampleSentence": "انب ميٺو آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ ✏️",
+      "word": "قلم",
+      "correctAnswer": "قلم",
+      "options": ["قلم", "ڪتاب", "کاغذ", "ٽيبل"],
+      "english": "Pen",
+      "urdu": "قلم",
+      "exampleSentence": "قلم سان لکون ٿا",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🌙",
+      "word": "چانڊ",
+      "correctAnswer": "چانڊ",
+      "options": ["چانڊ", "سج", "تارو", "بادل"],
+      "english": "Moon",
+      "urdu": "چاند",
+      "exampleSentence": "چانڊ رات جو چمڪي ٿو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🐦",
+      "word": "پکي",
+      "correctAnswer": "پکي",
+      "options": ["پکي", "ٻلي", "ڪتو", "ڳئون"],
+      "english": "Bird",
+      "urdu": "پرندہ",
+      "exampleSentence": "پکي وڻ تي ويٺو آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🍚",
+      "word": "ماني",
+      "correctAnswer": "ماني",
+      "options": ["ماني", "پاڻي", "کير", "روٽي"],
+      "english": "Bread",
+      "urdu": "روٹی",
+      "exampleSentence": "ماني گرم آهي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🚪",
+      "word": "در",
+      "correctAnswer": "در",
+      "options": ["در", "کڙڪي", "ٽيبل", "کٽ"],
+      "english": "Door",
+      "urdu": "دروازہ",
+      "exampleSentence": "در کوليو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🧑",
+      "word": "ماڻھو",
+      "correctAnswer": "ماڻھو",
+      "options": ["ماڻھو", "ڇوڪرو", "ڇوڪري", "استاد"],
+      "english": "Person",
+      "urdu": "انسان",
+      "exampleSentence": "ماڻھو اسڪول وڃي ٿو",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ ⭐",
+      "word": "تارو",
+      "correctAnswer": "تارو",
+      "options": ["تارو", "چانڊ", "سج", "بادل"],
+      "english": "Star",
+      "urdu": "ستارہ",
+      "exampleSentence": "تارو آسمان ۾ چمڪي ٿو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🧺",
+      "word": "ٽوڪري",
+      "correctAnswer": "ٽوڪري",
+      "options": ["ٽوڪري", "ٿيلهو", "کٽ", "ڪپڙو"],
+      "english": "Basket",
+      "urdu": "ٹوکری",
+      "exampleSentence": "ٽوڪري ۾ ميوا آهن",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🐄",
+      "word": "ڳئون",
+      "correctAnswer": "ڳئون",
+      "options": ["ڳئون", "ٻڪري", "ڪتو", "ٻلي"],
+      "english": "Cow",
+      "urdu": "گائے",
+      "exampleSentence": "ڳئون کير ڏئي ٿي",
+      "difficulty": "medium"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🛏️",
+      "word": "کٽ",
+      "correctAnswer": "کٽ",
+      "options": ["کٽ", "ٽيبل", "در", "کڙڪي"],
+      "english": "Bed",
+      "urdu": "پلنگ",
+      "exampleSentence": "کٽ تي سمهيو",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 🌺",
+      "word": "گل",
+      "correctAnswer": "گل",
+      "options": ["گل", "وڻ", "پکي", "بادل"],
+      "english": "Flower",
+      "urdu": "پھول",
+      "exampleSentence": "گل خوبصورت آهي",
+      "difficulty": "easy"
+    },
+    {
+      "question": "هي ڪهڙو لفظ آهي؟ 👨‍🏫",
+      "word": "استاد",
+      "correctAnswer": "استاد",
+      "options": ["استاد", "شاگرد", "ڇوڪرو", "ماڻھو"],
+      "english": "Teacher",
+      "urdu": "استاد",
+      "exampleSentence": "استاد پڙهائي ٿو",
+      "difficulty": "medium"
+    }
+  ]
+}

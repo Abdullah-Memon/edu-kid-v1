@@ -1,0 +1,431 @@
+{
+  "readingPractice": [
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ٻلي پاڻي پيئي ٿي",
+      "correctAnswer": "ٻلي پاڻي پي رهي آهي",
+      "options": [
+        "ٻلي پاڻي پي رهي آهي",
+        "ڪتو کائي رهيو آهي",
+        "پکي اڏي رهيو آهي",
+        "ڇوڪرو راند ڪري رهيو آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "ٻلي", "meaning": "cat"},
+        {"word": "پاڻي", "meaning": "water"},
+        {"word": "پيئي ٿي", "meaning": "is drinking"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ٻلي پاڻي پيئي ٿي",
+      "correctAnswer": "ٻلي پاڻي پي رهي آهي",
+      "options": [
+        "ٻلي پاڻي پي رهي آهي",
+        "ڪتو کائي رهيو آهي",
+        "پکي اڏي رهيو آهي",
+        "ڇوڪرو راند ڪري رهيو آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "ٻلي", "meaning": "cat"},
+        {"word": "پاڻي", "meaning": "water"},
+        {"word": "پيئي ٿي", "meaning": "is drinking"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "سج اڀري آيو آهي",
+      "correctAnswer": "سج نڪري آيو آهي",
+      "options": [
+        "سج نڪري آيو آهي",
+        "چانڊ ڏسڻ ۾ اچي رهيو آهي",
+        "تارا چمڪي رهيا آهن",
+        "بادل آسمان ۾ آهن"
+      ],
+      "keyVocabulary": [
+        {"word": "سج", "meaning": "sun"},
+        {"word": "اڀري", "meaning": "has risen"},
+        {"word": "آيو آهي", "meaning": "has come"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ڇوڪرو اسڪول وڃي ٿو",
+      "correctAnswer": "ڇوڪرو تعليم حاصل ڪري ٿو",
+      "options": [
+        "ڇوڪرو تعليم حاصل ڪري ٿو",
+        "ڇوڪري گهر ۾ آهي",
+        "استاد پڙهائي رهيو آهي",
+        "والدين ڪم ڪري رهيا آهن"
+      ],
+      "keyVocabulary": [
+        {"word": "ڇوڪرو", "meaning": "boy"},
+        {"word": "اسڪول", "meaning": "school"},
+        {"word": "وڃي ٿو", "meaning": "is going"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ماءُ کاڌو ٺاهي ٿي",
+      "correctAnswer": "ماءُ کاڌو تيار ڪري ٿي",
+      "options": [
+        "ماءُ کاڌو تيار ڪري ٿي",
+        "پيءُ ڪم ڪري رهيو آهي",
+        "ٻار راند ڪري رهيا آهن",
+        "دادي ڪهاڻي ٻڌائي رهي آهي"
+      ],
+      
+      "keyVocabulary": [
+        {"word": "ماءُ", "meaning": "mother"},
+        {"word": "کاڌو", "meaning": "food"},
+        {"word": "ٺاهي ٿي", "meaning": "is preparing"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "پکي وڻ تي ويٺو آهي",
+      "correctAnswer": "پکي وڻ تي آرام ڪري رهيو آهي",
+      "options": [
+        "پکي وڻ تي آرام ڪري رهيو آهي",
+        "ٻلي وڻ تي چڙهي رهي آهي",
+        "ڪتو وڻ هيٺ آهي",
+        "ڇوڪرو وڻ کي پاڻي ڏئي رهيو آهي"
+      ],
+     
+      "keyVocabulary": [
+        {"word": "پکي", "meaning": "bird"},
+        {"word": "وڻ", "meaning": "tree"},
+        {"word": "ويٺو آهي", "meaning": "is sitting"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "سج اڀري آيو آهي",
+      "correctAnswer": "سج نڪري آيو آهي",
+      "options": [
+        "سج نڪري آيو آهي",
+        "چانڊ ڏسڻ ۾ اچي رهيو آهي",
+        "تارا چمڪي رهيا آهن",
+        "بادل آسمان ۾ آهن"
+      ],
+      
+      "keyVocabulary": [
+        {"word": "سج", "meaning": "sun"},
+        {"word": "اڀري", "meaning": "has risen"},
+        {"word": "آيو آهي", "meaning": "has come"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ڇوڪرو اسڪول وڃي ٿو",
+      "correctAnswer": "ڇوڪرو تعليم حاصل ڪري ٿو",
+      "options": [
+        "ڇوڪرو تعليم حاصل ڪري ٿو",
+        "ڇوڪري گهر ۾ آهي",
+        "استاد پڙهائي رهيو آهي",
+        "والدين ڪم ڪري رهيا آهن"
+      ],
+      
+      "keyVocabulary": [
+        {"word": "ڇوڪرو", "meaning": "boy"},
+        {"word": "اسڪول", "meaning": "school"},
+        {"word": "وڃي ٿو", "meaning": "is going"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ماءُ کاڌو ٺاهي ٿي",
+      "correctAnswer": "ماءُ کاڌو تيار ڪري ٿي",
+      "options": [
+        "ماءُ کاڌو تيار ڪري ٿي",
+        "پيءُ ڪم ڪري رهيو آهي",
+        "ٻار راند ڪري رهيا آهن",
+        "دادي ڪهاڻي ٻڌائي رهي آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "ماءُ", "meaning": "mother"},
+        {"word": "کاڌو", "meaning": "food"},
+        {"word": "ٺاهي ٿي", "meaning": "is preparing"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "پکي وڻ تي ويٺو آهي",
+      "correctAnswer": "پکي وڻ تي آرام ڪري رهيو آهي",
+      "options": [
+        "پکي وڻ تي آرام ڪري رهيو آهي",
+        "ٻلي وڻ تي چڙهي رهي آهي",
+        "ڪتو وڻ هيٺ آهي",
+        "ڇوڪرو وڻ کي پاڻي ڏئي رهيو آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "پکي", "meaning": "bird"},
+        {"word": "وڻ", "meaning": "tree"},
+        {"word": "ويٺو آهي", "meaning": "is sitting"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ڪتو گھر جي سامهون آهي",
+      "correctAnswer": "ڪتو گھر جي اڳيان آهي",
+      "options": [
+        "ڪتو گھر جي اڳيان آهي",
+        "ٻلي گھر ۾ آهي",
+        "پکي آسمان ۾ اڏي رهيو آهي",
+        "ماڻھو گھر ۾ سمهي رهيو آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "ڪتو", "meaning": "dog"},
+        {"word": "گھر", "meaning": "house"},
+        {"word": "سامهون", "meaning": "in front of"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "چانڊ رات جو چمڪي ٿو",
+      "correctAnswer": "چانڊ رات ۾ روشني ڏئي ٿو",
+      "options": [
+        "چانڊ رات ۾ روشني ڏئي ٿو",
+        "سج رات جو چمڪي ٿو",
+        "تارا سج سان گڏ چمڪن ٿا",
+        "بادل رات جو گھرجن ٿا"
+      ],
+      "keyVocabulary": [
+        {"word": "چانڊ", "meaning": "moon"},
+        {"word": "رات", "meaning": "night"},
+        {"word": "چمڪي ٿو", "meaning": "is shining"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ڇوڪري ڪتاب پڙھي ٿي",
+      "correctAnswer": "ڇوڪري ڪتاب پڙھي رهي آهي",
+      "options": [
+        "ڇوڪري ڪتاب پڙھي رهي آهي",
+        "ڇوڪرو راند ڪري رهيو آهي",
+        "استاد لکي رهيو آهي",
+        "ماءُ کاڌو ٺاهي رهي آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "ڇوڪري", "meaning": "girl"},
+        {"word": "ڪتاب", "meaning": "book"},
+        {"word": "پڙھي ٿي", "meaning": "is reading"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ماڻھو بازار ۾ وڃي ٿو",
+      "correctAnswer": "ماڻھو بازار ۾ خريداري لاءِ وڃي ٿو",
+      "options": [
+        "ماڻھو بازار ۾ خريداري لاءِ وڃي ٿو",
+        "ماڻھو گھر ۾ رهي ٿو",
+        "ڇوڪرو اسڪول ۾ پڙھي ٿو",
+        "ماءُ کاڌو کائي ٿي"
+      ],
+      "keyVocabulary": [
+        {"word": "ماڻھو", "meaning": "person"},
+        {"word": "بازار", "meaning": "market"},
+        {"word": "وڃي ٿو", "meaning": "is going"}
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "انب ميٺو آهي",
+      "correctAnswer": "انب جو ذائقو ميٺو آهي",
+      "options": [
+        "انب جو ذائقو ميٺو آهي",
+        "کير کٽو آهي",
+        "پاڻي صاف نه آهي",
+        "ماني گرم آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "انب", "meaning": "mango"},
+        {"word": "ميٺو", "meaning": "sweet"},
+        {"word": "آهي", "meaning": "is"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "استاد شاگردن کي سيکاري ٿو",
+      "correctAnswer": "استاد شاگردن کي تعليم ڏئي ٿو",
+      "options": [
+        "استاد شاگردن کي تعليم ڏئي ٿو",
+        "شاگرد استاد کي ٻڌن ٿا",
+        "ڇوڪرو راند کيڏي ٿو",
+        "والدين گھر ۾ آهن"
+      ],
+      "keyVocabulary": [
+        {"word": "استاد", "meaning": "teacher"},
+        {"word": "شاگردن", "meaning": "students"},
+        {"word": "سيکاري ٿو", "meaning": "is teaching"}
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "گل باغ ۾ سڀ کان سهڻو آهي",
+      "correctAnswer": "گل باغ ۾ سڀ کان خوبصورت آهي",
+      "options": [
+        "گل باغ ۾ سڀ کان خوبصورت آهي",
+        "وڻ باغ ۾ سڀ کان وڏو آهي",
+        "پکي باغ ۾ اڏي ٿو",
+        "ٻلي باغ ۾ سمهي ٿي"
+      ],
+      "keyVocabulary": [
+        {"word": "گل", "meaning": "flower"},
+        {"word": "باغ", "meaning": "garden"},
+        {"word": "سهڻو", "meaning": "beautiful"}
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "تارا رات جو چمڪن ٿا",
+      "correctAnswer": "تارا رات ۾ روشني ڏين ٿا",
+      "options": [
+        "تارا رات ۾ روشني ڏين ٿا",
+        "سج رات ۾ چمڪي ٿو",
+        "چانڊ سج سان گڏ چمڪي ٿو",
+        "بادل رات ۾ گھرجن ٿا"
+      ],
+      "keyVocabulary": [
+        {"word": "تارا", "meaning": "stars"},
+        {"word": "رات", "meaning": "night"},
+        {"word": "چمڪن ٿا", "meaning": "are shining"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ٽوڪري ۾ ميوا آهن",
+      "correctAnswer": "ٽوڪري ۾ ميوا رکيل آهن",
+      "options": [
+        "ٽوڪري ۾ ميوا رکيل آهن",
+        "ٽوڪري ۾ ڪپڙا آهن",
+        "ٽوڪري ۾ ڪتاب آهن",
+        "ٽوڪري ۾ پاڻي آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "ٽوڪري", "meaning": "basket"},
+        {"word": "ميوا", "meaning": "fruits"},
+        {"word": "آهن", "meaning": "are"}
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ڳئون کير ڏئي ٿي",
+      "correctAnswer": "ڳئون کير پيدا ڪري ٿي",
+      "options": [
+        "ڳئون کير پيدا ڪري ٿي",
+        "ٻلي کير کائي ٿي",
+        "ڪتو کير پيئي ٿو",
+        "پکي کير گھري ٿو"
+      ],
+      "keyVocabulary": [
+        {"word": "ڳئون", "meaning": "cow"},
+        {"word": "کير", "meaning": "milk"},
+        {"word": "ڏئي ٿي", "meaning": "is giving"}
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "در کوليو ويو آهي",
+      "correctAnswer": "در کي کوليو ويو آهي",
+      "options": [
+        "در کي کوليو ويو آهي",
+        "در بند آهي",
+        "گھر صاف آهي",
+        "ٽوڪري کليل آهي"
+      ],
+      "keyVocabulary": [
+        {"word": "در", "meaning": "door"},
+        {"word": "کوليو", "meaning": "opened"},
+        {"word": "ويو آهي", "meaning": "has been"}
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "ماڻھو خوش آهي",
+      "correctAnswer": "ماڻھو خوشحال آهي",
+      "options": [
+        "ماڻھو خوشحال آهي",
+        "ماڻھو اداس آهي",
+        "ماڻھو راند ڪري ٿو",
+        "ماڻھو سمهي ٿو"
+      ],
+      "keyVocabulary": [
+        {"word": "ماڻھو", "meaning": "person"},
+        {"word": "خوش", "meaning": "happy"},
+        {"word": "آهي", "meaning": "is"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "کٽ تي سمهيو",
+      "correctAnswer": "کٽ تي آرام ڪريو",
+      "options": [
+        "کٽ تي آرام ڪريو",
+        "کٽ تي کائو",
+        "کٽ تي ويهو",
+        "کٽ تي راند ڪريو"
+      ],
+      "keyVocabulary": [
+        {"word": "کٽ", "meaning": "bed"},
+        {"word": "سمهيو", "meaning": "sleep"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "قلم سان لکيو",
+      "correctAnswer": "قلم سان لکيو ويو",
+      "options": [
+        "قلم سان لکيو ويو",
+        "قلم سان کيڏيو ويو",
+        "قلم سان کاڌو ٺاهيو ويو",
+        "قلم سان رنگ ڪيو ويو"
+      ],
+      "keyVocabulary": [
+        {"word": "قلم", "meaning": "pen"},
+        {"word": "لکيو", "meaning": "write"}
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "question": "هن جملي جو مطلب ڇا آهي؟",
+      "sentence": "باغ ۾ وڻ سائا آهن",
+      "correctAnswer": "باغ ۾ وڻ سائي رنگ جا آهن",
+      "options": [
+        "باغ ۾ وڻ سائي رنگ جا آهن",
+        "باغ ۾ گل ڳاڙها آهن",
+        "باغ ۾ پکي اڏن ٿا",
+        "باغ ۾ ٻلي سمهي ٿي"
+      ],
+      "keyVocabulary": [
+        {"word": "باغ", "meaning": "garden"},
+        {"word": "وڻ", "meaning": "trees"},
+        {"word": "سائا", "meaning": "green"}
+      ],
+      "difficulty": "medium"
+    }
+  ]
+}
