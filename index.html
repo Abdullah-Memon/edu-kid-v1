@@ -521,7 +521,7 @@
         }
         
         /* Learn Sindhi Card Special Styling */
-        .glass-card[onclick*="learn-sindhi.html"] {
+        .glass-card[onclick*="/pages/learn-sindhi.html"] {
             position: relative;
             overflow: hidden;
             box-shadow: 
@@ -533,7 +533,7 @@
             animation: pulse-glow 3s infinite alternate;
         }
         
-        .glass-card[onclick*="learn-sindhi.html"]:hover {
+        .glass-card[onclick*="/pages/learn-sindhi.html"]:hover {
             box-shadow: 
                 0 25px 50px rgba(0, 0, 0, 0.2),
                 inset 0 1px 0 rgba(255, 255, 255, 0.8),
@@ -812,7 +812,7 @@
         }
 
         /* Dark Mode Special Cards */
-        .dark .glass-card[onclick*="learn-sindhi.html"] {
+        .dark .glass-card[onclick*="/pages/learn-sindhi.html"] {
             box-shadow: 
                 0 25px 45px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(148, 163, 184, 0.3),
@@ -821,7 +821,7 @@
             border: 1px solid rgba(148, 163, 184, 0.4);
         }
         
-        .dark .glass-card[onclick*="learn-sindhi.html"]:hover {
+        .dark .glass-card[onclick*="/pages/learn-sindhi.html"]:hover {
             box-shadow: 
                 0 25px 50px rgba(0, 0, 0, 0.5),
                 inset 0 1px 0 rgba(148, 163, 184, 0.5),
@@ -2095,11 +2095,11 @@
             
             <div class="hidden lg:flex gap-5 mx-auto flex justify-center items-center">
                 <a href="#home" class="glass-button text-indigo-700 px-4 py-2 font-bold">🏠 گهر</a>
-                <a href="sindhi.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">📖 سنڌي</a>
-                <a href="learn-sindhi.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🎓 سنڌي سکو</a>
-                <a href="math.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔢 رياضي</a>
-                <a href="science.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔬 سائنس</a>
-                <a href="family-tree.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🌳 ڪُٽنب</a>
+                <a href="/pages/sindhi.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">📖 سنڌي</a>
+                <a href="/pages/learn-sindhi.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🎓 سنڌي سکو</a>
+                <a href="/pages/math.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔢 رياضي</a>
+                <a href="/pages/science.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔬 سائنس</a>
+                <a href="/pages/family-tree.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🌳 ڪُٽنب</a>
             </div>
 
             <!-- Enhanced Progress Indicator -->
@@ -2139,10 +2139,10 @@
         
         <div class="mt-16 space-y-4">
             <a href="#home" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">گهر</a>
-            <a href="sindhi.html" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">📖 سنڌي سکيا</a>
-            <a href="learn-sindhi.html" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">🎓 سنڌي سکو</a>
-            <a href="math.html" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">🔢 رياضي</a>
-            <a href="science.html" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">🔬 سائنس</a>
+            <a href="/pages/sindhi.html" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">📖 سنڌي سکيا</a>
+            <a href="/pages/learn-sindhi.html" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">🎓 سنڌي سکو</a>
+            <a href="/pages/math.html" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">🔢 رياضي</a>
+            <a href="/pages/science.html" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">🔬 سائنس</a>
             <a href="#poetry" class="block text-white text-xl hover:text-yellow-300 transition mobile-menu-link">🎵 گيت</a>
         </div>
 
@@ -2230,7 +2230,7 @@
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <!-- Learn Sindhi (English) -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('learn-sindhi.html')" style="animation-delay: 0.1s;">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('/pages/learn-sindhi.html')" style="animation-delay: 0.1s;">
                 
                 <div class="text-6xl mb-4 bounce-float">🌎</div>
                 <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-200 mb-3">Learn Sindhi</h3>
@@ -2259,7 +2259,7 @@
             </div>
             
             <!-- Sindhi Learning -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('sindhi.html')" style="animation-delay: 0.2s;">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('/pages/sindhi.html')" style="animation-delay: 0.2s;">
                 <div class="text-6xl mb-4 bounce-float">📚</div>
                 <h3 class="text-2xl font-bold text-indigo-800 dark:text-indigo-200 mb-3">سنڌي سکيا</h3>
                 <p class="text-gray-600 mb-6">اکر، لفظ، جملا ٺاھڻ</p>
@@ -2287,7 +2287,7 @@
             </div>
 
             <!-- Math Learning -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('math.html')" style="animation-delay: 0.3s;">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('/pages/math.html')" style="animation-delay: 0.3s;">
                 <div class="text-6xl mb-4 bounce-float" style="animation-delay: 1s;">🧮</div>
                 <h3 class="text-2xl font-bold text-indigo-800 mb-3">رياضي</h3>
                 <p class="text-gray-600 mb-6">انگ، جوڙ، ڪٽ، ونڊ، ضرب</p>
@@ -2315,7 +2315,7 @@
             </div>
 
             <!-- Science Learning -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('science.html')" style="animation-delay: 0.4s;">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('/pages/science.html')" style="animation-delay: 0.4s;">
                 <div class="text-6xl mb-4 bounce-float" style="animation-delay: 2s;">🧪</div>
                 <h3 class="text-2xl font-bold text-indigo-800 mb-3">سائنس</h3>
                 <p class="text-gray-600 mb-6">جاندار، بي جان، ٻوٽا، قدرت</p>
@@ -2352,7 +2352,7 @@
         
         <div class="max-w-4xl mx-auto">
             <!-- Family Tree Learning Card -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('family-tree.html')">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="navigateToPage('/pages/family-tree.html')">
                 <div class="text-6xl mb-4 bounce-float">🌳</div>
                 <h3 class="text-2xl font-bold text-indigo-800 mb-3"> مِٽِين مائٽين جا نالا</h3>
                 <p class="text-gray-600 mb-6">سنڌيءَ ۾ ڪُٽنب ڀاتِين جا نالا سکو</p>
@@ -2436,7 +2436,7 @@
             </div>
 
             <!-- Class 2 Card -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="window.location.href='pages/class2.html'">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="window.location.href='/pages/class2.html'">
                 <!-- Level Badge -->
                 <div class="absolute top-4 right-4 bg-green-500/20 backdrop-blur-sm border border-green-300/30 px-3 py-1 rounded-full text-green-700 text-sm font-bold">
                      وچون
@@ -2471,7 +2471,7 @@
             </div>
 
             <!-- Class 3 Card -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="window.location.href='pages/class3.html'">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="window.location.href='/pages/class3.html'">
                 <!-- Level Badge -->
                 <div class="absolute top-4 right-4 bg-purple-500/20 backdrop-blur-sm border border-purple-300/30 px-3 py-1 rounded-full text-purple-700 text-sm font-bold">
                     مٿيون
@@ -2506,7 +2506,7 @@
             </div>
 
             <!-- Class 4 Card -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="window.location.href='page/class4.html'">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="window.location.href='/pages/class4.html'">
                 <!-- Level Badge -->
                 <div class="absolute top-4 right-4 bg-rose-500/20 backdrop-blur-sm border border-rose-300/30 px-3 py-1 rounded-full text-rose-700 text-sm font-bold">
                     مٿانھِين
@@ -2541,7 +2541,7 @@
             </div>
 
             <!-- Class 5 Card -->
-            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="window.location.href='page/class5.html'">
+            <div class="glass-card p-8 text-center cursor-pointer magical-entrance" onclick="window.location.href='/pages/class5.html'">
                 <!-- Level Badge -->
                 <div class="absolute top-4 right-4 bg-amber-500/20 backdrop-blur-sm border border-amber-300/30 px-3 py-1 rounded-full text-amber-700 text-sm font-bold">
                     تمام مٿانھين
@@ -2718,7 +2718,7 @@
             <div class="text-center mt-12">
                 <h3 class="text-2xl font-bold text-indigo-800 mb-4">?Ready to Start Learning Sindhi</h3>
                 <p class="text-lg text-gray-700 mb-6">!Join thousands of children already learning Sindhi through our free platform</p>
-                <button onclick="navigateToPage('sindhi.html')" class="glass-button bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white hover:text-purple-700 px-8 py-4 font-bold text-lg shadow-lg transform transition-all duration-300 hover:scale-105">
+                <button onclick="navigateToPage('/pages/sindhi.html')" class="glass-button bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white hover:text-purple-700 px-8 py-4 font-bold text-lg shadow-lg transform transition-all duration-300 hover:scale-105">
                     Start Learning Free - پنھنجي سکيا شروع ڪريو 🚀
                 </button>
             </div>

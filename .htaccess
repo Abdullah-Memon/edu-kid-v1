@@ -1,0 +1,16 @@
+# =========================================
+# BLOCK SEARCH ENGINES (DEV ENVIRONMENT)
+# =========================================
+
+# Send noindex header to all bots
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "noindex, nofollow"
+</IfModule>
+
+# Block Googlebot and other common bots
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTP_USER_AGENT} (googlebot|bingbot|slurp|duckduckbot|baiduspider|yandexbot|sogou|exabot|facebot|ia_archiver) [NC]
+  RewriteRule .* - [F,L]
+</IfModule>

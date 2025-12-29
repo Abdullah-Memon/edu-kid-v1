@@ -46,7 +46,7 @@
     
     <!-- Alternate Language Links -->
     <link rel="alternate" hreflang="sd" href="https://yourwebsite.com/sindhi.html">
-    <link rel="alternate" hreflang="en" href="https://yourwebsite.com/learn-sindhi.html">
+    <link rel="alternate" hreflang="en" href="https://yourwebsite.com//pages/learn-sindhi.html">
     <link rel="alternate" hreflang="ur" href="https://yourwebsite.com/sindhi-urdu.html">
     <link rel="alternate" hreflang="x-default" href="https://yourwebsite.com/">
     
@@ -1271,11 +1271,11 @@
             
             <!-- Desktop Navigation Items -->
             <div class="mobile-nav-items gap-5 mx-auto flex justify-center items-center">
-                <a href="index.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🏠 گهر</a>
-                <a href="sindhi.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">📖 سنڌي</a>
-                <a href="math.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔢 رياضي</a>
-                <a href="science.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔬 سائنس</a>
-                <a href="family-tree.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🌳 ڪُٽنب</a>
+                <a href="/index.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🏠 گهر</a>
+                <a href="/pages/sindhi.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">📖 سنڌي</a>
+                <a href="/pages/math.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔢 رياضي</a>
+                <a href="/pages/science.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🔬 سائنس</a>
+                <a href="/pages/family-tree.html" class="glass-button text-indigo-700 px-4 py-2 font-bold">🌳 ڪُٽنب</a>
             </div>
 
             <!-- Enhanced Progress Indicator -->
@@ -1334,24 +1334,24 @@
         
         <!-- Navigation Links -->
         <div class="space-y-3">
-            <a href="index.html" class="mobile-menu-link text-white">
+            <a href="/index.html" class="mobile-menu-link text-white">
                 <span class="text-2xl">🏠</span>
                 <span>گهر</span>
             </a>
-            <a href="sindhi.html" class="mobile-menu-link text-white bg-white/20">
+            <a href="/pages/sindhi.html" class="mobile-menu-link text-white bg-white/20">
                 <span class="text-2xl">📖</span>
                 <span>سنڌي سکيا</span>
                 <span class="ml-auto text-yellow-400">●</span>
             </a>
-            <a href="math.html" class="mobile-menu-link text-white">
+            <a href="/pages/math.html" class="mobile-menu-link text-white">
                 <span class="text-2xl">🔢</span>
                 <span>رياضي</span>
             </a>
-            <a href="science.html" class="mobile-menu-link text-white">
+            <a href="/pages/science.html" class="mobile-menu-link text-white">
                 <span class="text-2xl">🔬</span>
                 <span>سائنس</span>
             </a>
-            <a href="family-tree.html" class="mobile-menu-link text-white">
+            <a href="/pages/family-tree.html" class="mobile-menu-link text-white">
                 <span class="text-2xl">🌳</span>
                 <span>ڪُٽنب</span>
             </a>
@@ -1460,7 +1460,7 @@
         
         <!-- More Stories Link -->
         <div class="text-center">
-            <a href="stories.html" class="glass-button text-indigo-700 px-8 py-4 font-bold text-lg inline-flex items-center gap-2" role="button">
+            <a href="/pages/stories.html" class="glass-button text-indigo-700 px-8 py-4 font-bold text-lg inline-flex items-center gap-2" role="button">
                 وڌيڪ ڪهاڻيون ڏسو 📚 ✨
             </a>
         </div>
@@ -1961,6 +1961,7 @@
 
         // Load Exercise Data from JSON files
         async function loadExerciseData() {
+            const prefix = '/assets/Data/';
             const modules = ['letterRecognition', 'wordBuilding', 'vocabularyBuilding', 'grammarPractice', 'readingPractice', 'writingPractice'];
             
             console.log('Starting to load exercise data...');
@@ -1968,7 +1969,7 @@
             for (const module of modules) {
                 try {
                     console.log(`Loading ${module}.json...`);
-                    const response = await fetch(`./${module}.json`);
+                    const response = await fetch(`${prefix}${module}.json`);
                     
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
@@ -2185,8 +2186,8 @@
         }
 
         function openStory(storyId) {
-            // Redirect to stories.html with story ID
-            window.location.href = `stories.html#${storyId}`;
+            // Redirect to /pages/stories.html with story ID
+            window.location.href = `/pages/stories.html#${storyId}`;
         }
 
         function openClassModal(classId) {
@@ -2198,16 +2199,16 @@
             
             // Get class number for title and HTML file
             const classNumber = classId.replace('class', '');
-            const classHtmlFile = `class-${classNumber}-sindhi.html`;
+            const classHtmlFile = `/pages/class${classNumber}.html`;
             
             const content = `
                 <div class="space-y-6">
                     <div class="glass-card p-6">
                         <h3 class="text-2xl font-bold text-indigo-800 mb-4">📖 ڪلاس ${classNumber} جا بيت</h3>
                         <div class="text-center">
-                            <button onclick="window.open('${classHtmlFile}', '_blank')" class="glass-button text-indigo-700 p-4 font-bold text-lg">
-                                ڪلاس ${classNumber} جا بيت ڏسو 📚
-                            </button>
+                            <a href="${classHtmlFile}" class="glass-button text-indigo-700 p-4 font-bold text-lg" rel="noopener noreferrer">
+                                ڪلاس ${classNumber} جا بيت ڏسو 📚 
+                            </a>
                         </div>
                     </div>
                     
@@ -2999,7 +3000,7 @@
                 goBackToHome();
             } else {
                 // Navigate to the actual home page
-                window.location.href = 'index.html';
+                window.location.href = '/index.html';
             }
         }
 
