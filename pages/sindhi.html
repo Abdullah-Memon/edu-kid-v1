@@ -2735,7 +2735,12 @@
 
         function startDrawing(e) {
             isDrawing = true;
-            draw(e);
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            ctx.beginPath();
+            ctx.moveTo(x, y);
         }
 
         function draw(e) {
