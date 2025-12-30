@@ -1,560 +1,1100 @@
 <!DOCTYPE html>
 <html lang="sd" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ڪلاس پھريون - سنڌي سکيا</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/assets/css/global-styles.css">
+    <link rel="stylesheet" href="/assets/css/global-styles.css" />
     <style>
+      :root {
+        --base-font-size: 20px;
+        --h1-size: 3.5rem;
+        --h2-size: 2.75rem;
+        --h3-size: 2.25rem;
+        --text-size: 1.25rem;
+        --small-text: 1.1rem;
+      }
+      @media (max-width: 480px) {
         :root {
-            --base-font-size: 20px;
-            --h1-size: 3.5rem;
-            --h2-size: 2.75rem;
-            --h3-size: 2.25rem;
-            --text-size: 1.25rem;
-            --small-text: 1.1rem;
+          --base-font-size: 22px !important;
+          --h1-size: 3rem !important;
+          --h2-size: 2.5rem !important;
+          --h3-size: 2.25rem !important;
+          --text-size: 1.6rem !important;
         }
-        @media (max-width: 480px) {
-            :root {
-                --base-font-size: 22px !important;
-                --h1-size: 3rem !important;
-                --h2-size: 2.5rem !important;
-                --h3-size: 2.25rem !important;
-                --text-size: 1.6rem !important;
-            }
+      }
+      @media (min-width: 481px) and (max-width: 1023px) {
+        :root {
+          --base-font-size: 26px;
+          --h1-size: 4rem;
+          --h2-size: 3.5rem;
+          --h3-size: 3rem;
+          --text-size: 2rem;
         }
-        @media (min-width: 481px) and (max-width: 1023px) {
-            :root {
-                --base-font-size: 26px;
-                --h1-size: 4rem;
-                --h2-size: 3.5rem;
-                --h3-size: 3rem;
-                --text-size: 2rem;
-            }
+      }
+
+      html {
+        font-size: var(--base-font-size);
+      }
+      body {
+        font-family: "AMBILE", "Noto Nastaliq Urdu", serif;
+        background: linear-gradient(
+          135deg,
+          #f8fafc 0%,
+          #e2e8f0 25%,
+          #f1f5f9 50%,
+          #f8fafc 75%,
+          #ffffff 100%
+        );
+        background-attachment: fixed;
+        min-height: 100vh;
+        color: #1f2937;
+        line-height: 1.6;
+        transition: all 0.5s ease;
+      }
+      body.dark {
+        background: linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #1e293b 25%,
+          #334155 50%,
+          #1e293b 75%,
+          #0f172a 100%
+        );
+        color: #e2e8f0;
+      }
+
+      h1 {
+        font-size: var(--h1-size);
+      }
+      h2 {
+        font-size: var(--h2-size);
+      }
+      h3 {
+        font-size: var(--h3-size);
+      }
+      p,
+      div,
+      span {
+        font-size: var(--text-size);
+      }
+      .small-text {
+        font-size: var(--small-text);
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+      }
+      body.dark .glass-card {
+        background: rgba(15, 23, 42, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+      }
+      .glass-card:hover {
+        transform: translateY(-10px) scale(1.02);
+      }
+
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        transform: translateY(0);
+      }
+      .glass-nav.hidden-header {
+        transform: translateY(-100%);
+      }
+      body.dark .glass-nav {
+        background: rgba(15, 23, 42, 0.95);
+      }
+
+      .verse-line {
+        padding: 0.75rem;
+        margin: 0.25rem 0;
+        border-radius: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      .verse-line:hover {
+        background: rgba(99, 102, 241, 0.2);
+        transform: translateX(5px);
+      }
+      .verse-line.reading {
+        background: rgba(139, 92, 246, 0.4);
+        animation: pulse 2s ease-in-out;
+      }
+      @keyframes pulse {
+        50% {
+          transform: scale(1.02);
+        }
+      }
+
+      .riddle-card {
+        perspective: 1000px;
+        cursor: pointer;
+        position: relative;
+      }
+      .riddle-inner {
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      .riddle-card.flipped .riddle-inner {
+        transform: rotateY(180deg);
+      }
+      .riddle-front,
+      .riddle-back {
+        backface-visibility: hidden;
+        border-radius: 20px;
+        padding: 1.5rem;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+      }
+      .riddle-back {
+        transform: rotateY(180deg);
+      }
+
+      .progress-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(99, 102, 241, 0.3);
+        transition: all 0.3s;
+      }
+      .progress-dot.active {
+        background: #6366f1;
+        transform: scale(1.3);
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+      }
+
+      .glass-button {
+        background: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 15px;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.3s ease;
+      }
+      .glass-button:hover {
+        background: rgba(255, 255, 255, 0.5);
+        transform: translateY(-2px);
+      }
+
+      @keyframes bounce-float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+      @keyframes confetti-fall {
+        to {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      /* Enhanced Mobile Responsiveness */
+      @media (max-width: 640px) {
+        .container {
+          padding-left: 1rem !important;
+          padding-right: 1rem !important;
         }
 
-        html { font-size: var(--base-font-size); }
-        body {
-            font-family: 'AMBILE', 'Noto Nastaliq Urdu', serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 25%, #f1f5f9 50%, #f8fafc 75%, #ffffff 100%);
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: #1f2937;
-            line-height: 1.6;
-            transition: all 0.5s ease;
+        /* Navigation */
+        .glass-nav .container {
+          flex-direction: column;
+          gap: 0.75rem;
+          padding: 0.75rem !important;
         }
-        body.dark {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #1e293b 75%, #0f172a 100%);
-            color: #e2e8f0;
+        .glass-nav .flex {
+          flex-direction: column;
+          width: 100%;
+          text-align: center;
         }
 
-        h1 { font-size: var(--h1-size); }
-        h2 { font-size: var(--h2-size); }
-        h3 { font-size: var(--h3-size); }
-        p, div, span { font-size: var(--text-size); }
-        .small-text { font-size: var(--small-text); }
+        /* Hero Section */
+        h1 {
+          font-size: 2rem !important;
+          line-height: 1.2;
+        }
+        .text-2xl {
+          font-size: 1.25rem !important;
+        }
+        .text-9xl {
+          font-size: 4rem !important;
+        }
+
+        /* Cards */
+        .glass-card {
+          padding: 1rem !important;
+          margin-bottom: 1.5rem !important;
+        }
+        .verse-card {
+          min-height: auto !important;
+        }
+
+        /* Verse Lines */
+        .verse-line {
+          padding: 0.5rem !important;
+          font-size: 1rem !important;
+          margin: 0.25rem 0;
+        }
+
+        /* Buttons */
+        .glass-button {
+          padding: 0.5rem 1rem !important;
+          font-size: 0.875rem !important;
+          margin: 0.25rem;
+        }
+        button {
+          min-width: auto !important;
+        }
+
+        /* Riddle Cards */
+        .riddle-card {
+          height: 250px !important;
+        }
+        .riddle-front,
+        .riddle-back {
+          padding: 1rem !important;
+        }
+
+        /* Grid */
+        .grid {
+          gap: 1rem !important;
+        }
+        .grid-cols-1 {
+          grid-template-columns: 1fr !important;
+        }
+
+        /* Progress */
+        .progress-dot {
+          width: 8px;
+          height: 8px;
+        }
+
+        /* Icons */
+        .text-7xl {
+          font-size: 3rem !important;
+        }
+        .text-5xl {
+          font-size: 2rem !important;
+        }
+      }
+
+      /* Tablet Responsiveness */
+      @media (min-width: 641px) and (max-width: 1024px) {
+        .container {
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+
+        h1 {
+          font-size: 3rem !important;
+        }
+        .text-9xl {
+          font-size: 6rem !important;
+        }
 
         .glass-card {
-            background: rgba(255,255,255,0.25);
-            backdrop-filter: blur(20px) saturate(180%);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 20px;
-            box-shadow: 0 25px 45px rgba(0,0,0,0.1);
-            transition: all 0.4s ease;
+          padding: 1.5rem !important;
         }
-        body.dark .glass-card {
-            background: rgba(15,23,42,0.4);
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 25px 45px rgba(0,0,0,0.3);
-        }
-        .glass-card:hover { transform: translateY(-10px) scale(1.02); }
-
-        .glass-nav {
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            transform: translateY(0);
-        }
-        .glass-nav.hidden-header {
-            transform: translateY(-100%);
-        }
-        body.dark .glass-nav { background: rgba(15,23,42,0.95); }
-
         .verse-line {
-            padding: 0.75rem;
-            margin: 0.25rem 0;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
+          padding: 0.75rem !important;
+          font-size: 1.1rem !important;
         }
-        .verse-line:hover { background: rgba(99,102,241,0.2); transform: translateX(5px); }
-        .verse-line.reading { background: rgba(139,92,246,0.4); animation: pulse 2s ease-in-out; }
-        @keyframes pulse { 50% { transform: scale(1.02); } }
 
-        .riddle-card { 
-            perspective: 1000px; 
-            cursor: pointer;
-            position: relative;
+        .riddle-card {
+          height: 320px !important;
         }
-        .riddle-inner { 
-            transition: transform 0.8s; 
-            transform-style: preserve-3d;
-            width: 100%;
-            height: 100%;
-            position: relative;
+        .riddle-front p,
+        .riddle-back p {
+          font-size: 1.1rem !important;
         }
-        .riddle-card.flipped .riddle-inner { transform: rotateY(180deg); }
-        .riddle-front, .riddle-back {
-            backface-visibility: hidden;
-            border-radius: 20px;
-            padding: 1.5rem;
-            position: absolute;
-            width: 100%; 
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            top: 0;
-            left: 0;
+        .riddle-back h3 {
+          font-size: 2rem !important;
         }
-        .riddle-back { transform: rotateY(180deg); }
 
-        .progress-dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(99,102,241,0.3); transition: all 0.3s; }
-        .progress-dot.active { background: #6366f1; transform: scale(1.3); box-shadow: 0 0 10px rgba(99,102,241,0.5); }
+        .grid-cols-1.lg\\:grid-cols-2 {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
 
+        /* Increase general text size for tablet */
+        p,
+        div,
+        span {
+          font-size: 1.15rem !important;
+        }
+        h2 {
+          font-size: 2.5rem !important;
+        }
+        h3 {
+          font-size: 2rem !important;
+        }
+      }
+
+      /* Touch Targets for Mobile */
+      @media (max-width: 768px) {
+        button,
+        .verse-line,
+        .riddle-card,
         .glass-button {
-            background: rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.4);
-            border-radius: 15px;
-            padding: 0.75rem 1.5rem;
-            transition: all 0.3s ease;
-        }
-        .glass-button:hover { background: rgba(255,255,255,0.5); transform: translateY(-2px); }
-
-        @keyframes bounce-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-        @keyframes confetti-fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
-
-        /* Enhanced Mobile Responsiveness */
-        @media (max-width: 640px) {
-            .container { padding-left: 1rem !important; padding-right: 1rem !important; }
-            
-            /* Navigation */
-            .glass-nav .container { 
-                flex-direction: column; 
-                gap: 0.75rem; 
-                padding: 0.75rem !important;
-            }
-            .glass-nav .flex { 
-                flex-direction: column; 
-                width: 100%; 
-                text-align: center;
-            }
-            
-            /* Hero Section */
-            h1 { font-size: 2rem !important; line-height: 1.2; }
-            .text-2xl { font-size: 1.25rem !important; }
-            .text-9xl { font-size: 4rem !important; }
-            
-            /* Cards */
-            .glass-card { 
-                padding: 1rem !important; 
-                margin-bottom: 1.5rem !important;
-            }
-            .verse-card { min-height: auto !important; }
-            
-            /* Verse Lines */
-            .verse-line { 
-                padding: 0.5rem !important; 
-                font-size: 1rem !important;
-                margin: 0.25rem 0;
-            }
-            
-            /* Buttons */
-            .glass-button { 
-                padding: 0.5rem 1rem !important; 
-                font-size: 0.875rem !important;
-                margin: 0.25rem;
-            }
-            button { min-width: auto !important; }
-            
-            /* Riddle Cards */
-            .riddle-card { height: 250px !important; }
-            .riddle-front, .riddle-back { padding: 1rem !important; }
-            
-            /* Grid */
-            .grid { gap: 1rem !important; }
-            .grid-cols-1 { grid-template-columns: 1fr !important; }
-            
-            /* Progress */
-            .progress-dot { width: 8px; height: 8px; }
-            
-            /* Icons */
-            .text-7xl { font-size: 3rem !important; }
-            .text-5xl { font-size: 2rem !important; }
+          min-height: 44px;
+          min-width: 44px;
         }
 
-        /* Tablet Responsiveness */
-        @media (min-width: 641px) and (max-width: 1024px) {
-            .container { padding-left: 1.5rem; padding-right: 1.5rem; }
-            
-            h1 { font-size: 3rem !important; }
-            .text-9xl { font-size: 6rem !important; }
-            
-            .glass-card { padding: 1.5rem !important; }
-            .verse-line { padding: 0.75rem !important; font-size: 1.1rem !important; }
-            
-            .riddle-card { height: 320px !important; }
-            .riddle-front p, .riddle-back p { font-size: 1.1rem !important; }
-            .riddle-back h3 { font-size: 2rem !important; }
-            
-            .grid-cols-1.lg\\:grid-cols-2 { 
-                grid-template-columns: repeat(2, 1fr) !important; 
-            }
-            
-            /* Increase general text size for tablet */
-            p, div, span { font-size: 1.15rem !important; }
-            h2 { font-size: 2.5rem !important; }
-            h3 { font-size: 2rem !important; }
+        /* Better spacing */
+        section {
+          padding-top: 2rem !important;
+          padding-bottom: 2rem !important;
         }
 
-        /* Touch Targets for Mobile */
-        @media (max-width: 768px) {
-            button, .verse-line, .riddle-card, .glass-button {
-                min-height: 44px;
-                min-width: 44px;
-            }
-            
-            /* Better spacing */
-            section { padding-top: 2rem !important; padding-bottom: 2rem !important; }
-            
-            /* Flex containers */
-            .flex { flex-wrap: wrap; gap: 0.5rem; }
-            .gap-4 { gap: 0.75rem !important; }
-            .gap-8 { gap: 1rem !important; }
+        /* Flex containers */
+        .flex {
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+        .gap-4 {
+          gap: 0.75rem !important;
+        }
+        .gap-8 {
+          gap: 1rem !important;
+        }
+      }
+
+      /* Landscape Mobile */
+      @media (max-width: 896px) and (orientation: landscape) {
+        .text-9xl {
+          font-size: 3rem !important;
+        }
+        section {
+          padding-top: 1.5rem !important;
+          padding-bottom: 1.5rem !important;
+        }
+        .riddle-card {
+          height: 200px !important;
+        }
+      }
+
+      /* Very Small Screens */
+      @media (max-width: 360px) {
+        h1 {
+          font-size: 1.75rem !important;
+        }
+        h2 {
+          font-size: 1.5rem !important;
+        }
+        h3 {
+          font-size: 1.25rem !important;
         }
 
-        /* Landscape Mobile */
-        @media (max-width: 896px) and (orientation: landscape) {
-            .text-9xl { font-size: 3rem !important; }
-            section { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
-            .riddle-card { height: 200px !important; }
+        .glass-card {
+          padding: 0.75rem !important;
+        }
+        .verse-line {
+          padding: 0.375rem !important;
+          font-size: 0.875rem !important;
+        }
+        .glass-button {
+          padding: 0.375rem 0.75rem !important;
+          font-size: 0.75rem !important;
         }
 
-        /* Very Small Screens */
-        @media (max-width: 360px) {
-            h1 { font-size: 1.75rem !important; }
-            h2 { font-size: 1.5rem !important; }
-            h3 { font-size: 1.25rem !important; }
-            
-            .glass-card { padding: 0.75rem !important; }
-            .verse-line { padding: 0.375rem !important; font-size: 0.875rem !important; }
-            .glass-button { padding: 0.375rem 0.75rem !important; font-size: 0.75rem !important; }
-            
-            .text-7xl { font-size: 2.5rem !important; }
-            .text-9xl { font-size: 3rem !important; }
+        .text-7xl {
+          font-size: 2.5rem !important;
         }
+        .text-9xl {
+          font-size: 3rem !important;
+        }
+      }
 
-        /* Print Styles */
-        @media print {
-            .glass-nav, .glass-button, #achievementModal, #confettiContainer { display: none !important; }
-            .glass-card { break-inside: avoid; }
-            body { background: white !important; color: black !important; }
+      /* Print Styles */
+      @media print {
+        .glass-nav,
+        .glass-button,
+        #achievementModal,
+        #confettiContainer {
+          display: none !important;
         }
+        .glass-card {
+          break-inside: avoid;
+        }
+        body {
+          background: white !important;
+          color: black !important;
+        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Navigation -->
     <nav class="glass-nav sticky top-0 z-50">
-        <div class="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
-            <div class="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0">
-                <a href="/sindhi.html" class="glass-button text-indigo-700 flex items-center gap-2 text-sm sm:text-base">
-                    <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                    <span class="hidden sm:inline">واپس گهر ھلو</span>
-                    <span class="sm:hidden">گهر</span>
-                </a>
-                <div class="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text">
-                    ڪلاس پھريون
-                </div>
-                <div class="flex gap-2 sm:gap-3">
-                    <button id="soundToggle" class="glass-button text-xl sm:text-2xl p-2">🔊</button>
-                    <button id="darkModeToggle" class="glass-button text-xl sm:text-2xl p-2">🌙</button>
-                </div>
-            </div>
+      <div class="container mx-auto px-2 sm:px-4 py-2 sm:py-3">
+        <div
+          class="flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0"
+        >
+          <a
+            href="/sindhi.html"
+            class="glass-button text-indigo-700 flex items-center gap-2 text-sm sm:text-base"
+          >
+            <svg
+              class="w-5 h-5 sm:w-6 sm:h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M10 19l-7-7m0 0l7-7m-7 7h18"
+              />
+            </svg>
+            <span class="hidden sm:inline">واپس گهر ھلو</span>
+            <span class="sm:hidden">گهر</span>
+          </a>
+          <div
+            class="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 text-transparent bg-clip-text"
+          >
+            ڪلاس پھريون
+          </div>
+          <div class="flex gap-2 sm:gap-3">
+            <button
+              id="soundToggle"
+              class="glass-button text-xl sm:text-2xl p-2"
+            >
+              🔊
+            </button>
+            <button
+              id="darkModeToggle"
+              class="glass-button text-xl sm:text-2xl p-2"
+            >
+              🌙
+            </button>
+          </div>
         </div>
+      </div>
     </nav>
 
     <!-- Hero -->
     <section class="container mx-auto px-4 sm:px-6 py-6 sm:py-12 text-center">
-        <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-indigo-800 mb-4 sm:mb-6 leading-tight">سنڌي گيت ۽ ڳجهارتُون</h1>
-        <p class="text-lg sm:text-xl md:text-2xl text-purple-600 mb-6 sm:mb-12">ڪلاس پھريون - تعليمي نظم ۽ گيت</p>
+      <h1
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-indigo-800 mb-4 sm:mb-6 leading-tight"
+      >
+        سنڌي گيت ۽ ڳجهارتُون
+      </h1>
+      <p class="text-lg sm:text-xl md:text-2xl text-purple-600 mb-6 sm:mb-12">
+        ڪلاس پھريون - تعليمي نظم ۽ گيت
+      </p>
 
-        <div class="glass-card max-w-md mx-auto p-4 sm:p-6 mb-6 sm:mb-12">
-            <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                <span class="text-indigo-700 font-medium text-sm sm:text-base">اڳڀرائي:</span>
-                <div id="progressDots" class="flex gap-1 sm:gap-2"></div>
-                <span id="progressText" class="font-bold text-indigo-800 text-sm sm:text-base">0%</span>
-            </div>
-            <div class="glass-card h-2 sm:h-3 rounded-full overflow-hidden">
-                <div id="progressBar" class="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500" style="width:0%"></div>
-            </div>
+      <div class="glass-card max-w-md mx-auto p-4 sm:p-6 mb-6 sm:mb-12">
+        <div
+          class="flex flex-wrap justify-center items-center gap-2 sm:gap-3 mb-3 sm:mb-4"
+        >
+          <span class="text-indigo-700 font-medium text-sm sm:text-base"
+            >اڳڀرائي:</span
+          >
+          <div id="progressDots" class="flex gap-1 sm:gap-2"></div>
+          <span
+            id="progressText"
+            class="font-bold text-indigo-800 text-sm sm:text-base"
+            >0%</span
+          >
         </div>
+        <div class="glass-card h-2 sm:h-3 rounded-full overflow-hidden">
+          <div
+            id="progressBar"
+            class="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-500"
+            style="width: 0%"
+          ></div>
+        </div>
+      </div>
 
-        <div class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-4 sm:mb-6 bounce-float">🧙‍♂️</div>
-        <p class="text-indigo-700 text-lg sm:text-xl md:text-2xl font-medium">سنڌي سيکاريندڙ روبوٽ!</p>
+      <div
+        class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl mb-4 sm:mb-6 bounce-float"
+      >
+        🧙‍♂️
+      </div>
+      <p class="text-indigo-700 text-lg sm:text-xl md:text-2xl font-medium">
+        سنڌي سيکاريندڙ روبوٽ!
+      </p>
     </section>
 
     <!-- Religious Songs -->
-    <section class="container mx-auto px-4 sm:px-6 py-6 sm:py-12" id="religious-songs-section">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-green-700 mb-6 sm:mb-12">گيت</h2>
-        <div id="religious-container">
-            <div class="text-center text-lg sm:text-xl md:text-2xl text-gray-500">لوڊ ٿي رهيو آهي... ⏳</div>
+    <section
+      class="container mx-auto px-4 sm:px-6 py-6 sm:py-12"
+      id="religious-songs-section"
+    >
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-green-700 mb-6 sm:mb-12"
+      >
+        گيت
+      </h2>
+      <div id="religious-container">
+        <div class="text-center text-lg sm:text-xl md:text-2xl text-gray-500">
+          لوڊ ٿي رهيو آهي... ⏳
         </div>
+      </div>
     </section>
 
     <!-- Riddles -->
-    <section class="container mx-auto px-4 sm:px-6 py-6 sm:py-12" id="riddles-section">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-orange-700 mb-6 sm:mb-12">ڳُجهارتُون</h2>
-        <div id="riddles-container">
-            <div class="text-center text-lg sm:text-xl md:text-2xl text-gray-500">لوڊ ٿي رهيو آهي... ⏳</div>
+    <section
+      class="container mx-auto px-4 sm:px-6 py-6 sm:py-12"
+      id="riddles-section"
+    >
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-orange-700 mb-6 sm:mb-12"
+      >
+        ڳُجهارتُون
+      </h2>
+      <div id="riddles-container">
+        <div class="text-center text-lg sm:text-xl md:text-2xl text-gray-500">
+          لوڊ ٿي رهيو آهي... ⏳
         </div>
+      </div>
     </section>
 
     <!-- Educational Poems -->
     <section class="container mx-auto px-4 sm:px-6 py-6 sm:py-12">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-blue-700 mb-6 sm:mb-12">تعليمي گيت</h2>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8" id="educational-container">
-            <div class="text-center text-lg sm:text-xl md:text-2xl text-gray-500 col-span-full">لوڊ ٿي رهيو آهي... ⏳</div>
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center text-blue-700 mb-6 sm:mb-12"
+      >
+        تعليمي گيت
+      </h2>
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 md:gap-8"
+        id="educational-container"
+      >
+        <div
+          class="text-center text-lg sm:text-xl md:text-2xl text-gray-500 col-span-full"
+        >
+          لوڊ ٿي رهيو آهي... ⏳
         </div>
+      </div>
     </section>
 
     <!-- Achievement Modal -->
-    <div id="achievementModal" class="hidden fixed inset-0 bg-black/50 backdrop-blur flex items-center justify-center z-50 p-4">
-        <div class="glass-card p-6 sm:p-8 md:p-10 text-center max-w-md w-full mx-4">
-            <div class="text-5xl sm:text-6xl md:text-7xl mb-3 sm:mb-4">🏆</div>
-            <h3 id="achievementTitle" class="text-2xl sm:text-3xl font-bold text-indigo-800 mb-3 sm:mb-4">واڌايُون!</h3>
-            <p id="achievementText" class="text-lg sm:text-xl mb-6 sm:mb-8">توهان نئون ڏاڪو پورو ڪيو!</p>
-            <button onclick="closeAchievement()" class="glass-button text-indigo-700 px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl font-bold">تاڙِيُون! 🎉</button>
-        </div>
+    <div
+      id="achievementModal"
+      class="hidden fixed inset-0 bg-black/50 backdrop-blur flex items-center justify-center z-50 p-4"
+    >
+      <div
+        class="glass-card p-6 sm:p-8 md:p-10 text-center max-w-md w-full mx-4"
+      >
+        <div class="text-5xl sm:text-6xl md:text-7xl mb-3 sm:mb-4">🏆</div>
+        <h3
+          id="achievementTitle"
+          class="text-2xl sm:text-3xl font-bold text-indigo-800 mb-3 sm:mb-4"
+        >
+          واڌايُون!
+        </h3>
+        <p id="achievementText" class="text-lg sm:text-xl mb-6 sm:mb-8">
+          توهان نئون ڏاڪو پورو ڪيو!
+        </p>
+        <button
+          onclick="closeAchievement()"
+          class="glass-button text-indigo-700 px-6 sm:px-8 py-3 sm:py-4 text-lg sm:text-xl font-bold"
+        >
+          تاڙِيُون! 🎉
+        </button>
+      </div>
     </div>
 
     <div id="confettiContainer"></div>
+    <!-- Footer -->
+    <footer class="glass-card mt-16 p-8 text-center">
+      <h3 class="text-2xl font-bold mb-4">ڪلاس پھريون - سنڌي سکيا</h3>
+      <p class="text-lg mb-2">عبدالماجد ڀرگڙي انسٽيٽيوٽ آف لينگويج انجنيئرنگ</p>
+      <p class="text-base">
+        &copy; 2025 ثقافت کاتو، سنڌ حڪومت - سڀ حق محفوظ آهن
+      </p>
+      <div class="flex justify-center gap-4 mt-4">
+        <span class="text-2xl">🌟</span>
+        <span class="text-2xl">📚</span>
+        <span class="text-2xl">🎵</span>
+        <span class="text-2xl">💫</span>
+      </div>
+    </footer>
+  </body>
+  <script>
+    // State
+    let soundEnabled = true;
+    let currentAudio = null;
+    let completed = new Set();
+    const totalItems = 12;
 
-    <script>
-        // State
-        let soundEnabled = true;
-        let currentAudio = null;
-        let completed = new Set();
-        const totalItems = 12;
+    // Embedded JSON Data (no fetch needed!)
+    const class1Data = [
+      {
+        baitTitle: "گِيتَ ڌڻِيءَ جا گڏجِي ڳايُون (حمد)",
+        baitContent: [
+          "گِيتَ ڌڻِيءَ جا گڏجِي ڳايُون!",
+          "جو ٿو ٿَڌِڙا مِينھَن وَسائي،",
+          "باغن ۾ جو اَنبَ پَچائي،",
+          "ويسَ گُلَن کي جو پَھرائي،",
+          "ان پَچائي، گاھَہ اُپائي،",
+          "عَرشَ ۾ جو تارا ٽِمڪائي،",
+          "تَنھِن مالِڪَ کي سَڀُ ساراھيون،",
+          "گِيتَ ڌڻيءَ جا گڏجي ڳايُون!",
+        ],
+        author: "ڪشنچند 'بيوس'",
+        audioPath: "",
+        icon: "",
+      },
+      {
+        baitTitle: "پيارو نَبِي ﷺ اَسان جو (نعت)",
+        baitContent: [
+          "سُھڻو نَبيؐ اَسان جو،",
+          "پيارو نَبِيؐ اَسان جو،",
+          "آيو نہ اَھڙو اِيندو،",
+          "نيارو نَبِيؐ اَسان جو.",
+          "حاڪِم حَڪِيم آھي،",
+          "ٻارو نَبِيؐ اَسان جو.",
+          "ٻارن سان پيار جنھن جو،",
+          "پيارو نَبِيؐ اَسان جو.",
+        ],
+        author: "غلام محند 'غازي'",
+        audioPath: "",
+        icon: "",
+      },
+      {
+        baitTitle: "واھَہ ڙي تارا (بيت)",
+        baitContent: [
+          "واھَہ ڙي تارا گول تارا،",
+          "روشن تارا چِلڪي وارا.",
+          "سانجهي ٽاڻي نِڪِرو ٿا،",
+          "اُڀَ سَڄي ۾ پَکڙو ٿا.",
+          "چِلڪو چمڪو سارِي رات،",
+          "ڪَجي اَوھان جي ڪَھڙي بات.",
+          "رات لنگهي يا باقي ڇا،",
+          "اوھين بَتايو واٹ اِھي.",
+          "جوتِ اَوھان جِي جي نہ ھُجي،",
+          "واٽَھڙُو ڪَرَ واٽ مُنجهي.",
+        ],
+        author: "ڀيرو مل 'غريب'",
+        audioPath: "",
+        icon: "",
+      },
+      {
+        baitTitle: "جَهنڊو (بيت)",
+        baitContent: [
+          "جَهنڊو پنھنجو پاڪستاني،",
+          "قوم سَندِي جو آھي نشاني.",
+          "جَهنڊو آھي جانِ کان پيارو،",
+          "روشن اُن ۾ چنڊ ۽ تارو.",
+          "رنگ اُنھيءَ جو آھي نيارو،",
+          "سائو، اڇو، واھہ جو ٻارو.",
+          "اُن سان آھي مانُ اسان جو،",
+          "جَهنڊو آھي شانُ اسان جو.",
+          "اچو تہ گڏجي گِيتُ ھي ڳايون،",
+          "قومي جَهنڊي کي جُهولايون.",
+        ],
+        author: "بچل ميمڻ",
+        audioPath: "",
+        icon: "",
+      },
+      {
+        baitTitle: "آوازَ (بيت)",
+        baitContent: [
+          "ڪوئِل ڪُوڪي، ڪُو ڪُو ڪُو،",
+          "ڳيرو ڳائي، گُهو گُهو گُهو.",
+          "ڪانءُ ڪري ٿو، ڪان ڪان ڪان،",
+          "ڏيڏر ڪري ٿو، ٽان ٽان ٽان.",
+          "جِهرڪي ٻولي، چُون چُون چُون،",
+          "پَرِڙا کولي، چُون چُون چُون.",
+          "ريلَ ڪَري ٿي، ڇُڪ ڇُڪ ڇُڪ،",
+          "تيز ڀڄي ٿي، ڊُڪ ڊُڪ ڊُڪ.",
+          "موٽر ڊوڙي، ڦَر ڦَر ڦَر،",
+          "تيلُ اُنھيءَ ۾، ڀَر ڀَر ڀَر.",
+          "ڪُڪُڙُ ڪَري ٿو، ڪُڪُڙو ڪُو،",
+          "صُبحُ ٿيڻ جو ڏَسُ ڏي ھُو.",
+        ],
+        author: "امداد حُسيني",
+        audioPath: "",
+        icon: "",
+      },
+      {
+        baitTitle: "جو کِيرُ پِئي (بيت)",
+        baitContent: [
+          "جو کِيرُ پِئي. سو وِيرُ ٿئي،",
+          "ڏَندَ زور وٺن، سُٺا سُھڻا لَڳن،",
+          "اَکين جوتِ وَڌي، ڏاڍي سُونھن ٿئي،",
+          "وَٺي زور بَدنُ، لِڱ چُست ٿِين،",
+          "کِيرُ صَفا سُٺو، واھہ ڏاڍو مِٺو،",
+          "ٻارو اَچو پِيُون، ڀَري کِير وَٽيُون،",
+          "سَڀ زور وٺُون، پِي کِيرُ وڌُون،",
+          "ڏي کِيرُ اَمان، پِي پڙھڻ وَڃان.",
+        ],
+        author: "ڀيرو مل 'غريب'",
+        audioPath: "",
+        icon: "",
+      },
+      {
+        baitTitle: "سچُ ڳالهاءِ (بِيت)",
+        baitContent: [
+          "آءُ نہ ڪڏھين ڪوڙو ٿيندس،",
+          "ساھہ سدائين سَچ تي ڏيندس.",
+          "ڪُوڙ چوان تان پَتِ وِڃايان،",
+          "ھِتي ھُتي نِتِ پاڻ لَڄايان.",
+          "سَڀئي ڪُوڙو ڪُوڙو چَوندم،",
+          "پاسي ۾ پوءِ ويھڻ نہ ڏِيندم.",
+          "سَچ چوڻ سان ملندم پيارُ،",
+          "ڪڏھين ٿِيندس ڪِينَ خُوار.",
+          "مُون کي ڏي تون سَگهہ ڌڻي،",
+          "سَچ سان رکان دل گهڻي.",
+        ],
+        author: "مرزا قليچ بيگ",
+        audioPath: "",
+        icon: "",
+      },
+      {
+        baitTitle: "ڀَلا ٻُڌاءِ تہ ڇا آھي؟",
+        baitContent: [
+          "پَرَ اَٿس پَر پوپٽ ناھي،",
+          "اُڀ ۾ اُڏري پَکي بہ ناھي،",
+          "ڀَلا ٻُڌايو تہ اھو ڇا ھي؟",
+          "",
+          "خَبرون چارُون روز ٻُڌائي،",
+          "مِٺڙا، مِٺڙا، گِيت سُڻائي،",
+          "ڀلا ٻُڌايو تہ اھو ڇا ھي؟",
+          "",
+          "کيلَ پَسائي دل وندرائي،",
+          "ڄڻ تہ ڪو گهر جو ڀاتي آھي،",
+          "ڀلا ٻُڌايو تہ اھي ڇا ھي؟",
+        ],
+        author: "امداد حُسيني",
+        audioPath: "",
+        icon: "",
+      },
+      {
+        baitTitle: "دُعا",
+        baitContent: [
+          "خُدايا اِھي،",
+          "دعا ٿو گُهران.",
+          "",
+          "سَنئين واٹَ تي،",
+          "سَدائين ھَلان.",
+          "",
+          "اَبو ۽ اَمان،",
+          "سُکيا شل رکان.",
+          "",
+          "اَگهو ڪِينَ ٿِيان،",
+          "سَگهو شَلَ رَھان.",
+          "",
+          "وَطنَ ساڻ مان،",
+          "مُحبت ڪَريا.",
+          "پَڙھان ۽ لِکان،",
+          "ھُنر پِڻ سِکان.",
+        ],
+        author: "امداد حُسيني",
+        audioPath: "",
+        icon: "",
+      },
+    ];
 
-        // Embedded JSON Data (no fetch needed!)
-        const class1Data = [{"baitTitle":"گِيتَ ڌڻِيءَ جا گڏجِي ڳايُون (حمد)","baitContent":["گِيتَ ڌڻِيءَ جا گڏجِي ڳايُون!","جو ٿو ٿَڌِڙا مِينھَن وَسائي،","باغن ۾ جو اَنبَ پَچائي،","ويسَ گُلَن کي جو پَھرائي،","ان پَچائي، گاھَہ اُپائي،","عَرشَ ۾ جو تارا ٽِمڪائي،","تَنھِن مالِڪَ کي سَڀُ ساراھيون،","گِيتَ ڌڻيءَ جا گڏجي ڳايُون!"],"author":"ڪشنچند 'بيوس'","audioPath":"","icon":""},{"baitTitle":"پيارو نَبِي ﷺ اَسان جو (نعت)","baitContent":["سُھڻو نَبيؐ اَسان جو،","پيارو نَبِيؐ اَسان جو،","آيو نہ اَھڙو اِيندو،","نيارو نَبِيؐ اَسان جو.","حاڪِم حَڪِيم آھي،","ٻارو نَبِيؐ اَسان جو.","ٻارن سان پيار جنھن جو،","پيارو نَبِيؐ اَسان جو."],"author":"غلام محند 'غازي'","audioPath":"","icon":""},{"baitTitle":"واھَہ ڙي تارا (بيت)","baitContent":["واھَہ ڙي تارا گول تارا،","روشن تارا چِلڪي وارا.","سانجهي ٽاڻي نِڪِرو ٿا،","اُڀَ سَڄي ۾ پَکڙو ٿا.","چِلڪو چمڪو سارِي رات،","ڪَجي اَوھان جي ڪَھڙي بات.","رات لنگهي يا باقي ڇا،","اوھين بَتايو واٹ اِھي.","جوتِ اَوھان جِي جي نہ ھُجي،","واٽَھڙُو ڪَرَ واٽ مُنجهي."],"author":"ڀيرو مل 'غريب'","audioPath":"","icon":""},{"baitTitle":"جَهنڊو (بيت)","baitContent":["جَهنڊو پنھنجو پاڪستاني،","قوم سَندِي جو آھي نشاني.","جَهنڊو آھي جانِ کان پيارو،","روشن اُن ۾ چنڊ ۽ تارو.","رنگ اُنھيءَ جو آھي نيارو،","سائو، اڇو، واھہ جو ٻارو.","اُن سان آھي مانُ اسان جو،","جَهنڊو آھي شانُ اسان جو.","اچو تہ گڏجي گِيتُ ھي ڳايون،","قومي جَهنڊي کي جُهولايون."],"author":"بچل ميمڻ","audioPath":"","icon":""},{"baitTitle":"آوازَ (بيت)","baitContent":["ڪوئِل ڪُوڪي، ڪُو ڪُو ڪُو،","ڳيرو ڳائي، گُهو گُهو گُهو.","ڪانءُ ڪري ٿو، ڪان ڪان ڪان،","ڏيڏر ڪري ٿو، ٽان ٽان ٽان.","جِهرڪي ٻولي، چُون چُون چُون،","پَرِڙا کولي، چُون چُون چُون.","ريلَ ڪَري ٿي، ڇُڪ ڇُڪ ڇُڪ،","تيز ڀڄي ٿي، ڊُڪ ڊُڪ ڊُڪ.","موٽر ڊوڙي، ڦَر ڦَر ڦَر،","تيلُ اُنھيءَ ۾، ڀَر ڀَر ڀَر.","ڪُڪُڙُ ڪَري ٿو، ڪُڪُڙو ڪُو،","صُبحُ ٿيڻ جو ڏَسُ ڏي ھُو."],"author":"امداد حُسيني","audioPath":"","icon":""},{"baitTitle":"جو کِيرُ پِئي (بيت)","baitContent":["جو کِيرُ پِئي. سو وِيرُ ٿئي،","ڏَندَ زور وٺن، سُٺا سُھڻا لَڳن،","اَکين جوتِ وَڌي، ڏاڍي سُونھن ٿئي،","وَٺي زور بَدنُ، لِڱ چُست ٿِين،","کِيرُ صَفا سُٺو، واھہ ڏاڍو مِٺو،","ٻارو اَچو پِيُون، ڀَري کِير وَٽيُون،","سَڀ زور وٺُون، پِي کِيرُ وڌُون،","ڏي کِيرُ اَمان، پِي پڙھڻ وَڃان."],"author":"ڀيرو مل 'غريب'","audioPath":"","icon":""},{"baitTitle":"سچُ ڳالهاءِ (بِيت)","baitContent":["آءُ نہ ڪڏھين ڪوڙو ٿيندس،","ساھہ سدائين سَچ تي ڏيندس.","ڪُوڙ چوان تان پَتِ وِڃايان،","ھِتي ھُتي نِتِ پاڻ لَڄايان.","سَڀئي ڪُوڙو ڪُوڙو چَوندم،","پاسي ۾ پوءِ ويھڻ نہ ڏِيندم.","سَچ چوڻ سان ملندم پيارُ،","ڪڏھين ٿِيندس ڪِينَ خُوار.","مُون کي ڏي تون سَگهہ ڌڻي،","سَچ سان رکان دل گهڻي."],"author":"مرزا قليچ بيگ","audioPath":"","icon":""},{"baitTitle":"ڀَلا ٻُڌاءِ تہ ڇا آھي؟","baitContent":["پَرَ اَٿس پَر پوپٽ ناھي،","اُڀ ۾ اُڏري پَکي بہ ناھي،","ڀَلا ٻُڌايو تہ اھو ڇا ھي؟","","خَبرون چارُون روز ٻُڌائي،","مِٺڙا، مِٺڙا، گِيت سُڻائي،","ڀلا ٻُڌايو تہ اھو ڇا ھي؟","","کيلَ پَسائي دل وندرائي،","ڄڻ تہ ڪو گهر جو ڀاتي آھي،","ڀلا ٻُڌايو تہ اھي ڇا ھي؟"],"author":"امداد حُسيني","audioPath":"","icon":""},{"baitTitle":"دُعا","baitContent":["خُدايا اِھي،","دعا ٿو گُهران.","","سَنئين واٹَ تي،","سَدائين ھَلان.","","اَبو ۽ اَمان،","سُکيا شل رکان.","","اَگهو ڪِينَ ٿِيان،","سَگهو شَلَ رَھان.","","وَطنَ ساڻ مان،","مُحبت ڪَريا.","پَڙھان ۽ لِکان،","ھُنر پِڻ سِکان."],"author":"امداد حُسيني","audioPath":"","icon":""}];
+    // Load and Render Everything (no fetch needed!)
+    function loadClass1() {
+      try {
+        console.log("Loading embedded data...");
+        const data = class1Data;
+        console.log("Data loaded successfully:", data.length, "items");
 
-        // Load and Render Everything (no fetch needed!)
-        function loadClass1() {
-            try {
-                console.log('Loading embedded data...');
-                const data = class1Data;
-                console.log('Data loaded successfully:', data.length, 'items');
+        // Categorize
+        const hamdNaat = data.slice(0, 2);
+        const riddlesBait = data.find((b) =>
+          b.baitTitle.includes("ڀَلا ٻُڌاءِ")
+        );
+        const educational = data.filter(
+          (b) =>
+            !b.baitTitle.includes("حمد") &&
+            !b.baitTitle.includes("نعت") &&
+            b !== riddlesBait
+        );
 
-                // Categorize
-                const hamdNaat = data.slice(0, 2);
-                const riddlesBait = data.find(b => b.baitTitle.includes('ڀَلا ٻُڌاءِ'));
-                const educational = data.filter(b => 
-                    !b.baitTitle.includes('حمد') && 
-                    !b.baitTitle.includes('نعت') && 
-                    b !== riddlesBait
-                );
+        console.log("Categorized:", {
+          hamdNaat: hamdNaat.length,
+          riddles: riddlesBait ? "found" : "not found",
+          educational: educational.length,
+        });
 
-                console.log('Categorized:', {hamdNaat: hamdNaat.length, riddles: riddlesBait ? 'found' : 'not found', educational: educational.length});
+        renderHamdNaat(hamdNaat);
+        renderRiddles(riddlesBait);
+        renderEducational(educational);
+        initProgressDots();
 
-                renderHamdNaat(hamdNaat);
-                renderRiddles(riddlesBait);
-                renderEducational(educational);
-                initProgressDots();
-                
-                console.log('All content rendered successfully!');
-            } catch (e) { 
-                console.error("Load error:", e);
-                alert('خرابي: مواد لوڊ نه ٿي سگهيو!\n\nError: ' + e.message);
-            }
-        }
+        console.log("All content rendered successfully!");
+      } catch (e) {
+        console.error("Load error:", e);
+        alert("خرابي: مواد لوڊ نه ٿي سگهيو!\n\nError: " + e.message);
+      }
+    }
 
-        function renderHamdNaat(items) {
-            const container = document.getElementById('religious-container');
-            container.innerHTML = ''; // Clear loading message
-            const icons = ['🌟', '☪️'];
-            const colors = ['emerald', 'purple'];
-            const audioFiles = ['01 Geet Dhani.wav', '02 Pyaro Nabi.wav'];
+    function renderHamdNaat(items) {
+      const container = document.getElementById("religious-container");
+      container.innerHTML = ""; // Clear loading message
+      const icons = ["🌟", "☪️"];
+      const colors = ["emerald", "purple"];
+      const audioFiles = ["01 Geet Dhani.wav", "02 Pyaro Nabi.wav"];
 
-            items.forEach((item, i) => {
-                const audioId = `audio-rel-${i}`;
-                container.innerHTML += `
-                    <div class="verse-card glass-card ${i===0?'hamd-card':'naat-card'} p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 md:mb-12 max-w-4xl mx-auto">
+      items.forEach((item, i) => {
+        const audioId = `audio-rel-${i}`;
+        container.innerHTML += `
+                    <div class="verse-card glass-card ${
+                      i === 0 ? "hamd-card" : "naat-card"
+                    } p-4 sm:p-6 md:p-8 mb-6 sm:mb-8 md:mb-12 max-w-4xl mx-auto">
                         <div class="text-center mb-4 sm:mb-6 md:mb-8">
-                            <div class="text-5xl sm:text-6xl md:text-7xl mb-3 sm:mb-4 bounce-float">${icons[i]}</div>
-                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-${colors[i]}-800 leading-tight">${item.baitTitle}</h3>
-                            <p class="text-base sm:text-lg md:text-xl text-${colors[i]}-700 mt-2">${item.author}</p>
+                            <div class="text-5xl sm:text-6xl md:text-7xl mb-3 sm:mb-4 bounce-float">${
+                              icons[i]
+                            }</div>
+                            <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-${
+                              colors[i]
+                            }-800 leading-tight">${item.baitTitle}</h3>
+                            <p class="text-base sm:text-lg md:text-xl text-${
+                              colors[i]
+                            }-700 mt-2">${item.author}</p>
                         </div>
                         <div class="space-y-2 sm:space-y-3 md:space-y-4 text-base sm:text-lg md:text-xl">
-                            ${item.baitContent.map(line => `<div class="verse-line glass-card" onclick="highlight(this)">${line}</div>`).join('')}
+                            ${item.baitContent
+                              .map(
+                                (line) =>
+                                  `<div class="verse-line glass-card" onclick="highlight(this)">${line}</div>`
+                              )
+                              .join("")}
                         </div>
-                        <audio id="${audioId}" src="/assets/Data/Audio Baits/1/${audioFiles[i]}"></audio>
+                        <audio id="${audioId}" src="/assets/Data/Audio Baits/1/${
+          audioFiles[i]
+        }"></audio>
                         <div class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6 md:mt-8">
                             <button onclick="playAudio('${audioId}')" class="glass-button bg-green-500 text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg">🎵 ٻڌو</button>
                             <button onclick="pauseAudio('${audioId}')" class="glass-button bg-red-500 text-white px-4 sm:px-5 md:px-6 py-2 sm:py-3 md:py-4 text-sm sm:text-base md:text-lg">⏸ روڪيو</button>
                         </div>
                     </div>`;
-            });
-        }
+      });
+    }
 
-        function renderRiddles(bait) {
-            const container = document.getElementById('riddles-container');
-            container.innerHTML = ''; // Clear loading message
-            const lines = bait.baitContent.filter(l => l.trim());
-            const groups = [];
-            for (let i = 0; i < lines.length; i += 4) groups.push(lines.slice(i, i+4));
-            const answers = [
-                {icon: '✈️', title: 'جھاز!', desc: 'هوائي جھاز آسمان ۾ اڏامي ٿو!'},
-                {icon: '📻', title: 'ريڊيو!', desc: 'ريڊيو کان خبرون ۽ گيت ٻڌون ٿا!'},
-                {icon: '📺', title: 'ٽي وي!', desc: 'ٽيليويزن ۾ تصويرون ۽ آواز هلندا آهن!'}
-            ];
-            container.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                ${groups.map((g, i) => `
+    function renderRiddles(bait) {
+      const container = document.getElementById("riddles-container");
+      container.innerHTML = ""; // Clear loading message
+      const lines = bait.baitContent.filter((l) => l.trim());
+      const groups = [];
+      for (let i = 0; i < lines.length; i += 4)
+        groups.push(lines.slice(i, i + 4));
+      const answers = [
+        { icon: "✈️", title: "جھاز!", desc: "هوائي جھاز آسمان ۾ اڏامي ٿو!" },
+        { icon: "📻", title: "ريڊيو!", desc: "ريڊيو کان خبرون ۽ گيت ٻڌون ٿا!" },
+        {
+          icon: "📺",
+          title: "ٽي وي!",
+          desc: "ٽيليويزن ۾ تصويرون ۽ آواز هلندا آهن!",
+        },
+      ];
+      container.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+                ${groups
+                  .map(
+                    (g, i) => `
                     <div class="riddle-card glass-card" style="height: 280px; min-height: 280px;" onclick="flipRiddle(this); updateProgress('riddle${i}')">
                         <div class="riddle-inner">
                             <div class="riddle-front bg-orange-100 text-orange-900 flex flex-col items-center justify-center p-4 sm:p-5 md:p-6">
                                 <div class="text-4xl sm:text-5xl mb-3 sm:mb-4">❓</div>
-                                <p class="text-base sm:text-lg md:text-xl leading-relaxed text-center font-semibold">${g.join('<br>')}</p>
+                                <p class="text-base sm:text-lg md:text-xl leading-relaxed text-center font-semibold">${g.join(
+                                  "<br>"
+                                )}</p>
                             </div>
                             <div class="riddle-back bg-gradient-to-br from-green-500 to-emerald-600 text-white flex flex-col items-center justify-center p-4 sm:p-5 md:p-6">
-                                <div class="text-6xl sm:text-7xl md:text-8xl mb-3 sm:mb-4">${answers[i].icon}</div>
-                                <h3 class="text-2xl sm:text-3xl font-bold">${answers[i].title}</h3>
-                                <p class="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl">${answers[i].desc}</p>
+                                <div class="text-6xl sm:text-7xl md:text-8xl mb-3 sm:mb-4">${
+                                  answers[i].icon
+                                }</div>
+                                <h3 class="text-2xl sm:text-3xl font-bold">${
+                                  answers[i].title
+                                }</h3>
+                                <p class="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl">${
+                                  answers[i].desc
+                                }</p>
                             </div>
                         </div>
-                    </div>`).join('')}
+                    </div>`
+                  )
+                  .join("")}
             </div>`;
-        }
+    }
 
-        function renderEducational(items) {
-            const container = document.getElementById('educational-container');
-            container.innerHTML = ''; // Clear loading message
-            const icons = ['⚖️', '🔊', '⭐', '💚', '🥛', '🦜', '🤲'];
-            const audioFiles = [
-                '04 Aon Kadhen Na .wav','03 Koyal Kooke.wav','02 Wah re tara.wav',
-                '07 Jhando (NEW).wav','06 Jo kheer.wav','08 Popat.wav','09 Dua.wav'
-            ];
+    function renderEducational(items) {
+      const container = document.getElementById("educational-container");
+      container.innerHTML = ""; // Clear loading message
+      const icons = ["⚖️", "🔊", "⭐", "💚", "🥛", "🦜", "🤲"];
+      const audioFiles = [
+        "04 Aon Kadhen Na .wav",
+        "03 Koyal Kooke.wav",
+        "02 Wah re tara.wav",
+        "07 Jhando (NEW).wav",
+        "06 Jo kheer.wav",
+        "08 Popat.wav",
+        "09 Dua.wav",
+      ];
 
-            items.forEach((item, i) => {
-                const audioId = `audio-edu-${i}`;
-                container.innerHTML += `
+      items.forEach((item, i) => {
+        const audioId = `audio-edu-${i}`;
+        container.innerHTML += `
                     <div class="glass-card p-4 sm:p-6 md:p-8 educational-card">
                         <div class="text-center mb-4 sm:mb-6">
-                            <div class="text-5xl sm:text-6xl md:text-7xl mb-3 sm:mb-4 bounce-float">${icons[i]}</div>
-                            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-blue-800 leading-tight">${item.baitTitle}</h3>
-                            <p class="text-sm sm:text-base md:text-lg text-blue-700 mt-2">${item.author}</p>
+                            <div class="text-5xl sm:text-6xl md:text-7xl mb-3 sm:mb-4 bounce-float">${
+                              icons[i]
+                            }</div>
+                            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-blue-800 leading-tight">${
+                              item.baitTitle
+                            }</h3>
+                            <p class="text-sm sm:text-base md:text-lg text-blue-700 mt-2">${
+                              item.author
+                            }</p>
                         </div>
                         <div class="space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg">
-                            ${item.baitContent.map(line => line.trim() ? `<div class="verse-line glass-card" onclick="highlight(this)">${line}</div>` : '').join('')}
+                            ${item.baitContent
+                              .map((line) =>
+                                line.trim()
+                                  ? `<div class="verse-line glass-card" onclick="highlight(this)">${line}</div>`
+                                  : ""
+                              )
+                              .join("")}
                         </div>
-                        <audio id="${audioId}" src="/assets/Data/Audio Baits/1/${audioFiles[i]}"></audio>
+                        <audio id="${audioId}" src="/assets/Data/Audio Baits/1/${
+          audioFiles[i]
+        }"></audio>
                         <div class="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mt-4 sm:mt-6 md:mt-8">
                             <button onclick="playAudio('${audioId}')" class="glass-button bg-green-500 text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 text-sm sm:text-base">🎵 ٻڌو</button>
                             <button onclick="pauseAudio('${audioId}')" class="glass-button bg-red-500 text-white px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 text-sm sm:text-base">⏸ روڪيو</button>
                         </div>
                     </div>`;
-            });
-        }
+      });
+    }
 
-        // Audio & Interaction
-        function playAudio(id) {
-            const audio = document.getElementById(id);
-            if (currentAudio && currentAudio !== audio) currentAudio.pause();
-            audio.play();
-            currentAudio = audio;
-        }
-        function pauseAudio(id) { document.getElementById(id)?.pause(); }
-        function highlight(el) { el.classList.add('reading'); setTimeout(() => el.classList.remove('reading'), 2000); updateProgress('verse'); }
-        function flipRiddle(card) { card.classList.toggle('flipped'); }
-        function updateProgress(type) {
-            if (!completed.has(type)) {
-                completed.add(type);
-                const percent = Math.round((completed.size / totalItems) * 100);
-                document.getElementById('progressText').textContent = percent + '%';
-                document.getElementById('progressBar').style.width = percent + '%';
-                document.querySelector(`#progressDots .progress-dot:nth-child(${completed.size})`)?.classList.add('active');
-                if ([3,6,9,12].includes(completed.size)) showAchievement();
-            }
-        }
-        function showAchievement() {
-            document.getElementById('achievementModal').classList.remove('hidden');
-            confetti();
-        }
-        function closeAchievement() { document.getElementById('achievementModal').classList.add('hidden'); }
-        function confetti() {
-            for(let i=0; i<30; i++) {
-                const c = document.createElement('div');
-                c.style.cssText = `position:fixed;top:-10px;left:${Math.random()*100}vw;width:10px;height:10px;background:hsl(${Math.random()*360},100%,50%);border-radius:50%;animation:confetti-fall 3s linear forwards;z-index:9999;`;
-                document.getElementById('confettiContainer').appendChild(c);
-                setTimeout(() => c.remove(), 3000);
-            }
-        }
+    // Audio & Interaction
+    function playAudio(id) {
+      const audio = document.getElementById(id);
+      if (currentAudio && currentAudio !== audio) currentAudio.pause();
+      audio.play();
+      currentAudio = audio;
+    }
+    function pauseAudio(id) {
+      document.getElementById(id)?.pause();
+    }
+    function highlight(el) {
+      el.classList.add("reading");
+      setTimeout(() => el.classList.remove("reading"), 2000);
+      updateProgress("verse");
+    }
+    function flipRiddle(card) {
+      card.classList.toggle("flipped");
+    }
+    function updateProgress(type) {
+      if (!completed.has(type)) {
+        completed.add(type);
+        const percent = Math.round((completed.size / totalItems) * 100);
+        document.getElementById("progressText").textContent = percent + "%";
+        document.getElementById("progressBar").style.width = percent + "%";
+        document
+          .querySelector(
+            `#progressDots .progress-dot:nth-child(${completed.size})`
+          )
+          ?.classList.add("active");
+        if ([3, 6, 9, 12].includes(completed.size)) showAchievement();
+      }
+    }
+    function showAchievement() {
+      document.getElementById("achievementModal").classList.remove("hidden");
+      confetti();
+    }
+    function closeAchievement() {
+      document.getElementById("achievementModal").classList.add("hidden");
+    }
+    function confetti() {
+      for (let i = 0; i < 30; i++) {
+        const c = document.createElement("div");
+        c.style.cssText = `position:fixed;top:-10px;left:${
+          Math.random() * 100
+        }vw;width:10px;height:10px;background:hsl(${
+          Math.random() * 360
+        },100%,50%);border-radius:50%;animation:confetti-fall 3s linear forwards;z-index:9999;`;
+        document.getElementById("confettiContainer").appendChild(c);
+        setTimeout(() => c.remove(), 3000);
+      }
+    }
 
-        // Progress Dots
-        function initProgressDots() {
-            const container = document.getElementById('progressDots');
-            for(let i=0; i<totalItems; i++) {
-                container.innerHTML += '<div class="progress-dot"></div>';
-            }
+    // Progress Dots
+    function initProgressDots() {
+      const container = document.getElementById("progressDots");
+      for (let i = 0; i < totalItems; i++) {
+        container.innerHTML += '<div class="progress-dot"></div>';
+      }
+    }
+
+    // Dark Mode & Sound Toggle
+    document.getElementById("darkModeToggle").onclick = () => {
+      document.body.classList.toggle("dark");
+      localStorage.setItem(
+        "darkMode",
+        document.body.classList.contains("dark") ? "on" : "off"
+      );
+      document.getElementById("darkModeToggle").textContent =
+        document.body.classList.contains("dark") ? "Sun" : "Moon";
+    };
+    document.getElementById("soundToggle").onclick = () => {
+      soundEnabled = !soundEnabled;
+      document.getElementById("soundToggle").textContent = soundEnabled
+        ? "Speaker"
+        : "Muted Speaker";
+    };
+
+    // Hide header on scroll
+    let lastScrollTop = 0;
+    const nav = document.querySelector(".glass-nav");
+    const scrollThreshold = 100;
+
+    window.addEventListener("scroll", () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+
+      if (scrollTop > scrollThreshold) {
+        if (scrollTop > lastScrollTop) {
+          // Scrolling down
+          nav.classList.add("hidden-header");
+        } else {
+          // Scrolling up
+          nav.classList.remove("hidden-header");
         }
+      } else {
+        // At top of page, always show
+        nav.classList.remove("hidden-header");
+      }
 
-        // Dark Mode & Sound Toggle
-        document.getElementById('darkModeToggle').onclick = () => {
-            document.body.classList.toggle('dark');
-            localStorage.setItem('darkMode', document.body.classList.contains('dark') ? 'on' : 'off');
-            document.getElementById('darkModeToggle').textContent = document.body.classList.contains('dark') ? 'Sun' : 'Moon';
-        };
-        document.getElementById('soundToggle').onclick = () => {
-            soundEnabled = !soundEnabled;
-            document.getElementById('soundToggle').textContent = soundEnabled ? 'Speaker' : 'Muted Speaker';
-        };
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    });
 
-        // Hide header on scroll
-        let lastScrollTop = 0;
-        const nav = document.querySelector('.glass-nav');
-        const scrollThreshold = 100;
-        
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > scrollThreshold) {
-                if (scrollTop > lastScrollTop) {
-                    // Scrolling down
-                    nav.classList.add('hidden-header');
-                } else {
-                    // Scrolling up
-                    nav.classList.remove('hidden-header');
-                }
-            } else {
-                // At top of page, always show
-                nav.classList.remove('hidden-header');
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        });
-
-        // Init
-        window.onload = () => {
-            if (localStorage.getItem('darkMode') === 'on') document.body.classList.add('dark');
-            loadClass1();
-        };
-    </script>
-</body>
+    // Init
+    window.onload = () => {
+      if (localStorage.getItem("darkMode") === "on")
+        document.body.classList.add("dark");
+      loadClass1();
+    };
+  </script>
 </html>
